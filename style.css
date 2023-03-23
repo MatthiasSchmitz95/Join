@@ -47,9 +47,6 @@ h3 {
     height: 49px;
 }
 
-
-
-
 .side-bar {
     position: absolute;
     box-sizing: border-box;
@@ -107,7 +104,7 @@ h3 {
     align-items: center;
     gap: 20px;
     width: 232px;
-    height: 46px; 
+    height: 46px;
     justify-content: center;
 
 }
