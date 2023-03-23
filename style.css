@@ -79,7 +79,8 @@ h3 {
     padding: 0px;
     gap: 15px;
     width: 230px;
-    height: 229px;
+    height: 230px;
+    margin-top: 60px;
 }
 
 .menu-container p {
@@ -89,9 +90,6 @@ h3 {
     font-size: 16px;
     line-height: 120%;
     color: #CDCDCD;
-    flex: none;
-    order: 1;
-    flex-grow: 0;
     width: 80px;
 }
 
