@@ -23,15 +23,17 @@ h3 {
 }
 
 .header {
-    position: relative;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    left: 230px;
     box-sizing: border-box;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 36px 20px 348px;
+    padding: 20px;
     height: 89px;
-    z-index: 2;
     background: #FFFFFF;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
 }
@@ -47,16 +49,17 @@ h3 {
 }
 
 .side-bar {
-    position: absolute;
+    position: fixed;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
     padding-top: 66px;
-    gap: 103px;
-    width: 232px;
+    width: 230px;
     left: 0px;
     top: 0px;
+    bottom: 0px;
     background: #2A3647;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
     border-radius: 0px;
@@ -109,16 +112,11 @@ h3 {
 
 .legal-notice-container {
     display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: flex-start;
+    align-items: end;
+    justify-content: center;
     margin-bottom: 112.03px;
-    gap: 15px;
-    width: 160px;
-    height: 289px;
-    flex: none;
-    order: 2;
-    flex-grow: 0;
+    width: 232px;
+    height: 30vh;
 }
 
 .legal-notice {
@@ -128,10 +126,6 @@ h3 {
     padding: 8px;
     gap: 20px;
     width: 160px;
-    height: 46px;
-    flex: none;
-    order: 0;
-    flex-grow: 0;
 }
 
 .legal-notice-container a {
