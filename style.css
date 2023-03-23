@@ -78,7 +78,7 @@ h3 {
     align-items: flex-start;
     padding: 0px;
     gap: 15px;
-    width: 232px;
+    width: 230px;
     height: 229px;
 }
 
@@ -104,13 +104,18 @@ h3 {
     flex-direction: row;
     align-items: center;
     gap: 20px;
-    width: 232px;
+    width: 230px;
     height: 46px;
     justify-content: center;
 }
 
 .nav-menu:hover{
-background-color: #0919317c;
+    background-color: #0919317c;
+}
+
+.nav-menu:active{
+    background-color: #091931;
+    color: white;
 }
 
 .legal-notice-container {
@@ -136,3 +141,7 @@ background-color: #0919317c;
     color: #CDCDCD;
 }
 
+.selected{
+    background-color: #091931;
+    color: white;
+}
