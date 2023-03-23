@@ -1,0 +1,68 @@
+.desktop{
+    position: relative;
+    height: 100vh;
+}
+
+.summary-container{
+    position: absolute;
+    top:89px;
+    left:232px;
+    right: 0px;
+    bottom: 0px;
+
+}
+
+.html-topic{
+    width: 630px;
+    display: flex;
+    align-items: center;
+    margin-left: 116px;
+
+}
+.line{
+    width: 1px;
+    height: 59px;
+    margin-top: 7px;
+    margin-bottom: 7px;
+    background-color: blue;
+}
+
+.task-container{
+    width: 580px;
+    height: 540px;
+    border:solid 1px black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.status-container{
+    display: flex;
+    justify-content: space-between;
+}
+
+.task-status{
+    border-radius: 10px;
+    width: 170px;
+    height:170px;
+    border: 1px solid black;
+}
+
+.urgency{
+    width: 580px;
+    height: 150px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.do-counter-container{
+    display: flex;
+    justify-content: space-between;
+    
+}
+.do-counter{
+    width: 272.5px;
+    height: 150px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
