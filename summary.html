@@ -22,17 +22,66 @@
                 <span class="line"></span>
                 <p>Everything in a nutshell!</p>
             </div>
-            <div class="task-container">
-                <div class="status-container">
-                    <div class="task-status"></div>
-                    <div class="task-status"></div>
-                    <div class="task-status"></div>
+
+            <div class="flex-center">
+                <div class="task-container">
+                    <div class="status-container">
+                        <div class="task-status">
+                            <div class="number" id="task-in-board-nr">5</div>
+                            <p>Tasks in board</p>
+                        </div>
+                        <div class="task-status">
+                            <div class="number" id="task-in-progress-nr">20</div>
+                            <p>Tasks in Progress</p>
+                        </div>
+                        <div class="task-status">
+                            <div class="number" id="awaiting-feedback-nr">5</div>
+                            <p>Awaiting Feedback</p>
+                        </div>
+                    </div>
+                    <div class="urgency">
+                        <div class="urgent">
+                            <img src="assets/img/urgent-high.png">
+                            <div class="urgent-container">
+                                <div class="urgent-nr">1</div>
+                                <p>Urgent</p>
+                            </div>
+                        </div>
+                        <span class="line-grey"></span>
+                        <div class="deadline-container">
+                            <div class="deadline-date"  id="deadline-date">October 16,1022</div>
+                            <p>Upcoming Deadline</p>
+                        </div>
+                    </div>
+                    <div class="do-counter-container">
+                        <div class="do-counter">
+
+                            <div class="img-container">
+                                <img class="do-counter-img" src="assets/img/do-done.png">
+                                <img class="absolute" src="assets/img/to-do-icon.png">
+                            </div>
+
+                            <div class="do-nr-container">
+                                <div class="do-nr">2</div>
+                                <p>To-do</p>
+                            </div>
+                        </div>
+                        <div class="do-counter">
+                            <div class="img-container">
+                                <img class="do-counter-img" src="assets/img/do-done.png">
+                                <img class="absolute-2" src="assets/img/done-icon.png">
+                            </div>
+                            <div class="do-nr-container">
+                                <div class="do-nr">3</div>
+                                <p>Done</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="urgency">
-                </div>
-                <div class="do-counter-container">
-                    <div class="do-counter"></div>
-                    <div class="do-counter"></div>
+
+                <div class="greeting-container">
+                    <p>Good morning,</p>
+                    <h3 id="name">Sofia Muller</h3>
                 </div>
             </div>
 
