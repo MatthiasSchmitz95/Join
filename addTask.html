@@ -1,15 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Task</title>
 
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="fonts.css">
     <link rel="stylesheet" href="addTask.css">
-    
+    <script src="board.js"></script>
 </head>
-<body>
-    
+
+<body onload="includeHTML()">
+    <div class="desktop">
+        <div w3-include-html="desktop-template.html"></div>
+    </div>
+
+    <div class="headline">Add Task</div>
+
+    <div class="task-container-left">
+        <div class="title-container">
+            <p class="title">Title</p>
+            <input class="title-input" placeholder="Enter a title">
+        </div>
+
+        <div class="description-container">
+            <p class="description">Description</p>
+            <input class="description-input" placeholder="Enter a Description">
+        </div>
+
+        <div class="category-container">
+            <p class="category">Category</p>
+            <select class="catergory-selection" placeholder="Select task category">
+                <option>Marketing</option>
+                <option>Development</option>
+                <option>Design</option>
+            </select>
+        </div>
+
+        <div class="contact-select-container">
+            <p class="Assigned">Assigned to</p>
+            <select class="catergory-selection" placeholder="Select task category">
+                <option>#</option>
+                <option>#</option>
+                <option>#</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="mid-line"></div>
+
+    <div class="task-container-right">
+        <div class="date-container">
+            <p class="date">Due date</p>
+            <input placeholder="Date" class="textbox-date" type="date" id="date">
+        </div>
+
+        <div class="priority-container">
+            <p class="priority">Prio</p>
+            <div class="priority-boxes-container">
+                <div class="prio-urgent-box">urgent <img src="assets\img\urgent.png"></div>
+                <div class="prio-Medium-box">Medium <img src="assets\img\medium.png"></div>
+                <div class="prio-low-box">low <img src="assets\img\low.png"></div>
+            </div>
+        </div>
+
+        <div class="subtasks-container">
+            <p class="subtasks">Subtasks</p>
+            <input class="add-subtask" placeholder="Add new Subtask">
+        </div>
+    </div>
 </body>
+
 </html>
