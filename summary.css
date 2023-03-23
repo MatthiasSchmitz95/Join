@@ -191,7 +191,12 @@
 .do-counter-container {
     display: flex;
     justify-content: space-between;
+    cursor: pointer;
 
+}
+.do-counter:hover{
+    background: #2A3647;
+    color: white;
 }
 
 .do-counter {
