@@ -101,7 +101,7 @@ h3 {
     text-decoration: none;
 }
 
-.menu-summary {
+.nav-menu {
     display: flex;
     flex-direction: row;
     align-items: center;
