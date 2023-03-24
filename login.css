@@ -38,7 +38,7 @@ body{
 }
 
 .animate-background {
-    animation: bg-transparent 1000ms ease-in-out;
+    animation: bg-transparent 700ms ease-in-out;
     animation-fill-mode: forwards;
 }
 
@@ -64,7 +64,7 @@ body{
 }
 
 .animate-logo {
-    animation: moveJoinLogo 1000ms ease-in-out;
+    animation: moveJoinLogo 700ms ease-in-out;
     animation-fill-mode: forwards;
 }
 
