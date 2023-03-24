@@ -1,0 +1,87 @@
+body{
+    margin: 0;
+    background-color: #F6F7F8;
+}
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background-color: #F6F7F8;
+}
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 35px 0px;
+    gap: 35px;
+    width: 652px;
+    height: 513px;
+    background: white;
+
+    box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
+    border-radius: 30px;
+}
+
+.animate-background {
+    animation: bg-transparent 1000ms ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes bg-transparent {
+    from {
+        opacity: 1;
+        z-index: 1;
+    }
+
+    to {
+        opacity: 0;
+        z-index: 0;
+    }
+}
+
+.moving-logo {
+    position: absolute;
+    z-index: 999;
+    left: calc(100vw - 50% - 101px);
+    top: calc(100vh - 50% - 122px);
+    width: 202px;
+    height: 244px;
+}
+
+.animate-logo {
+    animation: moveJoinLogo 1000ms ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes moveJoinLogo {
+    from {
+        left: calc(100vw - 50% - 101px);
+        /* Um das Logo mittig zu platzieren, muss man die hälfte der Breite abziehen */
+        top: calc(100vh - 50% - 122px);
+        /* Um das Logo mittig zu platzieren, muss man die hälfte der Höhe abziehen */
+        width: 202px;
+        height: 244px;
+    }
+
+    to {
+        left: 50px;
+        top: 50px;
+        width: 101px;
+        height: 122px;
+    }
+}
