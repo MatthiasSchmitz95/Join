@@ -17,6 +17,18 @@
     line-height: 120%;
 }
 
+img {
+    cursor: pointer;
+}
+
+input{
+    cursor: pointer;
+}
+
+select{
+    cursor: pointer;
+}
+
 .task-container-left {
     display: flex;
     flex-direction: column;
@@ -29,6 +41,7 @@
     height: 506px;
     left: 355px;
     top: 290px;
+    cursor: pointer;
 }
 
 .title-container {
@@ -56,7 +69,7 @@
     flex-grow: 0;
 }
 
-.title-input {
+.title-input-container {
     box-sizing: border-box;
 
     display: flex;
@@ -72,6 +85,22 @@
     flex: none;
     order: 1;
     flex-grow: 0;
+}
+
+.title-input {
+    width: 114px;
+    height: 25px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 120%;
+    color: #D1D1D1;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    border: none;
+    outline: none;
 }
 
 .description-container {
@@ -101,7 +130,7 @@
     flex-grow: 0;
 }
 
-.description-input {
+.description-input-container {
     box-sizing: border-box;
     display: flex;
     flex-direction: row;
@@ -117,6 +146,36 @@
     flex: none;
     order: 1;
     flex-grow: 0;
+}
+
+.description-input {
+    width: 190px;
+    height: 25px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 120%;
+    color: #D1D1D1;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    z-index: 0;
+    border: none;
+    outline: none;
+}
+
+.descripotion-bottom-box img {
+    width: 18.9px;
+    height: 18.9px;
+    position: absolute;
+    top: 255px;
+    left: 398px;
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    z-index: 1;
 }
 
 .category-container {
@@ -146,11 +205,14 @@
     flex-grow: 0;
 }
 
-.catergory-selection {
+
+
+.category-selection-container {
     box-sizing: border-box;
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-between;
     padding: 18px 21px;
     gap: 10px;
     isolation: isolate;
@@ -164,7 +226,41 @@
     flex-grow: 0;
 }
 
-.contact-select-container {
+/*auto drop down icon hide*/
+select {
+    appearance: none;
+}
+
+.category-select {
+    width: 205px;
+    height: 25px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 120%;
+    color: #000000;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    z-index: 0;
+    border: none;
+    outline: none;
+}
+
+.dropdown-arrow-category {
+    width: 16px;
+    height: 8px;
+    left: 392px;
+    top: 22px;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    z-index: 1;
+}
+
+
+.contact-container {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -191,21 +287,53 @@
     flex-grow: 0;
 }
 
-.catergory-selection {
+.contact-selection-container {
+    box-sizing: border-box;
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-between;
     padding: 18px 21px;
     gap: 10px;
     isolation: isolate;
     width: 422px;
     height: 51px;
     background: #FFFFFF;
+    border: 1px solid #D1D1D1;
     border-radius: 10px;
     flex: none;
     order: 0;
     flex-grow: 0;
 }
+
+.contact-select{
+    width: 205px;
+    height: 25px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 120%;
+    color: #000000;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    z-index: 0;
+    border: none;
+    outline: none;
+}
+
+.dropdown-arrow-contacts {
+    width: 16px;
+    height: 8px;
+    left: 392px;
+    top: 22px;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    z-index: 1;
+}
+
 
 .mid-line {
     position: absolute;
@@ -228,6 +356,7 @@
     height: 356px;
     left: 895px;
     top: 290px;
+    cursor: pointer;
 }
 
 .date-container {
@@ -292,12 +421,13 @@
     flex-grow: 0;
     z-index: 0;
     border: none;
-    
+    outline: none;
+
 }
 
 /*hide the default calendar icon*/
-input::-webkit-calendar-picker-indicator{
-	display: none;
+input::-webkit-calendar-picker-indicator {
+    display: none;
 }
 
 .priority-container {
@@ -358,6 +488,7 @@ input::-webkit-calendar-picker-indicator{
     flex: none;
     order: 0;
     flex-grow: 0;
+    cursor: pointer;
 }
 
 
@@ -376,6 +507,7 @@ input::-webkit-calendar-picker-indicator{
     flex: none;
     order: 1;
     flex-grow: 0;
+    cursor: pointer;
 }
 
 .prio-low-box {
@@ -393,6 +525,7 @@ input::-webkit-calendar-picker-indicator{
     flex: none;
     order: 2;
     flex-grow: 0;
+    cursor: pointer;
 }
 
 .subtasks-container {
@@ -459,6 +592,7 @@ input::-webkit-calendar-picker-indicator{
     flex-grow: 0;
 }
 
+
 .subtasks-input {
     width: 178px;
     height: 25px;
@@ -473,6 +607,7 @@ input::-webkit-calendar-picker-indicator{
     flex-grow: 0;
     z-index: 0;
     border: none;
+    outline: none;
 }
 
 .add-subtask-btn {
@@ -482,6 +617,7 @@ input::-webkit-calendar-picker-indicator{
     order: 0;
     flex-grow: 0;
 }
+
 
 .checkbox-container {
     display: flex;
@@ -545,6 +681,7 @@ input::-webkit-calendar-picker-indicator{
     flex: none;
     order: 0;
     flex-grow: 0;
+    cursor: pointer;
 }
 
 .create-task-btn {
@@ -561,6 +698,7 @@ input::-webkit-calendar-picker-indicator{
     flex: none;
     order: 1;
     flex-grow: 0;
+    cursor: pointer;
 }
 
 .clear {
