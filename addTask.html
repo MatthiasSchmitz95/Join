@@ -22,17 +22,17 @@
 
     <div class="task-container-left">
         <div class="title-container">
-            <p class="title">Title</p>
+            <div class="title">Title</div>
             <input class="title-input" placeholder="Enter a title">
         </div>
 
         <div class="description-container">
-            <p class="description">Description</p>
+            <div class="description">Description</div>
             <input class="description-input" placeholder="Enter a Description">
         </div>
 
         <div class="category-container">
-            <p class="category">Category</p>
+            <div class="category">Category</div>
             <select class="catergory-selection" placeholder="Select task category">
                 <option>Marketing</option>
                 <option>Development</option>
@@ -41,7 +41,7 @@
         </div>
 
         <div class="contact-select-container">
-            <p class="Assigned">Assigned to</p>
+            <div class="Assigned">Assigned to</div>
             <select class="catergory-selection" placeholder="Select task category">
                 <option>#</option>
                 <option>#</option>
@@ -54,12 +54,16 @@
 
     <div class="task-container-right">
         <div class="date-container">
-            <p class="date">Due date</p>
-            <input placeholder="Date" class="textbox-date" type="date" id="date">
+            <div class="date">Due date</div>
+            <div class="textbox-date">
+                <input class="date-input" placeholder="Date"  type="date" id="date">
+                <img class="calendar-img" src="assets/img/calendar.png">
+            </div>
         </div>
 
         <div class="priority-container">
-            <p class="priority">Prio</p>
+
+            <div class="priority">Prio</div>
             <div class="priority-boxes-container">
                 <div class="prio-urgent-box">urgent <img src="assets\img\urgent.png"></div>
                 <div class="prio-Medium-box">Medium <img src="assets\img\medium.png"></div>
@@ -68,9 +72,23 @@
         </div>
 
         <div class="subtasks-container">
-            <p class="subtasks">Subtasks</p>
-            <input class="add-subtask" placeholder="Add new Subtask">
+            <div class="subtasks">Subtasks</div>
+            <div class="add-subtask">
+                <input class="subtasks-input" placeholder="Add new Subtask">
+                <div class="add-subtask-btn"><img src="assets/img/plus.png"></div>
+            </div>
+            <div class="checkbox-container">
+                <input type="checkbox" name="checkbox" />
+                <div class="subtask-check">Subtask 1</div>
+            </div>
         </div>
+    </div>
+
+    <div class="task-right-container-bottom">
+        <button class="clear-task-btn"><a class="clear">Clear</a> <img class="clear-btn-img"
+                src="assets/img/cross-mark.png"></button>
+        <button class="create-task-btn"><a class="create">Create Task</a> <img class="create-btn-img"
+                src="assets/img/right-mark.png"></button>
     </div>
 </body>
 
