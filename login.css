@@ -1,6 +1,7 @@
 body {
     margin: 0;
     background-color: #F6F7F8;
+    box-sizing: border-box;
 }
 
 h1 {
@@ -8,8 +9,36 @@ h1 {
     font-style: normal;
     font-weight: 700;
     font-size: 61px;
-    line-height: 120%;
     text-align: center;
+    margin: 0;
+}
+
+.not-a-join {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 35px;
+    right: 50px;
+    top: 67px;
+    z-index: 1;
+}
+
+.sign-up {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    height: 51px;
+    padding: 0px 16px;
+    color: white;
+    background: #2A3647;
+    border-radius: 8px;
+    font-weight: 700;
+}
+
+.sign-up:hover {
+    background-color: #29ABE2;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .logo-container {
@@ -36,25 +65,88 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 35px 0px;
-    gap: 35px;
-    width: 652px;
-    height: 513px;
+    padding: 35px 16px;
+    gap: 20px;
+    width: clamp(500px, 40vw, 652px);
     background: white;
     box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
     border-radius: 30px;
+    z-index: 1;
 }
 
 .line-login {
-    width: 0px;
-    height: 150px;
-    border: 3px solid #29ABE2;
-    transform: rotate(90deg);
+    width: 150px;
+    height: 0px;
+    border-top: 3px solid #29ABE2;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+.input-field {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 21px;
+    background: #FFFFFF;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+    width: 100%;
+    height: 51px;
+    margin-bottom: 50px;
+    cursor: pointer;
+}
+
+.input-container {
+    width: clamp(320px, 26vw, 422px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.input {
+    cursor: pointer;
+    font-size: 21px;
+    border: none;
+    outline: none;
+}
+
+::placeholder {
+    color: #D1D1D1;
+    border: none;
+}
+
+.remember-check {
+    display: flex;
+}
+
+.remember-check input {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+.remember-check a {
+    color: #29ABE2;
+    text-decoration: none;
+}
+
+.remember-check span {
+    margin-left: 16px;
+    margin-right: 32px;
+}
+
+.check{
+    cursor: pointer;
 }
 
 
+
+
+
+
 .animate-background {
-    animation: bg-transparent 850ms ease-in-out;
+    animation: bg-transparent 1000ms ease-in-out;
     animation-fill-mode: forwards;
 }
 
@@ -80,16 +172,16 @@ h1 {
 }
 
 .animate-logo {
-    animation: moveJoinLogo 900ms ease-in-out;
+    animation: moveJoinLogo 1000ms ease-in-out;
     animation-fill-mode: forwards;
 }
 
 @keyframes moveJoinLogo {
     from {
-        left: calc(100vw - 50% - 101px);
         /* Um das Logo mittig zu platzieren, muss man die hälfte der Breite abziehen */
-        top: calc(100vh - 50% - 122px);
+        left: calc(100vw - 50% - 101px);
         /* Um das Logo mittig zu platzieren, muss man die hälfte der Höhe abziehen */
+        top: calc(100vh - 50% - 122px);
         width: 202px;
         height: 244px;
     }

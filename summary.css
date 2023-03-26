@@ -1,3 +1,8 @@
+a {
+    color: black;
+    text-decoration: none;
+}
+
 .html-topic h2 {
     font-family: 'Inter';
     font-style: normal;
@@ -21,7 +26,10 @@
 }
 
 .desktop {
+    height: 100vh;
     position: relative;
+    margin-left: 230px;
+    background: #F5F5F5;
 }
 
 .summary-container {
@@ -37,8 +45,8 @@
     display: flex;
     align-items: center;
     margin-left: 123px;
-    margin-top: 87px;
-    margin-bottom: 87px;
+    padding-top: 176px;
+    padding-bottom: 87px;
 }
 
 .line {
@@ -82,11 +90,13 @@
     align-items: center;
     text-align: center;
     cursor: pointer;
+    text-decoration: none;
 }
 
-.task-status:hover{
+.task-status:hover {
     background: #2A3647;
     color: white;
+    transform: scale(1.1);
 }
 
 
@@ -115,11 +125,23 @@
     align-items: center;
     justify-content: flex-start;
     background: #FFFFFF;
+    cursor: pointer;
+    text-decoration: none;
 }
 
-.urgency:hover{
+.urgency:hover {
     background: #2A3647;
     color: white;
+    transform: scale(1.1);
+}
+
+.urgency:hover .deadline-date {
+    color:white;
+
+}
+.urgency:hover .deadline-container p{
+    color:white;
+
 }
 
 .urgent {
@@ -127,6 +149,7 @@
     justify-content: space-between;
     align-items: center;
     margin-left: 75px;
+    text-decoration: none;
 
 }
 
@@ -142,7 +165,7 @@
     font-size: 16px;
     width: 52px;
     height: 19px;
-
+    text-decoration: none;
 }
 
 .urgent img {
@@ -157,6 +180,7 @@
     font-size: 47px;
     display: flex;
     justify-content: center;
+    text-decoration: none;
 }
 
 .line-grey {
@@ -174,11 +198,14 @@
     height: 25px;
     font-weight: 700;
     font-size: 21px;
+}
+
+.deadline-container {
     color: #2A3647;
 }
 
+
 .deadline-container p {
-    color: #2A3647;
     font-weight: 400;
     font-size: 16px;
     width: 148px;
@@ -191,8 +218,24 @@
     cursor: pointer;
 
 }
-.do-counter:hover{
+
+.do-counter:hover {
     background: #2A3647;
+    color: white;
+    transform: scale(1.1);
+}
+
+.do-counter:hover .do-counter-img{
+    filter: brightness(0) invert(1);
+}
+.do-counter:hover .absolute{
+    filter: brightness(0) saturate(100%);
+}
+.do-counter:hover .absolute-2{
+    filter: brightness(0) saturate(100%);
+}
+
+.do-counter:hover .do-nr-container p{
     color: white;
 }
 
@@ -211,7 +254,7 @@
     font-weight: 400;
     font-size: 21px;
     margin: 0px;
-
+    color: #2A3647
 }
 
 .img-container {
