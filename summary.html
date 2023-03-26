@@ -13,7 +13,7 @@
     <title>summary</title>
 </head>
 
-<body onload="includeHTML() ; highlightSelectedNav('summary')">
+<body onload="includeHTML() ; init('summary')">
 
     <div class="desktop">
         <div w3-include-html="desktop-template.html"></div>
@@ -27,20 +27,20 @@
             <div class="flex-center">
                 <div class="task-container">
                     <div class="status-container">
-                        <div class="task-status">
+                        <a href="board.html" class="task-status">
                             <div class="number" id="task-in-board-nr">5</div>
                             <p>Tasks in board</p>
-                        </div>
-                        <div class="task-status">
+                        </a>
+                        <a href="board.html" class="task-status">
                             <div class="number" id="task-in-progress-nr">20</div>
                             <p>Tasks in Progress</p>
-                        </div>
-                        <div class="task-status">
+                        </a>
+                        <a href="board.html" class="task-status">
                             <div class="number" id="awaiting-feedback-nr">5</div>
                             <p>Awaiting Feedback</p>
-                        </div>
+                        </a>
                     </div>
-                    <div class="urgency">
+                    <a href="board.html" class="urgency">
                         <div class="urgent">
                             <img src="assets/img/urgent-high.png">
                             <div class="urgent-container">
@@ -53,10 +53,9 @@
                             <div class="deadline-date" id="deadline-date">October 16,1022</div>
                             <p>Upcoming Deadline</p>
                         </div>
-                    </div>
+                    </a>
                     <div class="do-counter-container">
-                        <div class="do-counter">
-
+                        <a href="board.html" class="do-counter">
                             <div class="img-container">
                                 <img class="do-counter-img" src="assets/img/do-done.png">
                                 <img class="absolute" src="assets/img/to-do-icon.png">
@@ -66,8 +65,8 @@
                                 <div class="do-nr">2</div>
                                 <p>To-do</p>
                             </div>
-                        </div>
-                        <div class="do-counter">
+                        </a>
+                        <a href="board.html" class="do-counter">
                             <div class="img-container">
                                 <img class="do-counter-img" src="assets/img/do-done.png">
                                 <img class="absolute-2" src="assets/img/done-icon.png">
@@ -76,7 +75,7 @@
                                 <div class="do-nr">3</div>
                                 <p>Done</p>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 </div>
 
