@@ -10,15 +10,11 @@
     <link rel="stylesheet" href="login.css">
     <link rel="stylesheet" href="summary.css">
     <script src="summary.js"></script>
-    <script src="script.js"></script>
+    <script src="main.js"></script>
     <title>Join</title>
 </head>
 
-<body onload="init()" >
-
-
-
-    
+<body>  
     <div class="logo-container">
 
         <div class="login-container">
@@ -39,23 +35,21 @@
                 </div>
             </div>
 
-
             <div class="remember-check">
-                <input type="checkbox" name="remember-check" id="remember-check">
+                <div id="remember-check" class="check"><img src="./assets/img/unchecked.png"></div>
                 <span>Remember me</span>
                 <a href="forgot-my-password">Forgot my password</a>
             </div>
 
-
         </div>
     </div>
 
-    <div class="not-a-join-user">
+    <div class="not-a-join">
         <span>Not a Join</span>
-        <button class="sign-up">Sign up</button>
+        <div class="sign-up">Sign up</div>
     </div>
-    <!-- <img class="animate-logo moving-logo" src="./assets/img/LogoJoinBig.png"> -->
-    <!-- <div class="background animate-background"></div> -->
+    <img class="animate-logo moving-logo" src="./assets/img/LogoJoinBig.png">
+    <div class="background animate-background"></div>
 
 
 
