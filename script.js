@@ -5,5 +5,4 @@ function highlightSelectedNav(id){
     // document.getElementById(`addTask`).classList.remove("selected");
     // document.getElementById(`contacts`).classList.remove("selected");
     // document.getElementById(`${id}`).classList.add("selected");
-    
 }
