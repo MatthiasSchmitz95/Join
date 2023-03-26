@@ -13,14 +13,32 @@ h1 {
     margin: 0;
 }
 
-.not-a-join-user{
+.not-a-join {
     position: absolute;
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 35px;
+    right: 50px;
+    top: 67px;
+    z-index: 1;
+}
 
-    width: 287px;
+.sign-up {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
     height: 51px;
-    right: 0;
-    top: 67px;             
+    padding: 0px 16px;
+    color: white;
+    background: #2A3647;
+    border-radius: 8px;
+    font-weight: 700;
+}
+
+.sign-up:hover {
+    background-color: #29ABE2;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .logo-container {
@@ -98,25 +116,30 @@ h1 {
     border: none;
 }
 
-.remember-check{
+.remember-check {
     display: flex;
 }
 
-.remember-check input{
+.remember-check input {
     width: 16px;
     height: 16px;
     cursor: pointer;
 }
 
-.remember-check a{
+.remember-check a {
     color: #29ABE2;
     text-decoration: none;
 }
 
-.remember-check span{
+.remember-check span {
     margin-left: 16px;
     margin-right: 32px;
 }
+
+.check{
+    cursor: pointer;
+}
+
 
 
 
@@ -149,16 +172,16 @@ h1 {
 }
 
 .animate-logo {
-    animation: moveJoinLogo 900ms ease-in-out;
+    animation: moveJoinLogo 1000ms ease-in-out;
     animation-fill-mode: forwards;
 }
 
 @keyframes moveJoinLogo {
     from {
-        left: calc(100vw - 50% - 101px);
         /* Um das Logo mittig zu platzieren, muss man die hälfte der Breite abziehen */
-        top: calc(100vh - 50% - 122px);
+        left: calc(100vw - 50% - 101px);
         /* Um das Logo mittig zu platzieren, muss man die hälfte der Höhe abziehen */
+        top: calc(100vh - 50% - 122px);
         width: 202px;
         height: 244px;
     }
