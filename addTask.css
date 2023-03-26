@@ -9,7 +9,6 @@
     height: 78px;
     left: 355px;
     top: 171px;
-
     font-family: 'Inter';
     font-style: normal;
     font-weight: 700;
@@ -21,21 +20,21 @@ img {
     cursor: pointer;
 }
 
-input{
+input {
     cursor: pointer;
 }
 
-select{
+select {
     cursor: pointer;
 }
 
-.task-container-left {
+
+.taskContainerLeft {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     padding: 0px;
     gap: 14px;
-
     position: absolute;
     width: 422px;
     height: 506px;
@@ -44,7 +43,7 @@ select{
     cursor: pointer;
 }
 
-.title-container {
+.titleContainer {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -69,9 +68,8 @@ select{
     flex-grow: 0;
 }
 
-.title-input-container {
+.titleInputContainer {
     box-sizing: border-box;
-
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -87,7 +85,7 @@ select{
     flex-grow: 0;
 }
 
-.title-input {
+.titleInput {
     width: 114px;
     height: 25px;
     font-family: 'Inter';
@@ -103,7 +101,8 @@ select{
     outline: none;
 }
 
-.description-container {
+
+.descriptionContainer {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -130,11 +129,12 @@ select{
     flex-grow: 0;
 }
 
-.description-input-container {
+.descriptionInput {
     box-sizing: border-box;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
+    justify-content: space-between;
     padding: 18px 21px;
     gap: 10px;
     isolation: isolate;
@@ -148,37 +148,9 @@ select{
     flex-grow: 0;
 }
 
-.description-input {
-    width: 190px;
-    height: 25px;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 21px;
-    line-height: 120%;
-    color: #D1D1D1;
-    flex: none;
-    order: 0;
-    flex-grow: 0;
-    z-index: 0;
-    border: none;
-    outline: none;
-}
 
-.descripotion-bottom-box img {
-    width: 18.9px;
-    height: 18.9px;
-    position: absolute;
-    top: 255px;
-    left: 398px;
-
-    flex: none;
-    order: 1;
-    flex-grow: 0;
-    z-index: 1;
-}
-
-.category-container {
+.categoryContainer {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -206,32 +178,7 @@ select{
 }
 
 
-
-.category-selection-container {
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    padding: 18px 21px;
-    gap: 10px;
-    isolation: isolate;
-    width: 422px;
-    height: 51px;
-    background: #FFFFFF;
-    border: 1px solid #D1D1D1;
-    border-radius: 10px;
-    flex: none;
-    order: 0;
-    flex-grow: 0;
-}
-
-/*auto drop down icon hide*/
-select {
-    appearance: none;
-}
-
-.category-select {
+.categorySelect {
     width: 205px;
     height: 25px;
     font-family: 'Inter';
@@ -243,24 +190,20 @@ select {
     flex: none;
     order: 0;
     flex-grow: 0;
-    z-index: 0;
-    border: none;
-    outline: none;
-}
 
-.dropdown-arrow-category {
-    width: 16px;
-    height: 8px;
-    left: 392px;
-    top: 22px;
-    flex: none;
-    order: 1;
-    flex-grow: 0;
-    z-index: 1;
+    margin-bottom: 0px;
+    cursor: pointer;
+    box-sizing: border-box;
+    width: 100%;
+    height: 51px;
+    background: #FFFFFF;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
 }
 
 
-.contact-container {
+
+.contactContainer {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -287,16 +230,14 @@ select {
     flex-grow: 0;
 }
 
-.contact-selection-container {
+.contactSelect{
     box-sizing: border-box;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding: 18px 21px;
-    gap: 10px;
-    isolation: isolate;
-    width: 422px;
+
+    width: 100%;
     height: 51px;
     background: #FFFFFF;
     border: 1px solid #D1D1D1;
@@ -304,38 +245,16 @@ select {
     flex: none;
     order: 0;
     flex-grow: 0;
-}
 
-.contact-select{
-    width: 205px;
-    height: 25px;
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
     font-size: 21px;
     line-height: 120%;
     color: #000000;
-    flex: none;
-    order: 0;
-    flex-grow: 0;
-    z-index: 0;
-    border: none;
-    outline: none;
 }
 
-.dropdown-arrow-contacts {
-    width: 16px;
-    height: 8px;
-    left: 392px;
-    top: 22px;
-    flex: none;
-    order: 1;
-    flex-grow: 0;
-    z-index: 1;
-}
-
-
-.mid-line {
+.midLine {
     position: absolute;
     width: 0px;
     height: 551px;
@@ -345,7 +264,7 @@ select {
 }
 
 
-.task-container-right {
+.taskContainerRight {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -359,7 +278,7 @@ select {
     cursor: pointer;
 }
 
-.date-container {
+.dateContainer {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -387,7 +306,7 @@ select {
     flex-grow: 0;
 }
 
-.textbox-date {
+.textboxDate {
     box-sizing: border-box;
     display: flex;
     flex-direction: row;
@@ -398,7 +317,6 @@ select {
     isolation: isolate;
     width: 422px;
     height: 51px;
-
     background: #FFFFFF;
     border: 1px solid #D1D1D1;
     border-radius: 10px;
@@ -407,8 +325,9 @@ select {
     flex-grow: 0;
 }
 
-.date-input {
-    width: 125px;
+
+input[type="date"] {
+    width: 422px;
     height: 25px;
     font-family: 'Inter';
     font-style: normal;
@@ -416,21 +335,18 @@ select {
     font-size: 21px;
     line-height: 120%;
     color: #D1D1D1;
-    flex: none;
-    order: 0;
-    flex-grow: 0;
-    z-index: 0;
+    padding: 7px;
     border: none;
     outline: none;
-
 }
 
-/*hide the default calendar icon*/
-input::-webkit-calendar-picker-indicator {
-    display: none;
+input[type="date"]::-webkit-calendar-picker-indicator {
+    display: block;
+    cursor: pointer;
 }
 
-.priority-container {
+
+.priorityContainer {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -458,7 +374,7 @@ input::-webkit-calendar-picker-indicator {
 }
 
 
-.priority-boxes-container {
+.priorityBoxesContainer {
     box-sizing: border-box;
     display: flex;
     flex-direction: row;
@@ -473,7 +389,7 @@ input::-webkit-calendar-picker-indicator {
     flex-grow: 0;
 }
 
-.prio-urgent-box {
+.prioUrgentBox {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -492,7 +408,7 @@ input::-webkit-calendar-picker-indicator {
 }
 
 
-.prio-Medium-box {
+.prioMediumBox {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -510,7 +426,7 @@ input::-webkit-calendar-picker-indicator {
     cursor: pointer;
 }
 
-.prio-low-box {
+.prioLowBox {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -528,7 +444,7 @@ input::-webkit-calendar-picker-indicator {
     cursor: pointer;
 }
 
-.subtasks-container {
+.subtasksContainer {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -543,20 +459,6 @@ input::-webkit-calendar-picker-indicator {
     flex-grow: 0;
 }
 
-.subtasks-container {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 0px;
-    gap: 8px;
-
-    width: 422px;
-    height: 111px;
-
-    flex: none;
-    order: 2;
-    flex-grow: 0;
-}
 
 .subtasks {
     width: 92px;
@@ -572,7 +474,7 @@ input::-webkit-calendar-picker-indicator {
     flex-grow: 0;
 }
 
-.add-subtask {
+.addSubtask {
     box-sizing: border-box;
     display: flex;
     flex-direction: row;
@@ -593,7 +495,7 @@ input::-webkit-calendar-picker-indicator {
 }
 
 
-.subtasks-input {
+.subtasksInput {
     width: 178px;
     height: 25px;
     font-family: 'Inter';
@@ -610,7 +512,7 @@ input::-webkit-calendar-picker-indicator {
     outline: none;
 }
 
-.add-subtask-btn {
+.addSubtaskBtn {
     width: 24px;
     height: 24px;
     flex: none;
@@ -619,7 +521,7 @@ input::-webkit-calendar-picker-indicator {
 }
 
 
-.checkbox-container {
+.checkboxContainer {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -633,7 +535,7 @@ input::-webkit-calendar-picker-indicator {
     flex-grow: 0;
 }
 
-.subtask-check {
+.subtaskCheck {
     width: 74px;
     height: 19px;
     font-family: 'Inter';
@@ -647,7 +549,7 @@ input::-webkit-calendar-picker-indicator {
     flex-grow: 0;
 }
 
-.task-right-container-bottom {
+.taskRightContainerBottom {
     box-sizing: border-box;
     display: flex;
     flex-direction: row;
@@ -666,7 +568,7 @@ input::-webkit-calendar-picker-indicator {
     top: 889px;
 }
 
-.clear-task-btn {
+.clearTaskBtn {
     box-sizing: border-box;
     display: flex;
     flex-direction: row;
@@ -684,7 +586,7 @@ input::-webkit-calendar-picker-indicator {
     cursor: pointer;
 }
 
-.create-task-btn {
+.createTaskBtn {
     display: flex;
     flex-direction: row;
     justify-content: center;
