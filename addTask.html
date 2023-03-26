@@ -21,91 +21,81 @@
 
     <div class="headline">Add Task</div>
 
-    <div class="task-container-left">
-        <div class="title-container">
+    <div class="taskContainerLeft">
+        <div class="titleContainer">
             <div class="title">Title</div>
-            <div class="title-input-container">
-                <input class="title-input" placeholder="Enter a title">
+            <div class="titleInputContainer">
+                <input class="titleInput" placeholder="Enter a title">
             </div>
         </div>
 
-        <div class="description-container">
+        <div class="descriptionContainer">
             <div class="description">Description</div>
-            <div class="description-input-container">
-                <input class="description-input" placeholder="Enter a Description">
-            </div>
-            <div class="descripotion-bottom-box">
-                <img src="assets/img/Descriptionbox_bottom_arrow.png">
-            </div>
+            <textarea class="descriptionInput" placeholder="Enter a Description"> </textarea>
         </div>
 
-        <div class="category-container">
+
+        <div class="categoryContainer">
             <div class="category">Category</div>
-            <div class="category-selection-container">
-                <select class="category-select" placeholder="Select task category">
-                    <option>Marketing</option>
-                    <option>Development</option>
-                    <option>Design</option>
-                </select>
-                <img class="dropdown-arrow-category" src="assets/img/dropdown-arrow.png">
-            </div>
+            <select class="categorySelect" id="selectedCategory" placeholder="Select task category">
+                <option>Marketing</option>
+                <option>Development</option>
+                <option>Design</option>
+            </select>
         </div>
 
-        <div class="contact-container">
+        <div class="contactContainer">
             <div class="Assigned">Assigned to</div>
-            <div class="contact-selection-container">
-                <select class="contact-select" placeholder="Select task category">
-                    <option>#</option>
-                    <option>#</option>
-                    <option>#</option>
-                </select>
-                <img class="dropdown-arrow-contacts" src="assets/img/dropdown-arrow.png">
-            </div>
+            <select class="contactSelect" id="selectedContact" placeholder="Select task category">
+                <option>contact1</option>
+                <option>contact2</option>
+                <option>contact3</option>
+            </select>
         </div>
     </div>
 
-    <div class="mid-line"></div>
+    <div class="midLine"></div>
 
-    <div class="task-container-right">
-        <div class="date-container">
+    <div class="taskContainerRight">
+        <div class="dateContainer">
             <div class="date">Due date</div>
-            <div class="textbox-date">
-                <input class="date-input" placeholder="Date" type="date" id="date">
-                <img class="calendar-img" src="assets/img/calendar.png">
+            <div class="textboxDate">
+                <input class="dateInput" placeholder="dd/mm/yyyy" type="date" id="date">
             </div>
         </div>
 
-        <div class="priority-container">
+        <div class="priorityContainer">
 
             <div class="priority">Prio</div>
-            <div class="priority-boxes-container">
-                <div class="prio-urgent-box">urgent <img src="assets\img\urgent.png"></div>
-                <div class="prio-Medium-box">Medium <img src="assets\img\medium.png"></div>
-                <div class="prio-low-box">low <img src="assets\img\low.png"></div>
+            <div class="priorityBoxesContainer">
+                <div class="prioUrgentBox">urgent <img src="assets\img\urgent.png"></div>
+                <div class="prioMediumBox">Medium <img src="assets\img\medium.png"></div>
+                <div class="prioLowBox">low <img src="assets\img\low.png"></div>
             </div>
         </div>
 
-        <div class="subtasks-container">
+        <div class="subtasksContainer">
             <div class="subtasks">Subtasks</div>
-            <div class="add-subtask">
-                <input class="subtasks-input" placeholder="Add new Subtask">
-                <div class="add-subtask-btn"><img src="assets/img/plus.png"></div>
+            <div class="addSubtask">
+                <input class="subtasksInput" placeholder="Add new Subtask">
+                <div class="addSubtaskBtn"><img src="assets/img/plus.png"></div>
             </div>
-            <div class="checkbox-container">
+            <div class="checkboxContainer">
                 <input type="checkbox" name="checkbox" />
-                <div class="subtask-check">Subtask 1</div>
+                <div class="subtaskCheck">Subtask 1</div>
             </div>
         </div>
     </div>
 
-    <div class="task-right-container-bottom">
-        <button class="clear-task-btn"><a class="clear">Clear</a> <img class="clear-btn-img"
+    <div class="taskRightContainerBottom">
+        <button class="clearTaskBtn"><a class="clear">Clear</a> <img class="clearBtnImg"
                 src="assets/img/cross-mark.png"></button>
-        <button class="create-task-btn"><a class="create">Create Task</a> <img class="create-btn-img"
+        <button class="createTaskBtn" onclick="getValueForTasks()"><a class="create">Create Task</a> <img class="createBtnImg"
                 src="assets/img/right-mark.png"></button>
     </div>
 
-    <script src="script.js"></script>
+
+    <script src="addTask.js"></script>
 </body>
 
 </html>
