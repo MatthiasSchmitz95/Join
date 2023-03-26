@@ -35,24 +35,36 @@
         </div>
 
 
+        <!--Category-->
         <div class="categoryContainer">
-            <div class="category">Category</div>
-            <select class="categorySelect" id="selectedCategory" placeholder="Select task category">
-                <option>Marketing</option>
-                <option>Development</option>
-                <option>Design</option>
-            </select>
+            <label for="selectedCategory" class="category">AssignedTo</label>
+            <div class="selectedCategoryContainer" id="selectedCategoryContainer">
+                <input id="selectedCategory" value="Select task category">
+                <img src="assets/img/dropdown-arrow.png">
+            </div>
+
+            <div id="dropdownContainer"> </div>
+        </div>
+        <div id="colorContainer">
+            <div class="circle circleColor1"></div>
+            <div class="circle circleColor2"></div>
+            <div class="circle circleColor3"></div>
         </div>
 
+
+        <!--Contact-->
         <div class="contactContainer">
-            <div class="Assigned">Assigned to</div>
-            <select class="contactSelect" id="selectedContact" placeholder="Select task category">
-                <option>contact1</option>
-                <option>contact2</option>
-                <option>contact3</option>
-            </select>
+            <label for="AssignedTo" class="assignedContainer">AssignedTo</label>
+            <div class="assignToContainer" id="assignToContainer">
+                <input id="assignedTo" value="Select contacts to assign">
+                <img src="assets/img/dropdown-arrow.png">
+            </div>
+
+            <div id="ContactsDropdownContainer"> </div>
         </div>
     </div>
+
+
 
     <div class="midLine"></div>
 
@@ -90,8 +102,8 @@
     <div class="taskRightContainerBottom">
         <button class="clearTaskBtn"><a class="clear">Clear</a> <img class="clearBtnImg"
                 src="assets/img/cross-mark.png"></button>
-        <button class="createTaskBtn" onclick="getValueForTasks()"><a class="create">Create Task</a> <img class="createBtnImg"
-                src="assets/img/right-mark.png"></button>
+        <button class="createTaskBtn" onclick="getValueForTasks()"><a class="create">Create Task</a> <img
+                class="createBtnImg" src="assets/img/right-mark.png"></button>
     </div>
 
 
