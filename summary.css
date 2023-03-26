@@ -142,7 +142,6 @@
     font-size: 16px;
     width: 52px;
     height: 19px;
-
 }
 
 .urgent img {
@@ -174,11 +173,13 @@
     height: 25px;
     font-weight: 700;
     font-size: 21px;
+}
+.deadline-container{
     color: #2A3647;
 }
 
+
 .deadline-container p {
-    color: #2A3647;
     font-weight: 400;
     font-size: 16px;
     width: 148px;

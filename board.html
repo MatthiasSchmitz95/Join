@@ -11,9 +11,10 @@
     <link rel="stylesheet" href="fonts.css">
     <link rel="stylesheet" href="board.css">
     <script src="board.js"></script>
+    <script src="main.js"></script>
 </head>
 
-<body onload="includeHTML()">
+<body onload="includeHTML(); highlightSelectedNav('board')">
     <div class="desktop">
         <div w3-include-html="desktop-template.html"></div>
         <div class="board-header">
