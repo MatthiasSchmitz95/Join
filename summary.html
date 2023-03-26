@@ -8,12 +8,12 @@
     <link rel="stylesheet" href="fonts.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="summary.css">
+    <script src="main.js"></script>
     <script src="summary.js"></script>
-    <script src="script.js"></script>
     <title>summary</title>
 </head>
 
-<body onload="includeHTML()">
+<body onload="includeHTML() ; highlightSelectedNav('summary')">
 
     <div class="desktop">
         <div w3-include-html="desktop-template.html"></div>
@@ -50,7 +50,7 @@
                         </div>
                         <span class="line-grey"></span>
                         <div class="deadline-container">
-                            <div class="deadline-date"  id="deadline-date">October 16,1022</div>
+                            <div class="deadline-date" id="deadline-date">October 16,1022</div>
                             <p>Upcoming Deadline</p>
                         </div>
                     </div>

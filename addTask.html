@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Task</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="fonts.css">
+    <link rel="stylesheet" href="addTask.css">
+    <script src="board.js"></script>
+    <script src="main.js"></script>
+</head>
+
+<body onload="includeHTML() ; highlightSelectedNav('addTask')">
+    <div class="desktop">
+        <div w3-include-html="desktop-template.html"></div>
+    </div>
+
+    <div class="headline">Add Task</div>
+
+    <div class="taskContainerLeft">
+        <div class="titleContainer">
+            <div class="title">Title</div>
+            <div class="titleInputContainer">
+                <input class="titleInput" placeholder="Enter a title">
+            </div>
+        </div>
+
+        <div class="descriptionContainer">
+            <div class="description">Description</div>
+            <textarea class="descriptionInput" placeholder="Enter a Description"> </textarea>
+        </div>
+
+
+        <div class="categoryContainer">
+            <div class="category">Category</div>
+            <select class="categorySelect" id="selectedCategory" placeholder="Select task category">
+                <option>Marketing</option>
+                <option>Development</option>
+                <option>Design</option>
+            </select>
+        </div>
+
+        <div class="contactContainer">
+            <div class="Assigned">Assigned to</div>
+            <select class="contactSelect" id="selectedContact" placeholder="Select task category">
+                <option>contact1</option>
+                <option>contact2</option>
+                <option>contact3</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="midLine"></div>
+
+    <div class="taskContainerRight">
+        <div class="dateContainer">
+            <div class="date">Due date</div>
+            <div class="textboxDate">
+                <input class="dateInput" placeholder="dd/mm/yyyy" type="date" id="date">
+            </div>
+        </div>
+
+        <div class="priorityContainer">
+
+            <div class="priority">Prio</div>
+            <div class="priorityBoxesContainer">
+                <div class="prioUrgentBox">urgent <img src="assets\img\urgent.png"></div>
+                <div class="prioMediumBox">Medium <img src="assets\img\medium.png"></div>
+                <div class="prioLowBox">low <img src="assets\img\low.png"></div>
+            </div>
+        </div>
+
+        <div class="subtasksContainer">
+            <div class="subtasks">Subtasks</div>
+            <div class="addSubtask">
+                <input class="subtasksInput" placeholder="Add new Subtask">
+                <div class="addSubtaskBtn"><img src="assets/img/plus.png"></div>
+            </div>
+            <div class="checkboxContainer">
+                <input type="checkbox" name="checkbox" />
+                <div class="subtaskCheck">Subtask 1</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="taskRightContainerBottom">
+        <button class="clearTaskBtn"><a class="clear">Clear</a> <img class="clearBtnImg"
+                src="assets/img/cross-mark.png"></button>
+        <button class="createTaskBtn" onclick="getValueForTasks()"><a class="create">Create Task</a> <img class="createBtnImg"
+                src="assets/img/right-mark.png"></button>
+    </div>
+
+
+    <script src="addTask.js"></script>
+</body>
+
+</html>
