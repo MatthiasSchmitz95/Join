@@ -10,12 +10,29 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="contacts.css">
     <script src="main.js"></script>
+    <script src="contacts.js"></script>
 </head>
 
 <body onload="init('contacts')">
+    <div class="desktop" id="desktop">
     <div w3-include-html="desktop-template.html"></div>
-    <div class="desktop">
+    <div class="add-contact-card" id="contact-card" style="display: none;">
 
+        <div class="card-container-left">
+            <img>
+            <h3>Add contact</h3>
+            <p>Tasks are better with a Team!</p>
+        </div>
+        <div class="card-container-right">
+            <div class="input-container">
+                <input type="Text" placeholder="Name">
+                <input type="email" placeholder="Email">
+                <input type="tel" placeholder="Phone">
+            </div>
+        </div>
+
+    </div>
+   
         <div class="left-container">
             <div class="contact-container"></div>
         </div>
@@ -26,8 +43,8 @@
                 <p>Better with a Team</p>
             </div>
             <div class="button-container">
-            <button><img class="img" src="assets/img/new-contact-button.png"></button>
-        </div>
+                <button onclick="showCard()"><img class="img" src="assets/img/new-contact-button.png"></button>
+            </div>
         </div>
 
     </div>
