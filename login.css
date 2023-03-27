@@ -15,6 +15,7 @@ h1 {
 
 .not-a-join {
     position: absolute;
+    font-size: 21px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -24,7 +25,9 @@ h1 {
     z-index: 1;
 }
 
-.sign-up {
+.btn-dark {
+    display: flex;
+    justify-content: center;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -36,9 +39,47 @@ h1 {
     font-weight: 700;
 }
 
-.sign-up:hover {
+.btn-dark:hover {
     background-color: #29ABE2;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.btn-bright {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 51px;
+    padding: 0px 16px;
+    gap: 10px;
+    border: 1px solid #2A3647;
+    border-radius: 8px;
+}
+
+.btn-bright:hover{
+    box-sizing: border-box;
+    cursor: pointer;
+    border: 2px solid #29ABE2;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    color: #29ABE2;
+}
+
+.guest-login{
+    font-size: 21px;
+    font-weight: 700;
+}
+
+.login-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 330px;
+    height: 55px;
+}
+
+.login-btn {
+    font-size: 21px;
+    font-weight: 700;
+    width: 100px;
 }
 
 .logo-container {
@@ -118,6 +159,7 @@ h1 {
 
 .remember-check {
     display: flex;
+    width: 330px;
 }
 
 .remember-check input {
@@ -136,7 +178,7 @@ h1 {
     margin-right: 32px;
 }
 
-.check{
+.check {
     cursor: pointer;
 }
 
