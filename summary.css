@@ -26,8 +26,11 @@ a {
 }
 
 .desktop {
-    height: 100vh;
-    position: relative;
+    position: sticky;
+    top: 89px;
+    bottom: 0px;
+    right: 0px;
+    left: 0px;
     margin-left: 230px;
     background: #F5F5F5;
 }
@@ -71,6 +74,7 @@ a {
     flex-direction: column;
     justify-content: space-between;
     margin-left: 123px;
+padding-bottom: 153px;
 }
 
 .status-container {
@@ -96,7 +100,7 @@ a {
 .task-status:hover {
     background: #2A3647;
     color: white;
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
 
@@ -222,7 +226,7 @@ a {
 .do-counter:hover {
     background: #2A3647;
     color: white;
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
 .do-counter:hover .do-counter-img{
