@@ -42,7 +42,7 @@ body {
     padding-top: 82px;
 }
 
-h2 {
+.html-topic h2 {
     margin: 0px;
     font-weight: 700;
     font-size: 61px;
@@ -50,7 +50,7 @@ h2 {
     height: 73px;
 }
 
-p {
+.html-topic p {
     margin: 0px;
     font-weight: 400;
     font-size: 27px;
@@ -116,8 +116,6 @@ button {
     display: flex;
     flex-direction: column;
     justify-content: center;
-
-
 }
 
 .input-container{
