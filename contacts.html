@@ -1,20 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contacts</title>
+    <link rel="stylesheet" href="fonts.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="contacts.css">
     <script src="main.js"></script>
 </head>
-<body onload="init('summary')">
+
+<body onload="init('contacts')">
     <div w3-include-html="desktop-template.html"></div>
     <div class="desktop">
-        <div class="contact-container"></div>
-        <div></div>
+
+        <div class="left-container">
+            <div class="contact-container"></div>
+        </div>
+        <div class="right-container">
+            <div class="html-topic">
+                <h2>Contacts</h2>
+                <span class="line"></span>
+                <p>Better with a Team</p>
+            </div>
+            <div class="button-container">
+            <button><img class="img" src="assets/img/new-contact-button.png"></button>
+        </div>
+        </div>
+
     </div>
-    
+
 </body>
+
 </html>

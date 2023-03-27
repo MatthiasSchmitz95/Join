@@ -1,9 +1,81 @@
+body {
+    font-family: 'Inter';
+}
+
 .desktop {
-    position: sticky;
-    top: 89px;
-    bottom: 0px;
-    right: 0px;
-    left: 0px;
     margin-left: 230px;
+    margin-top: 89px;
     background: #F5F5F5;
+    display: flex;
+}
+
+.left-container {
+    width: 453px;
+    background: #FFFFFF;
+    box-shadow: 4px 0px 6px rgba(0, 0, 0, 0.08);
+    min-height: calc(100vh - 89px);
+}
+
+.right-container {
+    width: calc(100% - 453px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.line {
+    width: 0px;
+    height: 59px;
+    border: 3px solid #29ABE2;
+    border-radius: 10px;
+    margin-top: 7px;
+    margin-bottom: 7px;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+.html-topic {
+    height: 73px;
+    display: flex;
+    align-items: center;
+    padding-left: 58px;
+    padding-top: 82px;
+}
+
+h2 {
+    margin: 0px;
+    font-weight: 700;
+    font-size: 61px;
+    width: 274px;
+    height: 73px;
+}
+
+p {
+    margin: 0px;
+    font-weight: 400;
+    font-size: 27px;
+    height: 32px;
+}
+
+button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 193px;
+    height: 53px;
+    cursor: pointer;
+    border: none;
+}
+
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 52px;
+    margin-bottom: 67px;
+
+}
+
+.img {
+    width: 193px;
+    height: 53px;
 }

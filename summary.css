@@ -74,7 +74,7 @@ a {
     flex-direction: column;
     justify-content: space-between;
     margin-left: 123px;
-padding-bottom: 153px;
+    padding-bottom: 153px;
 }
 
 .status-container {
@@ -140,11 +140,12 @@ padding-bottom: 153px;
 }
 
 .urgency:hover .deadline-date {
-    color:white;
+    color: white;
 
 }
-.urgency:hover .deadline-container p{
-    color:white;
+
+.urgency:hover .deadline-container p {
+    color: white;
 
 }
 
@@ -229,17 +230,19 @@ padding-bottom: 153px;
     transform: scale(1.05);
 }
 
-.do-counter:hover .do-counter-img{
+.do-counter:hover .do-counter-img {
     filter: brightness(0) invert(1);
 }
-.do-counter:hover .absolute{
-    filter: brightness(0) saturate(100%);
-}
-.do-counter:hover .absolute-2{
+
+.do-counter:hover .absolute {
     filter: brightness(0) saturate(100%);
 }
 
-.do-counter:hover .do-nr-container p{
+.do-counter:hover .absolute-2 {
+    filter: brightness(0) saturate(100%);
+}
+
+.do-counter:hover .do-nr-container p {
     color: white;
 }
 
