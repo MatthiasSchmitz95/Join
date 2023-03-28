@@ -90,6 +90,20 @@ button {
     display: flex;
     z-index: 9;
     transform: translate(-50%, -50%);
+    transition: 1s;
+}
+
+.hidden {
+    position: fixed;
+    left: 1500%;
+    top: 50%;
+    width: 1212px;
+    height: 594px;
+    border-radius: 30px;
+    display: flex;
+    z-index: 9;
+    transform: translate(-50%, -50%);
+
 }
 
 .card-container-left {
@@ -153,6 +167,23 @@ button {
 
 }
 
+.close-contact-container {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.close-card {
+
+    margin-right: 63.18px !important;
+    width: 21.65px !important;
+    height: 21.65px !important;
+    margin-left: 0px !important;
+    margin-top: 26px;
+    margin-bottom: calc(72.38px - 24.5px);
+
+}
+
 .card-container-right img {
     width: 120px;
     height: 120px;
@@ -175,7 +206,6 @@ button {
 .contact-flex {
     display: flex;
     align-items: center;
-    margin-top: calc(129px - 24.5px);
 }
 
 .input-container {
@@ -231,7 +261,8 @@ button {
     font-weight: 400;
     font-size: 21px;
 }
-.cancel-img{
+
+.cancel-img {
     height: 10.45px !important;
     width: 10.45px !important;
     margin-left: 16.76px !important;
@@ -248,7 +279,8 @@ button {
     font-weight: 700;
     font-size: 21px;
 }
-.create-contact-img{
+
+.create-contact-img {
     height: 12px !important;
     width: 16px !important;
     margin-left: 14px !important;
