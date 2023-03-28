@@ -1,4 +1,4 @@
 function showCard(){
-    document.getElementById('contact-card').style.display ='';
+    document.getElementById('contact-card').classList ='add-contact-card';
     
 }

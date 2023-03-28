@@ -142,3 +142,50 @@ h2 {
 .margin-left {
     margin-left: 18px;
 }
+
+.d-none {
+    display: none !important;
+}
+
+.overlay {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 50px;
+    gap: 25px;
+    width: 623px;
+    height: 824px;
+    z-index: 5;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 30px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+}
+
+.overlay-department {
+    padding: 4px 36.5px;
+    background: #FC71FF;
+    border-radius: 8px;
+    font-size: 27px;
+    color: #FFFFFF;
+}
+
+.overlay-title {
+    font-size: 61px;
+    font-style: normal;
+    font-weight: 700;
+}
+
+.overlay-text {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+}
+
+.overlay-date{
+    font-size: 21px;
+}
