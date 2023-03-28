@@ -14,8 +14,6 @@
 </head>
 
 <body onload="init('contacts')">
-    <div class="desktop" id="desktop">
-    <div w3-include-html="desktop-template.html"></div>
     <div class="add-contact-card" id="contact-card" style="display: none;">
 
         <div class="card-container-left">
@@ -25,17 +23,28 @@
             <span class="vertical-blue-line"></span>
         </div>
         <div class="card-container-right">
-            <img src="assets/img/add-contact-profile.png">
-            <div class="input-container">
-                <i src="assets/img/contact-name-icon.png"></i>
-                <input id="contact-name" type="Text" placeholder="Name" >
-                <input id="contact-email" type="email" placeholder="Email">
-                <input id="contact-phone" type="tel" placeholder="Phone">
+            <div class="contact-flex">
+                <img src="assets/img/add-contact-profile.png">
+                <div class="input-container">
+                    <input id="contact-name" type="Text" placeholder="Name">
+                    <input id="contact-email" type="email" placeholder="Email">
+                    <input id="contact-phone" type="tel" placeholder="Phone">
+                </div>
+            </div>
+            <div class="btn-container">
+                <button class="btn-contact-white">Cancel<img class="cancel-img"
+                        src="assets/img/contact-cancel-button.png"></button>
+                <button class="btn-contact-blue">Create contact<img class="create-contact-img"
+                        src="assets/img/contact-create-contact-button.png"></button>
+
             </div>
         </div>
 
     </div>
-   
+    <div class="desktop" id="desktop">
+        <div w3-include-html="desktop-template.html"></div>
+
+
         <div class="left-container">
             <div class="contact-container"></div>
         </div>
