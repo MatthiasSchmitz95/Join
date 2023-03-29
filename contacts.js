@@ -38,3 +38,7 @@ function CreateNewContact() {
     updateContactNr();
 
 }
+
+function displayContact(){
+    
+}
