@@ -1,57 +1,95 @@
+let currentDraggedElement;
+
+
 function updateHTML() {
+    updateHTMLToDo()
+    updateHTMLInProgress()
+    updateHTMLAwaitingFeedback()
+    updateHTMLDone()   
+}
+
+
+function updateHTMLToDo(){
     let todo = todos.filter(t => t['category'] == 'To do');
     document.getElementById('toDoContent').innerHTML = '';
 
     for (let index = 0; index < todo.length; index++) {
-        const elements = todo[index];
-        document.getElementById('toDoContent').innerHTML +=generateHTML(elements)
+        const cards = todo[index];
+        document.getElementById('toDoContent').innerHTML +=generateHTML(cards);
     }
+}
 
+
+function updateHTMLInProgress(){
     let inProgress = todos.filter(t => t['category'] == 'In progress');
     document.getElementById('inProgressContent').innerHTML = '';
 
     for (let index = 0; index < inProgress.length; index++) {
-        const elements = inProgress[index];
-        document.getElementById('inProgressContent').innerHTML +=generateHTML(elements)
+        const cards = inProgress[index];
+        document.getElementById('inProgressContent').innerHTML +=generateHTML(cards);
     }
+}
 
+
+function updateHTMLAwaitingFeedback(){
     let awaiting = todos.filter(t => t['category'] == 'Awaiting Feedback');
     document.getElementById('awaitingFeedbackContent').innerHTML = '';
 
     for (let index = 0; index < awaiting.length; index++) {
-        const elements = awaiting[index];
-        document.getElementById('awaitingFeedbackContent').innerHTML += generateHTML(elements)
+        const cards = awaiting[index];
+        document.getElementById('awaitingFeedbackContent').innerHTML += generateHTML(cards);
     }
+}
 
+
+function updateHTMLDone(){
     let done = todos.filter(t => t['category'] == 'Done');
     document.getElementById('doneContent').innerHTML = '';
 
     for (let index = 0; index < done.length; index++) {
-        const elements = done[index];
-        document.getElementById('doneContent').innerHTML += generateHTML(elements) 
+        const cards = done[index];
+        document.getElementById('doneContent').innerHTML += generateHTML(cards); 
     }
 }
 
-function generateHTML(elements) {
+
+function generateHTML(cards) {
     return `
-    <div onclick="showOverlay(${elements})" class="card">
+    <div draggable="true" ondragstart="startDragging(${cards['id']})" onclick="showOverlay('${JSON.stringify(cards)}')" class="card">
     <div>
-        <h4>${elements['Department']}</h4>
-        <h4>${elements['title']}</h4>
+        <h4>${cards['Department']}</h4>
+        <h4>${cards['title']}</h4>
         <p>
-        ${elements['text']}
+        ${cards['text']}
         </p>
     </div>
 </div>`;
 }
 
 
-function showOverlay(elements){
+function startDragging(id) {
+    currentDraggedElement = id;
+}
+
+
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+
+function moveTo(category){
+    todos[currentDraggedElement]['category']= category;
+    updateHTML()
+}
+
+
+function showOverlay(cards){
+    cards = JSON.parse(cards);
     let overlay = document.getElementById('overlay');
     overlay.classList.remove('d-none');
-    overlay.innerHTML = `        
+    overlay.innerHTML = /*html*/`        
     <div class="overlay-department">
-    ${elements['Department']}
+    ${cards['Department']}
     </div>
     <div class="overlay-title">
     Call potenzial clients
@@ -67,6 +105,6 @@ function showOverlay(elements){
     </div>
     <div class="overlay-date">
     <b>Assigned to:</b>
-    </div>`;
-
+    </div>
+    `;
 }
