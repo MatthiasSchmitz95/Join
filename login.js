@@ -9,8 +9,9 @@ function loginCheckbox(){
     }
 }
 
-function renderIndex(){
+async function renderIndex(){
     renderLogin();
+    await loadTasksfromBackend();
 }
 
 function renderLogin(){

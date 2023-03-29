@@ -1,13 +1,13 @@
 let userAccounts = [];
 let activeUser;
-setURL('https://gruppenarbeit-504-join.developerakademie.net/smallest_backend_ever');
+
 
 
 
 async function init(id) {
-  
   await includeHTML();
   highlightSelectedNav(id);
+  loadTasksfromBackend();
 }
 
 async function includeHTML() {
@@ -22,6 +22,15 @@ async function includeHTML() {
       element.innerHTML = "Page not found";
     }
   }
+}
+
+/**
+ * loading tasks from backend
+ */
+async function loadTasksfromBackend() {
+  await downloadFromServer();
+  tasks = JSON.parse(backend.getItem('tasks')) || [];
+  console.log('Tasks loadet:', tasks);
 }
 
 function highlightSelectedNav(id) {
