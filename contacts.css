@@ -206,6 +206,7 @@ button {
 .contact-flex {
     display: flex;
     align-items: center;
+    width: 422px;
 }
 
 .input-container {
