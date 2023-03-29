@@ -1,4 +1,4 @@
-let loginChecked;
+
 
 async function init(id) {
   await includeHTML();

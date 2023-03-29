@@ -1,5 +1,5 @@
 let jsonFromServer = {};
-let BASE_SERVER_URL;
+let BASE_SERVER_URL = 'https://gruppenarbeit-504-join.developerakademie.net/smallest_backend_ever';
 
 const backend = {
     setItem: function(key, item) {
