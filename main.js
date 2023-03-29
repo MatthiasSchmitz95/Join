@@ -1,3 +1,5 @@
+let userAccounts = [];
+let activeUser;
 
 
 async function init(id) {
