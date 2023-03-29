@@ -333,3 +333,25 @@ body {
     margin-left: 14px !important;
     margin-right: 0px !important;
 }
+
+.floating-contact-container {
+    display: flex;
+    margin-top: 82px;
+    background-color: white;
+    margin-left: 65px;
+    width: 461px;
+    height: 364px;
+}
+
+.name-container{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.contact-circle{
+    background-color: #091931;
+    height: 120px;
+    width: 120px;
+    border-radius: 50%;
+}
