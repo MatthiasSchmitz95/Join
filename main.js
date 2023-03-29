@@ -1,6 +1,8 @@
 let userAccounts = [];
 let activeUser;
 
+setURL('https://gruppenarbeit-504-join.developerakademie.net/smallest_backend_ever');
+
 
 async function init(id) {
   await includeHTML();
