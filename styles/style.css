@@ -1,15 +1,13 @@
-*{
-    font-family: 'Inter',sans-serif!important;
-}
-
 body {
     margin: 0px;
-    font-family: 'Inter',sans-serif;
+    font-family: 'inter', sans-serif;
 }
 
 h3 {
     width: 335px;
     height: 25px;
+    font-family: 'Inter';
+    font-style: normal;
     font-weight: 400;
     font-size: 21px;
     line-height: 120%;
@@ -86,7 +84,7 @@ h3 {
 
 .menu-container p {
     font-family: 'Inter';
-    font-style: sans;
+    font-style: normal;
     font-weight: 400;
     font-size: 16px;
     line-height: 120%;

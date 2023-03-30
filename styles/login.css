@@ -1,4 +1,6 @@
 body {
+    margin: 0px;
+    font-family: 'inter', sans-serif;
     margin: 0;
     background-color: #F6F7F8;
     box-sizing: border-box;
