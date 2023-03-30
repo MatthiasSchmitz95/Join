@@ -11,21 +11,21 @@ function loginCheckbox(){
 
 async function renderIndex(){
     renderLogin();
-    await loadTasksfromBackend();
+    await loadUserAccountsFromBackend();
 }
 
 function renderLogin(){
     document.getElementById('login-container').innerHTML = `
-    <div class="login-container" >
+    <form class="login-container" >
         <h1>Log in</h1>
         <div class="line-login"></div>
         <div class="input-container">
             <div class="input-field">
-                <input class="input" type="email" name="email" id="email-input" placeholder="Email">
+                <input required class="input" type="email" name="email" id="email-input" placeholder="Email">
                 <img src="./assets/img/email-icon.png">
             </div>
             <div class="input-field">
-                <input class="input" type="password" name="password" id="password-input" placeholder="Password">
+                <input required class="input" type="password" name="password" id="password-input" placeholder="Password">
                 <img src="./assets/img/password-icon.png">
             </div>
         </div>
@@ -35,10 +35,10 @@ function renderLogin(){
             <a onclick="renderForgotPassword()" href="#">Forgot my password</a>
         </div>
         <div class="login-buttons">
-            <div class="btn-dark login-btn">Log in</div>
+            <button class="btn-dark login-btn">Log in</button>
             <div class="btn-bright guest-login">Guest Log in</div>
         </div>
-    </div>
+    </form>
     `
 }
 
@@ -46,30 +46,30 @@ function renderSignUp(){
     document.getElementById('not-a-join').classList.toggle('display-none');
     document.getElementById('login-container').innerHTML =``;
     document.getElementById('login-container').innerHTML = `
-    <div class="login-container" >
+    <form class="login-container" >
         
         <h1>Sign up</h1>
         <img class="arrow-left-back" src="./assets/img/arrow-left.png" onclick="backToLogin()">
             <div class="line-login"></div>
             <div class="input-container">
                 <div class="input-field">
-                    <input class="input" type="" name="name" id="name-input" placeholder="Name">
+                    <input required class="input" type="" name="name" id="name-input" placeholder="Name">
                     <img src="./assets/img/user-icon.png">
                 </div>
 
                 <div class="input-field">
-                    <input class="input" type="email" name="email" id="email-input" placeholder="Email">
+                    <input required class="input" type="email" name="email" id="email-input" placeholder="Email">
                     <img src="./assets/img/email-icon.png">
                 </div>
 
                 <div class="input-field">
-                    <input class="input" type="password" name="password" id="password-input" placeholder="Password">
+                    <input required class="input" type="password" name="password" id="password-input" placeholder="Password">
                     <img src="./assets/img/password-icon.png">
                 </div>
             </div>
 
-            <div class="btn-dark">Sign up</div>
-    </div>    
+            <button class="btn-dark">Sign up</button>
+    </form>    
     `
 }
 
@@ -82,7 +82,7 @@ function renderForgotPassword(){
     document.getElementById('not-a-join').classList.toggle('display-none');
     document.getElementById('login-container').innerHTML =``;
     document.getElementById('login-container').innerHTML = `
-    <div class="login-container">
+    <form class="login-container">
 
 
     <h1>I forgot my password</h1>
@@ -90,13 +90,13 @@ function renderForgotPassword(){
     <div class="line-login"></div>
 
     <div class="input-container">
-                <div class="dont-worry-textbox"><span>Don't worry! We will send you an email with the instructions to reset your password.</span>
+        <div class="dont-worry-textbox"><span>Don't worry! We will send you an email with the instructions to reset your password.</span>
     </div>
 
     <div class="input-container">
 
         <div class="input-field">
-            <input class="input" type="email" name="email" id="email-input" placeholder="Email">
+            <input required class="input" type="email" name="email" id="email-input" placeholder="Email">
             <img src="./assets/img/email-icon.png">
         </div>
 
