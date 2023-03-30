@@ -29,8 +29,8 @@ async function includeHTML() {
  */
 async function loadTasksfromBackend() {
   await downloadFromServer();
-  tasks = JSON.parse(backend.getItem('tasks')) || [];
-  console.log('Tasks loadet:', tasks);
+  userAccounts = JSON.parse(backend.getItem('userAccounts')) || [];
+  console.log('Useraccounts loadet', userAccounts);
 }
 
 function highlightSelectedNav(id) {
