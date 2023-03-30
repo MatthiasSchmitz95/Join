@@ -33,6 +33,11 @@ async function loadUserAccountsFromBackend() {
   console.log('Useraccounts loadet', userAccounts);
 }
 
+async function saveUserAccountsToBackend(){
+  await backend.setItem('userAccounts', JSON.stringify(userAccounts));
+}
+
+
 function highlightSelectedNav(id) {
   setTimeout(() => {
     document.getElementById(`${id}`).classList.add("selected");
