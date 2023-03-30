@@ -5,16 +5,36 @@ let contact_nr = 0;
 let contacts = [];
 let letters = [];
 
+function sortNames(){
+    document.getElementById('contact-container').innerHTML ='';
+    letters.sort();
+    for (let i = 0; i < letters.length; i++) {
+        let letter = letters[i];
+        document.getElementById('contact-container').innerHTML += `<div id="letter-container">${letter}</div>`;
+        for (let j = 0; j < contacts.length; j++) {
+            let name = contacts[j]['name'];
+            let nameLetter = name.charAt(0);
+            if (nameLetter.includes(letter)) {
+                document.getElementById('letter-container').innerHTML += `${name}`;
+                
+            }
+            
+        }
+        
+    }
+}
+
 function sortLetters() {
     letters.sort();
     for (let i = 0; i < letters.length; i++) {
         const letter = letters[i];
-        document.getElementById('contact-container').innerHTML += `${letter}`;
+        document.getElementById('contact-container').innerHTML += `<div id="letter-container">${letter}</div>`;
 
     }
 }
 
 function getFirstLetter() {
+    letters = [];
     for (let i = 0; i < contacts.length; i++) {
         let letter = contacts[i]['name'];
         letter = letter.charAt(0);
@@ -64,6 +84,7 @@ function CreateNewContact() {
 
 function displayContactList() {
     getFirstLetter();
-    sortLetters();
+    sortNames();
+    console.log(letters,contacts)
 
 }
