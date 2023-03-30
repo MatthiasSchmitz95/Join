@@ -13,7 +13,7 @@
     <script src="contacts.js"></script>
 </head>
 
-<body onload="init('contacts')">
+<body onload="init('contacts'); sortLetters()">
     <div class="hidden" id="contact-card">
 
         <div class="card-container-left">
@@ -24,7 +24,7 @@
         </div>
         <div class="card-container-right">
             <div class="close-contact-container">
-                <img class="close-card" src="assets/img/close-contact-card.png">
+                <img onclick="closeContactCard()" class="close-card" src="assets/img/close-contact-card.png">
             </div>
             <div class="contact-flex">
                 <img src="assets/img/add-contact-profile.png">
@@ -49,7 +49,7 @@
 
 
         <div class="left-container">
-            <div class="contact-container"></div>
+            <div class="contact-container" id="contact-container"></div>
         </div>
         <div class="right-container">
             <div class="html-topic">

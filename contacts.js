@@ -2,9 +2,30 @@ let contactName;
 let email;
 let phone;
 let contact_nr = 0;
-let contacts = [
+let contacts = [];
+let letters = [];
 
-];
+function sortLetters() {
+    letters.sort();
+    for (let i = 0; i < letters.length; i++) {
+        const letter = letters[i];
+        document.getElementById('contact-container').innerHTML += `${letter}`;
+
+    }
+}
+
+function getFirstLetter() {
+    for (let i = 0; i < contacts.length; i++) {
+        let letter = contacts[i]['name'];
+        letter = letter.charAt(0);
+        letter = letter.toUpperCase();
+        check = letters.indexOf(letter);
+        if (check = -1) {
+            letters.push(letter);
+        }
+    }
+    console.log(letters)
+}
 
 function showCard() {
     document.getElementById('contact-card').classList = 'add-contact-card';
@@ -16,7 +37,7 @@ function closeContactCard() {
 
 }
 
-function getInputValues(){
+function getInputValues() {
     let contact_email = document.getElementById('contact-email');
     let contact_phone = document.getElementById('contact-phone');
     let contact_name = document.getElementById('contact-name');
@@ -25,7 +46,7 @@ function getInputValues(){
     phone = contact_phone.value;
 }
 
-function updateContactNr(){
+function updateContactNr() {
     contact_nr++;
     console.log(contact_nr);
 }
@@ -36,9 +57,13 @@ function CreateNewContact() {
     contacts.push(contact_obj);
     console.log(contacts);
     updateContactNr();
+    closeContactCard();
+    displayContactList();
 
 }
 
-function displayContact(){
-    
+function displayContactList() {
+    getFirstLetter();
+    sortLetters();
+
 }

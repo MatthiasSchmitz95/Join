@@ -17,6 +17,13 @@ body {
     min-height: calc(100vh - 89px);
 }
 
+.contact-container{
+    margin-top:2px;
+    margin-left: 48px;
+    margin-right: 48px;
+    
+}
+
 .right-container {
     width: calc(100% - 453px);
     display: flex;
@@ -82,14 +89,15 @@ body {
     margin-bottom: 67px;
 }
 
-.button-container:hover  button{
+.button-container:hover button {
     background-color: #29ABE2;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.button-container:active  button{
-    background-color:  #091931;
+.button-container:active button {
+    background-color: #091931;
 }
+
 .img {
     width: 33px;
     height: 29.71px;
@@ -196,6 +204,7 @@ body {
     margin-left: 0px !important;
     margin-top: 26px;
     margin-bottom: calc(72.38px - 24.5px);
+    cursor: pointer;
 
 }
 
@@ -266,6 +275,7 @@ body {
 
 .btn-contact-white {
     display: flex;
+    align-items: center;
     justify-content: center;
     width: 136px;
     height: 61px;
@@ -296,7 +306,9 @@ body {
 .btn-contact-white:hover .cancel-img {
     filter: invert(56%) sepia(91%) saturate(956%) hue-rotate(165deg) brightness(92%) contrast(91%);
 }
-
+.btn-contact-white:active .cancel-img {
+    filter: none;
+}
 .cancel-img {
     height: 10.45px !important;
     width: 10.45px !important;
@@ -339,19 +351,25 @@ body {
     margin-top: 82px;
     background-color: white;
     margin-left: 65px;
-    width: 461px;
+
     height: 364px;
 }
 
-.name-container{
+.name-container {
     width: 100%;
     display: flex;
     justify-content: space-between;
 }
 
-.contact-circle{
+.contact-circle {
     background-color: #091931;
     height: 120px;
     width: 120px;
     border-radius: 50%;
+}
+
+#float-contact-name {
+    margin: 0px;
+    font-weight: 500;
+    font-size: 47px;
 }
