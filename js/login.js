@@ -47,7 +47,6 @@ function renderSignUp(){
     document.getElementById('login-container').innerHTML =``;
     document.getElementById('login-container').innerHTML = `
     <form class="login-container" >
-        
         <h1>Sign up</h1>
         <img class="arrow-left-back" src="./assets/img/arrow-left.png" onclick="backToLogin()">
             <div class="line-login"></div>
@@ -67,7 +66,6 @@ function renderSignUp(){
                     <img src="./assets/img/password-icon.png">
                 </div>
             </div>
-
             <button class="btn-dark">Sign up</button>
     </form>    
     `
@@ -83,28 +81,18 @@ function renderForgotPassword(){
     document.getElementById('login-container').innerHTML =``;
     document.getElementById('login-container').innerHTML = `
     <form class="login-container">
-
-
     <h1>I forgot my password</h1>
     <img class="arrow-left-back" src="./assets/img/arrow-left.png" onclick="backToLogin()">
     <div class="line-login"></div>
-
     <div class="input-container">
         <div class="dont-worry-textbox"><span>Don't worry! We will send you an email with the instructions to reset your password.</span>
     </div>
-
     <div class="input-container">
-
         <div class="input-field">
             <input required class="input" type="email" name="email" id="email-input" placeholder="Email">
             <img src="./assets/img/email-icon.png">
         </div>
-
-        
-
         <div class="btn-dark">Send me the email</div>
-
-
 </div>   
 `
 }
