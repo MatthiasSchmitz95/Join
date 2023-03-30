@@ -1,8 +1,13 @@
-let loginChecked;
+let userAccounts = [];
+let activeUser;
+
+
+
 
 async function init(id) {
   await includeHTML();
   highlightSelectedNav(id);
+  loadUserAccountfromBackend;
 }
 
 async function includeHTML() {
@@ -17,6 +22,15 @@ async function includeHTML() {
       element.innerHTML = "Page not found";
     }
   }
+}
+
+/**
+ * loading tasks from backend
+ */
+async function loadUserAccountfromBackend() {
+  await downloadFromServer();
+  userAccounts = JSON.parse(backend.getItem('userAccounts')) || [];
+  console.log('Useraccounts loadet', userAccounts);
 }
 
 function highlightSelectedNav(id) {

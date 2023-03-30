@@ -6,14 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contacts</title>
-    <link rel="stylesheet" href="fonts.css">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="contacts.css">
-    <script src="main.js"></script>
-    <script src="contacts.js"></script>
+    <link rel="stylesheet" href="./fonts.css">
+    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="./styles/contacts.css">
+    <script src="./js/main.js"></script>
+    <script src="./js/contacts.js"></script>
 </head>
 
-<body onload="init('contacts')">
+<body onload="init('contacts'); sortLetters()">
     <div class="hidden" id="contact-card">
 
         <div class="card-container-left">
@@ -24,7 +24,7 @@
         </div>
         <div class="card-container-right">
             <div class="close-contact-container">
-                <img class="close-card" src="assets/img/close-contact-card.png">
+                <img onclick="closeContactCard()" class="close-card" src="assets/img/close-contact-card.png">
             </div>
             <div class="contact-flex">
                 <img src="assets/img/add-contact-profile.png">
@@ -35,9 +35,9 @@
                 </div>
             </div>
             <div class="btn-container">
-                <button class="btn-contact-white">Cancel<img class="cancel-img"
+                <button onclick="closeContactCard()" class="btn-contact-white">Cancel<img class="cancel-img"
                         src="assets/img/contact-cancel-button.png"></button>
-                <button class="btn-contact-blue">Create contact<img class="create-contact-img"
+                <button onclick="CreateNewContact()" class="btn-contact-blue">Create contact<img class="create-contact-img"
                         src="assets/img/contact-create-contact-button.png"></button>
 
             </div>
@@ -49,7 +49,7 @@
 
 
         <div class="left-container">
-            <div class="contact-container"></div>
+            <div class="contact-container" id="contact-container"></div>
         </div>
         <div class="right-container">
             <div class="html-topic">
@@ -57,8 +57,22 @@
                 <span class="line"></span>
                 <p>Better with a Team</p>
             </div>
+            <div class="floating-contact-container" id="floating-contact-container">
+                <div class="name-container">
+                    <div class="contact-circle" id="contact-circle">
+
+                    </div>
+                    <div>
+                        <h4 id="float-contact-name">Matthias Schmitz</h4>
+                        <p>Add task</p>
+                    </div>
+
+
+                </div>
+
+            </div>
             <div class="button-container">
-                <button onclick="showCard()"><img class="img" src="assets/img/new-contact-button.png"></button>
+                <button onclick="showCard()">New contact<img class="img" src="assets/img/new-contact-button.png"></button>
             </div>
         </div>
 

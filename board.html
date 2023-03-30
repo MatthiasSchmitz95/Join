@@ -7,12 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Board</title>
 
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="fonts.css">
-    <link rel="stylesheet" href="board.css">
-    <script src="main.js"></script>
-    <script src="todos.js"></script>
-    <script src="board.js"></script>
+    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="./fonts.css">
+    <link rel="stylesheet" href="./styles/board.css">
+    <script src="./js/main.js"></script>
+    <script src="./js/todos.js"></script>
+    <script src="./js/board.js"></script>
 </head>
 
 <body onload="init('board'), updateHTML()">
@@ -36,7 +36,7 @@
                         <img src="assets/img/todo-plus.svg" alt="">
                     </div>
                 </div>
-                <div id="toDoContent">
+                <div ondrop="moveTo('To do')" ondragover="allowDrop(event)" id="toDoContent" class="drag-drop-height">
                 </div>
             </div>
             <div>
@@ -47,7 +47,7 @@
                         <img src="assets/img/todo-plus.svg" alt="">
                     </div>
                 </div>
-                <div id="inProgressContent">
+                <div ondrop="moveTo('In progress')" ondragover="allowDrop(event)" id="inProgressContent" class="drag-drop-height">
                 </div>
             </div>
             <div>
@@ -58,7 +58,7 @@
                         <img src="assets/img/todo-plus.svg" alt="">
                     </div>
                 </div>
-                <div id="awaitingFeedbackContent">
+                <div ondrop="moveTo('Awaiting Feedback')" ondragover="allowDrop(event)" id="awaitingFeedbackContent" class="drag-drop-height">
                 </div>
             </div>
             <div>
@@ -69,7 +69,7 @@
                         <img src="assets/img/todo-plus.svg" alt="">
                     </div>
                 </div>
-                <div id="doneContent">
+                <div ondrop="moveTo('Done')" ondragover="allowDrop(event)" id="doneContent" class="drag-drop-height">
                 </div>
             </div>
         </div>
