@@ -42,6 +42,7 @@ function renderLogin() {
     `;
 }
 
+
 function renderSignUp() {
   document.getElementById("not-a-join").classList.toggle("display-none");
   document.getElementById("login-container").innerHTML = ``;
@@ -71,10 +72,12 @@ function renderSignUp() {
     `;
 }
 
+
 function backToLogin() {
   document.getElementById("not-a-join").classList.toggle("display-none");
   renderLogin();
 }
+
 
 function renderForgotPassword() {
   document.getElementById("not-a-join").classList.toggle("display-none");
@@ -96,6 +99,7 @@ function renderForgotPassword() {
 </div>   
 `;
 }
+
 
 async function signUpUser() {
   let name = document.getElementById("sign-up-name-input").value;
@@ -122,6 +126,7 @@ async function signUpUser() {
   backToLogin();
 }
 
+
 function userNameInitial(name) {
   let initials = "";
   let nameSplit = name.split(" ");
@@ -133,6 +138,7 @@ function userNameInitial(name) {
   }
   return initials;
 }
+
 
 function randomUserColor() {
   let r = Math.floor(Math.random() * 256);
