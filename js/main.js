@@ -7,7 +7,7 @@ let activeUser;
 async function init(id) {
   await includeHTML();
   highlightSelectedNav(id);
-  loadTasksfromBackend();
+  loadUserAccountfromBackend;
 }
 
 async function includeHTML() {
@@ -27,7 +27,7 @@ async function includeHTML() {
 /**
  * loading tasks from backend
  */
-async function loadTasksfromBackend() {
+async function loadUserAccountfromBackend() {
   await downloadFromServer();
   userAccounts = JSON.parse(backend.getItem('userAccounts')) || [];
   console.log('Useraccounts loadet', userAccounts);
