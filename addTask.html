@@ -12,101 +12,103 @@
     <link rel="stylesheet" href="addTask.css">
     <script src="board.js"></script>
     <script src="main.js"></script>
+    
 </head>
 
 <body onload="init('addTask')">
-    <div class="desktop">
-        <div w3-include-html="desktop-template.html"></div>
-    </div>
+    <div w3-include-html="desktop-template.html"></div>
 
-    <div class="headline">Add Task</div>
+    <!--<div class="taskCard">-->
 
-    <div class="taskContainerLeft">
-        <div class="titleContainer">
-            <div class="title">Title</div>
-            <div class="titleInputContainer">
-                <input class="titleInput" placeholder="Enter a title">
+        <div class="headline">Add Task</div>
+
+        <div class="taskContainerLeft">
+            <div class="titleContainer">
+                <div class="title">Title</div>
+                <div class="titleInputContainer">
+                    <input class="titleInput" placeholder="Enter a title">
+                </div>
+            </div>
+
+            <div class="descriptionContainer">
+                <div class="description">Description</div>
+                <textarea class="descriptionInput" placeholder="Enter a Description"> </textarea>
+            </div>
+
+
+            <!--Category-->
+            <div class="categoryContainer">
+                <label for="selectedCategory" class="category">AssignedTo</label>
+                <div class="selectedCategoryContainer" id="selectedCategoryContainer">
+                    <input id="selectedCategory" value="Select task category">
+                    <img src="assets/img/dropdown-arrow.png">
+                </div>
+
+                <div id="dropdownContainer"> </div>
+            </div>
+            <div id="colorContainer">
+                <div class="circle circleColor1"></div>
+                <div class="circle circleColor2"></div>
+                <div class="circle circleColor3"></div>
+            </div>
+
+
+            <!--Contact -->
+            <div class="contactContainer">
+                <label for="AssignedTo" class="assignedContainer">AssignedTo</label>
+                <div class="assignToContainer" id="assignToContainer">
+                    <input id="assignedTo" value="Select contacts to assign">
+                    <img src="assets/img/dropdown-arrow.png">
+                </div>
+
+                <div id="ContactsDropdownContainer"> </div>
             </div>
         </div>
 
-        <div class="descriptionContainer">
-            <div class="description">Description</div>
-            <textarea class="descriptionInput" placeholder="Enter a Description"> </textarea>
-        </div>
 
 
-        <!--Category-->
-        <div class="categoryContainer">
-            <label for="selectedCategory" class="category">AssignedTo</label>
-            <div class="selectedCategoryContainer" id="selectedCategoryContainer">
-                <input id="selectedCategory" value="Select task category">
-                <img src="assets/img/dropdown-arrow.png">
+        <div class="midLine"></div>
+
+        <div class="taskContainerRight">
+            <div class="dateContainer">
+                <div class="date">Due date</div>
+                <div class="textboxDate">
+                    <input class="dateInput" placeholder="dd/mm/yyyy" type="date" id="date">
+                </div>
             </div>
 
-            <div id="dropdownContainer"> </div>
-        </div>
-        <div id="colorContainer">
-            <div class="circle circleColor1"></div>
-            <div class="circle circleColor2"></div>
-            <div class="circle circleColor3"></div>
-        </div>
+            <div class="priorityContainer">
 
-
-        <!--Contact-->
-        <div class="contactContainer">
-            <label for="AssignedTo" class="assignedContainer">AssignedTo</label>
-            <div class="assignToContainer" id="assignToContainer">
-                <input id="assignedTo" value="Select contacts to assign">
-                <img src="assets/img/dropdown-arrow.png">
+                <div class="priority">Prio</div>
+                <div class="priorityBoxesContainer">
+                    <div class="prioUrgentBox">urgent <img src="assets\img\urgent.png"></div>
+                    <div class="prioMediumBox">Medium <img src="assets\img\medium.png"></div>
+                    <div class="prioLowBox">low <img src="assets\img\low.png"></div>
+                </div>
             </div>
 
-            <div id="ContactsDropdownContainer"> </div>
-        </div>
-    </div>
-
-
-
-    <div class="midLine"></div>
-
-    <div class="taskContainerRight">
-        <div class="dateContainer">
-            <div class="date">Due date</div>
-            <div class="textboxDate">
-                <input class="dateInput" placeholder="dd/mm/yyyy" type="date" id="date">
+            <div class="subtasksContainer">
+                <div class="subtasks">Subtasks</div>
+                <div class="addSubtask">
+                    <input class="subtasksInput" placeholder="Add new Subtask">
+                    <div class="addSubtaskBtn"><img src="assets/img/plus.png"></div>
+                </div>
+                <div class="checkboxContainer">
+                    <input type="checkbox" name="checkbox" />
+                    <div class="subtaskCheck">Subtask 1</div>
+                </div>
             </div>
         </div>
-
-        <div class="priorityContainer">
-
-            <div class="priority">Prio</div>
-            <div class="priorityBoxesContainer">
-                <div class="prioUrgentBox">urgent <img src="assets\img\urgent.png"></div>
-                <div class="prioMediumBox">Medium <img src="assets\img\medium.png"></div>
-                <div class="prioLowBox">low <img src="assets\img\low.png"></div>
-            </div>
+        <div class="taskRightContainerBottom">
+            <button class="clearTaskBtn"  onmouseover="mouseOverClearBtn()" onmouseout="mouseOutClearBtn()"><a class="clear" id="clearTaskBtn">Clear</a> <img class="clearBtnImg" id="clearBtnImg"
+                    src="assets/img/cross-mark.svg"></button>
+            <button class="createTaskBtn" onclick="getValueForTasks()"><a class="create">Create Task</a> <img
+                    class="createBtnImg" src="assets/img/right-mark.png"></button>
         </div>
 
-        <div class="subtasksContainer">
-            <div class="subtasks">Subtasks</div>
-            <div class="addSubtask">
-                <input class="subtasksInput" placeholder="Add new Subtask">
-                <div class="addSubtaskBtn"><img src="assets/img/plus.png"></div>
-            </div>
-            <div class="checkboxContainer">
-                <input type="checkbox" name="checkbox" />
-                <div class="subtaskCheck">Subtask 1</div>
-            </div>
-        </div>
-    </div>
-
-    <div class="taskRightContainerBottom">
-        <button class="clearTaskBtn"><a class="clear">Clear</a> <img class="clearBtnImg"
-                src="assets/img/cross-mark.png"></button>
-        <button class="createTaskBtn" onclick="getValueForTasks()"><a class="create">Create Task</a> <img
-                class="createBtnImg" src="assets/img/right-mark.png"></button>
-    </div>
 
 
+    <!--</div>-->
     <script src="addTask.js"></script>
 </body>
 

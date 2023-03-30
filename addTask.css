@@ -28,6 +28,14 @@ select {
     cursor: pointer;
 }
 
+.taskCard {
+    margin-left: 230px;
+    margin-top: 89px;
+    background: #F5F5F5;
+    /*background-color: yellowgreen;*/
+    display: flex;
+    flex-direction: column;
+}
 
 .taskContainerLeft {
     display: flex;
@@ -435,6 +443,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     cursor: pointer;
 }
 
+.prioUrgentBox:hover{
+    transform: scale(1.1);
+}
+
 
 .prioMediumBox {
     display: flex;
@@ -453,6 +465,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     cursor: pointer;
 }
 
+.prioMediumBox:hover{
+    transform: scale(1.1);
+}
+
 .prioLowBox {
     display: flex;
     flex-direction: row;
@@ -468,6 +484,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     order: 2;
     flex-grow: 0;
     cursor: pointer;
+}
+
+.prioLowBox:hover{
+    transform: scale(1.1);
 }
 
 .subtasksContainer {
@@ -592,6 +612,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     height: 61px;
     left: 984px;
     top: 889px;
+    /*right: 118px;
+    bottom: 74px;*/
 }
 
 .clearTaskBtn {
@@ -612,6 +634,15 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     cursor: pointer;
 }
 
+.clearTaskBtn:hover{
+    border: 1px solid #32daff; 
+}
+
+.clearTaskBtn img:hover{
+    filter: brightness(0.25);
+}
+
+
 .createTaskBtn {
     display: flex;
     flex-direction: row;
@@ -627,6 +658,11 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     order: 1;
     flex-grow: 0;
     cursor: pointer;
+}
+
+.createTaskBtn:hover{
+    background-color: #007cee;
+    border: none;
 }
 
 .clear {

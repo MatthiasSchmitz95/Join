@@ -62,6 +62,13 @@ assignedToInput.addEventListener("click", function () {
 });
 
 
+function mouseOverClearBtn(){
+  document.getElementById("clearTaskBtn").style.color = "#32daff";
+}
+
+function mouseOutClearBtn(){
+  document.getElementById("clearTaskBtn").style.color = "black";
+}
 
 function getValueForTasks() {
   selectElement = document.querySelector('#selectedCategory');
