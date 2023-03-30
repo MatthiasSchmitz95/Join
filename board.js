@@ -15,7 +15,9 @@ function updateHTMLToDo(){
 
     for (let index = 0; index < todo.length; index++) {
         const cards = todo[index];
-        document.getElementById('toDoContent').innerHTML +=generateHTML(cards);
+        let card = JSON.stringify(cards);
+        document.getElementById('toDoContent').innerHTML +=generateHTML(cards, card);
+        
     }
 }
 
@@ -26,7 +28,9 @@ function updateHTMLInProgress(){
 
     for (let index = 0; index < inProgress.length; index++) {
         const cards = inProgress[index];
-        document.getElementById('inProgressContent').innerHTML +=generateHTML(cards);
+        let card = JSON.stringify(cards);
+        document.getElementById('inProgressContent').innerHTML +=generateHTML(cards, card);
+        
     }
 }
 
@@ -37,7 +41,8 @@ function updateHTMLAwaitingFeedback(){
 
     for (let index = 0; index < awaiting.length; index++) {
         const cards = awaiting[index];
-        document.getElementById('awaitingFeedbackContent').innerHTML += generateHTML(cards);
+        let card = JSON.stringify(cards);
+        document.getElementById('awaitingFeedbackContent').innerHTML += generateHTML(cards, card);
     }
 }
 
@@ -48,14 +53,15 @@ function updateHTMLDone(){
 
     for (let index = 0; index < done.length; index++) {
         const cards = done[index];
-        document.getElementById('doneContent').innerHTML += generateHTML(cards); 
+        let card = JSON.stringify(cards);
+        document.getElementById('doneContent').innerHTML += generateHTML(cards, card); 
     }
 }
 
 
-function generateHTML(cards) {
+function generateHTML(cards, card) {
     return `
-    <div draggable="true" ondragstart="startDragging(${cards['id']})" onclick="showOverlay('${JSON.stringify(cards)}')" class="card">
+    <div draggable="true" ondragstart="startDragging(${cards['id']})" onclick="showOverlay(${card})" class="card">
     <div>
         <h4>${cards['Department']}</h4>
         <h4>${cards['title']}</h4>
