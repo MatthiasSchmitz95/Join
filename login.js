@@ -43,7 +43,7 @@ function renderLogin(){
 }
 
 function renderSignUp(){
-    document.getElementById('not-a-join').classList.add('display-none');
+    document.getElementById('not-a-join').classList.toggle('display-none');
     document.getElementById('login-container').innerHTML =``;
     document.getElementById('login-container').innerHTML = `
     <div class="login-container" >
@@ -74,12 +74,12 @@ function renderSignUp(){
 }
 
 function backToLogin(){
-    document.getElementById('not-a-join').classList.remove('display-none');
+    document.getElementById('not-a-join').classList.toggle('display-none');
     renderLogin();
 }
 
 function renderForgotPassword(){
-    document.getElementById('not-a-join').classList.add('display-none');
+    document.getElementById('not-a-join').classList.toggle('display-none');
     document.getElementById('login-container').innerHTML =``;
     document.getElementById('login-container').innerHTML = `
     <div class="login-container">
