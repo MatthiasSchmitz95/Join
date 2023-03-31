@@ -7,7 +7,7 @@ let todos = [
         'text': 'Modify the contents of the main Website',
         'due date': '05-08-2022',
         'priority': 'Urgent',
-        'Assigned to':'David Eisberg'
+        'Assigned to':'David Eisberg',
     },
     {
         'id': 1,
@@ -17,7 +17,7 @@ let todos = [
         'text': 'Make the product presentation to prospective buyers',
         'due date': '06-08-2022',
         'priority': 'Medium',
-        'Assigned to': 'Benedikt Ziegler'
+        'Assigned to': 'Benedikt Ziegler',
     },
     {
         'id': 2,
