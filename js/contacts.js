@@ -5,44 +5,45 @@ let contact_nr = 0;
 let contacts = [];
 let letters = [];
 
-function sortNames(){
-    document.getElementById('contact-container').innerHTML ='';
+function sortNames() {
+    document.getElementById('contact-container').innerHTML = '';
     letters.sort();
     for (let i = 0; i < letters.length; i++) {
         let letter = letters[i];
-        document.getElementById('contact-container').innerHTML += 
-        `<div class="contact-list">
-            <div id="letter-container">
-            ${letter}
-            </div>
-            <span class="vertical-line"></span>
-            <div class="contact-cards" id="contact-cards${i}">
-            </div>
-        </div>`;
+        templateLetter(letter, i);
+
         for (let j = 0; j < contacts.length; j++) {
             let name = contacts[j]['name'];
             let email = contacts[j]['email']
             let nameLetter = name.charAt(0);
             if (nameLetter == letter) {
-                document.getElementById('contact-cards' +i).innerHTML += `
-                <div class="name-card" id=name-card${j}>
-                  <div class="circle">${nameLetter}</div>
-                  <div class="info">
-                <h4>
-                ${name}
-                </h4>
-                <p>
-                ${email}
-                </p>
-                </div>
-
-                </div>`;
-                
+                templateNameCard(i, nameLetter, name, email, j)
             }
-            
         }
-        
     }
+}
+
+function templateNameCard(i, nameLetter, name, email, j) {
+    document.getElementById('contact-cards' + i).innerHTML += `
+    <div class="name-card" id=name-card${j} onclick="showContact(${j})">
+      <div class="circle">${nameLetter}</div>
+      <div class="info">
+            <h4> ${name} </h4>
+             <p> ${email} </p>
+     </div>
+    </div>`;
+}
+
+function templateLetter(letter, i) {
+    document.getElementById('contact-container').innerHTML +=
+        `<div class="contact-list">
+        <div id="letter-container">
+        ${letter}
+        </div>
+        <span class="vertical-line"></span>
+        <div class="contact-cards" id="contact-cards${i}">
+        </div>
+    </div>`;
 }
 
 function sortLetters() {
@@ -105,6 +106,6 @@ function CreateNewContact() {
 function displayContactList() {
     getFirstLetter();
     sortNames();
-    console.log(letters,contacts)
+    console.log(letters, contacts)
 
 }
