@@ -42,7 +42,6 @@ function renderLogin() {
     `;
 }
 
-
 function renderSignUp() {
   document.getElementById("not-a-join").classList.toggle("display-none");
   document.getElementById("login-container").innerHTML = ``;
@@ -68,16 +67,15 @@ function renderSignUp() {
                 </div>
             </div>
             <button class="btn-dark">Sign up</button>
-    </form>    
+            <div class="display-none" id="registerBox">Du hast dich erfolgreich registriert!</div>
+    </form>  
     `;
 }
-
 
 function backToLogin() {
   document.getElementById("not-a-join").classList.toggle("display-none");
   renderLogin();
 }
-
 
 function renderForgotPassword() {
   document.getElementById("not-a-join").classList.toggle("display-none");
@@ -98,52 +96,4 @@ function renderForgotPassword() {
         <div class="btn-dark">Send me the email</div>
 </div>   
 `;
-}
-
-
-async function signUpUser() {
-  let name = document.getElementById("sign-up-name-input").value;
-  let email = document.getElementById("sign-up-email-input").value;
-  let password = document.getElementById("sign-up-password-input").value;
-  let userId = userAccounts.length;
-  let userInitials = userNameInitial(name);
-  let userColor = randomUserColor();
-
-  let newUser = {
-    Username: name,
-    userEmail: email,
-    userPassword: password,
-    userId: userId,
-    userInitials: userInitials,
-    userColor: userColor,
-    userContacts: [],
-    userTasks: [],
-  };
-
-  console.log(newUser);
-  userAccounts.push(newUser);
-  await saveUserAccountsToBackend();
-  backToLogin();
-}
-
-
-function userNameInitial(name) {
-  let initials = "";
-  let nameSplit = name.split(" ");
-  console.log(nameSplit);
-
-  for (let i = 0; i < nameSplit.length; i++) {
-    let initial = nameSplit[i].charAt(0);
-    initials += initial;
-  }
-  return initials;
-}
-
-
-function randomUserColor() {
-  let r = Math.floor(Math.random() * 256);
-  let g = Math.floor(Math.random() * 256);
-  let b = Math.floor(Math.random() * 256);
-  let rgbColor = `rgb(${r},${g},${b},)`;
-  return rgbColor;
 }

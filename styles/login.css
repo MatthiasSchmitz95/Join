@@ -88,8 +88,7 @@ h1 {
 }
 
 .login-btn {
-
-    width: 100px;
+    width: 120px;
 }
 
 .logo-container {
@@ -207,6 +206,10 @@ h1 {
     font-size: clamp(14px, 1vw, 21px);
     text-align: center;
     margin-bottom: 30px;
+}
+
+#registerBox{
+    color: green;
 }
 
 
