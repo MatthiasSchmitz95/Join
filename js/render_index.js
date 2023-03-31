@@ -16,16 +16,16 @@ async function renderIndex() {
 
 function renderLogin() {
   document.getElementById("login-container").innerHTML = `
-    <form class="login-container" >
+    <form onsubmit="login(); return false" class="login-container" >
         <h1>Log in</h1>
         <div class="line-login"></div>
         <div class="input-container">
             <div class="input-field">
-                <input required class="input" type="email" name="email" id="email-input" placeholder="Email">
+                <input required class="input" type="email" name="email" id="login-email-input" placeholder="Email">
                 <img src="./assets/img/email-icon.png">
             </div>
             <div class="input-field">
-                <input required class="input" type="password" name="password" id="password-input" placeholder="Password">
+                <input required class="input" type="password" name="password" id="login-password-input" placeholder="Password">
                 <img src="./assets/img/password-icon.png">
             </div>
         </div>

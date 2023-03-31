@@ -1,4 +1,3 @@
-let userAccounts = [];
 let activeUser;
 
 
@@ -33,8 +32,22 @@ async function loadUserAccountsFromBackend() {
   console.log('Useraccounts loadet', userAccounts);
 }
 
+async function loadTasksFromBackend() {
+  await downloadFromServer();
+  tasks = JSON.parse(backend.getItem('tasks')) || [];
+  console.log('Tasks loadet', tasks);
+}
+
 async function saveUserAccountsToBackend(){
   await backend.setItem('userAccounts', JSON.stringify(userAccounts));
+}
+
+async function saveTasksToBackend(){
+  await backend.setItem('tasks', JSON.stringify(tasks));
+}
+
+function loadActiveUserLocal() {
+  activeUser = localStorage.getItem('activeUser');
 }
 
 
