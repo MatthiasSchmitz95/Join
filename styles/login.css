@@ -116,7 +116,7 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 32px 84px;
+    padding: 32px 5%;
     gap: 20px;
     width: clamp(500px, 40vw, 652px);
     background: white;
