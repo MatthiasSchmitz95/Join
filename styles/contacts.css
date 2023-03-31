@@ -17,11 +17,78 @@ body {
     min-height: calc(100vh - 89px);
 }
 
-.contact-container{
-    margin-top:2px;
+.contact-container {
+    margin-top: 2px;
     margin-left: 48px;
     margin-right: 48px;
-    
+
+}
+
+.contact-list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+#letter-container {
+    display: flex;
+    align-items: center;
+    height: 60px;
+    margin-left: 37.5px;
+    font-weight: 400;
+    font-size: 21px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.vertical-line {
+    width: 323px;
+    height: 0px;
+    border: 1px solid #D1D1D1;
+    border-radius: 3px;
+    margin-left: 17px;
+    margin-top: 14px;
+    margin-bottom: 14px;
+}
+
+.name-card{
+    height: 79px;
+    display: flex;
+}
+
+.circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 42px;
+    height: 42px;
+    background-color: orange;
+    color: white;
+    border-radius: 50%;
+    margin-left: 25px;
+    margin-top: 15px;
+}
+.info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin-left: 35px;
+}
+
+.info h4{
+    font-weight: 400;
+font-size: 21px;
+margin: 0px;
+
+}
+
+.info p{
+    font-weight: 400;
+font-size: 16px;
+color: #007CEE;
+margin: 0px;
+
 }
 
 .right-container {
@@ -306,9 +373,11 @@ body {
 .btn-contact-white:hover .cancel-img {
     filter: invert(56%) sepia(91%) saturate(956%) hue-rotate(165deg) brightness(92%) contrast(91%);
 }
+
 .btn-contact-white:active .cancel-img {
     filter: none;
 }
+
 .cancel-img {
     height: 10.45px !important;
     width: 10.45px !important;

@@ -10,12 +10,33 @@ function sortNames(){
     letters.sort();
     for (let i = 0; i < letters.length; i++) {
         let letter = letters[i];
-        document.getElementById('contact-container').innerHTML += `<div id="letter-container">${letter}</div>`;
+        document.getElementById('contact-container').innerHTML += 
+        `<div class="contact-list">
+            <div id="letter-container">
+            ${letter}
+            </div>
+            <span class="vertical-line"></span>
+            <div class="contact-cards" id="contact-cards${i}">
+            </div>
+        </div>`;
         for (let j = 0; j < contacts.length; j++) {
             let name = contacts[j]['name'];
+            let email = contacts[j]['email']
             let nameLetter = name.charAt(0);
-            if (nameLetter.includes(letter)) {
-                document.getElementById('letter-container').innerHTML += `${name}`;
+            if (nameLetter == letter) {
+                document.getElementById('contact-cards' +i).innerHTML += `
+                <div class="name-card" id=name-card${j}>
+                  <div class="circle">${nameLetter}</div>
+                  <div class="info">
+                <h4>
+                ${name}
+                </h4>
+                <p>
+                ${email}
+                </p>
+                </div>
+
+                </div>`;
                 
             }
             
@@ -34,13 +55,12 @@ function sortLetters() {
 }
 
 function getFirstLetter() {
-    letters = [];
     for (let i = 0; i < contacts.length; i++) {
         let letter = contacts[i]['name'];
         letter = letter.charAt(0);
         letter = letter.toUpperCase();
         check = letters.indexOf(letter);
-        if (check = -1) {
+        if (check == -1) {
             letters.push(letter);
         }
     }
