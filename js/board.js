@@ -15,8 +15,7 @@ function updateHTMLToDo(){
 
     for (let index = 0; index < todo.length; index++) {
         const cards = todo[index];
-        let card = JSON.stringify(cards);
-        document.getElementById('toDoContent').innerHTML +=generateHTML(cards, card);
+        document.getElementById('toDoContent').innerHTML +=generateHTML(cards);
         
     }
 }
@@ -28,8 +27,7 @@ function updateHTMLInProgress(){
 
     for (let index = 0; index < inProgress.length; index++) {
         const cards = inProgress[index];
-        let card = JSON.stringify(cards);
-        document.getElementById('inProgressContent').innerHTML +=generateHTML(cards, card);
+        document.getElementById('inProgressContent').innerHTML +=generateHTML(cards);
         
     }
 }
@@ -40,9 +38,8 @@ function updateHTMLAwaitingFeedback(){
     document.getElementById('awaitingFeedbackContent').innerHTML = '';
 
     for (let index = 0; index < awaiting.length; index++) {
-        const cards = awaiting[index];
-        let card = JSON.stringify(cards);
-        document.getElementById('awaitingFeedbackContent').innerHTML += generateHTML(cards, card);
+        const cards = awaiting[index];       
+        document.getElementById('awaitingFeedbackContent').innerHTML += generateHTML(cards);
     }
 }
 
@@ -53,15 +50,14 @@ function updateHTMLDone(){
 
     for (let index = 0; index < done.length; index++) {
         const cards = done[index];
-        let card = JSON.stringify(cards);
-        document.getElementById('doneContent').innerHTML += generateHTML(cards, card); 
+        document.getElementById('doneContent').innerHTML += generateHTML(cards); 
     }
 }
 
 
-function generateHTML(cards, card) {
+function generateHTML(cards) {
     return `
-    <div draggable="true" ondragstart="startDragging(${cards['id']})" onclick="showOverlay(${card})" class="card">
+    <div draggable="true" ondragstart="startDragging(${cards['id']})" onclick="showOverlay(${cards['id']})" class="card">
     <div>
         <h4>${cards['Department']}</h4>
         <h4>${cards['title']}</h4>
@@ -90,27 +86,46 @@ function moveTo(category){
 
 
 function showOverlay(cards){
-    cards = JSON.parse(cards);
+    // Finden des entsprechenden Objekts im JSON-Array todos anhand der ID
+    let todo = todos.find((item) => item.id === cards);
+    document.getElementById('desktop').style.opacity = '0.5';
     let overlay = document.getElementById('overlay');
     overlay.classList.remove('d-none');
     overlay.innerHTML = /*html*/`        
+    <div class="overlay-header">
     <div class="overlay-department">
-    ${cards['Department']}
+    ${(todo.Department)}
+    </div>
+    <div class="close-icon">
+    <img onclick="closeOverlay()" src="assets/img/close-overlay.svg">
+    </div>
     </div>
     <div class="overlay-title">
-    Call potenzial clients
+    ${(todo.title)}
     </div>
     <div class="overlay-text">
-    Make the product presentation to prospective buyers
+    ${(todo.text)}
     </div>
     <div class="overlay-date">
-   <b>Due date:</b>
+   <b>Due date:</b> ${(todo['due date'])}
     </div>
     <div class="overlay-date">
-    <b>Priority:</b>
+    <b>Priority:</b> ${(todo.priority)}
     </div>
     <div class="overlay-date">
-    <b>Assigned to:</b>
+    <b>Assigned to:</b> ${(todo['Assigned to'])}
+    </div>
+    <div class="overlay-edit-task-position">
+        <div class="overlay-edit-task">
+          <img src="assets/img/edit-task.svg">
+        </div>
     </div>
     `;
+}
+
+
+function closeOverlay(){
+    let overlay = document.getElementById('overlay');
+    overlay.classList.add('d-none');
+    document.getElementById('desktop').style.opacity = '1';
 }

@@ -15,8 +15,8 @@
     <script src="./js/board.js"></script>
 </head>
 
-<body onload="init('board'), updateHTML()">
-    <div class="desktop">
+<body id="body" onload="init('board'), updateHTML()">
+    <div id="desktop" class="desktop">
         <div w3-include-html="desktop-template.html"></div>
         <div class="board-header">
             <div class="board-header-h2">
@@ -76,8 +76,6 @@
     </div>
 
     <div id="overlay" class="overlay d-none">
-
-
     </div>
 </body>
 
