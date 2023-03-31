@@ -1,3 +1,4 @@
+let bothLetters;
 let contactName;
 let email;
 let phone;
@@ -15,17 +16,28 @@ function sortNames() {
         for (let j = 0; j < contacts.length; j++) {
             let name = contacts[j]['name'];
             let email = contacts[j]['email']
+            let bothLetters =contacts[j]['letters'] 
             let nameLetter = name.charAt(0);
             if (nameLetter == letter) {
-                templateNameCard(i, nameLetter, name, email, j)
+            templateNameCard(i, nameLetter, name, email, j,bothLetters);
             }
         }
     }
 }
 
+function showContact(j,nameLetter) {
+    contactName = contacts[j]['name'];
+    email = contacts[j]['email'];
+    phone = contacts[j]['phone'];
+    document.getElementById('contact-circle').innerHTML = `${bothLetters}`
+    document.getElementById('float-contact-name').innerHTML = `${contactName}`;
+    document.getElementById('email').innerHTML = `${email}`;
+    document.getElementById('phone').innerHTML = `${phone}`;
+}
+
 function templateNameCard(i, nameLetter, name, email, j) {
     document.getElementById('contact-cards' + i).innerHTML += `
-    <div class="name-card" id=name-card${j} onclick="showContact(${j})">
+    <div class="name-card" id=name-card${j} onclick="showContact(${j},'${nameLetter}')">
       <div class="circle">${nameLetter}</div>
       <div class="info">
             <h4> ${name} </h4>
@@ -85,6 +97,8 @@ function getInputValues() {
     contactName = contact_name.value;
     email = contact_email.value;
     phone = contact_phone.value;
+    let helpLetter = contactName.split(" ");
+    bothLetters = helpLetter[0].charAt(0) + helpLetter[1].charAt(0);
 }
 
 function updateContactNr() {
@@ -94,7 +108,7 @@ function updateContactNr() {
 
 function CreateNewContact() {
     getInputValues();
-    let contact_obj = { 'name': contactName, 'email': email, 'phone': phone };
+    let contact_obj = { 'name': contactName, 'email': email, 'phone': phone, 'letters': bothLetters};
     contacts.push(contact_obj);
     console.log(contacts);
     updateContactNr();

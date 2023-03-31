@@ -2,6 +2,10 @@ body {
     font-family: 'Inter';
 }
 
+a{
+    cursor: pointer;
+}
+
 .desktop {
     margin-left: 230px;
     margin-top: 89px;
@@ -54,6 +58,13 @@ body {
 .name-card {
     height: 79px;
     display: flex;
+    width:357px;
+    border-radius: 10px;
+}
+
+.name-card:hover {
+    background: #2A3647;
+    color: white;
 }
 
 .circle {
@@ -421,7 +432,6 @@ body {
     display: flex;
     flex-direction: column;
     margin-top: 82px;
-    background-color: white;
     margin-left: 65px;
     height: 364px;
 }
@@ -431,6 +441,19 @@ body {
     width: 100%;
     display: flex;
     justify-content: flex-start;
+}
+
+.name-container a{
+    display: flex;
+    align-items: center;
+    color: #29ABE2;
+}
+
+.name-container img{
+    margin-right: 13px;
+    width: 15px;
+    height: 15px;
+
 }
 
 .contact-information {
@@ -448,6 +471,7 @@ body {
 }
 
 .contact-information img {
+    object-fit: scale-down;
     margin-right: 6px;
     width: 32.85px;
     height: 29.34px;
@@ -468,6 +492,12 @@ body {
 }
 
 .contact-circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: 500;
+font-size: 47px;
     background-color: #091931;
     height: 120px;
     width: 120px;
@@ -478,4 +508,14 @@ body {
     margin: 0px;
     font-weight: 500;
     font-size: 47px;
+}
+
+.contact-details h4{
+    margin: 0px;
+    margin-bottom: 15px;
+}
+
+.contact-details p{
+    margin: 0px;
+    margin-bottom: 15px;
 }
