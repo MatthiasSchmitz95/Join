@@ -4,6 +4,10 @@ body {
     overflow-x: hidden;
 }
 
+.mt-15 {
+    margin-top: .8rem;
+}
+
 .taskCard {
     height: 1024px;
     width: 1440px;
@@ -34,7 +38,8 @@ body {
 .contentContainer {
     display: flex;
     width: 962px;
-    height: 506px;
+    /*height: 506px;*/
+    height: auto;
     margin-left: 123px;
     margin-top: 41px;
     position: relative;
@@ -48,7 +53,8 @@ body {
     gap: 14px;
 
     width: 422px;
-    height: 506px;
+    /*height: 506px;*/
+    height: auto;
 }
 
 .midLine {
@@ -100,12 +106,12 @@ body {
 
 }
 
-.clearButton:hover{
-    border: 1px solid #32daff; 
+.clearButton:hover {
+    border: 1px solid #32daff;
     color: #32daff;
 }
 
-.clearButton img:hover{
+.clearButton img:hover {
     color: #32daff;
 }
 
@@ -126,7 +132,7 @@ body {
     justify-content: space-evenly;
 }
 
-.createButton:hover{
+.createButton:hover {
     background-color: #007cee;
     border: none;
 }
@@ -189,6 +195,7 @@ body {
     padding-top: 18px;
 }
 
+/*
 .category {
     width: 93px;
     height: 25px;
@@ -198,8 +205,140 @@ body {
     font-size: 21px;
     line-height: 120%;
     color: #000000;
+} */
+
+.category,
+.assignedTo {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 120%;
+    color: #000000;
+    margin-bottom: 8px;
 }
 
+.categoryContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    width: 422px;
+}
+
+.inputContainer,
+.contactInputContainer {
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 21px;
+    padding-right: 21px;
+
+    width: 422px;
+    height: 51px;
+
+    background: #FFFFFF;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+}
+
+#input,
+#assignInput {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 120%;
+    border: none;
+    outline: none;
+}
+
+.categoryList,
+.assignedList {
+    box-sizing: border-box;
+    width: 100%;
+    height: 150px;
+    display: none;
+    background: #FFFFFF;
+    border: 1px solid #D1D1D1;
+    border-top: none;
+    /* Four values border-radius */
+    /* top-left top-right bottom-right bottom-left */
+    border-radius: 0 0 10px 10px;
+    overflow-y: auto;
+}
+
+.categoryList div:hover,
+.assignedList div:hover {
+    background-color: lightgray;
+}
+
+.categoryAndColor,
+.assignedContact {
+    box-sizing: border-box;
+    width: 100%;
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    padding-left: 21px;
+    padding-right: 21px;
+    padding-left: 5px;
+}
+
+.buttonOpenClose {
+    cursor: pointer;
+}
+
+.dropDownDisplay {
+    display: block;
+}
+
+.color {
+    width: 15px;
+    height: 15px;
+    border-radius: 100%;
+}
+
+/*badge colors */
+.orange {
+    background: #ff8a00;
+}
+
+.red {
+    background: #ff0000;
+}
+
+.blue {
+    background: #0038ff;
+}
+
+.lightblue {
+    background: #8aa4ff;
+}
+
+.pink {
+    background: #e200be;
+}
+
+.lightpink {
+    background: #fc71ff;
+}
+
+.green {
+    background: #2ad300;
+}
+
+.turquo {
+    background: #1fd7c1;
+}
+
+
+/*badge colors */
+
+/*
 #category,
 #assignedTo {
     width: 422px;
@@ -221,7 +360,20 @@ body {
     line-height: 120%;
     color: #000000;
 }
+*/
 
+.assignContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    width: 422px;
+}
+
+/*
+.contactCheckbox {
+    display: none;
+}*/
 
 .date {
     font-family: 'Inter';

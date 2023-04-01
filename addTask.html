@@ -12,10 +12,10 @@
     <link rel="stylesheet" href="./styles/addTask.css">
     <script src="./js/board.js"></script>
     <script src="./js/main.js"></script>
-    <script src="addTask.js"></script>
+    <script src="./js/addTask.js"></script>
 </head>
 
-<body onload="init('addTask')">
+<body onload="renderCategory(), renderAssignTo()">
     <div w3-include-html="desktop-template.html"></div>
     <div class="taskCard">
 
@@ -32,20 +32,40 @@
                     <textarea id="description" placeholder="Enter a description" required></textarea>
                 </div>
 
-                <label for="category" class="category">Category</label>
-                <select id="category" placeholder="select task Category" required>
-                    <option>New Category</option>
-                    <option>BackOffice</option>
-                    <option>Sale</option>
-                </select>
 
+                <div class="categoryContainer">
+                    <label for="category" class="category">Category</label>
+                    <div class="inputContainer" id="inputContainer">
+                        <input id="input" type="text" placeholder="Select task Category">
+                        <div id="color" class="color"></div>
+                        <div id="buttonDropDown" class="buttonOpenClose" onclick="dropDown()"><img
+                                src="assets/img/dropdown-arrow.png"></div>
+                    </div>
+                    <div id="categoryList" class="categoryList"></div>
+                </div>
+
+
+                <!--
                 <label for="assignedTo" class="assignedTo">Assigned to</label>
                 <select id="assignedTo" placeholder="select contacts to assign" required>
                     <option>Contact1</option>
                     <option>Contact2</option>
                     <option>Contact3</option>
                 </select>
+                -->
+
+                <div class="assignContainer">
+                    <label for="assignedTo" class="assignedTo">Assigned to</label>
+                    <div class="contactInputContainer" id="contactInputContainer">
+                        <input id="assignInput" type="text" placeholder="Select contacts to assign">
+                        
+                        <div id="assignDropDown" class="buttonOpenClose" onclick="dropDownAssignTo()"><img
+                                src="assets/img/dropdown-arrow.png"></div>
+                    </div>
+                    <div id="assignedList" class="assignedList"></div>
+                </div>
             </div>
+
 
             <div class="midLine"></div>
 
@@ -81,6 +101,8 @@
 
     </div>
 
+
+    <script src="./js/addTask.js"></script>
 </body>
 
 </html>
