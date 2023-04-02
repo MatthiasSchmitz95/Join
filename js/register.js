@@ -23,6 +23,12 @@ async function signUpUser() {
   setTimeout(backToLogin, 2000);
 }
 
+async function setName(){
+  await init('summary');
+  let userName = userAccounts[0]['userName'];
+  document.getElementById('name').innerHTML = userName;
+}
+
 function userNameInitial(name) {
   let initials = "";
   let nameSplit = name.split(" ");

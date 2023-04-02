@@ -21,6 +21,7 @@ function randomUserColor() {
 }
 
 
+
 async function init(id) {
   await includeHTML();
   highlightSelectedNav(id);
