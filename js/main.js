@@ -1,6 +1,24 @@
 let activeUser;
 
 
+let loginCheckedBox;
+function loginCheckbox() {
+  if (loginCheckedBox) {
+    document.getElementById("loginCheckbox").src = "./assets/img/unchecked.png";
+    loginCheckedBox = false;
+  } else {
+    document.getElementById("loginCheckbox").src = "./assets/img/checked.png";
+    loginCheckedBox = true;
+  }
+}
+
+function randomUserColor() {
+  let r = Math.floor(Math.random() * 256);
+  let g = Math.floor(Math.random() * 256);
+  let b = Math.floor(Math.random() * 256);
+  let rgbColor = `rgb(${r},${g},${b},)`;
+  return rgbColor;
+}
 
 
 async function init(id) {
@@ -32,20 +50,32 @@ async function loadUserAccountsFromBackend() {
   console.log('Useraccounts loadet', userAccounts);
 }
 
+/**
+ * loading tasks from backend
+ */
 async function loadTasksFromBackend() {
   await downloadFromServer();
   tasks = JSON.parse(backend.getItem('tasks')) || [];
   console.log('Tasks loadet', tasks);
 }
 
+/**
+ * saves user accounts in the backend
+ */
 async function saveUserAccountsToBackend(){
   await backend.setItem('userAccounts', JSON.stringify(userAccounts));
 }
 
+/**
+ * saves tasks in the backend
+ */
 async function saveTasksToBackend(){
   await backend.setItem('tasks', JSON.stringify(tasks));
 }
 
+/**
+ * loading active users from local storage 
+ */
 function loadActiveUserLocal() {
   activeUser = localStorage.getItem('activeUser');
 }
@@ -56,3 +86,4 @@ function highlightSelectedNav(id) {
     document.getElementById(`${id}`).classList.add("selected");
   }, 10);
 }
+
