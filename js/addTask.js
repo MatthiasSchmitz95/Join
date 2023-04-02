@@ -8,6 +8,8 @@ let yyyy = today.getFullYear();
 today = yyyy + "-" + mm + "-" + dd;
 document.getElementById("date").min = today;*/
 
+/*setURL("https://gruppenarbeit-504-join.developerakademie.net/smallest_backend_ever");*/
+
 /**
  * Category
  */
@@ -108,6 +110,9 @@ function chooseContact(index, contact) {
  * Subtask
  */
 
+
+
+
 var addsubtask = document.getElementById('addSubtaskBtn');
 var onInputSubTask = document.getElementById('subtaskOninput');
 var subtaskInput = document.getElementById('subtasksInput');
@@ -156,4 +161,38 @@ function addSubTask() {
     `;
     addsubtask.style.display = "flex";
     onInputSubTask.style.display = "none";
+}
+
+/**
+ * AddTask JSON Array
+ */
+
+function addTaskToBoard() {
+    console.log('es läuft');
+    let myGreeting = console.log('Hi es geht');
+    const myTimeout = setTimeout(myGreeting, 5000);
+    document.getElementById('messageAddedTask').style.display = "flex";
+}
+
+
+function insertUrgent() {
+    document.getElementById('prioUrgentBox').classList.toggle('bgUrgent');
+    document.getElementById('prioMediumBox').classList.remove('bgMedium');
+    document.getElementById('prioLowBox').classList.remove('bgLow');
+    document.getElementById('prioUrgentImg').classList.color = "white";
+
+}
+
+function insertMedium() {
+    document.getElementById('prioMediumBox').classList.toggle('bgMedium');
+    document.getElementById('prioLowBox').classList.remove('bgLow');
+    document.getElementById('prioUrgentBox').classList.remove('bgUrgent');
+    document.getElementById('prioMediumImg').classList.color = "white";
+}
+
+function insertLow() {
+    document.getElementById('prioLowBox').classList.toggle('bgLow');
+    document.getElementById('prioUrgentBox').classList.remove('bgUrgent');
+    document.getElementById('prioMediumBox').classList.remove('bgMedium');
+    document.getElementById('prioLowImg').classList.color = "white";
 }

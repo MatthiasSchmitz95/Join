@@ -17,7 +17,8 @@
 
 <body onload="init('addTask')">
     <div w3-include-html="desktop-template.html"></div>
-    <div class="taskCard">
+    <div class="headline">Add Task</div>
+    <form class="taskCard" onsubmit="addTaskToBoard(); return false">
 
         <div class="headline">Add Task</div>
         <div class="contentContainer">
@@ -36,7 +37,7 @@
                 <div class="categoryContainer">
                     <label for="category" class="category">Category</label>
                     <div class="inputContainer" id="inputContainer">
-                        <input readonly id="input" type="text" placeholder="Select task Category">
+                        <input id="input" type="text" placeholder="Select task Category" required>
                         <div id="color" class="color"></div>
                         <div id="buttonDropDown" class="buttonOpenClose" onclick="dropDown()"><img
                                 src="assets/img/dropdown-arrow.png"></div>
@@ -47,7 +48,7 @@
                 <div class="assignContainer">
                     <label for="assignedTo" class="assignedTo">Assigned to</label>
                     <div class="contactInputContainer" id="contactInputContainer">
-                        <input readonly id="assignInput" type="text" placeholder="Select contacts to assign">
+                        <input id="assignInput" type="text" placeholder="Select contacts to assign" required>
 
                         <div id="assignDropDown" class="buttonOpenClose" onclick="dropDownAssignTo()"><img
                                 src="assets/img/dropdown-arrow.png"></div>
@@ -61,18 +62,21 @@
 
             <div class="rightContent">
                 <label for="date" class="date">Due date</label>
-                <input id="date" placeholder="dd/mm/yyyy" type="date">
+                <input id="date" placeholder="dd/mm/yyyy" type="date" required>
 
                 <label for="priority" class="priority">Prio</label>
                 <div class="priorityBoxesContainer">
-                    <div class="prioUrgentBox">urgent <img src="assets\img\urgent.png"></div>
-                    <div class="prioMediumBox">Medium <img src="assets\img\medium.png"></div>
-                    <div class="prioLowBox">low <img src="assets\img\low.png"></div>
+                    <div class="prioUrgentBox" id="prioUrgentBox" onclick="insertUrgent()">urgent <img
+                            id="prioUrgentImg" src="assets\img\urgent.png"></div>
+                    <div class="prioMediumBox" id="prioMediumBox" onclick="insertMedium()">Medium <img
+                            id="prioMediumImg" src="assets\img\medium.png"></div>
+                    <div class="prioLowBox" id="prioLowBox" onclick="insertLow()">low <img id="prioLowImg"
+                            src="assets\img\low.png"></div>
                 </div>
 
                 <label for="subtasks" class="subtasks">Subtasks</label>
                 <div class="addSubtaskContainer">
-                    <input readonly class="subtasksInput" id="subtasksInput" placeholder="Add new Subtask">
+                    <input class="subtasksInput" id="subtasksInput" placeholder="Add new Subtask" required>
                     <div class="addSubtaskBtn" id="addSubtaskBtn" onclick="createNewSubtask()"><img
                             src="assets/img/plus.png"></div>
                     <div id="subtaskOninput">
@@ -93,12 +97,18 @@
         </div>
 
         <div class="buttonsContainer">
-            <div class="clearButton">Clear <img class="clearBtnImg" id="clearBtnImg" src="assets/img/cross-mark.svg">
-            </div>
-            <div class="createButton">Create Task <img class="createBtnImg" src="assets/img/right-mark.png"></div>
+            <button class="clearButton">Clear <img class="clearBtnImg" id="clearBtnImg" src="assets/img/cross-mark.svg">
+            </button>
+            <button class="createButton" type="submit">Create Task <img class="createBtnImg"
+                    src="assets/img/right-mark.png"></button>
         </div>
 
-    </div>
+        <div id="messageAddedTask" class="messageAddedTask">
+            <p>Added to Board</p>
+            <img src="assets/img/board-icon.png">
+        </div>
+
+    </form>
 
 
     <script src="./js/addTask.js"></script>

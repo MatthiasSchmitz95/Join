@@ -526,3 +526,38 @@ body {
     height: auto;
     background-color: lightblue;
 }
+
+.bgUrgent{
+    background-color: #FF3D00;
+}
+
+.bgMedium{
+    background-color: #FFA800;
+}
+
+.bgLow{
+    background-color: #7AE229;
+}
+
+
+.messageAddedTask{
+    position: absolute;
+    left: 650px;
+    bottom: 74px;
+    background-color: #2A3647;
+    width: 220px;
+    height: 75px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    color: white;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 120%;
+    border-radius: 10px;
+    display: none;
+}
