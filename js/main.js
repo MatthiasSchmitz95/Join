@@ -1,6 +1,16 @@
 let activeUser;
 
 
+let loginCheckedBox;
+function loginCheckbox() {
+  if (loginCheckedBox) {
+    document.getElementById("loginCheckbox").src = "./assets/img/unchecked.png";
+    loginCheckedBox = false;
+  } else {
+    document.getElementById("loginCheckbox").src = "./assets/img/checked.png";
+    loginCheckedBox = true;
+  }
+}
 
 
 async function init(id) {
@@ -42,14 +52,14 @@ async function loadTasksFromBackend() {
 }
 
 /**
- * saves user accounts in the backand
+ * saves user accounts in the backend
  */
 async function saveUserAccountsToBackend(){
   await backend.setItem('userAccounts', JSON.stringify(userAccounts));
 }
 
 /**
- * saves tasks in the backand
+ * saves tasks in the backend
  */
 async function saveTasksToBackend(){
   await backend.setItem('tasks', JSON.stringify(tasks));
