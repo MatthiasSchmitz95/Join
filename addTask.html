@@ -15,7 +15,7 @@
     <script src="./js/addTask.js"></script>
 </head>
 
-<body onload="renderCategory(), renderAssignTo()">
+<body onload="init('addTask')">
     <div w3-include-html="desktop-template.html"></div>
     <div class="taskCard">
 
@@ -36,7 +36,7 @@
                 <div class="categoryContainer">
                     <label for="category" class="category">Category</label>
                     <div class="inputContainer" id="inputContainer">
-                        <input id="input" type="text" placeholder="Select task Category">
+                        <input readonly id="input" type="text" placeholder="Select task Category">
                         <div id="color" class="color"></div>
                         <div id="buttonDropDown" class="buttonOpenClose" onclick="dropDown()"><img
                                 src="assets/img/dropdown-arrow.png"></div>
@@ -44,21 +44,11 @@
                     <div id="categoryList" class="categoryList"></div>
                 </div>
 
-
-                <!--
-                <label for="assignedTo" class="assignedTo">Assigned to</label>
-                <select id="assignedTo" placeholder="select contacts to assign" required>
-                    <option>Contact1</option>
-                    <option>Contact2</option>
-                    <option>Contact3</option>
-                </select>
-                -->
-
                 <div class="assignContainer">
                     <label for="assignedTo" class="assignedTo">Assigned to</label>
                     <div class="contactInputContainer" id="contactInputContainer">
-                        <input id="assignInput" type="text" placeholder="Select contacts to assign">
-                        
+                        <input readonly id="assignInput" type="text" placeholder="Select contacts to assign">
+
                         <div id="assignDropDown" class="buttonOpenClose" onclick="dropDownAssignTo()"><img
                                 src="assets/img/dropdown-arrow.png"></div>
                     </div>
@@ -82,12 +72,21 @@
 
                 <label for="subtasks" class="subtasks">Subtasks</label>
                 <div class="addSubtaskContainer">
-                    <input class="subtasksInput" placeholder="Add new Subtask">
-                    <div class="addSubtaskBtn"><img src="assets/img/plus.png"></div>
+                    <input readonly class="subtasksInput" id="subtasksInput" placeholder="Add new Subtask">
+                    <div class="addSubtaskBtn" id="addSubtaskBtn" onclick="createNewSubtask()"><img
+                            src="assets/img/plus.png"></div>
+                    <div id="subtaskOninput">
+                        <img src="assets/img/icon_clear.png" id="clearSubtaskInput" onclick="deleteSubTask()">
+                        <div class="line"></div>
+                        <img src="assets/img/checkmark.png" id="finishEditingSubtask" onclick="addSubTask()">
+                    </div>
                 </div>
-                <div class="checkboxContainer">
-                    <input type="checkbox" name="checkbox" />
-                    <div class="subtaskCheck">Subtask 1</div>
+
+                <div class="SubtaskAppendixContainer" id="SubtaskAppendixContainer">
+                    <div class="checkboxContainer">
+                        <input type="checkbox" name="checkbox" />
+                        <div class="subtaskCheck">Subtask 1</div>
+                    </div>
                 </div>
 
             </div>

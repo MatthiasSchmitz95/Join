@@ -1,5 +1,3 @@
-/*let team = ["Name1", "Name2", "Name3"];*/
-
 // modify calendar so you can only select current date or date in the future
 /*let date = document.getElementById("date");
 
@@ -48,6 +46,7 @@ function dropDown() {
         /* Four values */
         /* top-left top-right bottom-right bottom-left */
         categoryInputContainer.style.borderRadius = "10px 10px 0 0";
+        renderCategory();
     }
 
 }
@@ -65,12 +64,12 @@ function chooseCategory(index, category, color) {
 var assignToInputContainer = document.getElementById('contactInputContainer');
 var contactListArray = ['contact1', 'contact2', 'contact3'];
 
-function renderAssignTo(){
+function renderAssignTo() {
     let assignedContactList = document.getElementById('assignedList');
     assignedContactList.innerHTML = "";
     for (let i = 0; i < contactListArray.length; i++) {
         const contact = contactListArray[i];
-        
+
         assignedContactList.innerHTML += `
         <div class="assignedContact" onclick="chooseContact(${i}, '${contact}')" > 
         <div>${contact}</div>
@@ -80,7 +79,7 @@ function renderAssignTo(){
     }
 }
 
-function dropDownAssignTo(){
+function dropDownAssignTo() {
     /* document.getElementById('categoryList').classList.toggle('dropDownDisplay');*/
     var assignToDropDown = document.getElementById('assignedList');
 
@@ -94,12 +93,67 @@ function dropDownAssignTo(){
         /* Four values */
         /* top-left top-right bottom-right bottom-left */
         assignToInputContainer.style.borderRadius = "10px 10px 0 0";
+        renderAssignTo();
     }
 
 }
 
-function chooseContact(index, contact){
+function chooseContact(index, contact) {
     let inputAssignedContact = document.getElementById('assignInput');
     inputAssignedContact.value = '';
     inputAssignedContact.value = contact;
+}
+
+/**
+ * Subtask
+ */
+
+var addsubtask = document.getElementById('addSubtaskBtn');
+var onInputSubTask = document.getElementById('subtaskOninput');
+var subtaskInput = document.getElementById('subtasksInput');
+var appendixSubtask = document.getElementById('SubtaskAppendixContainer');
+
+function createNewSubtask() {
+
+    if (onInputSubTask.style.display == "none") {
+        addsubtask.style.display = "none";
+        onInputSubTask.style.display = "flex";
+        let subtaskInput = document.getElementById('subtasksInput');
+        subtaskInput.value = "";
+        subtaskInput.value = "Create new icons";
+    } else {
+        deleteSubTask();
+    }
+}
+
+function deleteSubTask() {
+    subtaskInput.value = "";
+    addsubtask.style.display = "flex";
+    onInputSubTask.style.display = "none";
+    appendixSubtask.innerHTML = "";
+    appendixSubtask.innerHTML = `
+    <div class="checkboxContainer">
+        <input type="checkbox" name="checkbox" />
+        <div class="subtaskCheck">Subtask 1</div>
+    </div>
+    `;
+}
+
+function addSubTask() {
+    subtaskInput.value = "";
+    subtaskInput.value = "Create new icons";
+
+    appendixSubtask.innerHTML = /*html*/`
+        <div class="checkboxContainer">
+            <input type="checkbox" name="checkbox" />
+            <div class="subtaskCheck">Subtask 1</div>
+        </div>
+
+        <div class="checkboxContainer">
+            <input type="checkbox" name="checkbox" checked/>
+            <div class="subtaskCheck">${subtaskInput.value}</div>
+        </div>
+    `;
+    addsubtask.style.display = "flex";
+    onInputSubTask.style.display = "none";
 }
