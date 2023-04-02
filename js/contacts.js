@@ -35,7 +35,7 @@ function showContact(j,bothLetters) {
     document.getElementById('phone').innerHTML = `${phone}`;
 }
 
-function templateNameCard(i,  name, email, j, bothLetters) {
+function templateNameCard(i, name, email, j, bothLetters) {
     document.getElementById('contact-cards' + i).innerHTML += `
     <div class="name-card" id=name-card${j} onclick="showContact(${j},'${bothLetters}')">
       <div class="circle">${bothLetters}</div>
