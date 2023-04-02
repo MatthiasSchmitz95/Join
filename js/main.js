@@ -42,6 +42,12 @@ async function includeHTML() {
   }
 }
 
+async function setName(){
+  await init('summary');
+  let userName = userAccounts[0]['userName'];
+  document.getElementById('name').innerHTML = userName;
+}
+
 /**
  * loading user accounts from backend
  */
