@@ -1,5 +1,5 @@
 let currentDraggedElement;
-
+let loadOverlay = false;
 
 function updateHTML() {
     updateHTMLToDo()
@@ -88,7 +88,7 @@ function moveTo(category){
 function showOverlay(cards){
     // Finden des entsprechenden Objekts im JSON-Array todos anhand der ID
     let todo = todos.find((item) => item.id === cards);
-    document.getElementById('desktop').style.opacity = '0.5';
+    document.getElementById('overlay-background').classList.add('overlay-background');
     let overlay = document.getElementById('overlay');
     overlay.classList.remove('d-none');
     overlay.innerHTML = /*html*/`        
@@ -121,11 +121,18 @@ function showOverlay(cards){
         </div>
     </div>
     `;
+  loadOverlay = true;
 }
 
 
 function closeOverlay(){
+    if(loadOverlay){
     let overlay = document.getElementById('overlay');
     overlay.classList.add('d-none');
-    document.getElementById('desktop').style.opacity = '1';
+    document.getElementById('overlay-background').classList.remove('overlay-background');
+}
+}
+
+function doNotClose(event){
+    event.stopPropagation();
 }

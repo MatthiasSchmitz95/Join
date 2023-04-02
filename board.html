@@ -16,6 +16,8 @@
 </head>
 
 <body id="body" onload="init('board'), updateHTML()">
+    <div id="overlay-background" onclick="closeOverlay()">
+    </div>
     <div id="desktop" class="desktop">
         <div w3-include-html="desktop-template.html"></div>
         <div class="board-header">
@@ -75,7 +77,7 @@
         </div>
     </div>
 
-    <div id="overlay" class="overlay d-none">
+    <div id="overlay" class="overlay d-none" >
     </div>
 </body>
 
