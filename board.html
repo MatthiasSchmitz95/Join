@@ -13,9 +13,10 @@
     <script src="./js/main.js"></script>
     <script src="./js/todos.js"></script>
     <script src="./js/board.js"></script>
+    <script src="js/mini_backend.js"></script>
 </head>
 
-<body id="body" onload="init('board'), updateHTML()">
+<body id="body" onload="init('board'), updateHTML(), loadActiveUserLocal()">
     <div id="overlay-background" onclick="closeOverlay()">
     </div>
     <div id="desktop" class="desktop">
