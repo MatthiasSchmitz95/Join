@@ -19,13 +19,13 @@ function sortNames() {
             let bothLetters =contacts[j]['letters'] 
             let nameLetter = name.charAt(0);
             if (nameLetter == letter) {
-            templateNameCard(i, nameLetter, name, email, j,bothLetters);
+            templateNameCard(i, name, email, j, bothLetters);
             }
         }
     }
 }
 
-function showContact(j,nameLetter) {
+function showContact(j,bothLetters) {
     contactName = contacts[j]['name'];
     email = contacts[j]['email'];
     phone = contacts[j]['phone'];
@@ -35,10 +35,10 @@ function showContact(j,nameLetter) {
     document.getElementById('phone').innerHTML = `${phone}`;
 }
 
-function templateNameCard(i, nameLetter, name, email, j) {
+function templateNameCard(i,  name, email, j, bothLetters) {
     document.getElementById('contact-cards' + i).innerHTML += `
-    <div class="name-card" id=name-card${j} onclick="showContact(${j},'${nameLetter}')">
-      <div class="circle">${nameLetter}</div>
+    <div class="name-card" id=name-card${j} onclick="showContact(${j},'${bothLetters}')">
+      <div class="circle">${bothLetters}</div>
       <div class="info">
             <h4> ${name} </h4>
              <p> ${email} </p>
