@@ -13,12 +13,23 @@ a{
     display: flex;
 }
 
+#bg{
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.5);
+        top: 0px;
+        bottom: -88px;
+        right: 0px;
+        left: 0px;
+        z-index: 5;
+}
+
 .left-container {
+    overflow-y:auto;
     position: sticky;
     width: 453px;
     background: #FFFFFF;
     box-shadow: 4px 0px 6px rgba(0, 0, 0, 0.08);
-    min-height: calc(100vh - 89px);
+    height: 100vh;
 }
 
 .contact-container {
