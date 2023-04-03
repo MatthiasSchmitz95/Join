@@ -2,6 +2,10 @@ function login() {
   let email = document.getElementById("login-email-input");
   let password = document.getElementById("login-password-input");
 
+  checkCorrectLogin(email, password)
+}
+
+function checkCorrectLogin(email, password){
   let user = userAccounts.find((u) => u.userEmail == email.value);
   if (user) {
     if(user.userPassword == password.value){
@@ -19,9 +23,4 @@ function saveActiveUserLocal(user) {
   let activeUser = user.userId;
   localStorage.setItem("activeUser", activeUser);
   console.log(activeUser);
-}
-
-
-function checkRegistration(){
-
 }
