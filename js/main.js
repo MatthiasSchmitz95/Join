@@ -44,7 +44,7 @@ async function includeHTML() {
 
 async function setName(){
   await init('summary');
-  let userName = userAccounts[0]['userName'];
+  let userName = userAccounts[1]['Username'];
   document.getElementById('name').innerHTML = userName;
 }
 
