@@ -3,41 +3,9 @@ let contactName;
 let email;
 let phone;
 let contact_nr = 0;
-let contacts = [{ 'name': "Matthias Schmitz", 'email': "test@webkitURL.de", 'phone': "1234567", 'letters': "MS"},
-{ 'name': "Matthias Schmitz", 'email': "test@webkitURL.de", 'phone': "1234567", 'letters': "MS"},
-{ 'name': "Matthias Schmitz", 'email': "test@webkitURL.de", 'phone': "1234567", 'letters': "MS"},
-{ 'name': "Matthias Schmitz", 'email': "test@webkitURL.de", 'phone': "1234567", 'letters': "MS"},
-{ 'name': "Matthias Schmitz", 'email': "test@webkitURL.de", 'phone': "1234567", 'letters': "MS"},
-{ 'name': "Matthias Schmitz", 'email': "test@webkitURL.de", 'phone': "1234567", 'letters': "MS"},
-{ 'name': "Matthias Schmitz", 'email': "test@webkitURL.de", 'phone': "1234567", 'letters': "MS"},
-{ 'name': "Matthias Schmitz", 'email': "test@webkitURL.de", 'phone': "1234567", 'letters': "MS"},
-{ 'name': "Matthias Schmitz", 'email': "test@webkitURL.de", 'phone': "1234567", 'letters': "MS"},
-{ 'name': "Matthias Schmitz", 'email': "test@webkitURL.de", 'phone': "1234567", 'letters': "MS"},
-{ 'name': "Matthias Schmitz", 'email': "test@webkitURL.de", 'phone': "1234567", 'letters': "MS"},
-{ 'name': "Matthias Schmitz", 'email': "test@webkitURL.de", 'phone': "1234567", 'letters': "MS"},
-{ 'name': "Matthias Schmitz", 'email': "test@webkitURL.de", 'phone': "1234567", 'letters': "MS"},
-{ 'name': "Matthias Schmitz", 'email': "test@webkitURL.de", 'phone': "1234567", 'letters': "MS"},
-{ 'name': "Matthias Schmitz", 'email': "test@webkitURL.de", 'phone': "1234567", 'letters': "MS"},
-{ 'name': "Matthias Schmitz", 'email': "test@webkitURL.de", 'phone': "1234567", 'letters': "MS"},
-{ 'name': "Matthias Schmitz", 'email': "test@webkitURL.de", 'phone': "1234567", 'letters': "MS"},
-{ 'name': "Matthias Schmitz", 'email': "test@webkitURL.de", 'phone': "1234567", 'letters': "MS"},
-{ 'name': "Matthias Schmitz", 'email': "test@webkitURL.de", 'phone': "1234567", 'letters': "MS"},
-{ 'name': "Matthias Schmitz", 'email': "test@webkitURL.de", 'phone': "1234567", 'letters': "MS"},
-{ 'name': "Matthias Schmitz", 'email': "test@webkitURL.de", 'phone': "1234567", 'letters': "MS"},
-{ 'name': "Matthias Schmitz", 'email': "test@webkitURL.de", 'phone': "1234567", 'letters': "MS"},
-{ 'name': "Matthias Schmitz", 'email': "test@webkitURL.de", 'phone': "1234567", 'letters': "MS"},
-{ 'name': "Matthias Schmitz", 'email': "test@webkitURL.de", 'phone': "1234567", 'letters': "MS"},
-{ 'name': "Matthias Schmitz", 'email': "test@webkitURL.de", 'phone': "1234567", 'letters': "MS"},
-{ 'name': "Matthias Schmitz", 'email': "test@webkitURL.de", 'phone': "1234567", 'letters': "MS"},
-{ 'name': "Matthias Schmitz", 'email': "test@webkitURL.de", 'phone': "1234567", 'letters': "MS"},
-{ 'name': "Matthias Schmitz", 'email': "test@webkitURL.de", 'phone': "1234567", 'letters': "MS"},
-{ 'name': "Matthias Schmitz", 'email': "test@webkitURL.de", 'phone': "1234567", 'letters': "MS"},
-{ 'name': "Matthias Schmitz", 'email': "test@webkitURL.de", 'phone': "1234567", 'letters': "MS"},
-{ 'name': "Matthias Schmitz", 'email': "test@webkitURL.de", 'phone': "1234567", 'letters': "MS"},
+let contacts = [];
+let letters = [];
 
-
-];
-let letters = ["M"];
 
 function sortNames() {
     document.getElementById('contact-container').innerHTML = '';
@@ -152,12 +120,13 @@ async function CreateNewContact() {
     updateContactNr();
     closeContactCard();
     displayContactList();
+    console.log(userAccounts[activeUser]);
 
 }
 
 function displayContactList() {
     getFirstLetter();
     sortNames();
-    console.log(letters, userName)
+    //console.log(letters, userName)
 
 }
