@@ -1,13 +1,13 @@
-let loginCheckedBox;
-function loginCheckbox() {
-  if (loginCheckedBox) {
-    document.getElementById("loginCheckbox").src = "./assets/img/unchecked.png";
-    loginCheckedBox = false;
-  } else {
-    document.getElementById("loginCheckbox").src = "./assets/img/checked.png";
-    loginCheckedBox = true;
-  }
-}
+// let loginCheckedBox;
+// function loginCheckbox() {
+//   if (loginCheckedBox) {
+//     document.getElementById("loginCheckbox").src = "./assets/img/unchecked.png";
+//     loginCheckedBox = false;
+//   } else {
+//     document.getElementById("loginCheckbox").src = "./assets/img/checked.png";
+//     loginCheckedBox = true;
+//   }
+// }
 
 async function renderIndex() {
   renderLogin();
