@@ -85,7 +85,7 @@ async function saveTasksToBackend(){
  */
 function loadActiveUserLocal() {
   activeUser = localStorage.getItem('activeUser');
-  console.log(activeUser);
+  console.log('activeUserID = ', activeUser);
 }
 
 
