@@ -1,7 +1,3 @@
-body {
-    font-family: 'Inter';
-}
-
 a{
     cursor: pointer;
 }
@@ -332,7 +328,7 @@ a{
 }
 
 #contact-name {
-    background-image: url(assets/img/contact-name-icon.png);
+    background-image: url("../assets/img/contact-name-icon.png");
     background-repeat: no-repeat;
     background-position-y: center;
     background-position-x: 381px;
@@ -340,7 +336,7 @@ a{
 }
 
 #contact-email {
-    background-image: url(assets/img/contact-email-icon.png);
+    background-image: url("../assets/img/contact-email-icon.png");
     background-repeat: no-repeat;
     background-position-y: center;
     background-position-x: 381px;
@@ -348,7 +344,7 @@ a{
 }
 
 #contact-phone {
-    background-image: url(assets/img/contact-phone-icon.png);
+    background-image: url("../assets/img/contact-phone-icon.png");
     background-repeat: no-repeat;
     background-position-y: center;
     background-position-x: 381px;

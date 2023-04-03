@@ -142,10 +142,12 @@ function updateContactNr() {
     console.log(contact_nr);
 }
 
-function CreateNewContact() {
+async function CreateNewContact() {
+    await init('contacts');
+    let userName = userAccounts[activeUser]['userContacts'];
     getInputValues();
     let contact_obj = { 'name': contactName, 'email': email, 'phone': phone, 'letters': bothLetters};
-    contacts.push(contact_obj);
+    userName.push(contact_obj);
     console.log(contacts);
     updateContactNr();
     closeContactCard();
@@ -156,6 +158,6 @@ function CreateNewContact() {
 function displayContactList() {
     getFirstLetter();
     sortNames();
-    console.log(letters, contacts)
+    console.log(letters, userName)
 
 }
