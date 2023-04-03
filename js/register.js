@@ -7,7 +7,7 @@ async function signUpUser() {
   let userColor = randomUserColor();
 
   let newUser = {
-    Username: name,
+    UserName: name,
     userEmail: email,
     userPassword: password,
     userId: userId,
