@@ -1,5 +1,12 @@
 let activeUser;
 
+async function init(id) {
+  await includeHTML();
+  highlightSelectedNav(id);
+  await loadUserAccountsFromBackend();
+  loadActiveUserLocal();
+}
+
 
 let loginCheckedBox;
 function loginCheckbox() {
@@ -21,13 +28,6 @@ function randomUserColor() {
 }
 
 
-
-async function init(id) {
-  await includeHTML();
-  highlightSelectedNav(id);
-  await loadUserAccountsFromBackend();
-}
-
 async function includeHTML() {
   let includeElements = document.querySelectorAll("[w3-include-html]");
   for (let i = 0; i < includeElements.length; i++) {
@@ -44,7 +44,7 @@ async function includeHTML() {
 
 async function setName(){
   await init('summary');
-  let userName = userAccounts[1]['Username'];
+  let userName = userAccounts[activeUser].userName;
   document.getElementById('name').innerHTML = userName;
 }
 
@@ -85,7 +85,9 @@ async function saveTasksToBackend(){
  */
 function loadActiveUserLocal() {
   activeUser = localStorage.getItem('activeUser');
+  console.log('activeUserID = ', activeUser);
 }
+
 
 
 function highlightSelectedNav(id) {

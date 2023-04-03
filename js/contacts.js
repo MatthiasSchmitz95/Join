@@ -3,8 +3,41 @@ let contactName;
 let email;
 let phone;
 let contact_nr = 0;
-let contacts = [];
-let letters = [];
+let contacts = [{ 'name': "Matthias Schmitz", 'email': "test@webkitURL.de", 'phone': "1234567", 'letters': "MS"},
+{ 'name': "Matthias Schmitz", 'email': "test@webkitURL.de", 'phone': "1234567", 'letters': "MS"},
+{ 'name': "Matthias Schmitz", 'email': "test@webkitURL.de", 'phone': "1234567", 'letters': "MS"},
+{ 'name': "Matthias Schmitz", 'email': "test@webkitURL.de", 'phone': "1234567", 'letters': "MS"},
+{ 'name': "Matthias Schmitz", 'email': "test@webkitURL.de", 'phone': "1234567", 'letters': "MS"},
+{ 'name': "Matthias Schmitz", 'email': "test@webkitURL.de", 'phone': "1234567", 'letters': "MS"},
+{ 'name': "Matthias Schmitz", 'email': "test@webkitURL.de", 'phone': "1234567", 'letters': "MS"},
+{ 'name': "Matthias Schmitz", 'email': "test@webkitURL.de", 'phone': "1234567", 'letters': "MS"},
+{ 'name': "Matthias Schmitz", 'email': "test@webkitURL.de", 'phone': "1234567", 'letters': "MS"},
+{ 'name': "Matthias Schmitz", 'email': "test@webkitURL.de", 'phone': "1234567", 'letters': "MS"},
+{ 'name': "Matthias Schmitz", 'email': "test@webkitURL.de", 'phone': "1234567", 'letters': "MS"},
+{ 'name': "Matthias Schmitz", 'email': "test@webkitURL.de", 'phone': "1234567", 'letters': "MS"},
+{ 'name': "Matthias Schmitz", 'email': "test@webkitURL.de", 'phone': "1234567", 'letters': "MS"},
+{ 'name': "Matthias Schmitz", 'email': "test@webkitURL.de", 'phone': "1234567", 'letters': "MS"},
+{ 'name': "Matthias Schmitz", 'email': "test@webkitURL.de", 'phone': "1234567", 'letters': "MS"},
+{ 'name': "Matthias Schmitz", 'email': "test@webkitURL.de", 'phone': "1234567", 'letters': "MS"},
+{ 'name': "Matthias Schmitz", 'email': "test@webkitURL.de", 'phone': "1234567", 'letters': "MS"},
+{ 'name': "Matthias Schmitz", 'email': "test@webkitURL.de", 'phone': "1234567", 'letters': "MS"},
+{ 'name': "Matthias Schmitz", 'email': "test@webkitURL.de", 'phone': "1234567", 'letters': "MS"},
+{ 'name': "Matthias Schmitz", 'email': "test@webkitURL.de", 'phone': "1234567", 'letters': "MS"},
+{ 'name': "Matthias Schmitz", 'email': "test@webkitURL.de", 'phone': "1234567", 'letters': "MS"},
+{ 'name': "Matthias Schmitz", 'email': "test@webkitURL.de", 'phone': "1234567", 'letters': "MS"},
+{ 'name': "Matthias Schmitz", 'email': "test@webkitURL.de", 'phone': "1234567", 'letters': "MS"},
+{ 'name': "Matthias Schmitz", 'email': "test@webkitURL.de", 'phone': "1234567", 'letters': "MS"},
+{ 'name': "Matthias Schmitz", 'email': "test@webkitURL.de", 'phone': "1234567", 'letters': "MS"},
+{ 'name': "Matthias Schmitz", 'email': "test@webkitURL.de", 'phone': "1234567", 'letters': "MS"},
+{ 'name': "Matthias Schmitz", 'email': "test@webkitURL.de", 'phone': "1234567", 'letters': "MS"},
+{ 'name': "Matthias Schmitz", 'email': "test@webkitURL.de", 'phone': "1234567", 'letters': "MS"},
+{ 'name': "Matthias Schmitz", 'email': "test@webkitURL.de", 'phone': "1234567", 'letters': "MS"},
+{ 'name': "Matthias Schmitz", 'email': "test@webkitURL.de", 'phone': "1234567", 'letters': "MS"},
+{ 'name': "Matthias Schmitz", 'email': "test@webkitURL.de", 'phone': "1234567", 'letters': "MS"},
+
+
+];
+let letters = ["M"];
 
 function sortNames() {
     document.getElementById('contact-container').innerHTML = '';
@@ -33,6 +66,7 @@ function showContact(j,bothLetters) {
     document.getElementById('float-contact-name').innerHTML = `${contactName}`;
     document.getElementById('email').innerHTML = `${email}`;
     document.getElementById('phone').innerHTML = `${phone}`;
+    document.getElementById('floating-contact-container').style.display ="";
 }
 
 function templateNameCard(i, name, email, j, bothLetters) {
@@ -81,12 +115,14 @@ function getFirstLetter() {
 }
 
 function showCard() {
+    document.getElementById('bg').style.display = '';
     document.getElementById('contact-card').classList = 'add-contact-card';
 
 }
 
 function closeContactCard() {
     document.getElementById('contact-card').classList = 'hidden';
+    document.getElementById('bg').style.display = 'none';
 
 }
 

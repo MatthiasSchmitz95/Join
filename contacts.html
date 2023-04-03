@@ -14,7 +14,8 @@
     <script src="./js/mini_backend.js"></script>
 </head>
 
-<body onload="loadActiveUserLocal() ; init('contacts'); sortLetters()">
+<body onload="init('contacts'); sortLetters();sortNames()">
+    <div onclick="closeContactCard()" id="bg" style="display: none;"></div>
     <div class="hidden" id="contact-card">
 
         <div class="card-container-left">
@@ -58,7 +59,7 @@
                 <span class="line"></span>
                 <p>Better with a Team</p>
             </div>
-            <div class="floating-contact-container" id="floating-contact-container">
+            <div class="floating-contact-container" id="floating-contact-container" style="display: none">
                 <div class="name-container" id="name-container">
                     <div class="contact-circle">
                         <p id="contact-circle"></p>
@@ -68,7 +69,7 @@
                         <a><img src="assets/img/add-task-contact.png"><p>Add task</p></a>
                     </div>
                 </div>
-                <div class="contact-information">
+                <div class="contact-information" >
                     <h4>Contact information</h4>
                     <a><img src="assets/img/edit-contact.png"><p>Edit contact</p></a>
                 </div>
