@@ -5,25 +5,28 @@ async function signUpUser() {
   let userId = userAccounts.length;
   let userInitials = userNameInitial(name);
   let userColor = randomUserColor();
+  let checkInvalidName = name.split(" ");
 
-  let newUser = {
-    userName: name,
-    userEmail: email,
-    userPassword: password,
-    userId: userId,
-    userInitials: userInitials,
-    userColor: userColor,
-    userContacts: [],
-    userTasks: [],
-  };
+  if (checkInvalidName.length !== 2) {
+    console.log("Please enter your first and last name");
+  } else {
+    let newUser = {
+      userName: name,
+      userEmail: email,
+      userPassword: password,
+      userId: userId,
+      userInitials: userInitials,
+      userColor: userColor,
+      userContacts: [],
+      userTasks: [],
+    };
 
-  userAccounts.push(newUser);
-  await saveUserAccountsToBackend();
-  document.getElementById("registerBox").classList.remove("display-none");
-  setTimeout(backToLogin, 2000);
+    userAccounts.push(newUser);
+    await saveUserAccountsToBackend();
+    document.getElementById("registerBox").classList.remove("display-none");
+    setTimeout(backToLogin, 2000);
+  }
 }
-
-
 
 function userNameInitial(name) {
   let initials = "";
@@ -35,5 +38,3 @@ function userNameInitial(name) {
   }
   return initials;
 }
-
-
