@@ -44,7 +44,7 @@ async function includeHTML() {
 
 async function setName(){
   await init('summary');
-  let userName = userAccounts[activeUser]['userName'];
+  let userName = userAccounts[activeUser].userName;
   document.getElementById('name').innerHTML = userName;
 }
 
@@ -85,7 +85,7 @@ async function saveTasksToBackend(){
  */
 function loadActiveUserLocal() {
   activeUser = localStorage.getItem('activeUser');
-  console.log(activeUser);
+  console.log('activeUserID = ', activeUser);
 }
 
 
