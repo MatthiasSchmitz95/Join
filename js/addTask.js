@@ -66,23 +66,29 @@ function chooseCategory(index, category, color) {
  */
 var assignToInputContainer = document.getElementById('contactInputContainer');
 /*var contactListArray = ['contact1', 'contact2', 'contact3'];*/
-loadActiveUserLocal();
-var contactArray = [];
-contactArray.push(activeUser[0]);
-
+init(); {
+    loadActiveUserLocal()
+}
 
 function renderAssignTo() {
     let assignedContactList = document.getElementById('assignedList');
     assignedContactList.innerHTML = "";
-    for (let i = 0; i < contactArray.length; i++) {
-        const contact = contactArray[i];
 
-        assignedContactList.innerHTML += `
-        <div class="assignedContact" onclick="chooseContact(${i}, '${contact}')" > 
-        <div>${contact}</div>
-        <input type="checkbox" name="checkbox" class="checkbox${i}"/>
+    for (let i = 0; i < userAccounts.length; i++) {
+        /*const contact = contactArray[i];*/
+        var userName = userAccounts[i]['userName'];
+
+        assignedContactList.innerHTML += /*html*/`
+        <div class="assignedContact" onclick="chooseContact(${i}, '${userName}')" > 
+            <div>${userName}</div>
+            <label class="filledCheckboxContainer">
+                <input type="checkbox">
+                <span class="checkmark"></span>
+            <div class="subtaskCheck"></div>
+        </label>
         </div>
         `;
+        /* <input type="checkbox" name="checkbox" class="checkbox${i}"/> */
     }
 }
 
@@ -137,12 +143,17 @@ function deleteSubTask() {
     addsubtask.style.display = "flex";
     onInputSubTask.style.display = "none";
     appendixSubtask.innerHTML = "";
-    appendixSubtask.innerHTML = `
-    <div class="checkboxContainer">
+    appendixSubtask.innerHTML = /*html*/`
+        <label class="container">
+            <input type="checkbox">
+            <span class="checkmark"></span>
+            <div class="subtaskCheck">Subtask 1</div>
+        </label>
+    `;
+    /*<div class="checkboxContainer">
         <input type="checkbox" name="checkbox" />
         <div class="subtaskCheck">Subtask 1</div>
-    </div>
-    `;
+    </div>*/
 }
 
 function addSubTask() {
@@ -150,7 +161,20 @@ function addSubTask() {
     subtaskInput.value = "Create new icons";
 
     appendixSubtask.innerHTML = /*html*/`
-        <div class="checkboxContainer">
+        <label class="container">
+            <input type="checkbox">
+            <span class="checkmark"></span>
+            <div class="subtaskCheck">Subtask 1</div>
+        </label>
+        <label class="container">
+            <input type="checkbox">
+            <span class="checkmark"></span>
+            <div class="subtaskCheck">${subtaskInput.value}</div>
+        </label>
+    `;
+    addsubtask.style.display = "flex";
+    onInputSubTask.style.display = "none";
+    /*<div class="checkboxContainer">
             <input type="checkbox" name="checkbox" />
             <div class="subtaskCheck">Subtask 1</div>
         </div>
@@ -158,17 +182,14 @@ function addSubTask() {
         <div class="checkboxContainer">
             <input type="checkbox" name="checkbox" checked/>
             <div class="subtaskCheck">${subtaskInput.value}</div>
-        </div>
-    `;
-    addsubtask.style.display = "flex";
-    onInputSubTask.style.display = "none";
+        </div>*/
 }
 
 /**
  * AddTask JSON Array
  */
 var tasks = [];
-function addTask(){
+function addTask() {
     var title = document.getElementById('title');
     var description = document.getElementById('description');
     var category = document.getElementById('input');
