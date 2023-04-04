@@ -79,7 +79,6 @@ function sortLetters() {
 function showCard() {
     document.getElementById('bg').style.display = '';
     document.getElementById('contact-card').classList = 'add-contact-card';
-
 }
 
 function closeContactCard() {
