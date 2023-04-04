@@ -22,11 +22,11 @@ function getFrontLettersUser() {
 }
 
 
- async function sortNames() {
+async function sortNames() {
     await loadUserAccountsFromBackend();
     loadActiveUserLocal();
-   
-    
+
+
     let userName = userAccounts[activeUser]['userContacts'];
     getFrontLettersUser();
     document.getElementById('contact-container').innerHTML = '';
@@ -105,7 +105,11 @@ function getInputValues() {
     let contact_email = document.getElementById('contact-email');
     let contact_phone = document.getElementById('contact-phone');
     let contact_name = document.getElementById('contact-name');
-    contactName = contact_name.value;
+    let inputName = contact_name.value;
+    const firstLetter = inputName.charAt(0).toUpperCase();
+    const remainingLetters = inputName.slice(1);
+    contactName = firstLetter + remainingLetters;
+    console.log(contactName);
     email = contact_email.value;
     phone = contact_phone.value;
     let helpLetter = contactName.split(" ");
