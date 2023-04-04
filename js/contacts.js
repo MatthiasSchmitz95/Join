@@ -7,7 +7,7 @@ let contactColor = randomUserColor();
 
 
 function getFrontLettersUser() {
-    let userName = userAccounts[activeUser]['userContacts'];
+    let userName = userAccounts[activeUser].userContacts;
     for (let i = 0; i < userName.length; i++) {
         const contact = userName[i]['name'];
         let firstChar = contact.charAt(0);
@@ -116,7 +116,7 @@ function getInputValues() {
 
 async function CreateNewContact() {
     await loadUserAccountsFromBackend();
-    let userName = userAccounts[activeUser]['userContacts'];
+    let userName = userAccounts[activeUser].userContacts;
     getInputValues();
     let contact_obj = { 'name': contactName, 'email': email, 'phone': phone, 'letters': bothLetters, 'color': contactColor };
     userName.push(contact_obj);
