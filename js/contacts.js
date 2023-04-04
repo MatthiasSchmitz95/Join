@@ -2,9 +2,8 @@ let bothLetters;
 let contactName;
 let email;
 let phone;
-let contact_nr = 0;
-let contacts = [];
 let letters = [];
+let contactColor = randomUserColor();
 
 
 function getFrontLettersUser() {
@@ -12,36 +11,53 @@ function getFrontLettersUser() {
     for (let i = 0; i < userName.length; i++) {
         const contact = userName[i]['name'];
         let firstChar = contact.charAt(0);
-        letters.push(firstChar);
-
-
+        firstChar = firstChar.toUpperCase();
+        check = letters.indexOf(firstChar);
+        if (check == -1) {
+            letters.push(firstChar);
+        }
     }
+    sortLetters();
 
 }
 
-function sortNames() {
+
+ async function sortNames() {
+    await loadUserAccountsFromBackend();
+    loadActiveUserLocal();
+   
+    
+    let userName = userAccounts[activeUser]['userContacts'];
+    getFrontLettersUser();
     document.getElementById('contact-container').innerHTML = '';
     letters.sort();
     for (let i = 0; i < letters.length; i++) {
         let letter = letters[i];
         templateLetter(letter, i);
 
-        for (let j = 0; j < contacts.length; j++) {
-            let name = contacts[j]['name'];
-            let email = contacts[j]['email']
-            let bothLetters = contacts[j]['letters']
+        for (let j = 0; j < userName.length; j++) {
+
+            let name = userAccounts[activeUser]['userContacts'][j]['name'];
+            let email = userAccounts[activeUser]['userContacts'][j]['email'];
+            let bothLetters = userAccounts[activeUser]['userContacts'][j]['letters'];
             let nameLetter = name.charAt(0);
             if (nameLetter == letter) {
                 templateNameCard(i, name, email, j, bothLetters);
+                circleColor(j);
             }
         }
     }
 }
 
+function circleColor(j) {
+    let color = userAccounts[activeUser]['userContacts'][j]['color'];
+    document.getElementById('circle' + j).style.backgroundColor = color;
+}
+
 function showContact(j, bothLetters) {
-    contactName = contacts[j]['name'];
-    email = contacts[j]['email'];
-    phone = contacts[j]['phone'];
+    contactName = userAccounts[activeUser]['userContacts'][j]['name'];
+    email = userAccounts[activeUser]['userContacts'][j]['email'];
+    phone = userAccounts[activeUser]['userContacts'][j]['phone'];
     document.getElementById('contact-circle').innerHTML = `${bothLetters}`
     document.getElementById('float-contact-name').innerHTML = `${contactName}`;
     document.getElementById('email').innerHTML = `${email}`;
@@ -96,37 +112,27 @@ function getInputValues() {
     bothLetters = helpLetter[0].charAt(0) + helpLetter[1].charAt(0);
 }
 
-function updateContactNr() {
-    contact_nr++;
-    console.log(contact_nr);
-}
+
 
 async function CreateNewContact() {
-    await init('contacts');
+    await loadUserAccountsFromBackend();
     let userName = userAccounts[activeUser]['userContacts'];
     getInputValues();
-    let contact_obj = { 'name': contactName, 'email': email, 'phone': phone, 'letters': bothLetters };
+    let contact_obj = { 'name': contactName, 'email': email, 'phone': phone, 'letters': bothLetters, 'color': contactColor };
     userName.push(contact_obj);
-    getFrontLettersUser();
-    console.log(contacts,letters);
-    updateContactNr();
+    console.log(userName);
+    saveUserAccountsToBackend();
+    console.log(userName, letters);
     closeContactCard();
-    displayContactList();
-    console.log(userAccounts[activeUser]);
-
-}
-
-function displayContactList() {
-    getFirstLetter();
     sortNames();
-    //console.log(letters, userName)
-
+    console.log(userAccounts[activeUser]);
 }
+
 
 function templateNameCard(i, name, email, j, bothLetters) {
     document.getElementById('contact-cards' + i).innerHTML += `
     <div class="name-card" id=name-card${j} onclick="showContact(${j},'${bothLetters}')">
-      <div class="circle">${bothLetters}</div>
+      <div class="circle" id="circle${j}">${bothLetters}</div>
       <div class="info">
             <h4> ${name} </h4>
              <p> ${email} </p>
