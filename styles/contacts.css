@@ -25,7 +25,7 @@ a{
     width: 453px;
     background: #FFFFFF;
     box-shadow: 4px 0px 6px rgba(0, 0, 0, 0.08);
-    height: 100vh;
+    height: calc(100vh - 89px);
 }
 
 .contact-container {
@@ -134,8 +134,8 @@ a{
     height: 73px;
     display: flex;
     align-items: center;
-    padding-left: 58px;
-    padding-top: 82px;
+    margin-left: 58px;
+    margin-top: 82px;
 }
 
 .html-topic h2 {
