@@ -10,6 +10,7 @@ document.getElementById("date").min = today;*/
 
 /*setURL("https://gruppenarbeit-504-join.developerakademie.net/smallest_backend_ever");*/
 
+
 /**
  * Category
  */
@@ -64,20 +65,30 @@ function chooseCategory(index, category, color) {
  * AssignTo 
  */
 var assignToInputContainer = document.getElementById('contactInputContainer');
-var contactListArray = ['contact1', 'contact2', 'contact3'];
+/*var contactListArray = ['contact1', 'contact2', 'contact3'];*/
+init(); {
+    loadActiveUserLocal()
+}
 
 function renderAssignTo() {
     let assignedContactList = document.getElementById('assignedList');
     assignedContactList.innerHTML = "";
-    for (let i = 0; i < contactListArray.length; i++) {
-        const contact = contactListArray[i];
 
-        assignedContactList.innerHTML += `
-        <div class="assignedContact" onclick="chooseContact(${i}, '${contact}')" > 
-        <div>${contact}</div>
-        <input type="checkbox" name="checkbox" class="checkbox${i}"/>
+    for (let i = 0; i < userAccounts.length; i++) {
+        /*const contact = contactArray[i];*/
+        var userName = userAccounts[i]['userName'];
+
+        assignedContactList.innerHTML += /*html*/`
+        <div class="assignedContact" onclick="chooseContact(${i}, '${userName}')" > 
+            <div>${userName}</div>
+            <label class="filledCheckboxContainer">
+                <input type="checkbox">
+                <span class="checkmark"></span>
+            <div class="subtaskCheck"></div>
+        </label>
         </div>
         `;
+        /* <input type="checkbox" name="checkbox" class="checkbox${i}"/> */
     }
 }
 
@@ -109,10 +120,6 @@ function chooseContact(index, contact) {
 /**
  * Subtask
  */
-
-
-
-
 var addsubtask = document.getElementById('addSubtaskBtn');
 var onInputSubTask = document.getElementById('subtaskOninput');
 var subtaskInput = document.getElementById('subtasksInput');
@@ -136,12 +143,17 @@ function deleteSubTask() {
     addsubtask.style.display = "flex";
     onInputSubTask.style.display = "none";
     appendixSubtask.innerHTML = "";
-    appendixSubtask.innerHTML = `
-    <div class="checkboxContainer">
+    appendixSubtask.innerHTML = /*html*/`
+        <label class="container">
+            <input type="checkbox">
+            <span class="checkmark"></span>
+            <div class="subtaskCheck">Subtask 1</div>
+        </label>
+    `;
+    /*<div class="checkboxContainer">
         <input type="checkbox" name="checkbox" />
         <div class="subtaskCheck">Subtask 1</div>
-    </div>
-    `;
+    </div>*/
 }
 
 function addSubTask() {
@@ -149,7 +161,20 @@ function addSubTask() {
     subtaskInput.value = "Create new icons";
 
     appendixSubtask.innerHTML = /*html*/`
-        <div class="checkboxContainer">
+        <label class="container">
+            <input type="checkbox">
+            <span class="checkmark"></span>
+            <div class="subtaskCheck">Subtask 1</div>
+        </label>
+        <label class="container">
+            <input type="checkbox">
+            <span class="checkmark"></span>
+            <div class="subtaskCheck">${subtaskInput.value}</div>
+        </label>
+    `;
+    addsubtask.style.display = "flex";
+    onInputSubTask.style.display = "none";
+    /*<div class="checkboxContainer">
             <input type="checkbox" name="checkbox" />
             <div class="subtaskCheck">Subtask 1</div>
         </div>
@@ -157,21 +182,40 @@ function addSubTask() {
         <div class="checkboxContainer">
             <input type="checkbox" name="checkbox" checked/>
             <div class="subtaskCheck">${subtaskInput.value}</div>
-        </div>
-    `;
-    addsubtask.style.display = "flex";
-    onInputSubTask.style.display = "none";
+        </div>*/
 }
 
 /**
  * AddTask JSON Array
  */
+var tasks = [];
+function addTask() {
+    var title = document.getElementById('title');
+    var description = document.getElementById('description');
+    var category = document.getElementById('input');
+    var contact = document.getElementById('assignInput');
+    var dueDate = document.getElementById('date');
+    var subTask = document.getElementById('subtasksInput');
 
-function addTaskToBoard() {
-    console.log('es läuft');
-    let myGreeting = console.log('Hi es geht');
-    const myTimeout = setTimeout(myGreeting, 5000);
+    var newTask = {
+        "titlle": title.value,
+        "description": description.value,
+        "category": category.value,
+        "contact": contact.value,
+        "dueDate": dueDate.value,
+        "subTask": subTask.value
+    };
+
+    tasks.push(newTask);
+    console.log(newTask);
     document.getElementById('messageAddedTask').style.display = "flex";
+
+    title.value = "";
+    description.value = "";
+    category.value = "";
+    contact.value = "";
+    dueDate.value = "";
+    subTask.value = "";
 }
 
 
@@ -179,20 +223,28 @@ function insertUrgent() {
     document.getElementById('prioUrgentBox').classList.toggle('bgUrgent');
     document.getElementById('prioMediumBox').classList.remove('bgMedium');
     document.getElementById('prioLowBox').classList.remove('bgLow');
-    document.getElementById('prioUrgentImg').classList.color = "white";
-
+    /*img-color*/
+    document.getElementById('prioUrgentImg').classList.add('whitecolor');
+    document.getElementById('prioMediumImg').classList.remove('whitecolor');
+    document.getElementById('prioLowImg').classList.remove('whitecolor');
 }
 
 function insertMedium() {
     document.getElementById('prioMediumBox').classList.toggle('bgMedium');
     document.getElementById('prioLowBox').classList.remove('bgLow');
     document.getElementById('prioUrgentBox').classList.remove('bgUrgent');
-    document.getElementById('prioMediumImg').classList.color = "white";
+    /*img-color*/
+    document.getElementById('prioMediumImg').classList.add('whitecolor');
+    document.getElementById('prioUrgentImg').classList.remove('whitecolor');
+    document.getElementById('prioLowImg').classList.remove('whitecolor');
 }
 
 function insertLow() {
     document.getElementById('prioLowBox').classList.toggle('bgLow');
     document.getElementById('prioUrgentBox').classList.remove('bgUrgent');
     document.getElementById('prioMediumBox').classList.remove('bgMedium');
-    document.getElementById('prioLowImg').classList.color = "white";
+    /*img-color*/
+    document.getElementById('prioLowImg').classList.add('whitecolor');
+    document.getElementById('prioUrgentImg').classList.remove('whitecolor');
+    document.getElementById('prioMediumImg').classList.remove('whitecolor');
 }

@@ -13,12 +13,13 @@
     <script src="./js/board.js"></script>
     <script src="./js/main.js"></script>
     <script src="./js/addTask.js"></script>
+    <script src="./js/mini_backend.js"></script>
 </head>
 
-<body onload="init('addTask')">
+<body onload="init('addTask'); loadActiveUserLocal()">
     <div w3-include-html="desktop-template.html"></div>
     <div class="headline">Add Task</div>
-    <form class="taskCard" onsubmit="addTaskToBoard(); return false">
+    <form class="taskCard" onsubmit="addTask(); return false">
 
         <div class="headline">Add Task</div>
         <div class="contentContainer">
@@ -87,10 +88,15 @@
                 </div>
 
                 <div class="SubtaskAppendixContainer" id="SubtaskAppendixContainer">
-                    <div class="checkboxContainer">
+                    <label class="container">
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                        <div class="subtaskCheck">Subtask 1</div>
+                    </label>
+                    <!--<div class="checkboxContainer">
                         <input type="checkbox" name="checkbox" />
                         <div class="subtaskCheck">Subtask 1</div>
-                    </div>
+                    </div>-->
                 </div>
 
             </div>
@@ -104,7 +110,7 @@
         </div>
 
         <div id="messageAddedTask" class="messageAddedTask">
-            <p>Added to Board</p>
+            <p>Task added to board</p>
             <img src="assets/img/board-icon.png">
         </div>
 

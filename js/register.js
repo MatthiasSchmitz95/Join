@@ -5,9 +5,20 @@ async function signUpUser() {
   let userId = userAccounts.length;
   let userInitials = userNameInitial(name);
   let userColor = randomUserColor();
+  let checkInvalidName = name.split(" ");
+  if (checkInvalidName.length !== 2) {
+    console.log("Please enter your first and last name");
+  } else {
+    pushNewUser(name, email, password, userId, userInitials, userColor)
+    await saveUserAccountsToBackend();
+    document.getElementById("registerBox").classList.remove("display-none");
+    setTimeout(backToLogin, 2000);
+  }
+}
 
-  let newUser = {
-    Username: name,
+function pushNewUser(name, email, password, userId, userInitials, userColor){    
+    let newUser = {
+    userName: name,
     userEmail: email,
     userPassword: password,
     userId: userId,
@@ -16,11 +27,7 @@ async function signUpUser() {
     userContacts: [],
     userTasks: [],
   };
-
   userAccounts.push(newUser);
-  await saveUserAccountsToBackend();
-  document.getElementById("registerBox").classList.remove("display-none");
-  setTimeout(backToLogin, 2000);
 }
 
 function userNameInitial(name) {
@@ -32,12 +39,4 @@ function userNameInitial(name) {
     initials += initial;
   }
   return initials;
-}
-
-function randomUserColor() {
-  let r = Math.floor(Math.random() * 256);
-  let g = Math.floor(Math.random() * 256);
-  let b = Math.floor(Math.random() * 256);
-  let rgbColor = `rgb(${r},${g},${b},)`;
-  return rgbColor;
 }

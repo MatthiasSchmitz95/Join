@@ -164,6 +164,22 @@ body {
     border: 1px solid #D1D1D1;
     border-radius: 10px;
     padding-left: 21px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 120%;
+}
+
+#title::placeholder {
+    width: 114px;
+    height: 25px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 120%;
+    color: #D1D1D1;
 }
 
 .descriptionContainer {
@@ -174,15 +190,15 @@ body {
     gap: 8px;
 }
 
-.description {
-    width: 154px;
+#description::placeholder {
+    width: 190px;
     height: 25px;
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
     font-size: 21px;
     line-height: 120%;
-    color: #000000;
+    color: #D1D1D1;
 }
 
 
@@ -193,6 +209,11 @@ body {
     border-radius: 10px;
     padding-left: 21px;
     padding-top: 18px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 120%;
 }
 
 /*
@@ -286,6 +307,14 @@ body {
     padding-left: 21px;
     padding-right: 21px;
     padding-left: 5px;
+    /*width: 205px;
+    height: 25px;*/
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 120%;
+    color: #000000;
 }
 
 .buttonOpenClose {
@@ -337,30 +366,6 @@ body {
 
 
 /*badge colors */
-
-/*
-#category,
-#assignedTo {
-    width: 422px;
-    height: 51px;
-    background: #FFFFFF;
-    border: 1px solid #D1D1D1;
-    border-radius: 10px;
-    outline: none;
-    padding-left: 21px;
-}
-
-.assignedTo {
-    width: 118px;
-    height: 25px;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 21px;
-    line-height: 120%;
-    color: #000000;
-}
-*/
 
 .assignContainer {
     display: flex;
@@ -476,7 +481,7 @@ body {
     border-radius: 10px;
 }
 
-#subtaskOninput{
+#subtaskOninput {
     width: 50px;
     height: 51px;
     padding-right: 20px;
@@ -489,12 +494,12 @@ body {
     display: none;
 }
 
-#subtaskOninput img{
+#subtaskOninput img {
     width: 16px;
     height: 16px;
 }
 
-.line{
+.line {
     box-sizing: border-box;
     margin-left: 5px;
     margin-right: 5px;
@@ -507,6 +512,22 @@ body {
     margin-left: 21px;
     outline: none;
     border: none;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 120%;
+}
+
+.subtasksInput::placeholder {
+    width: 178px;
+    height: 25px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 120%;
+    color: #D1D1D1;
 }
 
 .addSubtaskBtn {
@@ -514,50 +535,208 @@ body {
     /*display: none;*/
 }
 
+/*
 .checkboxContainer {
     display: flex;
     flex-direction: row;
-
 }
+*/
 
-.SubtaskAppendixContainer{
+.SubtaskAppendixContainer {
     box-sizing: border-box;
     width: 100%;
     height: auto;
-    background-color: lightblue;
 }
 
-.bgUrgent{
+.bgUrgent {
     background-color: #FF3D00;
 }
 
-.bgMedium{
+.bgMedium {
     background-color: #FFA800;
 }
 
-.bgLow{
+.bgLow {
     background-color: #7AE229;
 }
 
 
-.messageAddedTask{
+.messageAddedTask {
     position: absolute;
-    left: 650px;
+    left: 450px;
     bottom: 74px;
     background-color: #2A3647;
-    width: 220px;
-    height: 75px;
+    width: 326px;
+    height: 74px;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
+    border-radius: 20px;
     display: flex;
-    justify-content: space-evenly;
+    flex-direction: row;
+    justify-content: center;
     align-items: center;
-    padding-left: 20px;
-    padding-right: 20px;
-    color: white;
+    padding: 0px;
+    display: none;
+}
+
+.messageAddedTask p {
+    width: 235px;
+    height: 24px;
     font-family: 'Inter';
     font-style: normal;
-    font-weight: 700;
+    font-weight: 400;
     font-size: 21px;
     line-height: 120%;
-    border-radius: 10px;
+    color: #FFFFFF;
+}
+
+.messageAddedTask img {
+    width: 22px;
+    height: 26px;
+    transform: rotate(-180deg);
+}
+
+.whitecolor {
+    filter: invert(0%) sepia(100%) saturate(0%) hue-rotate(21deg) brightness(97%) contrast(103%);
+}
+
+/*
+Check Mark design
+*/
+/* The container */
+.container {
+    position: relative;
+    padding-left: 40px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    font-size: 19px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    display: flex;
+    flex-direction: row;
+    align-items: top;
+}
+
+/* Hide the browser's default checkbox */
+.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    top: 2;
+    left: 0;
+    height: 16px;
+    width: 16px;
+    background-color: #F4F4F4;
+    border: 1px solid black;
+    border-radius: 3px;
+    /*box-shadow: -2px 0px 6px 0px rgb(0, 0, 0, 0.2);*/
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked~.checkmark {
+    background-color: #f4f4f4F4;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
     display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked~.checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+    left: 6px;
+    top: 2px;
+    width: 2px;
+    height: 9px;
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+
+/*
+checkbox filled design
+*/
+/*
+
+/* The container */
+.filledCheckboxContainer {
+    position: relative;
+    padding-left: 40px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    font-size: 19px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    display: flex;
+    flex-direction: row;
+    align-items: top;
+}
+
+/* Hide the browser's default checkbox */
+.filledCheckboxContainer input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    top: 2;
+    left: 0;
+    height: 16px;
+    width: 16px;
+    background-color: #F4F4F4;
+    border: 1px solid black;
+    border-radius: 3px;
+    /*box-shadow: -2px 0px 6px 0px rgb(0, 0, 0, 0.2);*/
+}
+
+/* When the checkbox is checked, add a background */
+.filledCheckboxContainer input:checked~.checkmark {
+    background-color: #f4f4f4F4;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.filledCheckboxContainer input:checked~.checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.filledCheckboxContainer .checkmark:after {
+    left: 4px;
+    top: 4px;
+    width: 4px;
+    height: 4px;
+    border: solid black;
+    border-width: 3px 3px 3px 3px;
+    background: black;
 }

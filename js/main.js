@@ -1,13 +1,14 @@
 let activeUser;
 
-
-
-
 async function init(id) {
   await includeHTML();
   highlightSelectedNav(id);
   await loadUserAccountsFromBackend();
+  loadActiveUserLocal();
 }
+
+
+
 
 async function includeHTML() {
   let includeElements = document.querySelectorAll("[w3-include-html]");
@@ -22,6 +23,7 @@ async function includeHTML() {
     }
   }
 }
+
 
 /**
  * loading user accounts from backend
@@ -48,7 +50,9 @@ async function saveTasksToBackend(){
 
 function loadActiveUserLocal() {
   activeUser = localStorage.getItem('activeUser');
+  console.log('activeUserID = ', activeUser);
 }
+
 
 
 function highlightSelectedNav(id) {

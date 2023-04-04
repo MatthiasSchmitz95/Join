@@ -6,6 +6,19 @@ let contact_nr = 0;
 let contacts = [];
 let letters = [];
 
+
+function getFrontLettersUser() {
+    let userName = userAccounts[activeUser]['userContacts'];
+    for (let i = 0; i < userName.length; i++) {
+        const contact = userName[i]['name'];
+        let firstChar = contact.charAt(0);
+        letters.push(firstChar);
+
+
+    }
+
+}
+
 function sortNames() {
     document.getElementById('contact-container').innerHTML = '';
     letters.sort();
@@ -16,16 +29,16 @@ function sortNames() {
         for (let j = 0; j < contacts.length; j++) {
             let name = contacts[j]['name'];
             let email = contacts[j]['email']
-            let bothLetters =contacts[j]['letters'] 
+            let bothLetters = contacts[j]['letters']
             let nameLetter = name.charAt(0);
             if (nameLetter == letter) {
-            templateNameCard(i, nameLetter, name, email, j,bothLetters);
+                templateNameCard(i, name, email, j, bothLetters);
             }
         }
     }
 }
 
-function showContact(j,nameLetter) {
+function showContact(j, bothLetters) {
     contactName = contacts[j]['name'];
     email = contacts[j]['email'];
     phone = contacts[j]['phone'];
@@ -33,30 +46,10 @@ function showContact(j,nameLetter) {
     document.getElementById('float-contact-name').innerHTML = `${contactName}`;
     document.getElementById('email').innerHTML = `${email}`;
     document.getElementById('phone').innerHTML = `${phone}`;
+    document.getElementById('floating-contact-container').style.display = "";
 }
 
-function templateNameCard(i, nameLetter, name, email, j) {
-    document.getElementById('contact-cards' + i).innerHTML += `
-    <div class="name-card" id=name-card${j} onclick="showContact(${j},'${nameLetter}')">
-      <div class="circle">${nameLetter}</div>
-      <div class="info">
-            <h4> ${name} </h4>
-             <p> ${email} </p>
-     </div>
-    </div>`;
-}
 
-function templateLetter(letter, i) {
-    document.getElementById('contact-container').innerHTML +=
-        `<div class="contact-list">
-        <div id="letter-container">
-        ${letter}
-        </div>
-        <span class="vertical-line"></span>
-        <div class="contact-cards" id="contact-cards${i}">
-        </div>
-    </div>`;
-}
 
 function sortLetters() {
     letters.sort();
@@ -81,12 +74,14 @@ function getFirstLetter() {
 }
 
 function showCard() {
+    document.getElementById('bg').style.display = '';
     document.getElementById('contact-card').classList = 'add-contact-card';
 
 }
 
 function closeContactCard() {
     document.getElementById('contact-card').classList = 'hidden';
+    document.getElementById('bg').style.display = 'none';
 
 }
 
@@ -106,20 +101,47 @@ function updateContactNr() {
     console.log(contact_nr);
 }
 
-function CreateNewContact() {
+async function CreateNewContact() {
+    await init('contacts');
+    let userName = userAccounts[activeUser]['userContacts'];
     getInputValues();
-    let contact_obj = { 'name': contactName, 'email': email, 'phone': phone, 'letters': bothLetters};
-    contacts.push(contact_obj);
-    console.log(contacts);
+    let contact_obj = { 'name': contactName, 'email': email, 'phone': phone, 'letters': bothLetters };
+    userName.push(contact_obj);
+    getFrontLettersUser();
+    console.log(contacts,letters);
     updateContactNr();
     closeContactCard();
     displayContactList();
+    console.log(userAccounts[activeUser]);
 
 }
 
 function displayContactList() {
     getFirstLetter();
     sortNames();
-    console.log(letters, contacts)
+    //console.log(letters, userName)
 
+}
+
+function templateNameCard(i, name, email, j, bothLetters) {
+    document.getElementById('contact-cards' + i).innerHTML += `
+    <div class="name-card" id=name-card${j} onclick="showContact(${j},'${bothLetters}')">
+      <div class="circle">${bothLetters}</div>
+      <div class="info">
+            <h4> ${name} </h4>
+             <p> ${email} </p>
+     </div>
+    </div>`;
+}
+
+function templateLetter(letter, i) {
+    document.getElementById('contact-container').innerHTML +=
+        `<div class="contact-list">
+        <div id="letter-container">
+        ${letter}
+        </div>
+        <span class="vertical-line"></span>
+        <div class="contact-cards" id="contact-cards${i}">
+        </div>
+    </div>`;
 }
