@@ -81,8 +81,16 @@ h2 {
     cursor: pointer;
 }
 
+.add-button:hover {
+    background-color: rgb(41,171,226);
+}
+
 .add-button-img {
     margin-left: 6px;
+}
+
+.plus-btn:hover{
+    filter: invert(59%) sepia(35%) saturate(1765%) hue-rotate(165deg) brightness(94%) contrast(87%);
 }
 
 .working-class {
@@ -257,6 +265,10 @@ h2 {
     border-radius: 10px;
 }
 
+.whitecolor {
+    filter: invert(96%) sepia(96%) saturate(12%) hue-rotate(34deg) brightness(106%) contrast(100%);
+}
+
 .prioUrgentBox:hover,
 .prioMediumBox:hover,
 .prioLowBox:hover {
@@ -276,14 +288,17 @@ h2 {
 
 .bgUrgent{
     background-color: #FF3D00;
+    color: white;
 }
 
 .bgMedium{
     background-color: #FFA800;
+    color: white;
 }
 
 .bgLow{
     background-color: #7AE229;
+    color: white;
 }
 
 .assignContainer {

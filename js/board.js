@@ -135,7 +135,7 @@ function showOverlayChange(cards){
             <input type="text" placeholder=" ${(todo.title)}">
         </div>
         <div class="close-icon-change">
-            <img onclick="closeOverlay()" src="assets/img/close-overlay.svg">
+            <img  onclick="closeOverlay()" src="assets/img/close-overlay.svg">
         </div>
     </div>
     <div>
@@ -147,14 +147,14 @@ function showOverlayChange(cards){
         <input type="text" placeholder=" ${(todo['due date'])}">
     </div>
     <label for="priority" class="priority">Prio</label>
-    <div class="priorityBoxesContainer">
-        <div class="prioUrgentBox" id="prioUrgentBox" onclick="insertUrgent()">urgent <img
-            id="prioUrgentImg" src="assets/img/urgent.png"></div>
-        <div class="prioMediumBox" id="prioMediumBox" onclick="insertMedium()">Medium <img
-            id="prioMediumImg" src="assets/img/medium.png"></div>
-        <div class="prioLowBox" id="prioLowBox" onclick="insertLow()">low <img id="prioLowImg"
-        src="assets/img/low.png"></div>
-    </div>
+                <div class="priorityBoxesContainer">
+                    <div class="prioUrgentBox" id="prioUrgentBox" onclick="insertUrgent()">Urgent <img
+                            id="prioUrgentImg" src="assets/img/urgent.png"></div>
+                    <div class="prioMediumBox" id="prioMediumBox" onclick="insertMedium()">Medium <img
+                            id="prioMediumImg" src="assets/img/medium.png"></div>
+                    <div class="prioLowBox" id="prioLowBox" onclick="insertLow()">Low <img id="prioLowImg"
+                            src="assets/img/low.png"></div>
+                </div>
     <div class="assignContainer">
         <label for="assignedTo" class="assignedTo">Assigned to</label>
         <div class="contactInputContainer" id="contactInputContainer">
@@ -187,20 +187,28 @@ function insertUrgent() {
     document.getElementById('prioUrgentBox').classList.toggle('bgUrgent');
     document.getElementById('prioMediumBox').classList.remove('bgMedium');
     document.getElementById('prioLowBox').classList.remove('bgLow');
-    document.getElementById('prioUrgentImg').classList.color = "white";
-
+    /*img-color*/
+    document.getElementById('prioUrgentImg').classList.add('whitecolor');
+    document.getElementById('prioMediumImg').classList.remove('whitecolor');
+    document.getElementById('prioLowImg').classList.remove('whitecolor');
 }
 
 function insertMedium() {
     document.getElementById('prioMediumBox').classList.toggle('bgMedium');
     document.getElementById('prioLowBox').classList.remove('bgLow');
     document.getElementById('prioUrgentBox').classList.remove('bgUrgent');
-    document.getElementById('prioMediumImg').classList.color = "white";
+    /*img-color*/
+    document.getElementById('prioMediumImg').classList.add('whitecolor');
+    document.getElementById('prioUrgentImg').classList.remove('whitecolor');
+    document.getElementById('prioLowImg').classList.remove('whitecolor');
 }
 
 function insertLow() {
     document.getElementById('prioLowBox').classList.toggle('bgLow');
     document.getElementById('prioUrgentBox').classList.remove('bgUrgent');
     document.getElementById('prioMediumBox').classList.remove('bgMedium');
-    document.getElementById('prioLowImg').classList.color = "white";
+    /*img-color*/
+    document.getElementById('prioLowImg').classList.add('whitecolor');
+    document.getElementById('prioUrgentImg').classList.remove('whitecolor');
+    document.getElementById('prioMediumImg').classList.remove('whitecolor');
 }
