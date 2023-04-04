@@ -7,6 +7,18 @@ let contacts = [];
 let letters = [];
 
 
+function getFrontLettersUser() {
+    let userName = userAccounts[activeUser]['userContacts'];
+    for (let i = 0; i < userName.length; i++) {
+        const contact = userName[i]['name'];
+        let firstChar = contact.charAt(0);
+        letters.push(firstChar);
+
+
+    }
+
+}
+
 function sortNames() {
     document.getElementById('contact-container').innerHTML = '';
     letters.sort();
@@ -17,16 +29,16 @@ function sortNames() {
         for (let j = 0; j < contacts.length; j++) {
             let name = contacts[j]['name'];
             let email = contacts[j]['email']
-            let bothLetters =contacts[j]['letters'] 
+            let bothLetters = contacts[j]['letters']
             let nameLetter = name.charAt(0);
             if (nameLetter == letter) {
-            templateNameCard(i, name, email, j, bothLetters);
+                templateNameCard(i, name, email, j, bothLetters);
             }
         }
     }
 }
 
-function showContact(j,bothLetters) {
+function showContact(j, bothLetters) {
     contactName = contacts[j]['name'];
     email = contacts[j]['email'];
     phone = contacts[j]['phone'];
@@ -34,31 +46,10 @@ function showContact(j,bothLetters) {
     document.getElementById('float-contact-name').innerHTML = `${contactName}`;
     document.getElementById('email').innerHTML = `${email}`;
     document.getElementById('phone').innerHTML = `${phone}`;
-    document.getElementById('floating-contact-container').style.display ="";
+    document.getElementById('floating-contact-container').style.display = "";
 }
 
-function templateNameCard(i, name, email, j, bothLetters) {
-    document.getElementById('contact-cards' + i).innerHTML += `
-    <div class="name-card" id=name-card${j} onclick="showContact(${j},'${bothLetters}')">
-      <div class="circle">${bothLetters}</div>
-      <div class="info">
-            <h4> ${name} </h4>
-             <p> ${email} </p>
-     </div>
-    </div>`;
-}
 
-function templateLetter(letter, i) {
-    document.getElementById('contact-container').innerHTML +=
-        `<div class="contact-list">
-        <div id="letter-container">
-        ${letter}
-        </div>
-        <span class="vertical-line"></span>
-        <div class="contact-cards" id="contact-cards${i}">
-        </div>
-    </div>`;
-}
 
 function sortLetters() {
     letters.sort();
@@ -114,9 +105,10 @@ async function CreateNewContact() {
     await init('contacts');
     let userName = userAccounts[activeUser]['userContacts'];
     getInputValues();
-    let contact_obj = { 'name': contactName, 'email': email, 'phone': phone, 'letters': bothLetters};
+    let contact_obj = { 'name': contactName, 'email': email, 'phone': phone, 'letters': bothLetters };
     userName.push(contact_obj);
-    console.log(contacts);
+    getFrontLettersUser();
+    console.log(contacts,letters);
     updateContactNr();
     closeContactCard();
     displayContactList();
@@ -129,4 +121,27 @@ function displayContactList() {
     sortNames();
     //console.log(letters, userName)
 
+}
+
+function templateNameCard(i, name, email, j, bothLetters) {
+    document.getElementById('contact-cards' + i).innerHTML += `
+    <div class="name-card" id=name-card${j} onclick="showContact(${j},'${bothLetters}')">
+      <div class="circle">${bothLetters}</div>
+      <div class="info">
+            <h4> ${name} </h4>
+             <p> ${email} </p>
+     </div>
+    </div>`;
+}
+
+function templateLetter(letter, i) {
+    document.getElementById('contact-container').innerHTML +=
+        `<div class="contact-list">
+        <div id="letter-container">
+        ${letter}
+        </div>
+        <span class="vertical-line"></span>
+        <div class="contact-cards" id="contact-cards${i}">
+        </div>
+    </div>`;
 }
