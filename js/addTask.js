@@ -198,7 +198,7 @@ function addTask() {
     var subTask = document.getElementById('subtasksInput');
 
     var newTask = {
-        "titlle": title.value,
+        "title": title.value,
         "description": description.value,
         "category": category.value,
         "contact": contact.value,
