@@ -78,3 +78,17 @@ function highlightSelectedNav(id) {
     document.getElementById(`${id}`).classList.add("selected");
   }, 10);
 }
+
+/**
+ * get Username initials
+ */
+function userNameInitial(name) {
+  let initials = "";
+  let nameSplit = name.split(" ");
+
+  for (let i = 0; i < nameSplit.length; i++) {
+    let initial = nameSplit[i].charAt(0);
+    initials += initial;
+  }
+  return initials;
+}

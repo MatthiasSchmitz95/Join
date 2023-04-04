@@ -30,13 +30,4 @@ function pushNewUser(name, email, password, userId, userInitials, userColor){
   userAccounts.push(newUser);
 }
 
-function userNameInitial(name) {
-  let initials = "";
-  let nameSplit = name.split(" ");
 
-  for (let i = 0; i < nameSplit.length; i++) {
-    let initial = nameSplit[i].charAt(0);
-    initials += initial;
-  }
-  return initials;
-}
