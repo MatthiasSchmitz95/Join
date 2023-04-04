@@ -25,7 +25,7 @@ function getFrontLettersUser() {
 async function sortNames() {
     await loadUserAccountsFromBackend();
     loadActiveUserLocal();
-    let userName = userAccounts[activeUser]['userContacts'];
+    let userName = userAccounts[activeUser].userContacts;
     getFrontLettersUser();
     document.getElementById('contact-container').innerHTML = '';
     letters.sort();
@@ -107,12 +107,13 @@ function getInputValues() {
 
 async function CreateNewContact() {
     await loadUserAccountsFromBackend();
+    await saveUserAccountsToBackend();
     let userName = userAccounts[activeUser].userContacts;
     getInputValues();
     let contact_obj = { 'name': contactName, 'email': email, 'phone': phone, 'letters': bothLetters, 'color': contactColor };
     userName.push(contact_obj);
     //console.log(userName);
-    saveUserAccountsToBackend();
+    await saveUserAccountsToBackend();
     //console.log(userName, letters);
     closeContactCard();
     sortNames();
