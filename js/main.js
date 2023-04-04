@@ -52,32 +52,20 @@ async function loadUserAccountsFromBackend() {
   console.log('Useraccounts loadet', userAccounts);
 }
 
-/**
- * loading tasks from backend
- */
 async function loadTasksFromBackend() {
   await downloadFromServer();
   tasks = JSON.parse(backend.getItem('tasks')) || [];
   console.log('Tasks loadet', tasks);
 }
 
-/**
- * saves user accounts in the backend
- */
 async function saveUserAccountsToBackend(){
   await backend.setItem('userAccounts', JSON.stringify(userAccounts));
 }
 
-/**
- * saves tasks in the backend
- */
 async function saveTasksToBackend(){
   await backend.setItem('tasks', JSON.stringify(tasks));
 }
 
-/**
- * loading active users from local storage 
- */
 function loadActiveUserLocal() {
   activeUser = localStorage.getItem('activeUser');
   console.log('activeUserID = ', activeUser);
@@ -90,4 +78,3 @@ function highlightSelectedNav(id) {
     document.getElementById(`${id}`).classList.add("selected");
   }, 10);
 }
-

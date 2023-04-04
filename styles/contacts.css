@@ -67,7 +67,6 @@ a{
     display: flex;
     width:357px;
     border-radius: 10px;
-    cursor: pointer;
 }
 
 .name-card:hover {
