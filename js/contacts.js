@@ -35,9 +35,9 @@ async function sortNames() {
 
         for (let j = 0; j < userName.length; j++) {
 
-            let name = userAccounts[activeUser]['userContacts'][j]['name'];
-            let email = userAccounts[activeUser]['userContacts'][j]['email'];
-            let bothLetters = userAccounts[activeUser]['userContacts'][j]['letters'];
+            let name = userName[j]['name'];
+            let email = userName[j]['email'];
+            let bothLetters = userName[j]['letters'];
             let nameLetter = name.charAt(0);
             if (nameLetter == letter) {
                 templateNameCard(i, name, email, j, bothLetters);
@@ -48,15 +48,17 @@ async function sortNames() {
 }
 
 function circleColor(j) {
-    let color = userAccounts[activeUser]['userContacts'][j]['color'];
+    let color = userAccounts[activeUser].userContacts[j]['color'];
     document.getElementById('circle' + j).style.backgroundColor = color;
 }
 
 function showContact(j, bothLetters) {
+    let color = userAccounts[activeUser].userContacts[j]['color'];
     contactName = userAccounts[activeUser]['userContacts'][j]['name'];
     email = userAccounts[activeUser]['userContacts'][j]['email'];
     phone = userAccounts[activeUser]['userContacts'][j]['phone'];
-    document.getElementById('contact-circle').innerHTML = `${bothLetters}`
+    document.getElementById('contact-circle-letters').innerHTML = `${bothLetters}`;
+    document.getElementById('contact-circle').style.backgroundColor = `${color}`;
     document.getElementById('float-contact-name').innerHTML = `${contactName}`;
     document.getElementById('email').innerHTML = `${email}`;
     document.getElementById('phone').innerHTML = `${phone}`;
@@ -106,7 +108,6 @@ function getInputValues() {
 
 async function CreateNewContact() {
     await loadUserAccountsFromBackend();
-    await saveUserAccountsToBackend();
     let userName = userAccounts[activeUser].userContacts;
     getInputValues();
     let contact_obj = { 'name': contactName, 'email': email, 'phone': phone, 'letters': bothLetters, 'color': contactColor };
