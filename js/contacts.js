@@ -110,6 +110,7 @@ async function CreateNewContact() {
     await loadUserAccountsFromBackend();
     let userName = userAccounts[activeUser].userContacts;
     getInputValues();
+    contactColor = randomUserColor();
     let contact_obj = { 'name': contactName, 'email': email, 'phone': phone, 'letters': bothLetters, 'color': contactColor };
     userName.push(contact_obj);
     //console.log(userName);
