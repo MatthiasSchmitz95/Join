@@ -268,11 +268,3 @@ function renderAssignTo() {
         `;
     }
 }
-
-
-/*function closeDropdownCategory() {
-    var categoryDropDown = document.getElementById('categoryList');
-    categoryDropDown.style.display = "none";
-    categoryInputContainer.style.border = "1px solid #D1D1D1";
-    categoryInputContainer.style.borderRadius = "10px";
-}*/
