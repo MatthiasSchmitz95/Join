@@ -66,7 +66,6 @@ function showContact(j, bothLetters) {
 }
 
 
-
 function sortLetters() {
     letters.sort();
     for (let i = 0; i < letters.length; i++) {
@@ -75,8 +74,6 @@ function sortLetters() {
 
     }
 }
-
-
 
 function showCard() {
     document.getElementById('bg').style.display = '';
@@ -117,8 +114,25 @@ async function CreateNewContact() {
     await saveUserAccountsToBackend();
     //console.log(userName, letters);
     closeContactCard();
+    successfulCreation();
     sortNames();
     console.log(userAccounts[activeUser]);
+}
+
+function successfulCreation(){
+
+    setTimeout(()=> {
+        document.getElementById('success').style.display ='';
+        document.getElementById('success').classList ='add-success';
+     }
+     ,300);
+     setTimeout(()=> {
+        document.getElementById('success').style.display ='none';
+        document.getElementById('success').classList ='success';
+     }
+     ,1000);
+
+    
 }
 
 

@@ -1,5 +1,41 @@
-a{
+a {
     cursor: pointer;
+}
+
+.success {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #2A3647;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
+    border-radius: 20px;
+    width: 326px;
+    height: 74px;
+    z-index: 10;
+    color: white;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    bottom: -100%;
+    transition: 1s;
+}
+
+.add-success {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #2A3647;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
+    border-radius: 20px;
+    width: 326px;
+    height: 74px;
+    z-index: 10;
+    color: white;
+    left: 50%;
+    bottom: 100px;
+    transform: translate(-50%, -50%);
+    transition: 200ms;
 }
 
 .desktop {
@@ -9,18 +45,18 @@ a{
     display: flex;
 }
 
-#bg{
-        position: absolute;
-        background-color: rgba(0, 0, 0, 0.5);
-        top: 0px;
-        bottom: 0px;
-        right: 0px;
-        left: 0px;
-        z-index: 5;
+#bg {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.5);
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    left: 0px;
+    z-index: 5;
 }
 
 .left-container {
-    overflow-y:auto;
+    overflow-y: auto;
     width: 453px;
     background: #FFFFFF;
     box-shadow: 4px 0px 6px rgba(0, 0, 0, 0.08);
@@ -65,7 +101,7 @@ a{
 .name-card {
     height: 79px;
     display: flex;
-    width:357px;
+    width: 357px;
     border-radius: 10px;
 }
 
@@ -177,12 +213,12 @@ a{
     margin-bottom: 67px;
 }
 
-.button-container:hover button {
+.button-container button:hover {
     background-color: #29ABE2;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.button-container:active button {
+.button-container button:active  {
     background-color: #091931;
 }
 
@@ -451,13 +487,13 @@ a{
     justify-content: flex-start;
 }
 
-.name-container a{
+.name-container a {
     display: flex;
     align-items: center;
     color: #29ABE2;
 }
 
-.name-container img{
+.name-container img {
     margin-right: 13px;
     width: 15px;
     height: 15px;
@@ -505,7 +541,7 @@ a{
     align-items: center;
     color: white;
     font-weight: 500;
-font-size: 47px;
+    font-size: 47px;
     background-color: #091931;
     height: 120px;
     width: 120px;
@@ -518,12 +554,12 @@ font-size: 47px;
     font-size: 47px;
 }
 
-.contact-details h4{
+.contact-details h4 {
     margin: 0px;
     margin-bottom: 15px;
 }
 
-.contact-details p{
+.contact-details p {
     margin: 0px;
     margin-bottom: 15px;
 }
