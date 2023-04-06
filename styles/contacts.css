@@ -21,11 +21,11 @@ a{
 
 .left-container {
     overflow-y:auto;
-    position: sticky;
     width: 453px;
     background: #FFFFFF;
     box-shadow: 4px 0px 6px rgba(0, 0, 0, 0.08);
     height: calc(100vh - 89px);
+
 }
 
 .contact-container {
