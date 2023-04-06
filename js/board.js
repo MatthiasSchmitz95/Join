@@ -15,7 +15,7 @@ function updateHTMLToDo(){
 
     for (let index = 0; index < todo.length; index++) {
         const cards = todo[index];
-        document.getElementById('toDoContent').innerHTML +=generateHTML(cards);
+        document.getElementById('toDoContent').innerHTML +=generateHTML(cards), priorityImgCard(cards);
         
     }
 }
@@ -27,7 +27,7 @@ function updateHTMLInProgress(){
 
     for (let index = 0; index < inProgress.length; index++) {
         const cards = inProgress[index];
-        document.getElementById('inProgressContent').innerHTML +=generateHTML(cards);
+        document.getElementById('inProgressContent').innerHTML +=generateHTML(cards), priorityImgCard(cards);
         
     }
 }
@@ -39,7 +39,7 @@ function updateHTMLAwaitingFeedback(){
 
     for (let index = 0; index < awaiting.length; index++) {
         const cards = awaiting[index];       
-        document.getElementById('awaitingFeedbackContent').innerHTML += generateHTML(cards);
+        document.getElementById('awaitingFeedbackContent').innerHTML += generateHTML(cards), priorityImgCard(cards);
     }
 }
 
@@ -50,13 +50,13 @@ function updateHTMLDone(){
 
     for (let index = 0; index < done.length; index++) {
         const cards = done[index];
-        document.getElementById('doneContent').innerHTML += generateHTML(cards); 
+        document.getElementById('doneContent').innerHTML += generateHTML(cards), priorityImgCard(cards); 
     }
 }
 
 
 function generateHTML(cards) {
-    return `
+    return /*html*/`
     <div draggable="true" ondragstart="startDragging(${cards['id']})" onclick="showOverlay(${cards['id']})" class="card">
     <div>
         <h4>${cards['Department']}</h4>
@@ -64,8 +64,29 @@ function generateHTML(cards) {
         <p>
         ${cards['text']}
         </p>
+        <div>
+           <div>
+
+           </div> 
+           <div id="priorityImage${cards['id']}">
+
+           </div>
+        </div>
     </div>
 </div>`;
+}
+
+
+function priorityImgCard(cards){
+    let prio = document.getElementById(`priorityImage${cards['id']}`);
+    card = cards['priority'];
+    if (card== 'Urgent') {
+        prio.innerHTML = '<img src="assets/img/urgent.png">';
+    }else if (card=='Medium') {
+        prio.innerHTML = '<img src="assets/img/medium.png">';
+    } else {
+        prio.innerHTML = '<img src="assets/img/low.png">';
+    }
 }
 
 
