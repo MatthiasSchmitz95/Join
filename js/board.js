@@ -130,21 +130,21 @@ function showOverlayChange(cards){
     let overlay = document.getElementById('overlay');
     overlay.innerHTML = /*html*/`
    <div class="overlay-header"> 
-        <div>
-            Title <br>
-            <input type="text" placeholder=" ${(todo.title)}">
+        <div class="width-chances">
+            Title
+           <input type=text class="input-chances-title" placeholder="${(todo.title)}">
         </div>
         <div class="close-icon-change">
             <img  onclick="closeOverlay()" src="assets/img/close-overlay.svg">
         </div>
     </div>
-    <div>
+    <div class="width-chances">
         Description <br>
-        <input type="text" placeholder=" ${(todo.text)}">
+        <textarea onkeyup="textAreaAdjust(this)" style="overflow:hidden" class="input-chances-text">${(todo.text)}</textarea>
     </div>
-    <div>
+    <div class="width-chances">
        Due date <br>
-        <input type="text" placeholder=" ${(todo['due date'])}">
+       <input class="input-chances-title" type="date" value="2023-02-03" min="023-02-01" max="023-02-28" placeholder="${(todo['due date'])}">
     </div>
     <label for="priority" class="priority">Prio</label>
                 <div class="priorityBoxesContainer">
@@ -158,15 +158,28 @@ function showOverlayChange(cards){
     <div class="assignContainer">
         <label for="assignedTo" class="assignedTo">Assigned to</label>
         <div class="contactInputContainer" id="contactInputContainer">
-            <input id="assignInput" type="text" placeholder="Select contacts to assign" required>
+            <input class="assign-input" id="assignInput" type="text" placeholder="Select contacts to assign" required>
 
             <div id="assignDropDown" class="buttonOpenClose" onclick="dropDownAssignTo()"><img
                 src="assets/img/dropdown-arrow.png"></div>
         </div>
             <div id="assignedList" class="assignedList"></div>
     </div>
+    <div>
+
+    </div>
+    <div class="overlay-edit-task-position">
+        <div class="overlay-chance-task">
+            OK<img src="assets/img/right.svg">
+        </div>
+    </div>
      `
 }
+
+function textAreaAdjust(element) {
+    element.style.height = "1px";
+    element.style.height = (25+element.scrollHeight)+"px";
+  }
 
 
 function closeOverlay(){
@@ -212,3 +225,54 @@ function insertLow() {
     document.getElementById('prioUrgentImg').classList.remove('whitecolor');
     document.getElementById('prioMediumImg').classList.remove('whitecolor');
 }
+
+
+function dropDownAssignTo() {
+    /* document.getElementById('categoryList').classList.toggle('dropDownDisplay');*/
+    //closeDropdownCategory();
+    var assignToDropDown = document.getElementById('assignedList');
+
+    if (assignToDropDown.style.display == "block") {
+        assignToDropDown.style.display = "none";
+        assignToInputContainer.style.border = "1px solid #D1D1D1";
+        assignToInputContainer.style.borderRadius = "10px";
+    } else {
+        assignToDropDown.style.display = "block";
+        //assignToInputContainer.style.borderBottom = "none";
+        /* Four values */
+        /* top-left top-right bottom-right bottom-left */
+        //assignToInputContainer.style.borderRadius = "10px 10px 0 0";
+        renderAssignTo();
+    }
+
+}
+
+
+function renderAssignTo() {
+    let assignedContactList = document.getElementById('assignedList');
+    assignedContactList.innerHTML = "";
+
+    for (let i = 0; i < userAccounts.length; i++) {
+        /*const contact = contactArray[i];*/
+        var userName = userAccounts[i]['userName'];
+
+        assignedContactList.innerHTML += /*html*/`
+        <div class="assignedContact" onclick="chooseContact(${i}, '${userName}')" > 
+            <div>${userName}</div>
+            <label class="filledCheckboxContainer">
+                <input type="checkbox">
+                <span class="checkmark"></span>
+            <div class="subtaskCheck"></div>
+        </label>
+        </div>
+        `;
+    }
+}
+
+
+/*function closeDropdownCategory() {
+    var categoryDropDown = document.getElementById('categoryList');
+    categoryDropDown.style.display = "none";
+    categoryInputContainer.style.border = "1px solid #D1D1D1";
+    categoryInputContainer.style.borderRadius = "10px";
+}*/
