@@ -216,18 +216,6 @@ body {
     line-height: 120%;
 }
 
-/*
-.category {
-    width: 93px;
-    height: 25px;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 21px;
-    line-height: 120%;
-    color: #000000;
-} */
-
 .category,
 .assignedTo {
     font-family: 'Inter';
@@ -402,9 +390,14 @@ body {
     font-weight: 400;
     font-size: 21px;
     line-height: 120%;
-    color: #D1D1D1;
+    /*color: #D1D1D1;*/
+    color: #000000;
     padding-left: 21px;
     padding-right: 21px;
+}
+
+#date::placeholder {
+    color: #D1D1D1;
 }
 
 .priority {
@@ -673,8 +666,6 @@ Check Mark design
 /*
 checkbox filled design
 */
-/*
-
 /* The container */
 .filledCheckboxContainer {
     position: relative;
@@ -739,4 +730,32 @@ checkbox filled design
     border: solid black;
     border-width: 3px 3px 3px 3px;
     background: black;
+}
+
+/*
+*Animation AddTask To board
+*/
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+.animate {
+    animation: 4s fadeOut ease-in-out;
+}
+
+/*
+*disable button
+*/
+.buttonDisabled {
+    pointer-events: none;
+}
+
+.buttonEnabled {
+    pointer-events: auto;
 }

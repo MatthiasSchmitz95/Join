@@ -13,7 +13,7 @@ a{
         position: absolute;
         background-color: rgba(0, 0, 0, 0.5);
         top: 0px;
-        bottom: -88px;
+        bottom: 0px;
         right: 0px;
         left: 0px;
         z-index: 5;
@@ -201,7 +201,7 @@ a{
     display: flex;
     z-index: 9;
     transform: translate(-50%, -50%);
-    transition: 1s;
+    transition: 200ms;
 }
 
 .hidden {
