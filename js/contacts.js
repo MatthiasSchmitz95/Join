@@ -7,7 +7,7 @@ let contactColor = randomUserColor();
 
 
 function getFrontLettersUser() {
-    let userName = userAccounts[activeUser]['userContacts'];
+    let userName = userAccounts[activeUser].userContacts;
     for (let i = 0; i < userName.length; i++) {
         const contact = userName[i]['name'];
         let firstChar = contact.charAt(0);
@@ -22,12 +22,10 @@ function getFrontLettersUser() {
 }
 
 
- async function sortNames() {
+async function sortNames() {
     await loadUserAccountsFromBackend();
     loadActiveUserLocal();
-   
-    
-    let userName = userAccounts[activeUser]['userContacts'];
+    let userName = userAccounts[activeUser].userContacts;
     getFrontLettersUser();
     document.getElementById('contact-container').innerHTML = '';
     letters.sort();
@@ -37,9 +35,9 @@ function getFrontLettersUser() {
 
         for (let j = 0; j < userName.length; j++) {
 
-            let name = userAccounts[activeUser]['userContacts'][j]['name'];
-            let email = userAccounts[activeUser]['userContacts'][j]['email'];
-            let bothLetters = userAccounts[activeUser]['userContacts'][j]['letters'];
+            let name = userName[j]['name'];
+            let email = userName[j]['email'];
+            let bothLetters = userName[j]['letters'];
             let nameLetter = name.charAt(0);
             if (nameLetter == letter) {
                 templateNameCard(i, name, email, j, bothLetters);
@@ -50,15 +48,17 @@ function getFrontLettersUser() {
 }
 
 function circleColor(j) {
-    let color = userAccounts[activeUser]['userContacts'][j]['color'];
+    let color = userAccounts[activeUser].userContacts[j]['color'];
     document.getElementById('circle' + j).style.backgroundColor = color;
 }
 
 function showContact(j, bothLetters) {
+    let color = userAccounts[activeUser].userContacts[j]['color'];
     contactName = userAccounts[activeUser]['userContacts'][j]['name'];
     email = userAccounts[activeUser]['userContacts'][j]['email'];
     phone = userAccounts[activeUser]['userContacts'][j]['phone'];
-    document.getElementById('contact-circle').innerHTML = `${bothLetters}`
+    document.getElementById('contact-circle-letters').innerHTML = `${bothLetters}`;
+    document.getElementById('contact-circle').style.backgroundColor = `${color}`;
     document.getElementById('float-contact-name').innerHTML = `${contactName}`;
     document.getElementById('email').innerHTML = `${email}`;
     document.getElementById('phone').innerHTML = `${phone}`;
@@ -76,23 +76,11 @@ function sortLetters() {
     }
 }
 
-function getFirstLetter() {
-    for (let i = 0; i < contacts.length; i++) {
-        let letter = contacts[i]['name'];
-        letter = letter.charAt(0);
-        letter = letter.toUpperCase();
-        check = letters.indexOf(letter);
-        if (check == -1) {
-            letters.push(letter);
-        }
-    }
-    console.log(letters)
-}
+
 
 function showCard() {
     document.getElementById('bg').style.display = '';
     document.getElementById('contact-card').classList = 'add-contact-card';
-
 }
 
 function closeContactCard() {
@@ -105,24 +93,29 @@ function getInputValues() {
     let contact_email = document.getElementById('contact-email');
     let contact_phone = document.getElementById('contact-phone');
     let contact_name = document.getElementById('contact-name');
-    contactName = contact_name.value;
+    let inputName = contact_name.value;
+    const firstLetter = inputName.charAt(0).toUpperCase();
+    const remainingLetters = inputName.slice(1);
+    contactName = firstLetter + remainingLetters;
+    console.log(contactName);
     email = contact_email.value;
     phone = contact_phone.value;
     let helpLetter = contactName.split(" ");
-    bothLetters = helpLetter[0].charAt(0) + helpLetter[1].charAt(0);
+    bothLetters = helpLetter[0].charAt(0).toUpperCase() + helpLetter[1].charAt(0).toUpperCase();
 }
 
 
 
 async function CreateNewContact() {
     await loadUserAccountsFromBackend();
-    let userName = userAccounts[activeUser]['userContacts'];
+    let userName = userAccounts[activeUser].userContacts;
     getInputValues();
+    contactColor = randomUserColor();
     let contact_obj = { 'name': contactName, 'email': email, 'phone': phone, 'letters': bothLetters, 'color': contactColor };
     userName.push(contact_obj);
-    console.log(userName);
-    saveUserAccountsToBackend();
-    console.log(userName, letters);
+    //console.log(userName);
+    await saveUserAccountsToBackend();
+    //console.log(userName, letters);
     closeContactCard();
     sortNames();
     console.log(userAccounts[activeUser]);

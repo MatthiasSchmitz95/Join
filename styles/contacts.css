@@ -13,7 +13,7 @@ a{
         position: absolute;
         background-color: rgba(0, 0, 0, 0.5);
         top: 0px;
-        bottom: -88px;
+        bottom: 0px;
         right: 0px;
         left: 0px;
         z-index: 5;
@@ -25,7 +25,7 @@ a{
     width: 453px;
     background: #FFFFFF;
     box-shadow: 4px 0px 6px rgba(0, 0, 0, 0.08);
-    height: 100vh;
+    height: calc(100vh - 89px);
 }
 
 .contact-container {
@@ -134,8 +134,8 @@ a{
     height: 73px;
     display: flex;
     align-items: center;
-    padding-left: 58px;
-    padding-top: 82px;
+    margin-left: 58px;
+    margin-top: 82px;
 }
 
 .html-topic h2 {
@@ -201,7 +201,7 @@ a{
     display: flex;
     z-index: 9;
     transform: translate(-50%, -50%);
-    transition: 1s;
+    transition: 200ms;
 }
 
 .hidden {

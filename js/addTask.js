@@ -213,7 +213,7 @@ function addTask() {
     var priorityImg = document.getElementById('prioUrgentImg').src;
 
     var newTask = {
-        "titlle": title.value,
+        "title": title.value,
         "description": description.value,
         "category": category.value,
         "categoryColor": categoryColor,
