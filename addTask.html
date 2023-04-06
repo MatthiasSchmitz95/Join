@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="mainHTML">
 
 <head>
     <meta charset="UTF-8">
@@ -18,7 +18,6 @@
 
 <body onload="init('addTask'); loadActiveUserLocal()">
     <div w3-include-html="desktop-template.html"></div>
-    <div class="headline">Add Task</div>
     <form class="taskCard" onsubmit="addTask(); return false">
 
         <div class="headline">Add Task</div>
