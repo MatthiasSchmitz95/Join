@@ -281,3 +281,11 @@ function insertLow() {
     document.getElementById('popOut-prioMediumImg').classList.remove('popOut-whitecolor');
     document.getElementById('popOut-prioLowImg').classList.add('popOut-whitecolor');
 }
+
+function clearBtnhover() {
+    document.getElementById('popOut-clearBtnImg').classList.add('popOut-clearButtonImgblue');
+}
+
+function clearBtnCancelhover() {
+    document.getElementById('popOut-clearBtnImg').classList.remove('popOut-clearButtonImgblue');
+}

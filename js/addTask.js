@@ -240,9 +240,9 @@ async function addTask() {
     document.getElementById('prioMediumImg').classList.remove('whitecolor');
     document.getElementById('prioLowImg').classList.remove('whitecolor');
     deleteSubTask();
-    /*setTimeout(function () {
+    setTimeout(function () {
         window.location = "./board.html";
-    }, 3600)*/
+    }, 3600)
 
     userAccounts[activeUser].userTasks.push(newTask);
     saveTasksToBackend();

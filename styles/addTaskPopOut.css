@@ -118,10 +118,11 @@ body {
     z-index: 2;
 }
 
-.popOut-clearButton img:hover {
-    color: #32daff;
+.popOut-clearButtonImgblue {
+    filter: invert(69%) sepia(81%) saturate(1437%) hue-rotate(158deg) brightness(103%) contrast(103%);
     z-index: 2;
 }
+
 
 .popOut-createButton {
     font-family: 'Inter';
