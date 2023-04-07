@@ -187,7 +187,8 @@ function addSubTask() {
  * AddTask JSON Array
  */
 var tasks = [];
-function addTask() {
+async function addTask() {
+    await loadUserAccountsFromBackend();
     var title = document.getElementById('popOut-title');
     var description = document.getElementById('popOut-description');
     var contact = document.getElementById('popOut-assignInput');
@@ -235,19 +236,19 @@ function addTask() {
     document.getElementById('popOut-prioUrgentBox').classList.remove('bgUrgent');
     document.getElementById('popOut-prioMediumBox').classList.remove('bgMedium');
     document.getElementById('popOut-prioLowBox').classList.remove('bgLow');
-    document.getElementById('popOut-prioUrgentImg').classList.remove('whitecolor');
-    document.getElementById('popOut-prioMediumImg').classList.remove('whitecolor');
-    document.getElementById('popOut-prioLowImg').classList.remove('whitecolor');
+    document.getElementById('popOut-prioUrgentImg').classList.remove('popOut-whitecolor');
+    document.getElementById('popOut-prioMediumImg').classList.remove('popOut-whitecolor');
+    document.getElementById('popOut-prioLowImg').classList.remove('popOut-whitecolor');
     deleteSubTask();
-    setTimeout(function () {
+    /*setTimeout(function () {
         window.location = "./board.html";
-    }, 3600)
-
+    }, 3600)*/
+    userAccounts[activeUser].userTasks.push(newTask);
+    saveTasksToBackend();
+    loadTasksFromBackend();
 }
 
-userAccounts[activeUser].userTasks.push(newTask);
-saveTasksToBackend();
-loadTasksFromBackend();
+
 
 
 
@@ -256,9 +257,9 @@ function insertUrgent() {
     document.getElementById('popOut-prioMediumBox').classList.remove('bgMedium');
     document.getElementById('popOut-prioLowBox').classList.remove('bgLow');
     /*img-color*/
-    document.getElementById('popOut-prioUrgentImg').classList.add('whitecolor');
-    document.getElementById('popOut-prioMediumImg').classList.remove('whitecolor');
-    document.getElementById('popOut-prioLowImg').classList.remove('whitecolor');
+    document.getElementById('popOut-prioUrgentImg').classList.add('popOut-whitecolor');
+    document.getElementById('popOut-prioMediumImg').classList.remove('popOut-whitecolor');
+    document.getElementById('popOut-prioLowImg').classList.remove('popOut-whitecolor');
 }
 
 function insertMedium() {
@@ -266,9 +267,9 @@ function insertMedium() {
     document.getElementById('popOut-prioLowBox').classList.remove('bgLow');
     document.getElementById('popOut-prioUrgentBox').classList.remove('bgUrgent');
     /*img-color*/
-    document.getElementById('popOut-prioMediumImg').classList.add('whitecolor');
-    document.getElementById('popOut-prioUrgentImg').classList.remove('whitecolor');
-    document.getElementById('popOut-prioLowImg').classList.remove('whitecolor');
+    document.getElementById('popOut-prioUrgentImg').classList.remove('popOut-whitecolor');
+    document.getElementById('popOut-prioMediumImg').classList.add('popOut-whitecolor');
+    document.getElementById('popOut-prioLowImg').classList.remove('popOut-whitecolor');
 }
 
 function insertLow() {
@@ -276,7 +277,7 @@ function insertLow() {
     document.getElementById('popOut-prioUrgentBox').classList.remove('bgUrgent');
     document.getElementById('popOut-prioMediumBox').classList.remove('bgMedium');
     /*img-color*/
-    document.getElementById('popOut-prioLowImg').classList.add('whitecolor');
-    document.getElementById('popOut-prioUrgentImg').classList.remove('whitecolor');
-    document.getElementById('popOut-prioMediumImg').classList.remove('whitecolor');
+    document.getElementById('popOut-prioUrgentImg').classList.remove('popOut-whitecolor');
+    document.getElementById('popOut-prioMediumImg').classList.remove('popOut-whitecolor');
+    document.getElementById('popOut-prioLowImg').classList.add('popOut-whitecolor');
 }

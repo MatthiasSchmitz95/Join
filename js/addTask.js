@@ -187,7 +187,8 @@ function addSubTask() {
  * AddTask JSON Array
  */
 var tasks = [];
-function addTask() {
+async function addTask() {
+    await loadUserAccountsFromBackend();
     var title = document.getElementById('title');
     var description = document.getElementById('description');
     var contact = document.getElementById('assignInput');
@@ -239,15 +240,16 @@ function addTask() {
     document.getElementById('prioMediumImg').classList.remove('whitecolor');
     document.getElementById('prioLowImg').classList.remove('whitecolor');
     deleteSubTask();
-    setTimeout(function () {
+    /*setTimeout(function () {
         window.location = "./board.html";
-    }, 3600)
+    }, 3600)*/
 
+    userAccounts[activeUser].userTasks.push(newTask);
+    saveTasksToBackend();
+    loadTasksFromBackend();
 }
 
-userAccounts[activeUser].userTasks.push(newTask);
-saveTasksToBackend();
-loadTasksFromBackend();
+
 
 
 
@@ -279,4 +281,13 @@ function insertLow() {
     document.getElementById('prioLowImg').classList.add('whitecolor');
     document.getElementById('prioUrgentImg').classList.remove('whitecolor');
     document.getElementById('prioMediumImg').classList.remove('whitecolor');
+}
+
+
+function clearBtnhover() {
+    document.getElementById('clearBtnImg').classList.add('clearButtonImgblue');
+}
+
+function clearBtnCancelhover() {
+    document.getElementById('clearBtnImg').classList.remove('clearButtonImgblue');
 }
