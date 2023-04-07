@@ -188,7 +188,9 @@ function addSubTask() {
  */
 var tasks = [];
 async function addTask() {
+    await saveUserAccountsToBackend();
     await loadUserAccountsFromBackend();
+    
     var title = document.getElementById('title');
     var description = document.getElementById('description');
     var contact = document.getElementById('assignInput');
@@ -240,9 +242,9 @@ async function addTask() {
     document.getElementById('prioMediumImg').classList.remove('whitecolor');
     document.getElementById('prioLowImg').classList.remove('whitecolor');
     deleteSubTask();
-    setTimeout(function () {
+    /*setTimeout(function () {
         window.location = "./board.html";
-    }, 3600)
+    }, 3600)*/
 
     userAccounts[activeUser].userTasks.push(newTask);
     saveTasksToBackend();

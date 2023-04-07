@@ -188,7 +188,9 @@ function addSubTask() {
  */
 var tasks = [];
 async function addTask() {
+    await saveUserAccountsToBackend();
     await loadUserAccountsFromBackend();
+    
     var title = document.getElementById('popOut-title');
     var description = document.getElementById('popOut-description');
     var contact = document.getElementById('popOut-assignInput');
