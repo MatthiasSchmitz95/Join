@@ -82,7 +82,7 @@ body {
     /*margin-left: 83px;
     margin-top: 93px;*/
     position: absolute;
-    top:800px;
+    top: 800px;
     left: 752px;
     width: 338px;
     height: 61px;
@@ -194,7 +194,7 @@ body {
     gap: 8px;
 }
 
-.description{
+.description {
     width: 154px;
     height: 25px;
     font-family: 'Inter';
@@ -566,6 +566,15 @@ body {
     background-color: #7AE229;
 }
 
+.bgTextWhite {
+    color: white;
+}
+
+.Img-white {
+    /*First, brightness(0) makes all image black, except transparent parts, which remain transparent.
+    Then, invert(1) makes the black parts white.*/
+    filter: brightness(0) invert(1);
+}
 
 .messageAddedTask {
     position: absolute;

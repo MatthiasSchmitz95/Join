@@ -5,6 +5,8 @@ async function init(id) {
   highlightSelectedNav(id);
   await loadUserAccountsFromBackend();
   loadActiveUserLocal();
+  await loadTasksFromBackend();
+  updateCalender();
 }
 
 
@@ -51,6 +53,7 @@ async function loadUserAccountsFromBackend() {
   userAccounts = JSON.parse(backend.getItem('userAccounts')) || [];
   console.log('Useraccounts loadet', userAccounts);
 }
+
 
 async function loadTasksFromBackend() {
   await downloadFromServer();

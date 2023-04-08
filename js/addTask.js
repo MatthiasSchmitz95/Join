@@ -71,6 +71,7 @@ function chooseCategory(index, category, color) {
  * AssignTo 
  */
 /*var contactListArray = ['contact1', 'contact2', 'contact3'];*/
+/*var userName =[];*/
 var assignToInputContainer = document.getElementById('contactInputContainer');
 function renderAssignTo() {
     let assignedContactList = document.getElementById('assignedList');
@@ -81,7 +82,7 @@ function renderAssignTo() {
         var userName = userAccounts[i]['userName'];
 
         assignedContactList.innerHTML += /*html*/`
-        <div class="assignedContact" onclick="chooseContact(${i}, '${userName}')" > 
+        <div class="assignedContact" onclick="chooseContact(${i}, '${userName}')"> 
             <div>${userName}</div>
             <label class="filledCheckboxContainer">
                 <input type="checkbox">
@@ -131,6 +132,7 @@ function chooseContact(index, contact) {
 /**
  * Subtask
  */
+var subTasks = ['Subtask 1'];
 var addsubtask = document.getElementById('addSubtaskBtn');
 var onInputSubTask = document.getElementById('subtaskOninput');
 var subtaskInput = document.getElementById('subtasksInput');
@@ -143,7 +145,8 @@ function createNewSubtask() {
         onInputSubTask.style.display = "flex";
         let subtaskInput = document.getElementById('subtasksInput');
         subtaskInput.value = "";
-        subtaskInput.value = "Create new icons";
+        subtaskInput.value = "create New Icons";
+
     } else {
         deleteSubTask();
     }
@@ -164,8 +167,7 @@ function deleteSubTask() {
 }
 
 function addSubTask() {
-    subtaskInput.value = "";
-    subtaskInput.value = "Create new icons";
+    subtaskInput.value = "create New Icons";
 
     appendixSubtask.innerHTML = /*html*/`
         <label class="container">
@@ -183,6 +185,7 @@ function addSubTask() {
     onInputSubTask.style.display = "none";
 }
 
+
 /**
  * AddTask JSON Array
  */
@@ -190,7 +193,7 @@ var tasks = [];
 async function addTask() {
     await saveUserAccountsToBackend();
     await loadUserAccountsFromBackend();
-    
+
     var title = document.getElementById('title');
     var description = document.getElementById('description');
     var contact = document.getElementById('assignInput');
@@ -242,47 +245,104 @@ async function addTask() {
     document.getElementById('prioMediumImg').classList.remove('whitecolor');
     document.getElementById('prioLowImg').classList.remove('whitecolor');
     deleteSubTask();
-    /*setTimeout(function () {
+    setTimeout(function () {
         window.location = "./board.html";
-    }, 3600)*/
+    }, 3600)
 
-    userAccounts[activeUser].userTasks.push(newTask);
-    saveTasksToBackend();
-    loadTasksFromBackend();
+    userAccounts[activeUser].userTasks.push(tasks);
+    await saveTasksToBackend();
 }
-
-
-
 
 
 function insertUrgent() {
+    document.getElementById('prioUrgentBox').classList.add('bgTextWhite');
+    document.getElementById('prioMediumBox').classList.remove('bgTextWhite');
+    document.getElementById('prioLowBox').classList.remove('bgTextWhite');
+    document.getElementById('prioUrgentImg').classList.add("Img-white");
+    document.getElementById('prioMediumImg').classList.remove("Img-white");
+    document.getElementById('prioLowImg').classList.remove("Img-white");
+    toggleInsertUrgent();
     document.getElementById('prioUrgentBox').classList.toggle('bgUrgent');
     document.getElementById('prioMediumBox').classList.remove('bgMedium');
     document.getElementById('prioLowBox').classList.remove('bgLow');
-    /*img-color*/
-    document.getElementById('prioUrgentImg').classList.add('whitecolor');
-    document.getElementById('prioMediumImg').classList.remove('whitecolor');
-    document.getElementById('prioLowImg').classList.remove('whitecolor');
+  
+}
+
+function toggleInsertUrgent(){
+    document.getElementById("prioUrgentBox").addEventListener("click", function handleClick(event) {
+        const hasClass = event.target.classList.contains('bgUrgent');
+        if (hasClass) {
+            console.log('applied bg White');
+            document.getElementById('prioUrgentBox').classList.add('bgTextWhite');
+            document.getElementById('prioUrgentImg').classList.add("Img-white");
+        }
+        else{
+            console.log('removed bg White');
+            document.getElementById('prioUrgentBox').classList.remove('bgTextWhite');
+            document.getElementById('prioUrgentImg').classList.remove("Img-white");
+        }
+    });
 }
 
 function insertMedium() {
+    document.getElementById('prioMediumBox').classList.add('bgTextWhite');
+    document.getElementById('prioUrgentBox').classList.remove('bgTextWhite');
+    document.getElementById('prioLowBox').classList.remove('bgTextWhite');
+    document.getElementById('prioLowImg').classList.remove("Img-white");
+    document.getElementById('prioUrgentImg').classList.remove("Img-white");
+    document.getElementById('prioMediumImg').classList.add("Img-white");
+    toggleInsertMedium();
     document.getElementById('prioMediumBox').classList.toggle('bgMedium');
-    document.getElementById('prioLowBox').classList.remove('bgLow');
     document.getElementById('prioUrgentBox').classList.remove('bgUrgent');
-    /*img-color*/
-    document.getElementById('prioMediumImg').classList.add('whitecolor');
-    document.getElementById('prioUrgentImg').classList.remove('whitecolor');
-    document.getElementById('prioLowImg').classList.remove('whitecolor');
+    document.getElementById('prioLowBox').classList.remove('bgLow');
+
 }
 
+function toggleInsertMedium(){
+    document.getElementById("prioMediumBox").addEventListener("click", function handleClick(event) {
+        const hasClass = event.target.classList.contains('bgMedium');
+        if (hasClass) {
+            console.log('applied bg White');
+            document.getElementById('prioMediumBox').classList.add('bgTextWhite');
+            document.getElementById('prioMediumImg').classList.add("Img-white");
+        }
+        else{
+            console.log('removed bg White');
+            document.getElementById('prioMediumBox').classList.remove('bgTextWhite');
+            document.getElementById('prioMediumImg').classList.remove("Img-white");
+        }
+    });
+}
+
+
+
 function insertLow() {
+    document.getElementById('prioLowBox').classList.add('bgTextWhite');
+    document.getElementById('prioUrgentBox').classList.remove('bgTextWhite');
+    document.getElementById('prioMediumBox').classList.remove('bgTextWhite');
+    document.getElementById('prioLowImg').classList.add("Img-white");
+    document.getElementById('prioMediumImg').classList.remove("Img-white");
+    document.getElementById('prioUrgentImg').classList.remove("Img-white");
+    toggleInsertLow();
     document.getElementById('prioLowBox').classList.toggle('bgLow');
     document.getElementById('prioUrgentBox').classList.remove('bgUrgent');
     document.getElementById('prioMediumBox').classList.remove('bgMedium');
-    /*img-color*/
-    document.getElementById('prioLowImg').classList.add('whitecolor');
-    document.getElementById('prioUrgentImg').classList.remove('whitecolor');
-    document.getElementById('prioMediumImg').classList.remove('whitecolor');
+}
+
+function toggleInsertLow(){
+    document.getElementById("prioLowBox").addEventListener("click", function handleClick(event) {
+        const hasClass = event.target.classList.contains('bgLow');
+        if (hasClass) {
+            console.log('applied bg White');
+            document.getElementById('prioLowBox').classList.add('bgTextWhite');
+            document.getElementById('prioLowImg').classList.add("Img-white");
+        }
+        else{
+            console.log('removed bg White');
+            document.getElementById('prioLowBox').classList.remove('bgTextWhite');
+            document.getElementById('prioLowImg').classList.remove("Img-white");
+        }
+    });
 }
 
 
@@ -292,4 +352,19 @@ function clearBtnhover() {
 
 function clearBtnCancelhover() {
     document.getElementById('clearBtnImg').classList.remove('clearButtonImgblue');
+}
+
+// modify calendar to only select current date or date in the future
+function updateCalender() {
+    let today = new Date();
+    let dd = String(today.getDate()).padStart(2, "0");
+    let mm = String(today.getMonth() + 1).padStart(2, "0");
+    let yyyy = today.getFullYear();
+    today = yyyy + "-" + mm + "-" + dd;
+    document.getElementById("date").min = today;
+}
+
+/*clear all field of AddTask page*/
+function clearAllAddTaskFields() {
+    window.location.reload();
 }
