@@ -223,6 +223,8 @@ function renderSubtasks() {
  * AddTask JSON Array
  */
 var tasks = [];
+var priority;
+var priorityImg;
 async function addTask() {
     await saveUserAccountsToBackend();
     await loadUserAccountsFromBackend();
@@ -236,8 +238,17 @@ async function addTask() {
     var dueDate = document.getElementById('date');
     //var subTask = document.getElementById('subtasksInput');
     var subTask = selectedSubtasks;
-    var priority = document.getElementById('prioUrgentBox').innerText;
-    var priorityImg = document.getElementById('prioUrgentImg').src;
+    if (document.getElementById('prioUrgentBox').classList.contains('bgUrgent')) {
+        priority = document.getElementById('prioUrgentBox').innerText;
+        priorityImg = document.getElementById('prioUrgentImg').src;
+    } else if (document.getElementById('prioMediumBox').classList.contains('bgMedium')) {
+        priority = document.getElementById('prioMediumBox').innerText;
+        priorityImg = document.getElementById('prioMediumImg').src;
+    }else{
+        priority = document.getElementById('prioLowBox').innerText;
+        priorityImg = document.getElementById('prioLowImg').src;
+    }
+
     var idTask = tasks.length;
     var progress = "To Do";
 
@@ -275,15 +286,19 @@ async function addTask() {
     category.value = "";
     unsetCategoryInputField();
     //contact.value = "";
+    document.getElementById('assignInput').value = "";
     inputAssignedContact = "";
     dueDate.value = "";
     //subTask.value = "";
     document.getElementById('prioUrgentBox').classList.remove('bgUrgent');
     document.getElementById('prioMediumBox').classList.remove('bgMedium');
     document.getElementById('prioLowBox').classList.remove('bgLow');
-    document.getElementById('prioUrgentImg').classList.remove('whitecolor');
-    document.getElementById('prioMediumImg').classList.remove('whitecolor');
-    document.getElementById('prioLowImg').classList.remove('whitecolor');
+    document.getElementById('prioUrgentBox').classList.remove('bgTextWhite');
+    document.getElementById('prioMediumBox').classList.remove('bgTextWhite');
+    document.getElementById('prioLowBox').classList.remove('bgTextWhite');
+    document.getElementById('prioUrgentImg').classList.remove('Img-white');
+    document.getElementById('prioMediumImg').classList.remove('Img-white');
+    document.getElementById('prioLowImg').classList.remove('Img-white');
     deleteSubTask();
     /*setTimeout(function () {
         window.location = "./board.html";
