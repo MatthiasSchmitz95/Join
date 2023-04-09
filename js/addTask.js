@@ -81,18 +81,36 @@ function renderAssignTo() {
         var userName = userAccounts[i]['userName'];
 
         assignedContactList.innerHTML += /*html*/`
-        <div class="assignedContact" onclick="chooseContact(${i}, '${userName}')"> 
+        <div class="assignedContact" onclick="chooseContact('${userName}')"> 
             <div>${userName}</div>
         <label class="filledCheckboxContainer">
-                <input type="checkbox" class="editedCheckbox" name="contactCheckbox" value="${userName}">
+                <input type="checkbox" class="checkboxForContacts" value='${userName}'>
                 <span class="checkmark"></span>
-            <div class="subtaskCheck"></div>
+                <!--<div class="subtaskCheck"></div>-->
         </label>
         </div>
         `;
+        //${i}, '${userName}'
     }
+}
 
-
+var choosedContacts = [];
+function chooseContact(name) { //index, contact
+    let inputAssignedContact = document.getElementById('assignInput');
+    inputAssignedContact.value = '';
+    inputAssignedContact.value = name;
+    
+    let allChekbox = document.querySelectorAll('.checkboxForContacts');
+    for (let i = 0; i < allChekbox.length; i++) {
+        const checkbox = allChekbox[i];
+        if (checkbox.checked) {
+            choosedContacts.push(checkbox.value);
+        }
+        else {
+            choosedContacts.splice(checkbox.value);
+        }
+    }
+    console.log('chooesedContact', choosedContacts);
 }
 
 function dropDownAssignTo() {
@@ -119,22 +137,6 @@ function closeDropDownAssignTo() {
     assignToDropDown.style.display = "none";
     assignToInputContainer.style.border = "1px solid #D1D1D1";
     assignToInputContainer.style.borderRadius = "10px";
-}
-
-var chooesedContacts = [];
-
-function chooseContact(index, contact) {
-    let inputAssignedContact = document.getElementById('assignInput');
-    inputAssignedContact.value = '';
-    inputAssignedContact.value = contact;
-    /*
-    let allChekbox = document.querySelectorAll('editedCheckbox');
-    for (let i = 0; i < allChekbox.length; i++) {
-        const checkbox = allChekbox[i];
-        if (checkbox.checked) {
-            chooesedContacts.push(checkbox.value);
-        }
-    }*/
 }
 
 /**
@@ -243,24 +245,29 @@ async function addTask() {
 
     var title = document.getElementById('title');
     var description = document.getElementById('description');
-    var contact = document.getElementById('assignInput');
+    /*var contact = document.getElementById('assignInput');*/
+    let contact = choosedContacts;
     var category = document.getElementById('input');
     var categoryColor = document.getElementById('color').style.background;
     var dueDate = document.getElementById('date');
     var subTask = document.getElementById('subtasksInput');
     var priority = document.getElementById('prioUrgentBox').innerText;
     var priorityImg = document.getElementById('prioUrgentImg').src;
+    var idTask = tasks.length;
+    var progress = "To Do";
 
     var newTask = {
         "title": title.value,
         "description": description.value,
         "category": category.value,
         "categoryColor": categoryColor,
-        "contact": contact.value,
+        "contact": contact,
         "dueDate": dueDate.value,
         "subTask": subTask.value,
         "priority": priority,
-        "priorityImg": priorityImg
+        "priorityImg": priorityImg,
+        "id": idTask,
+        "progress": progress
     };
 
     tasks.push(newTask);
@@ -295,12 +302,12 @@ async function addTask() {
     /*setTimeout(function () {
         window.location = "./board.html";
     }, 3600)*/
-
-    userAccounts[activeUser].userTasks.push(tasks);
     await saveTasksToBackend();
+    //userAccounts[activeUser].userTasks.push(tasks); //hier zeigt ein Error
+    //noch zusammen zu schauen
 
-    chooseContact();
-    console.log(chooesedContacts);
+    //chooseContact();
+    console.log(choosedContacts);
 }
 
 

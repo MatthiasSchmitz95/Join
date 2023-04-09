@@ -25,7 +25,7 @@ function pushNewUser(name, email, password, userId, userInitials, userColor){
     userInitials: userInitials,
     userColor: userColor,
     userContacts: [],
-    userTasks: [],
+    userTasks: []
   };
   userAccounts.push(newUser);
 }
