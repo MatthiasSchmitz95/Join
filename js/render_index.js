@@ -27,7 +27,7 @@ function renderLogin() {
         </div>
         <div class="login-buttons">
             <button class="btn-dark login-btn">Log in</button>
-            <div class="btn-bright guest-login">Guest Log in</div>
+            <div onclick='guestLogin()' class="btn-bright guest-login">Guest Log in</div>
         </div>
     </form>
     `;

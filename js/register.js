@@ -12,7 +12,7 @@ async function signUpUser() {
     pushNewUser(name, email, password, userId, userInitials, userColor)
     await saveUserAccountsToBackend();
     document.getElementById("registerBox").classList.remove("display-none");
-    setTimeout(backToLogin, 2000);
+    setTimeout(backToLogin, 1000);
   }
 }
 

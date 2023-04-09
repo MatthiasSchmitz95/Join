@@ -24,3 +24,9 @@ function saveActiveUserLocal(user) {
   localStorage.setItem("activeUser", activeUser);
   console.log(activeUser);
 }
+
+function guestLogin(){
+  let activeUser = userAccounts[0].userId;
+  localStorage.setItem("activeUser", activeUser);
+  window.location.href = './summary.html'
+}
