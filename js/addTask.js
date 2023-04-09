@@ -140,7 +140,7 @@ function chooseContact(index, contact) {
 /**
  * Subtask
  */
-var subTasks = ['Subtask 1'];
+//var subTasks = ['Subtask 1'];
 var addsubtask = document.getElementById('addSubtaskBtn');
 var onInputSubTask = document.getElementById('subtaskOninput');
 var subtaskInput = document.getElementById('subtasksInput');
@@ -148,8 +148,17 @@ var appendixSubtask = document.getElementById('SubtaskAppendixContainer');
 
 function createNewSubtask() {
     /**show Iput-subtask-Field*/
-    addsubtask.style.display = "none";
-    onInputSubTask.style.display = "flex";
+    if (onInputSubTask.style.display == "none") {
+        addsubtask.style.display = "none";
+        onInputSubTask.style.display = "flex";
+        let subtaskInput = document.getElementById('subtasksInput');
+        subtaskInput.value = "";
+        subtaskInput.value = "Create new icons";
+        subtaskInput.value = "create New Icons";
+
+    } else {
+        deleteSubTask();
+    }
 }
 
 
@@ -162,16 +171,42 @@ function deleteSubTask() {
         <label class="container">
             <input type="checkbox">
             <span class="checkmark"></span>
+            <div class="subtaskCheck">Subtask 1</div>
+        </label>
+    `;
+    /*
+    appendixSubtask.innerHTML =`
+        <label class="container">
+            <input type="checkbox">
+            <span class="checkmark"></span>
             <div class="subtaskCheck">${subTasks[0]}</div>
         </label>
     `;
     //to delete all from index 1
-    subTasks.splice(1);
+    subTasks.splice(1);*/
 }
 
 function addSubTask() {
     //subtaskInput.value = "create New Icons";
-    if (subtaskInput.value != "") {
+    subtaskInput.value = "";
+    subtaskInput.value = "Create new icons";
+    subtaskInput.value = "create New Icons";
+
+    appendixSubtask.innerHTML = /*html*/`
+        <label class="container">
+            <input type="checkbox">
+            <span class="checkmark"></span>
+            <div class="subtaskCheck">Subtask 1</div>
+        </label>
+        <label class="container">
+            <input type="checkbox">
+            <span class="checkmark"></span>
+            <div class="subtaskCheck">${subtaskInput.value}</div>
+        </label>
+    `;
+    addsubtask.style.display = "flex";
+    onInputSubTask.style.display = "none";
+    /*if (subtaskInput.value != "") {
         let subTask = subtaskInput.value;
         subTasks.push(subTask);
         console.log(subTasks);
@@ -179,14 +214,15 @@ function addSubTask() {
     }
     subtaskInput.value = "";
     addsubtask.style.display = "flex";
-    onInputSubTask.style.display = "none";
+    onInputSubTask.style.display = "none";*/
 }
 
+/*
 function renderSubtasks() {
     appendixSubtask.innerHTML = "";
     for (let i = 0; i < subTasks.length; i++) {
         const showSubTask = subTasks[i];
-        appendixSubtask.innerHTML += /*html*/`
+        appendixSubtask.innerHTML += `
     <label class="container">
             <input type="checkbox" name="subtask" />
             <span class="checkmark" id="checkmark${i}"></span>
@@ -194,7 +230,7 @@ function renderSubtasks() {
     </label>
     `;
     }
-}
+}*/
 
 
 /**
