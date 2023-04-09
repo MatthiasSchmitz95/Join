@@ -17,7 +17,7 @@
     <script src="./js/register.js"></script>
 </head> 
 
-<body onload="init('addTask')">
+<body onload="init('addTask'); renderSubtasks()">
     <div w3-include-html="desktop-template.html"></div>
     <form class="taskCard" onsubmit="addTask(); return false">
 
@@ -49,7 +49,7 @@
                 <div class="assignContainer">
                     <label for="assignedTo" class="assignedTo">Assigned to</label>
                     <div class="contactInputContainer" id="contactInputContainer">
-                        <input id="assignInput" type="text" placeholder="Select contacts to assign" required />
+                        <input id="assignInput" type="text" placeholder="Select contacts to assign" required/>
 
                         <div id="assignDropDown" class="buttonOpenClose" onclick="dropDownAssignTo()"><img
                                 src="assets/img/dropdown-arrow.png"></div>
@@ -88,11 +88,11 @@
                 </div>
 
                 <div class="SubtaskAppendixContainer" id="SubtaskAppendixContainer">
-                    <label class="container">
+                    <!--<label class="container">
                         <input type="checkbox" />
                         <span class="checkmark"></span>
                         <div class="subtaskCheck">Subtask 1</div>
-                    </label>
+                    </label>-->
                 </div>
             </div>
         </div>

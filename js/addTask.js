@@ -81,16 +81,16 @@ function renderAssignTo() {
         var userName = userAccounts[i]['userName'];
 
         assignedContactList.innerHTML += /*html*/`
-        <div class="assignedContact" onclick="chooseContact('${userName}')"> 
+        <div class="assignedContact" > 
             <div>${userName}</div>
         <label class="filledCheckboxContainer">
-                <input type="checkbox" class="checkboxForContacts" value='${userName}'>
+                <input type="checkbox" class="checkboxForContacts" value="${userName}" onclick="chooseContact('${userName}')">
                 <span class="checkmark"></span>
                 <!--<div class="subtaskCheck"></div>-->
         </label>
         </div>
         `;
-        //${i}, '${userName}'
+        //${i}, '${userName}' //
     }
 }
 
@@ -99,7 +99,8 @@ function chooseContact(name) { //index, contact
     let inputAssignedContact = document.getElementById('assignInput');
     inputAssignedContact.value = '';
     inputAssignedContact.value = name;
-    
+    choosedContacts.splice(0); //delete all choosed Contacts from last time
+
     let allChekbox = document.querySelectorAll('.checkboxForContacts');
     for (let i = 0; i < allChekbox.length; i++) {
         const checkbox = allChekbox[i];
@@ -142,25 +143,15 @@ function closeDropDownAssignTo() {
 /**
  * Subtask
  */
-//var subTasks = ['Subtask 1'];
+var subTasks = ['Subtask 1'];
 var addsubtask = document.getElementById('addSubtaskBtn');
 var onInputSubTask = document.getElementById('subtaskOninput');
 var subtaskInput = document.getElementById('subtasksInput');
 var appendixSubtask = document.getElementById('SubtaskAppendixContainer');
 
 function createNewSubtask() {
-    /**show Iput-subtask-Field*/
-    if (onInputSubTask.style.display == "none") {
-        addsubtask.style.display = "none";
-        onInputSubTask.style.display = "flex";
-        let subtaskInput = document.getElementById('subtasksInput');
-        subtaskInput.value = "";
-        subtaskInput.value = "Create new icons";
-        subtaskInput.value = "create New Icons";
-
-    } else {
-        deleteSubTask();
-    }
+    addsubtask.style.display = "none";
+    onInputSubTask.style.display = "flex";
 }
 
 
@@ -169,15 +160,7 @@ function deleteSubTask() {
     addsubtask.style.display = "flex";
     onInputSubTask.style.display = "none";
     appendixSubtask.innerHTML = "";
-    appendixSubtask.innerHTML = /*html*/`
-        <label class="container">
-            <input type="checkbox">
-            <span class="checkmark"></span>
-            <div class="subtaskCheck">Subtask 1</div>
-        </label>
-    `;
-    /*
-    appendixSubtask.innerHTML =`
+    appendixSubtask.innerHTML = `
         <label class="container">
             <input type="checkbox">
             <span class="checkmark"></span>
@@ -185,30 +168,14 @@ function deleteSubTask() {
         </label>
     `;
     //to delete all from index 1
-    subTasks.splice(1);*/
+    subTasks.splice(1);
 }
 
-function addSubTask() {
-    //subtaskInput.value = "create New Icons";
-    subtaskInput.value = "";
-    subtaskInput.value = "Create new icons";
-    subtaskInput.value = "create New Icons";
 
-    appendixSubtask.innerHTML = /*html*/`
-        <label class="container">
-            <input type="checkbox">
-            <span class="checkmark"></span>
-            <div class="subtaskCheck">Subtask 1</div>
-        </label>
-        <label class="container">
-            <input type="checkbox">
-            <span class="checkmark"></span>
-            <div class="subtaskCheck">${subtaskInput.value}</div>
-        </label>
-    `;
+function addSubTask() {
     addsubtask.style.display = "flex";
     onInputSubTask.style.display = "none";
-    /*if (subtaskInput.value != "") {
+    if (subtaskInput.value != "") {
         let subTask = subtaskInput.value;
         subTasks.push(subTask);
         console.log(subTasks);
@@ -216,23 +183,40 @@ function addSubTask() {
     }
     subtaskInput.value = "";
     addsubtask.style.display = "flex";
-    onInputSubTask.style.display = "none";*/
+    onInputSubTask.style.display = "none";
 }
 
-/*
+var selectedSubtasks = [];
+function chooseSubtasks() { //index, contact
+    selectedSubtasks.splice(0); //delete all choosed Contacts from last time
+
+    let allChekbox = document.querySelectorAll('.checkedSubTasks');
+    for (let i = 0; i < allChekbox.length; i++) {
+        const checkbox = allChekbox[i];
+        if (checkbox.checked) {
+            selectedSubtasks.push(checkbox.value);
+        }
+        else {
+            selectedSubtasks.splice(checkbox.value);
+        }
+    }
+    console.log('choosedSubtasks', selectedSubtasks);
+}
+
+
 function renderSubtasks() {
     appendixSubtask.innerHTML = "";
     for (let i = 0; i < subTasks.length; i++) {
         const showSubTask = subTasks[i];
-        appendixSubtask.innerHTML += `
+        appendixSubtask.innerHTML += /*html*/`
     <label class="container">
-            <input type="checkbox" name="subtask" />
+            <input type="checkbox" class="checkedSubTasks" onclick="chooseSubtasks()" value="${showSubTask}"/>
             <span class="checkmark" id="checkmark${i}"></span>
             <div class="subtaskCheck">${showSubTask}</div>
     </label>
     `;
     }
-}*/
+}
 
 
 /**
@@ -250,7 +234,8 @@ async function addTask() {
     var category = document.getElementById('input');
     var categoryColor = document.getElementById('color').style.background;
     var dueDate = document.getElementById('date');
-    var subTask = document.getElementById('subtasksInput');
+    //var subTask = document.getElementById('subtasksInput');
+    var subTask = selectedSubtasks;
     var priority = document.getElementById('prioUrgentBox').innerText;
     var priorityImg = document.getElementById('prioUrgentImg').src;
     var idTask = tasks.length;
@@ -263,7 +248,7 @@ async function addTask() {
         "categoryColor": categoryColor,
         "contact": contact,
         "dueDate": dueDate.value,
-        "subTask": subTask.value,
+        "subTask": subTask,
         "priority": priority,
         "priorityImg": priorityImg,
         "id": idTask,
@@ -289,9 +274,10 @@ async function addTask() {
     description.value = "";
     category.value = "";
     unsetCategoryInputField();
-    contact.value = "";
+    //contact.value = "";
+    inputAssignedContact = "";
     dueDate.value = "";
-    subTask.value = "";
+    //subTask.value = "";
     document.getElementById('prioUrgentBox').classList.remove('bgUrgent');
     document.getElementById('prioMediumBox').classList.remove('bgMedium');
     document.getElementById('prioLowBox').classList.remove('bgLow');
@@ -303,11 +289,13 @@ async function addTask() {
         window.location = "./board.html";
     }, 3600)*/
     await saveTasksToBackend();
+
     //userAccounts[activeUser].userTasks.push(tasks); //hier zeigt ein Error
     //noch zusammen zu schauen
 
     //chooseContact();
     console.log(choosedContacts);
+    choosedContacts = [];
 }
 
 

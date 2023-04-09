@@ -663,10 +663,9 @@ Check Mark design
 }
 
 /* Show the checkmark when checked */
-/*
 .container input:checked~.checkmark:after {
     display: block;
-}*/
+}
 
 /* Style the checkmark/indicator */
 .container .checkmark:after {
