@@ -245,7 +245,7 @@ async function addTask() {
     /*setTimeout(function () {
         window.location = "./board.html";
     }, 3600)*/
-    userAccounts[activeUser].userTasks.push(newTask);
+    userAccounts[activeUser].userTasks.push(tasks);
     saveTasksToBackend();
     loadTasksFromBackend();
 }
@@ -377,12 +377,14 @@ function toggleInsertLow() {
     });
 }
 
-
-
+function closePopOutAddTask(){
+    document.getElementById('popOut-taskCard').classList.add('d-none');
+}
 
 
 function clearBtnhover() {
     document.getElementById('popOut-clearBtnImg').classList.add('popOut-clearButtonImgblue');
+    console.log('closed');
 }
 
 function clearBtnCancelhover() {

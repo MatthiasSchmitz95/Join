@@ -2,16 +2,23 @@ body {
     margin: 0;
     overflow-y: auto;
     overflow-x: hidden;
-    background-color: #f5f5f5;
+    /*background-color: #f5f5f5;*/
 }
 
 .mt-15 {
     margin-top: .8rem;
 }
 
+.d-none {
+    display: none;
+}
+
 .popOut-taskCard {
-    background: #FFFFFF;
-    position: relative;
+    /*background: #FFFFFF;*/
+    /*position: relative;*/
+    position: absolute;
+    top: -30px;
+    left: 80px;
     width: 1116px;
     height: 914px;
     background: #FFFFFF;
@@ -20,13 +27,16 @@ body {
     display: flex;
     flex-direction: column;
     margin: 100px;
+    z-index: 5;
 }
 
 .popOut-headline {
     /*width: 466px;*/
-    width: 466px;
+    box-sizing: border-box;
+    /*width: 466px;*/
     height: 78px;
     margin-left: 74px;
+    margin-right: 74px;
     margin-top: 63px;
     font-family: 'Inter';
     font-style: normal;
@@ -34,8 +44,20 @@ body {
     font-size: 61px;
     line-height: 120%;
     color: #000000;
-
+    display: flex;
 }
+
+.closeBtn{
+    position: absolute;
+    left: 1056px;
+    top: 26px;
+    cursor: pointer;
+}
+
+.closeBtn:hover{
+    background-color: whitesmoke;
+}
+
 
 .popOut-contentContainer {
     display: flex;
@@ -201,7 +223,7 @@ body {
     gap: 8px;
 }
 
-.popOut-description{
+.popOut-description {
     width: 154px;
     height: 25px;
     font-family: 'Inter';

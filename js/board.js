@@ -289,3 +289,12 @@ function renderAssignTo() {
         `;
     }
 }
+
+
+function showAddTaskPopOut(){
+    document.getElementById('popOut-taskCard').classList.remove('d-none');
+}
+
+function closePopOutAddTask(){
+    document.getElementById('popOut-taskCard').classList.add('d-none');
+}

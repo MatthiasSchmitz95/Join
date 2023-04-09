@@ -17,9 +17,11 @@
 </head>
 
 <body onload="init('addTask'); loadActiveUserLocal()">
-    <form class="popOut-taskCard" onsubmit="addTask(); return false">
+    <form class="popOut-taskCard d-none" onsubmit="addTask(); return false" id="popOut-taskCard">
 
-        <div class="popOut-headline">Add Task</div>
+        <div class="popOut-headline">
+            Add Task
+        </div>
         <div class="popOut-contentContainer">
             <div class="popOut-leftContent">
                 <div class="popOut-titleContainer">
@@ -109,6 +111,8 @@
             <img src="assets/img/board-icon.png">
         </div>
 
+
+        <div class="closeBtn"><img  src="./assets/img/closeBtn.png" id="closeBtn-addTaskPopOut" onclick="closePopOutAddTask()"></div>
     </form>
 
 
