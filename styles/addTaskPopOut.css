@@ -563,6 +563,16 @@ body {
     background-color: #7AE229;
 }
 
+.bgTextWhite {
+    color: white;
+}
+
+.Img-white {
+    /*First, brightness(0) makes all image black, except transparent parts, which remain transparent.
+    Then, invert(1) makes the black parts white.*/
+    filter: brightness(0) invert(1);
+}
+
 
 .popOut-messageAddedTask {
     position: absolute;

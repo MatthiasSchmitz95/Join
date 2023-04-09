@@ -253,12 +253,12 @@ async function addTask() {
 
 
 
-
+/*
 function insertUrgent() {
     document.getElementById('popOut-prioUrgentBox').classList.toggle('bgUrgent');
     document.getElementById('popOut-prioMediumBox').classList.remove('bgMedium');
     document.getElementById('popOut-prioLowBox').classList.remove('bgLow');
-    /*img-color*/
+    
     document.getElementById('popOut-prioUrgentImg').classList.add('popOut-whitecolor');
     document.getElementById('popOut-prioMediumImg').classList.remove('popOut-whitecolor');
     document.getElementById('popOut-prioLowImg').classList.remove('popOut-whitecolor');
@@ -268,7 +268,7 @@ function insertMedium() {
     document.getElementById('popOut-prioMediumBox').classList.toggle('bgMedium');
     document.getElementById('popOut-prioLowBox').classList.remove('bgLow');
     document.getElementById('popOut-prioUrgentBox').classList.remove('bgUrgent');
-    /*img-color*/
+    
     document.getElementById('popOut-prioUrgentImg').classList.remove('popOut-whitecolor');
     document.getElementById('popOut-prioMediumImg').classList.add('popOut-whitecolor');
     document.getElementById('popOut-prioLowImg').classList.remove('popOut-whitecolor');
@@ -278,11 +278,108 @@ function insertLow() {
     document.getElementById('popOut-prioLowBox').classList.toggle('bgLow');
     document.getElementById('popOut-prioUrgentBox').classList.remove('bgUrgent');
     document.getElementById('popOut-prioMediumBox').classList.remove('bgMedium');
-    /*img-color*/
+    
     document.getElementById('popOut-prioUrgentImg').classList.remove('popOut-whitecolor');
     document.getElementById('popOut-prioMediumImg').classList.remove('popOut-whitecolor');
     document.getElementById('popOut-prioLowImg').classList.add('popOut-whitecolor');
+}*/
+
+
+
+function insertUrgent() {
+    document.getElementById('popOut-prioUrgentBox').classList.add('bgTextWhite');
+    document.getElementById('popOut-prioMediumBox').classList.remove('bgTextWhite');
+    document.getElementById('popOut-prioLowBox').classList.remove('bgTextWhite');
+    document.getElementById('popOut-prioUrgentImg').classList.add("Img-white");
+    document.getElementById('popOut-prioMediumImg').classList.remove("Img-white");
+    document.getElementById('popOut-prioLowImg').classList.remove("Img-white");
+    toggleInsertUrgent();
+    document.getElementById('popOut-prioUrgentBox').classList.toggle('bgUrgent');
+    document.getElementById('popOut-prioMediumBox').classList.remove('bgMedium');
+    document.getElementById('popOut-prioLowBox').classList.remove('bgLow');
+
 }
+
+function toggleInsertUrgent() {
+    document.getElementById("popOut-prioUrgentBox").addEventListener("click", function handleClick(event) {
+        const hasClass = event.target.classList.contains('bgUrgent');
+        if (hasClass) {
+            console.log('applied bg White');
+            document.getElementById('popOut-prioUrgentBox').classList.add('bgTextWhite');
+            document.getElementById('popOut-prioUrgentImg').classList.add("Img-white");
+        }
+        else {
+            console.log('removed bg White');
+            document.getElementById('popOut-prioUrgentBox').classList.remove('bgTextWhite');
+            document.getElementById('popOut-prioUrgentImg').classList.remove("Img-white");
+        }
+    });
+}
+
+function insertMedium() {
+    document.getElementById('popOut-prioMediumBox').classList.add('bgTextWhite');
+    document.getElementById('popOut-prioUrgentBox').classList.remove('bgTextWhite');
+    document.getElementById('popOut-prioLowBox').classList.remove('bgTextWhite');
+    document.getElementById('popOut-prioLowImg').classList.remove("Img-white");
+    document.getElementById('popOut-prioUrgentImg').classList.remove("Img-white");
+    document.getElementById('popOut-prioMediumImg').classList.add("Img-white");
+    toggleInsertMedium();
+    document.getElementById('popOut-prioMediumBox').classList.toggle('bgMedium');
+    document.getElementById('popOut-prioUrgentBox').classList.remove('bgUrgent');
+    document.getElementById('popOut-prioLowBox').classList.remove('bgLow');
+
+}
+
+function toggleInsertMedium() {
+    document.getElementById("popOut-prioMediumBox").addEventListener("click", function handleClick(event) {
+        const hasClass = event.target.classList.contains('bgMedium');
+        if (hasClass) {
+            console.log('applied bg White');
+            document.getElementById('popOut-prioMediumBox').classList.add('bgTextWhite');
+            document.getElementById('popOut-prioMediumImg').classList.add("Img-white");
+        }
+        else {
+            console.log('removed bg White');
+            document.getElementById('popOut-prioMediumBox').classList.remove('bgTextWhite');
+            document.getElementById('popOut-prioMediumImg').classList.remove("Img-white");
+        }
+    });
+}
+
+
+
+function insertLow() {
+    document.getElementById('popOut-prioLowBox').classList.add('bgTextWhite');
+    document.getElementById('popOut-prioUrgentBox').classList.remove('bgTextWhite');
+    document.getElementById('popOut-prioMediumBox').classList.remove('bgTextWhite');
+    document.getElementById('popOut-prioLowImg').classList.add("Img-white");
+    document.getElementById('popOut-prioMediumImg').classList.remove("Img-white");
+    document.getElementById('popOut-prioUrgentImg').classList.remove("Img-white");
+    toggleInsertLow();
+    document.getElementById('popOut-prioLowBox').classList.toggle('bgLow');
+    document.getElementById('popOut-prioUrgentBox').classList.remove('bgUrgent');
+    document.getElementById('popOut-prioMediumBox').classList.remove('bgMedium');
+}
+
+function toggleInsertLow() {
+    document.getElementById("popOut-prioLowBox").addEventListener("click", function handleClick(event) {
+        const hasClass = event.target.classList.contains('bgLow');
+        if (hasClass) {
+            console.log('applied bg White');
+            document.getElementById('popOut-prioLowBox').classList.add('bgTextWhite');
+            document.getElementById('popOut-prioLowImg').classList.add("Img-white");
+        }
+        else {
+            console.log('removed bg White');
+            document.getElementById('popOut-prioLowBox').classList.remove('bgTextWhite');
+            document.getElementById('popOut-prioLowImg').classList.remove("Img-white");
+        }
+    });
+}
+
+
+
+
 
 function clearBtnhover() {
     document.getElementById('popOut-clearBtnImg').classList.add('popOut-clearButtonImgblue');
