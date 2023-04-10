@@ -5,6 +5,17 @@ function login() {
   checkCorrectLogin(email, password)
 }
 
+  function togglePassword() {
+    var passwordInputs = document.querySelectorAll(".togglePassword");
+    passwordInputs.forEach(function(input) {
+      if (input.type === "password") {
+        input.type = "text";
+      } else {
+        input.type = "password";
+      }
+    });
+  }
+
 function checkCorrectLogin(email, password){
   let user = userAccounts.find((u) => u.userEmail == email.value);
   if (user) {
@@ -29,4 +40,30 @@ function guestLogin(){
   let activeUser = userAccounts[0].userId;
   localStorage.setItem("activeUser", activeUser);
   window.location.href = './summary.html'
+}
+
+function sendMeMail(){
+  let email = document.getElementById('forgot-email-input');
+  let user = userAccounts.find((u) => u.userEmail == email.value);
+
+  if(user){
+    renderResetYourPassword(user.userId);
+  } else{
+    console.log('This Email is not signed up yet')
+  }
+  
+}
+
+async function changePassword(user){
+  let newPassword = document.getElementById('new-password-input').value;
+  let confirmPassword = document.getElementById('confirm-password-input').value;
+  if(newPassword == confirmPassword){
+    console.log('Password changed')
+    userAccounts[user].userPassword = newPassword;
+    await saveUserAccountsToBackend();
+
+    setTimeout(backToLogin, 2000);
+  } else {
+    console.log('Make sure the second password you typed matches the first')
+  }
 }

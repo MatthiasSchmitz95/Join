@@ -1,8 +1,6 @@
-
-
 async function renderIndex() {
-  renderLogin();
   await loadUserAccountsFromBackend();
+  renderLogin();
 }
 
 function renderLogin() {
@@ -16,8 +14,8 @@ function renderLogin() {
                 <img src="./assets/img/email-icon.png">
             </div>
             <div class="input-field">
-                <input required class="input" type="password" name="password" id="login-password-input" placeholder="Password">
-                <img src="./assets/img/password-icon.png">
+                <input required class="input togglePassword" type="password" name="password" id="login-password-input" placeholder="Password">
+                <img class="toogleImage" onclick="togglePassword()" src="./assets/img/password-icon.png">
             </div>
         </div>
         <div class="remember-check">
@@ -53,8 +51,8 @@ function renderSignUp() {
                 </div>
 
                 <div class="input-field">
-                    <input required minlength="5" class="input" type="password" name="password" id="sign-up-password-input" placeholder="Password">
-                    <img src="./assets/img/password-icon.png">
+                    <input required minlength="5" class="input togglePassword" type="password" name="password" id="sign-up-password-input" placeholder="Password">
+                    <img class="toogleImage" onclick="togglePassword()" src="./assets/img/password-icon.png">
                 </div>
             </div>
             <button class="btn-dark">Sign up</button>
@@ -65,26 +63,50 @@ function renderSignUp() {
 
 function backToLogin() {
   document.getElementById("not-a-join").classList.toggle("display-none");
-  renderLogin();
+  renderIndex();
 }
 
 function renderForgotPassword() {
   document.getElementById("not-a-join").classList.toggle("display-none");
   document.getElementById("login-container").innerHTML = ``;
   document.getElementById("login-container").innerHTML = `
-    <form class="login-container">
-    <h1>I forgot my password</h1>
-    <img class="arrow-left-back" src="./assets/img/arrow-left.png" onclick="backToLogin()">
-    <div class="line-login"></div>
-    <div class="input-container">
-        <div class="dont-worry-textbox"><span>Don't worry! We will send you an email with the instructions to reset your password.</span>
-    </div>
-    <div class="input-container">
-        <div class="input-field">
-            <input required class="input" type="email" name="email" id="email-input" placeholder="Email">
-            <img src="./assets/img/email-icon.png">
+    <form onsubmit="sendMeMail(); return false" class="login-container">
+        <h1>I forgot my password</h1>
+        <img class="arrow-left-back" src="./assets/img/arrow-left.png" onclick="backToLogin()">
+        <div class="line-login"></div>
+        <div class="input-container">
+        <div class="textbox">
+            <span>Don't worry! We will send you an email with the instructions to reset your password.</span>
         </div>
-        <div class="btn-dark">Send me the email</div>
-</div>   
+        <div class="input-container">
+            <div class="input-field">
+                <input required class="input" type="email" name="email" id="forgot-email-input" placeholder="Email">
+                <img src="./assets/img/email-icon.png">
+            </div>
+            <button class="btn-dark">Send me the email</button>
+        </div>
+    </form>
 `;
+}
+
+function renderResetYourPassword(user) {
+  document.getElementById("login-container").innerHTML = `
+    <form onsubmit ="changePassword(${user}); return false" class="login-container" >
+        <h1>Reset your password</h1>
+        <div class="line-login"></div>
+        <div class="textbox"><span>Change your account password.</span>
+        </div>
+        <div class="input-container">
+            <div class="input-field">
+                <input required class="input togglePassword" type="password" name="password" id="new-password-input" placeholder="New password">
+                <img class="toogleImage" onclick="togglePassword()" src="./assets/img/password-icon.png">
+            </div>
+            <div class="input-field">
+                <input required class="input togglePassword" type="password" name="password" id="confirm-password-input" placeholder="Confirm password">
+                <img class="toogleImage" onclick="togglePassword()" src="./assets/img/password-icon.png">
+            </div>
+        </div>
+        <button class="btn-dark login-btn">Continue</button>
+    </form>
+    `;
 }

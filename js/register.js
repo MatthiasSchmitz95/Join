@@ -3,12 +3,19 @@ async function signUpUser() {
   let email = document.getElementById("sign-up-email-input").value;
   let password = document.getElementById("sign-up-password-input").value;
   let userId = userAccounts.length;
-  let userInitials = userNameInitial(name);
+  let userInitials;
   let userColor = randomUserColor();
-  let checkInvalidName = name.split(" ");
-  if (checkInvalidName.length !== 2) {
+  let splitName = name.split(" ");
+  if (splitName.length !== 2) {
     console.log("Please enter your first and last name");
   } else {
+    for (let i = 0; i < splitName.length; i++) {
+      let namePart = splitName[i];
+      splitName[i] = namePart.charAt(0).toUpperCase() + namePart.slice(1);
+    }
+    name = splitName.join(" ");
+
+    userInitials = userNameInitial(name);
     pushNewUser(name, email, password, userId, userInitials, userColor)
     await saveUserAccountsToBackend();
     document.getElementById("registerBox").classList.remove("display-none");
