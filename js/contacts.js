@@ -70,7 +70,7 @@ function showContact(j, bothLetters) {
 
 function editContactCard(j) {
     changeButtonTemplate(j);
-    getInformation(j);
+    setInputfields(j);
     showCard();
 }
 
@@ -80,13 +80,11 @@ async function deleteContact(j) {
     userAccounts[activeUser]['userContacts'].splice(j, 1);
     await saveUserAccountsToBackend();
     sortNames();
-    //sortLetters();
     closeContactCard();
 }
 
 async function editContact(j) {
     letters = [];
-    setInputfields(j);
     getInputValues();
     let contact_obj = { 'name': contactName, 'email': email, 'phone': phone, 'letters': bothLetters, 'color': contactColor };
     userAccounts[activeUser]['userContacts'].splice(j, 1, contact_obj);
@@ -96,13 +94,6 @@ async function editContact(j) {
     closeContactCard();
 }
 
-
-function getInformation(j) {
-    document.getElementById('contact-email').value = userAccounts[activeUser]['userContacts'][j]['email'];
-    document.getElementById('contact-phone').value = userAccounts[activeUser]['userContacts'][j]['phone'];
-    document.getElementById('contact-name').value = userAccounts[activeUser]['userContacts'][j]['name'];
-
-}
 
 
 function sortLetters() {
@@ -123,6 +114,7 @@ function closeContactCard() {
     document.getElementById('contact-card').classList = 'hidden';
     document.getElementById('bg').style.display = 'none';
     changeButtonTemplateBack();
+    resetInputfields();
 
 }
 
@@ -172,9 +164,9 @@ function resetInputfields() {
 }
 
 function setInputfields(j) {
-    document.getElementById('contact-email').value = userAccounts[activeUser]['userContacts'][j]['name'];
-    document.getElementById('contact-phone').value = userAccounts[activeUser]['userContacts'][j]['email'];
-    document.getElementById('contact-name').value = userAccounts[activeUser]['userContacts'][j]['phone'];
+    document.getElementById('contact-email').value = userAccounts[activeUser]['userContacts'][j]['email'];
+    document.getElementById('contact-phone').value = userAccounts[activeUser]['userContacts'][j]['phone'];
+    document.getElementById('contact-name').value = userAccounts[activeUser]['userContacts'][j]['name'];
 
 }
 
