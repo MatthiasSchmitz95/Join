@@ -75,7 +75,7 @@ function editContactCard(j) {
 }
 
 async function deleteContact(j) {
-    letters=[];
+    letters = [];
     userAccounts[activeUser]['userContacts'].splice(j, 1);
     await saveUserAccountsToBackend();
     sortNames();
@@ -84,7 +84,7 @@ async function deleteContact(j) {
 }
 
 async function editContact(j) {
-    letters=[];
+    letters = [];
     getInputValues();
     let contact_obj = { 'name': contactName, 'email': email, 'phone': phone, 'letters': bothLetters, 'color': contactColor };
     userAccounts[activeUser]['userContacts'].splice(j, 1, contact_obj);
@@ -92,18 +92,8 @@ async function editContact(j) {
     sortNames();
     showContact(j, bothLetters);
     closeContactCard();
-
-
 }
 
-function changeButtonTemplate(j) {
-    document.getElementById('btn-container').innerHTML = `                
-    <button id="left-btn" onclick="deleteContact(${j})" class="btn-contact-white">Delete<img class="cancel-img"
-    src="assets/img/contact-cancel-button.png"></button>
-    <button id="right-btn" onclick="editContact(${j})" class="btn-contact-blue">Edit contact<img class="create-contact-img"
-    src="assets/img/contact-create-contact-button.png"></button>`;
-
-}
 
 function getInformation(j) {
     document.getElementById('contact-email').value = userAccounts[activeUser]['userContacts'][j]['email'];
@@ -130,6 +120,7 @@ function showCard() {
 function closeContactCard() {
     document.getElementById('contact-card').classList = 'hidden';
     document.getElementById('bg').style.display = 'none';
+    changeButtonTemplateBack();
 
 }
 
@@ -145,7 +136,6 @@ function getInputValues() {
     contactName = firstLetter + remainingLetters;
     contactColor = randomUserColor();
     //console.log(contactName);
-
     let helpLetter = contactName.split(" ");
     bothLetters = helpLetter[0].charAt(0).toUpperCase() + helpLetter[1].charAt(0).toUpperCase();
 }
@@ -183,6 +173,24 @@ function successfulCreation() {
 
 }
 
+
+function changeButtonTemplate(j) {
+    document.getElementById('btn-container').innerHTML = `                
+    <button id="left-btn" onclick="deleteContact(${j})" class="btn-contact-white">Delete<img class="cancel-img"
+    src="assets/img/contact-cancel-button.png"></button>
+    <button id="right-btn" onclick="editContact(${j})" class="btn-contact-blue">Edit contact<img class="create-contact-img"
+    src="assets/img/contact-create-contact-button.png"></button>`;
+
+}
+
+function changeButtonTemplateBack() {
+    document.getElementById('btn-container').innerHTML = `                
+    <button id="left-btn" onclick="closeContactCard()" class="btn-contact-white">Cancel<img class="cancel-img"
+    src="assets/img/contact-cancel-button.png"></button>
+    <button id="right-btn" onclick="CreateNewContact()" class="btn-contact-blue">Create contact<img class="create-contact-img"
+    src="assets/img/contact-create-contact-button.png"></button>`;
+
+}
 
 function templateNameCard(i, name, email, j, bothLetters) {
     document.getElementById('contact-cards' + i).innerHTML += `
