@@ -49,14 +49,20 @@
                         </div>
                     </div>
                     <div id="categoryList" class="categoryList"></div>
-                    <div class="newCategoryColorsBox" id="newCategoryColorsBox"></div>
+                    <div class="newCategoryColorsBox" id="newCategoryColorsBox">
+                        <div class="color" style="background-color:#8AA4FF ;" onclick="newColor('#8AA4FF')"></div>
+                        <div class="color" style="background-color:#FF0000 ;" onclick="newColor('#FF0000')"></div>
+                        <div class="color" style="background-color:#2AD300 ;" onclick="newColor('#2AD300')"></div>
+                        <div class="color" style="background-color:#FF8A00 ;" onclick="newColor('#FF8A00')"></div>
+                        <div class="color" style="background-color:#E200BE ;" onclick="newColor('#E200BE')"></div>
+                        <div class="color" style="background-color:#0038FF ;" onclick="newColor('#0038FF')"></div>
+                    </div>
                 </div>
 
                 <div class="assignContainer">
                     <label for="assignedTo" class="assignedTo">Assigned to</label>
                     <div class="contactInputContainer" id="contactInputContainer">
                         <input id="assignInput" type="text" placeholder="Select contacts to assign" required />
-
                         <div id="assignDropDown" class="buttonOpenClose" onclick="dropDownAssignTo()"><img
                                 src="assets/img/dropdown-arrow.png"></div>
                     </div>
