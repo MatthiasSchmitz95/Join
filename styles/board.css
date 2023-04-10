@@ -97,6 +97,7 @@ h2 {
     height: 30px;
     font-weight: 700;
     font-size: 21px;
+    width: 250px;
     align-items: center;
 }
 
@@ -127,6 +128,10 @@ h2 {
     box-sizing: border-box;
     margin-top: 37.5px;
     cursor: pointer;
+}
+
+.width100{
+    width: 100%;
 }
 
 .margin-left {

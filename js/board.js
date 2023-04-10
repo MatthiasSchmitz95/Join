@@ -9,20 +9,26 @@ function updateHTML() {
 }
 
 
-function updateHTMLToDo(){
-    let todo = todos.filter(t => t['category'] == 'To do');
+async function updateHTMLToDo(){
+    await loadTasksFromBackend();
+    await loadUserAccountsFromBackend();
+    let user = userAccounts[activeUser]['userName'];
+    let todo = tasks.filter(t => t['progress'] == 'To Do' && t['contact'].includes(user) );
     document.getElementById('toDoContent').innerHTML = '';
 
-    for (let index = 0; index < todo.length; index++) {
-        const cards = todo[index];
+    for (let i = 0; i< todo.length; i++) {
+        const cards = todo[i];
         document.getElementById('toDoContent').innerHTML +=generateHTML(cards), priorityImgCard(cards);
         
     }
 }
 
 
-function updateHTMLInProgress(){
-    let inProgress = todos.filter(t => t['category'] == 'In progress');
+async function updateHTMLInProgress(){
+    await loadTasksFromBackend();
+    await loadUserAccountsFromBackend();
+    let user = userAccounts[activeUser]['userName'];
+    let inProgress = tasks.filter(t => t['progress'] == 'In progress' && t['contact'].includes(user) );
     document.getElementById('inProgressContent').innerHTML = '';
 
     for (let index = 0; index < inProgress.length; index++) {
@@ -33,8 +39,11 @@ function updateHTMLInProgress(){
 }
 
 
-function updateHTMLAwaitingFeedback(){
-    let awaiting = todos.filter(t => t['category'] == 'Awaiting Feedback');
+async function updateHTMLAwaitingFeedback(){
+    await loadTasksFromBackend();
+    await loadUserAccountsFromBackend();
+    let user = userAccounts[activeUser]['userName'];
+    let awaiting = tasks.filter(t => t['progress'] == 'Awaiting Feedback' && t['contact'].includes(user) );
     document.getElementById('awaitingFeedbackContent').innerHTML = '';
 
     for (let index = 0; index < awaiting.length; index++) {
@@ -44,8 +53,11 @@ function updateHTMLAwaitingFeedback(){
 }
 
 
-function updateHTMLDone(){
-    let done = todos.filter(t => t['category'] == 'Done');
+async function updateHTMLDone(){
+    await loadTasksFromBackend();
+    await loadUserAccountsFromBackend();
+    let user = userAccounts[activeUser]['userName'];
+    let done = tasks.filter(t => t['progress'] == 'Done' && t['contact'].includes(user) );
     document.getElementById('doneContent').innerHTML = '';
 
     for (let index = 0; index < done.length; index++) {
@@ -58,12 +70,12 @@ function updateHTMLDone(){
 function generateHTML(cards) {
     return /*html*/`
     <div draggable="true" ondragstart="startDragging(${cards['id']})" onclick="showOverlay(${cards['id']})" class="card">
-    <div>
-        <h4>${cards['Department']}</h4>
+    <div class="width100">
+        <h4>${cards['category']}</h4>
         <h4>${cards['title']}</h4>
-        <p>
-        ${cards['text']}
-        </p>
+        <div >
+        ${cards['description']}
+</div>
         <div>
            <div>
 
@@ -79,7 +91,7 @@ function generateHTML(cards) {
 
 function priorityImgCard(cards){
     let prio = document.getElementById(`priorityImage${cards['id']}`);
-    card = cards['priority'];
+    let card = cards['priority'];
     if (card== 'Urgent') {
         prio.innerHTML = '<img src="assets/img/urgent.png">';
     }else if (card=='Medium') {
@@ -100,22 +112,23 @@ function allowDrop(ev) {
 }
 
 
-function moveTo(category){
-    todos[currentDraggedElement]['category']= category;
-    updateHTML()
+async function moveTo(category){
+   tasks[currentDraggedElement]['progress']= category;
+   await saveTasksToBackend();
+    updateHTML();
 }
 
 
 function showOverlay(cards){
     // Finden des entsprechenden Objekts im JSON-Array todos anhand der ID
-    let todo = todos.find((item) => item.id === cards);
+    let todo = tasks.find((item) => item.id === cards);
     document.getElementById('overlay-background').classList.add('overlay-background');
     let overlay = document.getElementById('overlay');
     overlay.classList.remove('d-none');
     overlay.innerHTML = /*html*/`        
     <div class="overlay-header">
         <div class="overlay-department">
-            ${(todo.Department)}
+            ${(todo.category)}
         </div>
         <div class="close-icon">
             <img onclick="closeOverlay()" src="assets/img/close-overlay.svg">
@@ -125,16 +138,16 @@ function showOverlay(cards){
         ${(todo.title)}
     </div>
     <div class="overlay-text">
-        ${(todo.text)}
+        ${(todo.description)}
     </div>
     <div class="overlay-date">
-        <b>Due date:</b> ${(todo['due date'])}
+        <b>Due date:</b> ${(todo['dueDate'])}
     </div>
     <div class="overlay-date">
-        <b>Priority:</b> ${(todo.priority)}
+        <b>Priority:</b> ${(todo.priority)} ${todo.priorityImg}
     </div>
     <div class="overlay-date">
-        <b>Assigned to:</b> ${(todo['Assigned to'])}
+        <b>Assigned to:</b> ${(todo['contact'])}
     </div>
     <div class="overlay-edit-task-position">
         <div class="overlay-edit-task" onclick="showOverlayChange(${cards})">
@@ -147,7 +160,7 @@ function showOverlay(cards){
 
 
 function showOverlayChange(cards){
-    let todo = todos.find((item) => item.id === cards);
+    let todo = tasks.find((item) => item.id === cards);
     let overlay = document.getElementById('overlay');
     overlay.innerHTML = /*html*/`
    <div class="overlay-header"> 
@@ -161,14 +174,14 @@ function showOverlayChange(cards){
     </div>
     <div class="width-chances">
         Description <br>
-        <textarea onkeyup="textAreaAdjust(this)" style="overflow:hidden" class="input-chances-text">${(todo.text)}</textarea>
+        <textarea onkeyup="textAreaAdjust(this)" style="overflow:hidden" class="input-chances-text">${(todo.description)}</textarea>
     </div>
     <div class="width-chances">
        Due date <br>
-       <input class="input-chances-title" type="date" value="2023-02-03" min="023-02-01" max="023-02-28" placeholder="${(todo['due date'])}">
+       <input class="input-chances-title" type="date" value="2023-02-03" min="023-02-01" max="023-02-28" placeholder="${(todo['dueDate'])}">
     </div>
     <label for="priority" class="priority">Prio</label>
-                <div class="priorityBoxesContainer">
+                <div  class="priorityBoxesContainer">
                     <div class="prioUrgentBox" id="prioUrgentBox" onclick="insertUrgent()">Urgent <img
                             id="prioUrgentImg" src="assets/img/urgent.png"></div>
                     <div class="prioMediumBox" id="prioMediumBox" onclick="insertMedium()">Medium <img
@@ -194,7 +207,8 @@ function showOverlayChange(cards){
             OK<img src="assets/img/right.svg">
         </div>
     </div>
-     `
+     `;
+     insertPriority(cards);
 }
 
 function textAreaAdjust(element) {
@@ -245,6 +259,18 @@ function insertLow() {
     document.getElementById('prioLowImg').classList.add('whitecolor');
     document.getElementById('prioUrgentImg').classList.remove('whitecolor');
     document.getElementById('prioMediumImg').classList.remove('whitecolor');
+}
+
+
+function insertPriority(cards){
+    let todo = tasks.find((item) => item.id === cards);
+    if (todo.priority == 'urgent') {
+        insertUrgent()
+    } else if (todo.priority == 'Medium') {
+        insertMedium()
+    } else{
+        insertLow()
+    }
 }
 
 
