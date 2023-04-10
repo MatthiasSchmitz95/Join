@@ -260,7 +260,7 @@ body {
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    /*justify-content: space-between;*/
     padding-left: 21px;
     padding-right: 21px;
 
@@ -272,8 +272,17 @@ body {
     border-radius: 10px;
 }
 
-#input,
-#assignInput {
+
+/* Change auto chrome bg color to white*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+
+
+#input {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
@@ -281,7 +290,22 @@ body {
     line-height: 120%;
     border: none;
     outline: none;
+    width: 255px;
+    background-color: none;
 }
+
+
+#assignInput{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 120%;
+    border: none;
+    outline: none;
+    width: 270px;
+}
+
 
 .categoryList,
 .assignedList {
@@ -306,11 +330,11 @@ body {
 #newCategoryInput {
     width: 50px;
     height: 51px;
-    padding-right: 20px;
-    padding-left: 20px;
+    /* padding-right: 20px; */
+    padding-left: 35px;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    /* justify-content: flex-end; */
     cursor: pointer;
     gap: 10px;
     display: none;
@@ -354,53 +378,15 @@ body {
 
 .buttonOpenClose {
     cursor: pointer;
+    padding-left: 90px;
 }
 
-/*.dropDownDisplay {
-    display: block;
-}*/
 
 .color {
     width: 15px;
     height: 15px;
     border-radius: 100%;
 }
-
-/*badge colors */
-.orange {
-    background: #ff8a00;
-}
-
-.red {
-    background: #ff0000;
-}
-
-.blue {
-    background: #0038ff;
-}
-
-.lightblue {
-    background: #8aa4ff;
-}
-
-.pink {
-    background: #e200be;
-}
-
-.lightpink {
-    background: #fc71ff;
-}
-
-.green {
-    background: #2ad300;
-}
-
-.turquo {
-    background: #1fd7c1;
-}
-
-
-/*badge colors */
 
 .assignContainer {
     display: flex;
