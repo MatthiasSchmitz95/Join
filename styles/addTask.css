@@ -9,6 +9,10 @@ body {
     margin-top: .8rem;
 }
 
+.d-none{
+    display: none;
+}
+
 .taskCard {
     height: 1024px;
     width: 1440px;
@@ -299,6 +303,34 @@ body {
     background-color: lightgray;
 }
 
+#newCategoryInput {
+    width: 50px;
+    height: 51px;
+    padding-right: 20px;
+    padding-left: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    cursor: pointer;
+    gap: 10px;
+    display: none;
+}
+
+#newCategoryInput img {
+    width: 16px;
+    height: 16px;
+}
+
+.newCategoryColorsBox{
+    width: 422px;
+    height: 51px;
+    /*background-color: #D1D1D1;*/
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    display: none;
+}
+
 .categoryAndColor,
 .assignedContact {
     box-sizing: border-box;
@@ -324,9 +356,9 @@ body {
     cursor: pointer;
 }
 
-.dropDownDisplay {
+/*.dropDownDisplay {
     display: block;
-}
+}*/
 
 .color {
     width: 15px;

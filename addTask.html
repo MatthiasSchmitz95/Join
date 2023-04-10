@@ -15,7 +15,7 @@
     <script src="./js/addTask.js"></script>
     <script src="./js/mini_backend.js"></script>
     <script src="./js/register.js"></script>
-</head> 
+</head>
 
 <body onload="init('addTask'); renderSubtasks()">
     <div w3-include-html="desktop-template.html"></div>
@@ -42,14 +42,20 @@
                         <div id="color" class="color"></div>
                         <div id="buttonDropDown" class="buttonOpenClose" onclick="dropDown()"><img
                                 src="assets/img/dropdown-arrow.png"></div>
+                        <div id="newCategoryInput">
+                            <img src="assets/img/icon_clear.png" id="clearSubtaskInput" onclick="rejectNewCategory()">
+                            <div class="line"></div>
+                            <img src="assets/img/checkmark.png" id="selectedSubtask" onclick="addNewCategory()">
+                        </div>
                     </div>
                     <div id="categoryList" class="categoryList"></div>
+                    <div class="newCategoryColorsBox" id="newCategoryColorsBox"></div>
                 </div>
 
                 <div class="assignContainer">
                     <label for="assignedTo" class="assignedTo">Assigned to</label>
                     <div class="contactInputContainer" id="contactInputContainer">
-                        <input id="assignInput" type="text" placeholder="Select contacts to assign" required/>
+                        <input id="assignInput" type="text" placeholder="Select contacts to assign" required />
 
                         <div id="assignDropDown" class="buttonOpenClose" onclick="dropDownAssignTo()"><img
                                 src="assets/img/dropdown-arrow.png"></div>
@@ -72,7 +78,7 @@
                     <div class="prioMediumBox" id="prioMediumBox" onclick="insertMedium()">Medium <img
                             id="prioMediumImg" src="assets\img\medium.png"></div>
                     <div class="prioLowBox" id="prioLowBox" onclick="insertLow()">low <img id="prioLowImg"
-                        src="assets\img\low.png"></div>
+                            src="assets\img\low.png"></div>
                 </div>
 
                 <label for="subtasks" class="subtasks">Subtasks</label>
@@ -98,7 +104,9 @@
         </div>
 
         <div class="buttonsContainer">
-            <button class="clearButton"  onmouseover="clearBtnhover()" onmouseout="clearBtnCancelhover()" onclick="clearAllAddTaskFields()">Clear <img class="clearBtnImg" id="clearBtnImg" src="assets/img/cross-mark.svg">
+            <button class="clearButton" onmouseover="clearBtnhover()" onmouseout="clearBtnCancelhover()"
+                onclick="clearAllAddTaskFields()">Clear <img class="clearBtnImg" id="clearBtnImg"
+                    src="assets/img/cross-mark.svg">
             </button>
             <button class="createButton" type="submit" id="addTaskBtn">Create Task <img class="createBtnImg"
                     src="assets/img/right-mark.png"></button>
