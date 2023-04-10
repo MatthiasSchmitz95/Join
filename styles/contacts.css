@@ -16,8 +16,8 @@ a {
     color: white;
     left: 50%;
     transform: translate(-50%, -50%);
-    bottom: -100%;
-    transition: 1s;
+    bottom: 1500%;
+    transition: 10s ease-in-out;
 }
 
 .add-success {
@@ -33,9 +33,9 @@ a {
     z-index: 10;
     color: white;
     left: 50%;
-    bottom: 100px;
+    bottom: 30%;
     transform: translate(-50%, -50%);
-    transition: 200ms;
+
 }
 
 .desktop {

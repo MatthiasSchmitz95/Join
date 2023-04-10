@@ -1,5 +1,6 @@
 let bothLetters;
 let contactName;
+let inputName;
 let email;
 let phone;
 let letters = [];
@@ -25,8 +26,8 @@ function getFrontLettersUser() {
 async function sortNames() {
     await loadUserAccountsFromBackend();
     loadActiveUserLocal();
-    let userName = userAccounts[activeUser].userContacts;
     getFrontLettersUser();
+    let userName = userAccounts[activeUser].userContacts;
     document.getElementById('contact-container').innerHTML = '';
     letters.sort();
     for (let i = 0; i < letters.length; i++) {
@@ -60,9 +61,55 @@ function showContact(j, bothLetters) {
     document.getElementById('contact-circle-letters').innerHTML = `${bothLetters}`;
     document.getElementById('contact-circle').style.backgroundColor = `${color}`;
     document.getElementById('float-contact-name').innerHTML = `${contactName}`;
+    document.getElementById('contact-information').innerHTML = `<h4>Contact information</h4>
+    <a onclick="editContactCard(${j})"><img src="assets/img/edit-contact.png"><p>Edit contact</p></a>`;
     document.getElementById('email').innerHTML = `${email}`;
     document.getElementById('phone').innerHTML = `${phone}`;
     document.getElementById('floating-contact-container').style.display = "";
+}
+
+function editContactCard(j) {
+    changeButtonTemplate(j);
+    getInformation(j);
+    showCard();
+}
+
+async function deleteContact(j) {
+    letters=[];
+    userAccounts[activeUser]['userContacts'].splice(j, 1);
+    await saveUserAccountsToBackend();
+    sortNames();
+    //sortLetters();
+    closeContactCard();
+}
+
+async function editContact(j) {
+    letters=[];
+    getInputValues();
+    let contact_obj = { 'name': contactName, 'email': email, 'phone': phone, 'letters': bothLetters, 'color': contactColor };
+    userAccounts[activeUser]['userContacts'].splice(j, 1, contact_obj);
+    await saveUserAccountsToBackend();
+    sortNames();
+    showContact(j, bothLetters);
+    closeContactCard();
+
+
+}
+
+function changeButtonTemplate(j) {
+    document.getElementById('btn-container').innerHTML = `                
+    <button id="left-btn" onclick="deleteContact(${j})" class="btn-contact-white">Delete<img class="cancel-img"
+    src="assets/img/contact-cancel-button.png"></button>
+    <button id="right-btn" onclick="editContact(${j})" class="btn-contact-blue">Edit contact<img class="create-contact-img"
+    src="assets/img/contact-create-contact-button.png"></button>`;
+
+}
+
+function getInformation(j) {
+    document.getElementById('contact-email').value = userAccounts[activeUser]['userContacts'][j]['email'];
+    document.getElementById('contact-phone').value = userAccounts[activeUser]['userContacts'][j]['phone'];
+    document.getElementById('contact-name').value = userAccounts[activeUser]['userContacts'][j]['name'];
+
 }
 
 
@@ -90,13 +137,15 @@ function getInputValues() {
     let contact_email = document.getElementById('contact-email');
     let contact_phone = document.getElementById('contact-phone');
     let contact_name = document.getElementById('contact-name');
-    let inputName = contact_name.value;
+    inputName = contact_name.value;
+    email = contact_email.value;
+    phone = contact_phone.value;
     const firstLetter = inputName.charAt(0).toUpperCase();
     const remainingLetters = inputName.slice(1);
     contactName = firstLetter + remainingLetters;
-    console.log(contactName);
-    email = contact_email.value;
-    phone = contact_phone.value;
+    contactColor = randomUserColor();
+    //console.log(contactName);
+
     let helpLetter = contactName.split(" ");
     bothLetters = helpLetter[0].charAt(0).toUpperCase() + helpLetter[1].charAt(0).toUpperCase();
 }
@@ -107,7 +156,6 @@ async function CreateNewContact() {
     await loadUserAccountsFromBackend();
     let userName = userAccounts[activeUser].userContacts;
     getInputValues();
-    contactColor = randomUserColor();
     let contact_obj = { 'name': contactName, 'email': email, 'phone': phone, 'letters': bothLetters, 'color': contactColor };
     userName.push(contact_obj);
     //console.log(userName);
@@ -119,20 +167,20 @@ async function CreateNewContact() {
     console.log(userAccounts[activeUser]);
 }
 
-function successfulCreation(){
+function successfulCreation() {
 
-    setTimeout(()=> {
-        document.getElementById('success').style.display ='';
-        document.getElementById('success').classList ='add-success';
-     }
-     ,300);
-     setTimeout(()=> {
-        document.getElementById('success').style.display ='none';
-        document.getElementById('success').classList ='success';
-     }
-     ,1000);
+    setTimeout(() => {
+        document.getElementById('success').style.display = '';
+        document.getElementById('success').classList = 'add-success';
+    }
+        , 300);
+    setTimeout(() => {
+        document.getElementById('success').style.display = 'none';
+        document.getElementById('success').classList = 'success';
+    }
+        , 1000);
 
-    
+
 }
 
 
