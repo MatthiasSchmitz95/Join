@@ -5,64 +5,64 @@ function updateHTML() {
     updateHTMLToDo()
     updateHTMLInProgress()
     updateHTMLAwaitingFeedback()
-    updateHTMLDone()   
+    updateHTMLDone()
 }
 
 
-async function updateHTMLToDo(){
+async function updateHTMLToDo() {
     await loadTasksFromBackend();
     await loadUserAccountsFromBackend();
     let user = userAccounts[activeUser]['userName'];
-    let todo = tasks.filter(t => t['progress'] == 'To Do' && t['contact'].includes(user) );
+    let todo = tasks.filter(t => t['progress'] == 'To Do' && t['contact'].includes(user));
     document.getElementById('toDoContent').innerHTML = '';
 
-    for (let i = 0; i< todo.length; i++) {
+    for (let i = 0; i < todo.length; i++) {
         const cards = todo[i];
-        document.getElementById('toDoContent').innerHTML +=generateHTML(cards), priorityImgCard(cards);
-        
+        document.getElementById('toDoContent').innerHTML += generateHTML(cards), priorityImgCard(cards), changeBackgroundColor(cards);
+
     }
 }
 
 
-async function updateHTMLInProgress(){
+async function updateHTMLInProgress() {
     await loadTasksFromBackend();
     await loadUserAccountsFromBackend();
     let user = userAccounts[activeUser]['userName'];
-    let inProgress = tasks.filter(t => t['progress'] == 'In progress' && t['contact'].includes(user) );
+    let inProgress = tasks.filter(t => t['progress'] == 'In progress' && t['contact'].includes(user));
     document.getElementById('inProgressContent').innerHTML = '';
 
     for (let index = 0; index < inProgress.length; index++) {
         const cards = inProgress[index];
-        document.getElementById('inProgressContent').innerHTML +=generateHTML(cards), priorityImgCard(cards);
-        
+        document.getElementById('inProgressContent').innerHTML += generateHTML(cards), priorityImgCard(cards), changeBackgroundColor(cards);
+
     }
 }
 
 
-async function updateHTMLAwaitingFeedback(){
+async function updateHTMLAwaitingFeedback() {
     await loadTasksFromBackend();
     await loadUserAccountsFromBackend();
     let user = userAccounts[activeUser]['userName'];
-    let awaiting = tasks.filter(t => t['progress'] == 'Awaiting Feedback' && t['contact'].includes(user) );
+    let awaiting = tasks.filter(t => t['progress'] == 'Awaiting Feedback' && t['contact'].includes(user));
     document.getElementById('awaitingFeedbackContent').innerHTML = '';
 
     for (let index = 0; index < awaiting.length; index++) {
-        const cards = awaiting[index];       
-        document.getElementById('awaitingFeedbackContent').innerHTML += generateHTML(cards), priorityImgCard(cards);
+        const cards = awaiting[index];
+        document.getElementById('awaitingFeedbackContent').innerHTML += generateHTML(cards), priorityImgCard(cards), changeBackgroundColor(cards);
     }
 }
 
 
-async function updateHTMLDone(){
+async function updateHTMLDone() {
     await loadTasksFromBackend();
     await loadUserAccountsFromBackend();
     let user = userAccounts[activeUser]['userName'];
-    let done = tasks.filter(t => t['progress'] == 'Done' && t['contact'].includes(user) );
+    let done = tasks.filter(t => t['progress'] == 'Done' && t['contact'].includes(user));
     document.getElementById('doneContent').innerHTML = '';
 
     for (let index = 0; index < done.length; index++) {
         const cards = done[index];
-        document.getElementById('doneContent').innerHTML += generateHTML(cards), priorityImgCard(cards); 
+        document.getElementById('doneContent').innerHTML += generateHTML(cards), priorityImgCard(cards), changeBackgroundColor(cards);
     }
 }
 
@@ -71,7 +71,7 @@ function generateHTML(cards) {
     return /*html*/`
     <div draggable="true" ondragstart="startDragging(${cards['id']})" onclick="showOverlay(${cards['id']})" class="card">
     <div class="width100">
-        <h4>${cards['category']}</h4>
+        <div id="backgroundColor${cards['id']}">${cards['category']}</div>
         <h4>${cards['title']}</h4>
         <div >
         ${cards['description']}
@@ -86,15 +86,27 @@ function generateHTML(cards) {
         </div>
     </div>
 </div>`;
+
 }
 
 
-function priorityImgCard(cards){
+function changeBackgroundColor(cards) {
+    let background = document.getElementById(`backgroundColor${cards['id']}`);
+    let color = cards['categoryColor'];
+    if (color == 'blue') {
+        background.classList.add('background-blue');
+    } else if (color == 'red') {
+        background.classList.add('background-red');
+    }
+}
+
+
+function priorityImgCard(cards) {
     let prio = document.getElementById(`priorityImage${cards['id']}`);
     let card = cards['priority'];
-    if (card== 'Urgent') {
+    if (card == 'urgent') {
         prio.innerHTML = '<img src="assets/img/urgent.png">';
-    }else if (card=='Medium') {
+    } else if (card == 'Medium') {
         prio.innerHTML = '<img src="assets/img/medium.png">';
     } else {
         prio.innerHTML = '<img src="assets/img/low.png">';
@@ -112,15 +124,14 @@ function allowDrop(ev) {
 }
 
 
-async function moveTo(category){
-   tasks[currentDraggedElement]['progress']= category;
-   await saveTasksToBackend();
+async function moveTo(category) {
+    tasks[currentDraggedElement]['progress'] = category;
+    await saveTasksToBackend();
     updateHTML();
 }
 
 
-function showOverlay(cards){
-    // Finden des entsprechenden Objekts im JSON-Array todos anhand der ID
+function showOverlay(cards) {
     let todo = tasks.find((item) => item.id === cards);
     document.getElementById('overlay-background').classList.add('overlay-background');
     let overlay = document.getElementById('overlay');
@@ -155,18 +166,18 @@ function showOverlay(cards){
         </div>
     </div>
     `;
-  loadOverlay = true;
+    loadOverlay = true;
 }
 
 
-function showOverlayChange(cards){
+function showOverlayChange(cards) {
     let todo = tasks.find((item) => item.id === cards);
     let overlay = document.getElementById('overlay');
     overlay.innerHTML = /*html*/`
    <div class="overlay-header"> 
         <div class="width-chances">
             Title
-           <input type=text class="input-chances-title" placeholder="${(todo.title)}">
+           <input id="inputTittle" type=text class="input-chances-title" placeholder="${(todo.title)}">
         </div>
         <div class="close-icon-change">
             <img  onclick="closeOverlay()" src="assets/img/close-overlay.svg">
@@ -174,11 +185,11 @@ function showOverlayChange(cards){
     </div>
     <div class="width-chances">
         Description <br>
-        <textarea onkeyup="textAreaAdjust(this)" style="overflow:hidden" class="input-chances-text">${(todo.description)}</textarea>
+        <textarea id="inputDescription" onkeyup="textAreaAdjust(this)" style="overflow:hidden" class="input-chances-text">${(todo.description)}</textarea>
     </div>
     <div class="width-chances">
        Due date <br>
-       <input class="input-chances-title" type="date" value="2023-02-03" min="023-02-01" max="023-02-28" placeholder="${(todo['dueDate'])}">
+       <input id="inputDueDate" class="input-chances-title" type="date" value="2023-02-03" min="023-02-01" max="023-02-28" placeholder="${(todo['dueDate'])}">
     </div>
     <label for="priority" class="priority">Prio</label>
                 <div  class="priorityBoxesContainer">
@@ -203,30 +214,31 @@ function showOverlayChange(cards){
 
     </div>
     <div class="overlay-edit-task-position">
-        <div class="overlay-chance-task">
+        <div class="overlay-chance-task" onclick="saveInputTask(${cards})">
             OK<img src="assets/img/right.svg">
         </div>
     </div>
      `;
-     insertPriority(cards);
+    insertPriority(cards);
 }
+
 
 function textAreaAdjust(element) {
     element.style.height = "1px";
-    element.style.height = (25+element.scrollHeight)+"px";
-  }
-
-
-function closeOverlay(){
-    if(loadOverlay){
-    let overlay = document.getElementById('overlay');
-    overlay.classList.add('d-none');
-    document.getElementById('overlay-background').classList.remove('overlay-background');
-}
+    element.style.height = (25 + element.scrollHeight) + "px";
 }
 
 
-function doNotClose(event){
+function closeOverlay() {
+    if (loadOverlay) {
+        let overlay = document.getElementById('overlay');
+        overlay.classList.add('d-none');
+        document.getElementById('overlay-background').classList.remove('overlay-background');
+    }
+}
+
+
+function doNotClose(event) {
     event.stopPropagation();
 }
 
@@ -241,6 +253,7 @@ function insertUrgent() {
     document.getElementById('prioLowImg').classList.remove('whitecolor');
 }
 
+
 function insertMedium() {
     document.getElementById('prioMediumBox').classList.toggle('bgMedium');
     document.getElementById('prioLowBox').classList.remove('bgLow');
@@ -250,6 +263,7 @@ function insertMedium() {
     document.getElementById('prioUrgentImg').classList.remove('whitecolor');
     document.getElementById('prioLowImg').classList.remove('whitecolor');
 }
+
 
 function insertLow() {
     document.getElementById('prioLowBox').classList.toggle('bgLow');
@@ -262,13 +276,13 @@ function insertLow() {
 }
 
 
-function insertPriority(cards){
+function insertPriority(cards) {
     let todo = tasks.find((item) => item.id === cards);
     if (todo.priority == 'urgent') {
         insertUrgent()
     } else if (todo.priority == 'Medium') {
         insertMedium()
-    } else{
+    } else {
         insertLow()
     }
 }
@@ -317,10 +331,28 @@ function renderAssignTo() {
 }
 
 
-function showAddTaskPopOut(){
+function showAddTaskPopOut() {
     document.getElementById('popOut-taskCard').classList.remove('d-none');
 }
 
-function closePopOutAddTask(){
+
+function closePopOutAddTask() {
     document.getElementById('popOut-taskCard').classList.add('d-none');
+}
+
+
+async function saveInputTask(cards) {
+    let todo = tasks.find((item) => item.id === cards);
+    let newTitle = document.getElementById('inputTittle').value;
+    let newDescription = document.getElementById('inputDescription').value;
+    let newDueDate = document.getElementById('inputDueDate').value;
+    if (newTitle== '') {
+        newTitle = todo.title;
+    } 
+    todo.title = newTitle;
+    todo.description = newDescription;
+    todo.dueDate = newDueDate;
+    console.log(todo);
+    await saveTasksToBackend()
+    updateHTML()
 }
