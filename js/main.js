@@ -6,7 +6,7 @@ async function init(id) {
   await loadUserAccountsFromBackend();
   loadActiveUserLocal();
   await loadTasksFromBackend();
-  updateCalender();
+  //updateCalender();
   //await backend.deleteItem('tasks');
 }
 
