@@ -85,6 +85,7 @@ async function deleteContact(j) {
 
 async function editContact(j) {
     letters = [];
+    setInputfields(j);
     getInputValues();
     let contact_obj = { 'name': contactName, 'email': email, 'phone': phone, 'letters': bothLetters, 'color': contactColor };
     userAccounts[activeUser]['userContacts'].splice(j, 1, contact_obj);
@@ -136,11 +137,16 @@ function getInputValues() {
     contactName = firstLetter + remainingLetters;
     contactColor = randomUserColor();
     //console.log(contactName);
-    let helpLetter = contactName.split(" ");
-    bothLetters = helpLetter[0].charAt(0).toUpperCase() + helpLetter[1].charAt(0).toUpperCase();
+
+    if (inputName.indexOf(' ') >= 0) {
+        let helpLetter = contactName.split(" ");
+        bothLetters = helpLetter[0].charAt(0).toUpperCase() + helpLetter[1].charAt(0).toUpperCase();
+    }
+    else {
+        bothLetters = firstLetter;
+    }
+
 }
-
-
 
 async function CreateNewContact() {
     await loadUserAccountsFromBackend();
@@ -154,7 +160,21 @@ async function CreateNewContact() {
     closeContactCard();
     successfulCreation();
     sortNames();
+    resetInputfields();
     console.log(userAccounts[activeUser]);
+}
+
+function resetInputfields() {
+    document.getElementById('contact-email').value = '';
+    document.getElementById('contact-phone').value = '';
+    document.getElementById('contact-name').value = '';
+}
+
+function setInputfields(j) {
+    document.getElementById('contact-email').value = userAccounts[activeUser]['userContacts'][j]['name'];
+    document.getElementById('contact-phone').value = userAccounts[activeUser]['userContacts'][j]['email'];
+    document.getElementById('contact-name').value = userAccounts[activeUser]['userContacts'][j]['phone'];
+
 }
 
 function successfulCreation() {
