@@ -13,6 +13,14 @@ body {
     display: none;
 }
 
+/* Change auto chrome bg color to white*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+
 .popOut-taskCard {
     /*background: #FFFFFF;*/
     /*position: relative;*/
@@ -286,7 +294,7 @@ body {
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    /*justify-content: space-between;*/
     padding-left: 21px;
     padding-right: 21px;
 
@@ -298,8 +306,7 @@ body {
     border-radius: 10px;
 }
 
-#popOut-input,
-#popOut-assignInput {
+#popOut-input {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
@@ -307,6 +314,19 @@ body {
     line-height: 120%;
     border: none;
     outline: none;
+    width: 255px;
+    background-color: none;
+}
+
+#popOut-assignInput{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 120%;
+    border: none;
+    outline: none;
+    width: 270px;
 }
 
 .popOut-categoryList,
@@ -352,6 +372,7 @@ body {
 
 .popOut-buttonOpenClose {
     cursor: pointer;
+    padding-left: 90px;
 }
 
 .popOut-dropDownDisplay {
@@ -362,6 +383,34 @@ body {
     width: 15px;
     height: 15px;
     border-radius: 100%;
+}
+
+#popOut-newCategoryInput {
+    width: 50px;
+    height: 51px;
+    /* padding-right: 20px; */
+    padding-left: 35px;
+    display: flex;
+    align-items: center;
+    /* justify-content: flex-end; */
+    cursor: pointer;
+    gap: 10px;
+    display: none;
+}
+
+#popOut-newCategoryInput img {
+    width: 16px;
+    height: 16px;
+}
+
+.popOut-newCategoryColorsBox{
+    width: 422px;
+    height: 51px;
+    /*background-color: #D1D1D1;*/
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    display: none;
 }
 
 /*badge colors */
