@@ -76,6 +76,7 @@ function editContactCard(j) {
 
 async function deleteContact(j) {
     letters = [];
+    document.getElementById('floating-contact-container').style.display ='none';
     userAccounts[activeUser]['userContacts'].splice(j, 1);
     await saveUserAccountsToBackend();
     sortNames();
@@ -136,7 +137,6 @@ function getInputValues() {
     const remainingLetters = inputName.slice(1);
     contactName = firstLetter + remainingLetters;
     contactColor = randomUserColor();
-    //console.log(contactName);
 
     if (inputName.indexOf(' ') >= 0) {
         let helpLetter = contactName.split(" ");
@@ -161,6 +161,7 @@ async function CreateNewContact() {
     successfulCreation();
     sortNames();
     resetInputfields();
+    showContact(userName.length-1,bothLetters);
     console.log(userAccounts[activeUser]);
 }
 
