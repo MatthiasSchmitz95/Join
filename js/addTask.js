@@ -89,8 +89,6 @@ function newColor(color) {
 function addNewCategory() {
     var newCategory = document.getElementById('input');
     categoriesArray.push(newCategory.value);
-    
-    console.log('added NewCategory: ', categoriesArray);
     document.getElementById('newCategoryColorsBox').style.display = "none";
     document.getElementById('newCategoryInput').style.display = "none";
     document.getElementById('buttonDropDown').style.display = "flex";
@@ -98,6 +96,8 @@ function addNewCategory() {
     document.getElementById('color').style.background = newCategoryColor;
     //document.getElementById('input').placeholder = 'Select task Category';
     colorsArray.push(newCategoryColor);
+    console.log('Category Array added: ', categoriesArray);
+    console.log('Category Color added: ', colorsArray);
 }
 
 function rejectNewCategory() {

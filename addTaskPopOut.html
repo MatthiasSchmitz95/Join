@@ -16,7 +16,7 @@
     <script src="./js/mini_backend.js"></script>
 </head>
 
-<body onload="init('addTask'); loadActiveUserLocal()">
+<body onload="init('addTaskPopOut'); updateCalender()">
     <form class="popOut-taskCard d-none" onsubmit="addTask(); return false" id="popOut-taskCard">
 
         <div class="popOut-headline">
@@ -42,8 +42,27 @@
                         <div id="popOut-color" class="popOut-color"></div>
                         <div id="popOut-buttonDropDown" class="popOut-buttonOpenClose" onclick="dropDown()"><img
                                 src="assets/img/dropdown-arrow.png"></div>
+                        <div id="popOut-newCategoryInput">
+                            <img src="assets/img/icon_clear.png" id="clearSubtaskInput" onclick="rejectNewCategory()">
+                            <div class="popOut-line"></div>
+                            <img src="assets/img/checkmark.png" id="selectedSubtask" onclick="addNewCategory()">
+                        </div>
                     </div>
                     <div id="popOut-categoryList" class="popOut-categoryList"></div>
+                    <div class="popOut-newCategoryColorsBox" id="popOut-newCategoryColorsBox">
+                        <div class="popOut-color" style="background-color:#8AA4FF ;" onclick="newColor('#8AA4FF')">
+                        </div>
+                        <div class="popOut-color" style="background-color:#FF0000 ;" onclick="newColor('#FF0000')">
+                        </div>
+                        <div class="popOut-color" style="background-color:#2AD300 ;" onclick="newColor('#2AD300')">
+                        </div>
+                        <div class="popOut-color" style="background-color:#FF8A00 ;" onclick="newColor('#FF8A00')">
+                        </div>
+                        <div class="popOut-color" style="background-color:#E200BE ;" onclick="newColor('#E200BE')">
+                        </div>
+                        <div class="popOut-color" style="background-color:#0038FF ;" onclick="newColor('#0038FF')">
+                        </div>
+                    </div>
                 </div>
 
                 <div class="popOut-assignContainer">
@@ -72,13 +91,14 @@
                             id="popOut-prioUrgentImg" src="assets\img\urgent.png"></div>
                     <div class="popOut-prioMediumBox" id="popOut-prioMediumBox" onclick="insertMedium()">Medium <img
                             id="popOut-prioMediumImg" src="assets\img\medium.png"></div>
-                    <div class="popOut-prioLowBox" id="popOut-prioLowBox" onclick="insertLow()">low <img id="popOut-prioLowImg"
-                            src="assets\img\low.png"></div>
+                    <div class="popOut-prioLowBox" id="popOut-prioLowBox" onclick="insertLow()">low <img
+                            id="popOut-prioLowImg" src="assets\img\low.png"></div>
                 </div>
 
                 <label for="popOut-subtasks" class="popOut-subtasks">Subtasks</label>
                 <div class="popOut-addSubtaskContainer">
-                    <input class="popOut-subtasksInput" id="popOut-subtasksInput" placeholder="Add new Subtask" required>
+                    <input class="popOut-subtasksInput" id="popOut-subtasksInput" placeholder="Add new Subtask"
+                        required>
                     <div class="popOut-addSubtaskBtn" id="popOut-addSubtaskBtn" onclick="createNewSubtask()"><img
                             src="assets/img/plus.png"></div>
                     <div id="popOut-subtaskOninput">
@@ -90,9 +110,9 @@
 
                 <div class="popOut-SubtaskAppendixContainer" id="popOut-SubtaskAppendixContainer">
                     <label class="popOut-container">
-                        <input type="checkbox">
+                        <!--<input type="checkbox">
                         <span class="checkmark"></span>
-                        <div class="popOut-subtaskCheck">Subtask 1</div>
+                        <div class="popOut-subtaskCheck">Subtask 1</div>-->
                     </label>
                 </div>
 
@@ -100,10 +120,11 @@
         </div>
 
         <div class="popOut-buttonsContainer">
-            <button class="popOut-clearButton" onmouseover="clearBtnhover()" onmouseout="clearBtnCancelhover()">Clear <img class="popOut-clearBtnImg" id="popOut-clearBtnImg" src="assets/img/cross-mark.svg">
+            <button class="popOut-clearButton" onmouseover="clearBtnhover()" onmouseout="clearBtnCancelhover()" onclick="clearAllAddTaskFields()">Clear
+                <img class="popOut-clearBtnImg" id="popOut-clearBtnImg" src="assets/img/cross-mark.svg">
             </button>
-            <button class="popOut-createButton" type="submit" id="popOut-addTaskBtn">Create Task <img class="popOut-createBtnImg"
-                    src="assets/img/right-mark.png"></button>
+            <button class="popOut-createButton" type="submit" id="popOut-addTaskBtn">Create Task <img
+                    class="popOut-createBtnImg" src="assets/img/right-mark.png"></button>
         </div>
 
         <div id="popOut-messageAddedTask" class="popOut-messageAddedTask">
@@ -112,7 +133,8 @@
         </div>
 
 
-        <div class="closeBtn"><img  src="./assets/img/closeBtn.png" id="closeBtn-addTaskPopOut" onclick="closePopOutAddTask()"></div>
+        <div class="closeBtn"><img src="./assets/img/closeBtn.png" id="closeBtn-addTaskPopOut"
+                onclick="closePopOutAddTask()"></div>
     </form>
 
 

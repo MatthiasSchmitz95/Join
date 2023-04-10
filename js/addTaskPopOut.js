@@ -60,12 +60,58 @@ function closeDropdownCategory() {
     categoryInputContainer.style.borderRadius = "10px";
 }
 
+
 function chooseCategory(index, category, color) {
     let input = document.getElementById('popOut-input');
     input.value = '';
     input.value = category;
     document.getElementById('popOut-color').style.background = color;
+    if (index == 0) {
+        input.value = '';
+        newCategoryInput();
+    } else {
+        document.getElementById('popOut-newCategoryInput').style.display = "none";
+        document.getElementById('popOut-buttonDropDown').style.display = "flex";
+    }
 }
+
+function newCategoryInput() {
+    closeDropdownCategory();
+    document.getElementById('popOut-input').placeholder = 'New Category Name';
+    document.getElementById('popOut-newCategoryInput').style.display = "flex";
+    document.getElementById('popOut-buttonDropDown').style.display = "none";
+    document.getElementById('popOut-newCategoryColorsBox').style.display = "flex";
+}
+
+
+var newCategoryColor;
+function newColor(color) {
+    document.getElementById('popOut-color').style.background = color;
+    newCategoryColor = color;
+}
+
+
+function addNewCategory() {
+    var newCategory = document.getElementById('popOut-input');
+    categoriesArray.push(newCategory.value);
+    document.getElementById('popOut-newCategoryColorsBox').style.display = "none";
+    document.getElementById('popOut-newCategoryInput').style.display = "none";
+    document.getElementById('popOut-buttonDropDown').style.display = "flex";
+    renderCategory();
+    document.getElementById('popOut-color').style.background = newCategoryColor;
+    //document.getElementById('input').placeholder = 'Select task Category';
+    colorsArray.push(newCategoryColor);
+    console.log('Category Array added: ', categoriesArray);
+    console.log('Category Color added: ', colorsArray);
+}
+
+function rejectNewCategory() {
+    document.getElementById('popOut-buttonDropDown').style.display = "flex";
+    document.getElementById('popOut-newCategoryInput').style.display = "none";
+    document.getElementById('popOut-input').placeholder = 'Select task Category';
+    document.getElementById('popOut-newCategoryColorsBox').style.display = "none";
+}
+
 
 /**
  * AssignTo 
@@ -131,56 +177,83 @@ function chooseContact(index, contact) {
 /**
  * Subtask
  */
+var subTasks = ['Subtask 1'];
 var addsubtask = document.getElementById('popOut-addSubtaskBtn');
 var onInputSubTask = document.getElementById('popOut-subtaskOninput');
 var subtaskInput = document.getElementById('popOut-subtasksInput');
 var appendixSubtask = document.getElementById('popOut-SubtaskAppendixContainer');
 
 function createNewSubtask() {
-
-    if (onInputSubTask.style.display == "none") {
-        addsubtask.style.display = "none";
-        onInputSubTask.style.display = "flex";
+    /*if (onInputSubTask.style.display == "none") {
         let subtaskInput = document.getElementById('popOut-subtasksInput');
         subtaskInput.value = "";
         subtaskInput.value = "Create new icons";
     } else {
         deleteSubTask();
-    }
+    }*/
+        addsubtask.style.display = "none"; //hide addBtn
+        onInputSubTask.style.display = "flex"; //shows cross & right button
+    
 }
 
 function deleteSubTask() {
     subtaskInput.value = "";
-    addsubtask.style.display = "flex";
-    onInputSubTask.style.display = "none";
-    appendixSubtask.innerHTML = "";
-    appendixSubtask.innerHTML = /*html*/`
-        <label class="popOut-container">
-            <input type="checkbox">
-            <span class="checkmark"></span>
-            <div class="subtaskCheck">Subtask 1</div>
-        </label>
-    `;
+    addsubtask.style.display = "flex"; //display addBtn
+    onInputSubTask.style.display = "none"; //hide cross & right button
+    appendixSubtask.innerHTML = ""; //display container of SubTasks
+    appendixSubtask.innerHTML = `
+            <label class="popOut-container">
+                <input type="checkbox">
+                    <span class="checkmark"></span>
+                    <div class="subtaskCheck">${subTasks[0]}</div>
+            </label>
+            `;
+    //to delete all from index 1
+    subTasks.splice(1);
 }
 
 function addSubTask() {
-    subtaskInput.value = "";
-    subtaskInput.value = "Create new icons";
+    if (subtaskInput.value != "") { //if text of Subtask inserted
+        let subTask = subtaskInput.value;
+        subTasks.push(subTask); //SubTask Array pushed
+        console.log(subTasks);
+        renderSubtasks();
+    }
+    subtaskInput.value = ""; 
+    addsubtask.style.display = "flex"; //display addBtn
+    onInputSubTask.style.display = "none"; //hide cross & right button
+}
 
-    appendixSubtask.innerHTML = /*html*/`
-        <label class="popOut-container">
-            <input type="checkbox">
-            <span class="checkmark"></span>
-            <div class="subtaskCheck">Subtask 1</div>
-        </label>
-        <label class="popOut-container">
-            <input type="checkbox">
-            <span class="checkmark"></span>
-            <div class="subtaskCheck">${subtaskInput.value}</div>
-        </label>
-    `;
-    addsubtask.style.display = "flex";
-    onInputSubTask.style.display = "none";
+var selectedSubtasks = [];
+function chooseSubtasks() { //index, contact
+    selectedSubtasks.splice(0); //delete all choosed Contacts from last time
+
+    let allChekbox = document.querySelectorAll('.checkedSubTasks');
+    for (let i = 0; i < allChekbox.length; i++) {
+        const checkbox = allChekbox[i];
+        if (checkbox.checked) {
+            selectedSubtasks.push(checkbox.value);
+        }
+        else {
+            selectedSubtasks.splice(checkbox.value);
+        }
+    }
+    console.log('choosedSubtasks', selectedSubtasks);
+}
+
+
+function renderSubtasks() {
+    appendixSubtask.innerHTML = "";
+    for (let i = 0; i < subTasks.length; i++) {
+        const showSubTask = subTasks[i];
+        appendixSubtask.innerHTML += `
+            <label class="popOut-container">
+                <input type="checkbox" class="checkedSubTasks" onclick="chooseSubtasks()" value="${showSubTask}" />
+                <span class="checkmark" id="checkmark${i}"></span>
+                <div class="subtaskCheck">${showSubTask}</div>
+            </label>
+            `;
+    }
 }
 
 /**
@@ -249,42 +322,6 @@ async function addTask() {
     saveTasksToBackend();
     loadTasksFromBackend();
 }
-
-
-
-
-/*
-function insertUrgent() {
-    document.getElementById('popOut-prioUrgentBox').classList.toggle('bgUrgent');
-    document.getElementById('popOut-prioMediumBox').classList.remove('bgMedium');
-    document.getElementById('popOut-prioLowBox').classList.remove('bgLow');
-    
-    document.getElementById('popOut-prioUrgentImg').classList.add('popOut-whitecolor');
-    document.getElementById('popOut-prioMediumImg').classList.remove('popOut-whitecolor');
-    document.getElementById('popOut-prioLowImg').classList.remove('popOut-whitecolor');
-}
-
-function insertMedium() {
-    document.getElementById('popOut-prioMediumBox').classList.toggle('bgMedium');
-    document.getElementById('popOut-prioLowBox').classList.remove('bgLow');
-    document.getElementById('popOut-prioUrgentBox').classList.remove('bgUrgent');
-    
-    document.getElementById('popOut-prioUrgentImg').classList.remove('popOut-whitecolor');
-    document.getElementById('popOut-prioMediumImg').classList.add('popOut-whitecolor');
-    document.getElementById('popOut-prioLowImg').classList.remove('popOut-whitecolor');
-}
-
-function insertLow() {
-    document.getElementById('popOut-prioLowBox').classList.toggle('bgLow');
-    document.getElementById('popOut-prioUrgentBox').classList.remove('bgUrgent');
-    document.getElementById('popOut-prioMediumBox').classList.remove('bgMedium');
-    
-    document.getElementById('popOut-prioUrgentImg').classList.remove('popOut-whitecolor');
-    document.getElementById('popOut-prioMediumImg').classList.remove('popOut-whitecolor');
-    document.getElementById('popOut-prioLowImg').classList.add('popOut-whitecolor');
-}*/
-
-
 
 function insertUrgent() {
     document.getElementById('popOut-prioUrgentBox').classList.add('bgTextWhite');
@@ -389,4 +426,19 @@ function clearBtnhover() {
 
 function clearBtnCancelhover() {
     document.getElementById('popOut-clearBtnImg').classList.remove('popOut-clearButtonImgblue');
+}
+
+/*clear all field of AddTask page*/
+function clearAllAddTaskFields() {
+    window.location.reload();
+}
+
+// modify calendar to only select current date or date in the future
+function updateCalender() {
+    let today = new Date();
+    let dd = String(today.getDate()).padStart(2, "0");
+    let mm = String(today.getMonth() + 1).padStart(2, "0");
+    let yyyy = today.getFullYear();
+    today = yyyy + "-" + mm + "-" + dd;
+    document.getElementById("date").min = today;
 }
