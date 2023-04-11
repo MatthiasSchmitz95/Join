@@ -139,40 +139,34 @@ h2 {
     padding: 4px 25px;
     border-radius: 8px;
     margin-bottom: 10px;
+    color: white;
 }
 
 .width100{
     width: 100%;
 }
 
-.background-blue{
-    background-color: rgb(0, 56, 255);
-    color: white; 
+.initiales{
+    width: 35px;
+    height: 35px;
+    border: 1px solid #FFFFFF;
+    border-radius: 58px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: -8px;
 }
 
-.background-yellow{
-    background-color: rgb(255, 199, 1);
-    color: white; 
+.position-cards-bottom{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
 }
 
-.background-turquoise{
-    background-color: rgb(31, 215, 193);
-    color: white; 
-}
-
-.background-pink{
-    background-color: rgb(252, 113, 255);
-    color: white; 
-}
-
-.background-orange{
-    background-color: rgb(255, 122, 0);
-    color: white; 
-}
-
-.background-red {
-    background-color: red;
-    color: white; 
+.flex{
+    display: flex;
+    padding-left: 8px;
 }
 
 .text-color{

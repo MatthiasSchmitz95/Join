@@ -18,7 +18,7 @@ async function updateHTMLToDo() {
 
     for (let i = 0; i < todo.length; i++) {
         const cards = todo[i];
-        document.getElementById('toDoContent').innerHTML += generateHTML(cards), priorityImgCard(cards), changeBackgroundColor(cards);
+        document.getElementById('toDoContent').innerHTML += generateHTML(cards), priorityImgCard(cards), changeBackgroundColor(cards), renderUserInitiales(cards);
 
     }
 }
@@ -33,7 +33,7 @@ async function updateHTMLInProgress() {
 
     for (let index = 0; index < inProgress.length; index++) {
         const cards = inProgress[index];
-        document.getElementById('inProgressContent').innerHTML += generateHTML(cards), priorityImgCard(cards), changeBackgroundColor(cards);
+        document.getElementById('inProgressContent').innerHTML += generateHTML(cards), priorityImgCard(cards), changeBackgroundColor(cards), renderUserInitiales(cards);
 
     }
 }
@@ -48,7 +48,7 @@ async function updateHTMLAwaitingFeedback() {
 
     for (let index = 0; index < awaiting.length; index++) {
         const cards = awaiting[index];
-        document.getElementById('awaitingFeedbackContent').innerHTML += generateHTML(cards), priorityImgCard(cards), changeBackgroundColor(cards);
+        document.getElementById('awaitingFeedbackContent').innerHTML += generateHTML(cards), priorityImgCard(cards), changeBackgroundColor(cards), renderUserInitiales(cards);
     }
 }
 
@@ -62,7 +62,7 @@ async function updateHTMLDone() {
 
     for (let index = 0; index < done.length; index++) {
         const cards = done[index];
-        document.getElementById('doneContent').innerHTML += generateHTML(cards), priorityImgCard(cards), changeBackgroundColor(cards);
+        document.getElementById('doneContent').innerHTML += generateHTML(cards), priorityImgCard(cards), changeBackgroundColor(cards), renderUserInitiales(cards);
     }
 }
 
@@ -77,9 +77,8 @@ function generateHTML(cards) {
         <div class="text-color" >
         ${cards['description']}
         </div>
-        <div>
-           <div>
-
+        <div class="position-cards-bottom">
+           <div class="flex" id="userInitiales${cards['id']}" >
            </div> 
            <div id="priorityImage${cards['id']}">
            </div>
@@ -89,14 +88,36 @@ function generateHTML(cards) {
 }
 
 
+async function renderUserInitiales(cards){
+    let contact = document.getElementById(`userInitiales${cards['id']}`);
+    contact.innerHTML = ''; 
+    for (let i = 0; i < userAccounts.length; i++) {
+        const element = await userAccounts[i]['userName'];
+        let initiales = await userAccounts[i]['userInitials'];
+        let color = await userAccounts[i]['userColor'];
+        let contacts = '';
+        if (cards.contact.includes(element)) {
+            contacts = initiales;
+        }
+        if (!contacts == '') {
+            contact.innerHTML += `<div id="circle${[i]}" class="initiales">${contacts}</div>` ;
+            changeBackgroundCircle(i, color);
+        } 
+    } 
+}
+
+
 function changeBackgroundColor(cards) {
     let background = document.getElementById(`backgroundColor${cards['id']}`);
     let color = cards['categoryColor'];
-    if (color == 'blue') {
-        background.classList.add('background-blue');
-    } else if (color == 'red') {
-        background.classList.add('background-red');
-    }
+    background.style.backgroundColor = `${color}`;
+}
+
+
+async function changeBackgroundCircle(i, color){
+    let backgroundCircle = document.getElementById(`circle${i}`);
+    backgroundCircle.style.backgroundColor = `${await color}`;
+
 }
 
 
@@ -135,6 +156,7 @@ function showOverlay(cards) {
     document.getElementById('overlay-background').classList.add('overlay-background');
     let overlay = document.getElementById('overlay');
     overlay.classList.remove('d-none');
+    
     overlay.innerHTML = /*html*/`        
     <div class="overlay-header">
         <div class="overlay-department">
@@ -157,7 +179,9 @@ function showOverlay(cards) {
         <b>Priority:</b> ${(todo.priority)} ${todo.priorityImg}
     </div>
     <div class="overlay-date">
-        <b>Assigned to:</b> <ul>${(todo['contact'])}</ul>
+        <b>Assigned to:</b>  <div id="assignedTo">
+
+                            </div>
     </div>
     <div class="overlay-edit-task-position">
         <div class="overlay-edit-task" onclick="showOverlayChange(${cards})">
@@ -166,6 +190,17 @@ function showOverlay(cards) {
     </div>
     `;
     loadOverlay = true;
+    generateAssignedTo(todo)
+}
+
+
+function generateAssignedTo(todo){
+   let contacts = document.getElementById('assignedTo');
+    for (let i = 0; i < todo.contact.length; i++) {
+        const element = todo.contact[i];
+        contacts.innerHTML +=`
+       <div>${(element)}</div>` 
+    }
 }
 
 
@@ -354,4 +389,5 @@ async function saveInputTask(cards) {
     console.log(todo);
     await saveTasksToBackend()
     updateHTML()
+    showOverlay(cards)
 }
