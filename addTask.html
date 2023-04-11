@@ -18,6 +18,10 @@
 </head>
 
 <body onload="init('addTask'); renderSubtasks(); updateCalender();">
+    <div id="messageAddedTask" class="messageAddedTask">
+        <p>Task added to board</p>
+        <img src="assets/img/board-icon.png">
+    </div>
     <div w3-include-html="desktop-template.html"></div>
     <form class="taskCard" onsubmit="addTask(); return false">
 
@@ -118,10 +122,10 @@
                     src="assets/img/right-mark.png"></button>
         </div>
 
-        <div id="messageAddedTask" class="messageAddedTask">
+        <!--<div id="messageAddedTask" class="messageAddedTask">
             <p>Task added to board</p>
             <img src="assets/img/board-icon.png">
-        </div>
+        </div>-->
 
     </form>
 

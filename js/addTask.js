@@ -252,12 +252,14 @@ function renderSubtasks() {
 /**
  * AddTask JSON Array
  */
-var tasks = [];
+/*var tasks = [];*/
 var priority;
 var priorityImg;
 async function addTask() {
-    await saveUserAccountsToBackend();
+    
     await loadUserAccountsFromBackend();
+
+    var tasks = userAccounts[activeUser].userTasks;
 
     var title = document.getElementById('title');
     var description = document.getElementById('description');
@@ -330,11 +332,11 @@ async function addTask() {
     document.getElementById('prioMediumImg').classList.remove('Img-white');
     document.getElementById('prioLowImg').classList.remove('Img-white');
     deleteSubTask();
-    /*setTimeout(function () {
+    setTimeout(function () {
                 window.location = "./board.html";
-    }, 3600)*/
+    }, 3600)
     await saveTasksToBackend();
-
+    await saveUserAccountsToBackend();
     //userAccounts[activeUser].userTasks.push(tasks); //hier zeigt ein Error
     //noch zusammen zu schauen
 
