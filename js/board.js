@@ -70,22 +70,21 @@ async function updateHTMLDone() {
 function generateHTML(cards) {
     return /*html*/`
     <div draggable="true" ondragstart="startDragging(${cards['id']})" onclick="showOverlay(${cards['id']})" class="card">
-    <div class="width100">
-        <div id="backgroundColor${cards['id']}">${cards['category']}</div>
-        <h4>${cards['title']}</h4>
-        <div >
+        <div id="backgroundColor${cards['id']}" class="background">
+            ${cards['category']}
+        </div>
+        <div><b>${cards['title']}</b></div>
+        <div class="text-color" >
         ${cards['description']}
-</div>
+        </div>
         <div>
            <div>
 
            </div> 
            <div id="priorityImage${cards['id']}">
-
            </div>
-        </div>
-    </div>
-</div>`;
+        </div>  
+    </div>`;
 
 }
 
@@ -158,7 +157,7 @@ function showOverlay(cards) {
         <b>Priority:</b> ${(todo.priority)} ${todo.priorityImg}
     </div>
     <div class="overlay-date">
-        <b>Assigned to:</b> ${(todo['contact'])}
+        <b>Assigned to:</b> <ul>${(todo['contact'])}</ul>
     </div>
     <div class="overlay-edit-task-position">
         <div class="overlay-edit-task" onclick="showOverlayChange(${cards})">
@@ -346,9 +345,9 @@ async function saveInputTask(cards) {
     let newTitle = document.getElementById('inputTittle').value;
     let newDescription = document.getElementById('inputDescription').value;
     let newDueDate = document.getElementById('inputDueDate').value;
-    if (newTitle== '') {
+    if (newTitle == '') {
         newTitle = todo.title;
-    } 
+    }
     todo.title = newTitle;
     todo.description = newDescription;
     todo.dueDate = newDueDate;

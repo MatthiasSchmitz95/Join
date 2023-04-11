@@ -82,13 +82,18 @@ h2 {
     filter: invert(59%) sepia(35%) saturate(1765%) hue-rotate(165deg) brightness(94%) contrast(87%);
 }
 
+.position-board{
+    margin-left: 240px;
+    position: relative;
+    margin-right: 10px;
+}
+
 .working-class {
     display: flex;
     justify-content: space-around;
     height: 30px;
-    width: 79vw;
+    width: 100%;
     margin-top: 37px;
-    margin-left: 19vw;
 }
 
 .working-headlines {
@@ -118,7 +123,7 @@ h2 {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     padding: 18px 19px;
     gap: 10px;
     width: 250px;
@@ -128,6 +133,12 @@ h2 {
     box-sizing: border-box;
     margin-top: 37.5px;
     cursor: pointer;
+}
+
+.background{
+    padding: 4px 25px;
+    border-radius: 8px;
+    margin-bottom: 10px;
 }
 
 .width100{
@@ -162,6 +173,10 @@ h2 {
 .background-red {
     background-color: red;
     color: white; 
+}
+
+.text-color{
+    color: rgb(184, 184, 184);
 }
 
 .margin-left {
