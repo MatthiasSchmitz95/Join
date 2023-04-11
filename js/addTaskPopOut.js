@@ -234,9 +234,6 @@ function chooseSubtasks() { //index, contact
         if (checkbox.checked) {
             selectedSubtasks.push(checkbox.value);
         }
-        else {
-            selectedSubtasks.splice(checkbox.value);
-        }
     }
     console.log('choosedSubtasks', selectedSubtasks);
 }
