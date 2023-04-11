@@ -17,7 +17,7 @@
     <script src="./js/addTask.js"></script>
 </head>
 
-<body onload="init('addTaskPopOut'); updateCalender()">
+<body onload="updateCalender(); loadUserData()">
     <form class="popOut-taskCard d-none" onsubmit="addTask(); return false" id="popOut-taskCard">
 
         <div class="popOut-headline">
