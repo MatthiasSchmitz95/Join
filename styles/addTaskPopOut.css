@@ -10,7 +10,7 @@ body {
 }
 
 .d-none {
-    display: none;
+    display: none !important;
 }
 
 /* Change auto chrome bg color to white*/

@@ -3,7 +3,7 @@ let activeUser;
 async function init(id) {
   await includeHTML();
   highlightSelectedNav(id);
-  loadUserData();
+  await loadUserData();
   //await backend.deleteItem('tasks');
 }
 

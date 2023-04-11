@@ -111,12 +111,15 @@ function rejectNewCategory() {
  * AssignTo 
  */
 var assignToInputContainer = document.getElementById('contactInputContainer');
-function renderAssignTo() {
+async function renderAssignTo() {
+    await loadUserAccountsFromBackend();
+    loadActiveUserLocal();
     let assignedContactList = document.getElementById('assignedList');
     assignedContactList.innerHTML = "";
 
-    for (let i = 0; i < userAccounts.length; i++) {
-        var userName = userAccounts[i]['userName'];
+
+    for (let i = 0; i < userAccounts[activeUser]['userContacts'].length; i++) {
+        var userName = userAccounts[activeUser]['userContacts'][i]['name'];
 
         assignedContactList.innerHTML += /*html*/`
             <div class="assignedContact" >
@@ -252,7 +255,7 @@ function renderSubtasks() {
 /**
  * AddTask JSON Array
  */
-/*var tasks = [];*/
+
 var priority;
 var priorityImg;
 async function addTask() {
@@ -337,10 +340,12 @@ async function addTask() {
     }, 3600)
     await saveTasksToBackend();
     await saveUserAccountsToBackend();
+
     //userAccounts[activeUser].userTasks.push(tasks); //hier zeigt ein Error
     //noch zusammen zu schauen
 
     //chooseContact();
+    
     console.log(choosedContacts);
     choosedContacts = [];
 
@@ -449,13 +454,13 @@ function clearBtnCancelhover() {
 }
 
 // modify calendar to only select current date or date in the future
-function updateCalender() {
+function updateCalender(id) {
     let today = new Date();
     let dd = String(today.getDate()).padStart(2, "0");
     let mm = String(today.getMonth() + 1).padStart(2, "0");
     let yyyy = today.getFullYear();
     today = yyyy + "-" + mm + "-" + dd;
-    document.getElementById("date").min = today;
+    document.getElementById(id).min = today;
 }
 
 /*clear all field of AddTask page*/
