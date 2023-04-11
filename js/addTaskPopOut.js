@@ -434,11 +434,11 @@ function clearAllAddTaskFields() {
 }
 
 // modify calendar to only select current date or date in the future
-function updateCalender() {
+/*function updateCalender() {
     let today = new Date();
     let dd = String(today.getDate()).padStart(2, "0");
     let mm = String(today.getMonth() + 1).padStart(2, "0");
     let yyyy = today.getFullYear();
     today = yyyy + "-" + mm + "-" + dd;
     document.getElementById("date").min = today;
-}
+}*/
