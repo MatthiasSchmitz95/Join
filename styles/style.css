@@ -17,10 +17,7 @@ h3 {
     flex-grow: 0;
 }
 
-.content-container {
-    position: relative;
-    background: #F6F7F8;
-}
+
 
 .header {
     position: fixed;
@@ -139,4 +136,46 @@ h3 {
 .selected{
     background-color: #091931;
     color: white;
+}
+
+
+@media(max-width:900px){
+    .header{
+        left: 0px;
+        
+    }
+
+    .side-bar{
+        height: 80px;
+        width: 100%;
+        top: auto;
+        flex-direction: row;
+        padding: 0px;
+        
+
+    }
+
+    .logo-container{
+        display: none;
+    }
+
+    .menu-container{
+        flex-direction: row;
+        width: 100%;
+        height: auto;
+        margin: 0px;
+
+    }
+
+    .menu-container a{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .nav-menu{
+        gap: 0px;
+        height: auto;
+        margin-top: 14.5px;
+    }
+
 }

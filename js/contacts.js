@@ -189,8 +189,6 @@ function successfulAnimation() {
        }
            , 1000);
 
-
-
 }
 
 
