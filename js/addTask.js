@@ -146,9 +146,6 @@ function chooseContact(name) { //index, contact
         if (checkbox.checked) {
             choosedContacts.push(checkbox.value);
         }
-        else {
-            choosedContacts.splice(checkbox.value);
-        }
     }
     console.log('chooesedContact', choosedContacts);
 }
@@ -225,10 +222,10 @@ function addSubTask() {
 }
 
 var selectedSubtasks = [];
-function chooseSubtasks() { //index, contact
+function chooseSubtasks(id) { //index, contact
     selectedSubtasks.splice(0); //delete all choosed Contacts from last time
 
-    let allChekbox = document.querySelectorAll('.checkedSubTasks');
+    let allChekbox = document.querySelectorAll(`.checkedSubTasks`);
     console.log(allChekbox.length);
     for (let i = 0; i < allChekbox.length; i++) {
         const checkbox = allChekbox[i];
