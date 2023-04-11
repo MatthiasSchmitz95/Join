@@ -76,11 +76,13 @@ function editContactCard(j) {
 
 async function deleteContact(j) {
     letters = [];
-    document.getElementById('floating-contact-container').style.display ='none';
+    document.getElementById('floating-contact-container').style.display = 'none';
     userAccounts[activeUser]['userContacts'].splice(j, 1);
     await saveUserAccountsToBackend();
     sortNames();
     closeContactCard();
+    changeTextTo('deleted');
+    successfulAnimation();
 }
 
 async function editContact(j) {
@@ -92,6 +94,13 @@ async function editContact(j) {
     sortNames();
     showContact(j, bothLetters);
     closeContactCard();
+    changeTextTo('edited');
+    successfulAnimation();
+}
+
+function changeTextTo(text){
+    document.getElementById('success').innerHTML =`Contact succesfully ${text}`;
+
 }
 
 
@@ -146,15 +155,13 @@ async function CreateNewContact() {
     getInputValues();
     let contact_obj = { 'name': contactName, 'email': email, 'phone': phone, 'letters': bothLetters, 'color': contactColor };
     userName.push(contact_obj);
-    //console.log(userName);
     await saveUserAccountsToBackend();
-    //console.log(userName, letters);
     closeContactCard();
-    successfulCreation();
+    changeTextTo('created');
+    successfulAnimation();
     sortNames();
     resetInputfields();
-    showContact(userName.length-1,bothLetters);
-    console.log(userAccounts[activeUser]);
+    showContact(userName.length - 1, bothLetters);
 }
 
 function resetInputfields() {
@@ -170,18 +177,18 @@ function setInputfields(j) {
 
 }
 
-function successfulCreation() {
+function successfulAnimation() {
 
     setTimeout(() => {
-        document.getElementById('success').style.display = '';
-        document.getElementById('success').classList = 'add-success';
+        document.getElementById('success').classList.add("add-success");   
     }
-        , 300);
-    setTimeout(() => {
-        document.getElementById('success').style.display = 'none';
-        document.getElementById('success').classList = 'success';
-    }
-        , 1000);
+        , 200);
+        
+    setTimeout(() => {  
+           document.getElementById('success').classList.remove("add-success");
+       }
+           , 1000);
+
 
 
 }
