@@ -3,10 +3,14 @@ let activeUser;
 async function init(id) {
   await includeHTML();
   highlightSelectedNav(id);
+  loadUserData();
+  //await backend.deleteItem('tasks');
+}
+
+async function loadUserData(){
   await loadUserAccountsFromBackend();
   loadActiveUserLocal();
-  await loadTasksFromBackend();
-  //await backend.deleteItem('tasks');
+  await loadTasksFromBackend()
 }
 
 
