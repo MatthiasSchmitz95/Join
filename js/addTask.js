@@ -454,13 +454,13 @@ function clearBtnCancelhover() {
 }
 
 // modify calendar to only select current date or date in the future
-function updateCalender(id) {
+function updateCalender() {
     let today = new Date();
     let dd = String(today.getDate()).padStart(2, "0");
     let mm = String(today.getMonth() + 1).padStart(2, "0");
     let yyyy = today.getFullYear();
     today = yyyy + "-" + mm + "-" + dd;
-    document.getElementById(id).min = today;
+    document.getElementById('date').min = today;
 }
 
 /*clear all field of AddTask page*/
@@ -468,3 +468,13 @@ function clearAllAddTaskFields() {
     window.location.reload();
 }
 
+function showAddTaskPopOut() {
+    document.getElementById('popOut-taskCard').classList.remove('d-none');
+    /*document.getElementsByClassName(id).classList.remove = "d-none";*/
+}
+
+
+function closePopOutAddTask() {
+    document.getElementById('popOut-taskCard').classList.add('d-none');
+    /*document.getElementsByClassName(id).classList.add = "d-none";*/
+}

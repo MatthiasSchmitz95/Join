@@ -17,7 +17,7 @@ input:-webkit-autofill:active{
     -webkit-box-shadow: 0 0 0 30px white inset !important;
 }
 
-.taskCard {
+.popOut-taskCard {
     /*background: #FFFFFF;*/
     /*position: relative;*/
     position: absolute;
@@ -116,6 +116,15 @@ input:-webkit-autofill:active{
     display: flex;
     justify-content: flex-start;
     gap: 25px;
+    /*position: absolute;
+    top: 90%;
+    left: 4%;
+    width: 338px;
+    height: 61px;
+    display: flex;
+    justify-content: flex-start;
+    gap: 25px;
+    box-sizing: border-box;*/
 }
 
 .clearButton {

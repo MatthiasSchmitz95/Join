@@ -1,6 +1,7 @@
 let currentDraggedElement;
 let loadOverlay = false;
 
+
 function updateHTML() {
     updateHTMLToDo()
     updateHTMLInProgress()
@@ -364,7 +365,7 @@ function renderAssignTo() {
     }
 }
 
-
+/*
 function showAddTaskPopOut() {
     document.getElementById('popOut-taskCard').classList.remove('d-none');
 }
@@ -372,7 +373,7 @@ function showAddTaskPopOut() {
 
 function closePopOutAddTask() {
     document.getElementById('popOut-taskCard').classList.add('d-none');
-}
+}*/
 
 
 async function saveInputTask(cards) {
