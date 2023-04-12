@@ -589,7 +589,8 @@ input:-webkit-autofill:active{
 
 .messageAddedTask {
     position: absolute;
-    left: 450px;
+    /*left: 450px;*/
+    left: 50%;
     bottom: 74px;
     background-color: #2A3647;
     width: 326px;
@@ -602,6 +603,7 @@ input:-webkit-autofill:active{
     align-items: center;
     padding: 0px;
     display: none;
+    z-index: 5;
 }
 
 .messageAddedTask p {
@@ -613,12 +615,14 @@ input:-webkit-autofill:active{
     font-size: 21px;
     line-height: 120%;
     color: #FFFFFF;
+    z-index: 5;
 }
 
 .messageAddedTask img {
     width: 22px;
     height: 26px;
     transform: rotate(-180deg);
+    z-index: 5;
 }
 
 /*

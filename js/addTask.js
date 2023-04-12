@@ -467,3 +467,4 @@ function updateCalender(id) {
 function clearAllAddTaskFields() {
     window.location.reload();
 }
+
