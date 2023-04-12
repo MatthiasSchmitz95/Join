@@ -454,7 +454,8 @@ function clearBtnCancelhover() {
 }
 
 // modify calendar to only select current date or date in the future
-function updateCalender() {
+async function updateCalender() {
+    await includeHTML();
     let today = new Date();
     let dd = String(today.getDate()).padStart(2, "0");
     let mm = String(today.getMonth() + 1).padStart(2, "0");
