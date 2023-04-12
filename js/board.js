@@ -90,6 +90,9 @@ function generateHTML(cards) {
         <div class="text-color" >
         ${cards['description']}
         </div>
+        <div class="progress">
+
+        </div>
         <div class="position-cards-bottom">
            <div class="flex" id="userInitiales${cards['id']}" >
            </div> 
@@ -247,6 +250,18 @@ function showOverlayChange(cards) {
        Due date <br>
        <input id="inputDueDate" class="input-chances-title" type="date" value="2023-02-03" min="023-02-01" max="023-02-28" placeholder="${(todo['dueDate'])}">
     </div>
+    <div id="subtasks">
+    <div class="addSubtaskContainer">
+                    <input class="subtasksInput" id="subtasksInput" placeholder="Add new Subtask" />
+                    <div class="addSubtaskBtn" id="addSubtaskBtn" onclick="createNewSubtask()"><img
+                            src="assets/img/plus.png"></div>
+                    <div id="subtaskOninput">
+                        <img src="assets/img/icon_clear.png" id="clearSubtaskInput" onclick="deleteSubTask()">
+                        <div class="line"></div>
+                        <img src="assets/img/checkmark.png" id="selectedSubtask" onclick="addSubTask()">
+                    </div>
+                </div>
+    </div>
     <label for="priority" class="priority">Prio</label>
                 <div  class="priorityBoxesContainer">
                     <div class="prioUrgentBox" id="prioUrgentBox" onclick="insertUrgent()">Urgent <img
@@ -276,6 +291,7 @@ function showOverlayChange(cards) {
     </div>
      `;
     insertPriority(cards);
+    renderSubtasksBoard(cards);
 }
 
 
@@ -344,10 +360,10 @@ function insertPriority(cards) {
     }
 }
 
-
-function dropDownAssignTo() {
-    /* document.getElementById('categoryList').classList.toggle('dropDownDisplay');*/
-    //closeDropdownCategory();
+/*
+function dropDownAssignTo() 
+     document.getElementById('categoryList').classList.toggle('dropDownDisplay');
+    closeDropdownCategory();
     var assignToDropDown = document.getElementById('assignedList');
 
     if (assignToDropDown.style.display == "block") {
@@ -358,7 +374,7 @@ function dropDownAssignTo() {
         assignToDropDown.style.display = "block";
         //assignToInputContainer.style.borderBottom = "none";
         /* Four values */
-        /* top-left top-right bottom-right bottom-left */
+        /* top-left top-right bottom-right bottom-left 
         //assignToInputContainer.style.borderRadius = "10px 10px 0 0";
         renderAssignTo();
     }
@@ -371,10 +387,10 @@ function renderAssignTo() {
     assignedContactList.innerHTML = "";
 
     for (let i = 0; i < userAccounts.length; i++) {
-        /*const contact = contactArray[i];*/
+        /*const contact = contactArray[i];
         var userName = userAccounts[i]['userName'];
 
-        assignedContactList.innerHTML += /*html*/`
+        assignedContactList.innerHTML += `
         <div class="assignedContact" onclick="chooseContact(${i}, '${userName}')" > 
             <div>${userName}</div>
             <label class="filledCheckboxContainer">
@@ -396,7 +412,7 @@ function showAddTaskPopOut() {
 function closePopOutAddTask() {
     document.getElementById('popOut-taskCard').classList.add('d-none');
 }
-
+*/
 
 async function saveInputTask(cards) {
     let user = userAccounts[activeUser]['userTasks'];
@@ -416,3 +432,22 @@ async function saveInputTask(cards) {
     updateHTML()
     showOverlay(cards)
 }
+
+
+function renderSubtasksBoard(cards) {
+    let user = userAccounts[activeUser]['userTasks'];
+    let todo = user.find((item) => item.id === cards);
+    let content = document.getElementById('subtasks');
+    content.innerHTML = "";
+        for (let j = 0; j < todo['subTask'].length; j++) {
+            const showSubTask = todo['subTask'][j];  
+        
+        content.innerHTML += /*html*/`
+            <label class="container">
+                <input type="checkbox" class="checkedSubTasks" onclick="chooseSubtasks()" value="${showSubTask}" />
+                <span class="checkmark" id="checkmark${j}"></span>
+                <div class="subtaskCheck">${showSubTask}</div>
+            </label>
+            `;
+        }
+    }
