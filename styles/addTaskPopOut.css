@@ -1,12 +1,8 @@
 body {
     margin: 0;
     overflow-y: auto;
-    overflow-x: hidden;
-    /*background-color: #f5f5f5;*/
-}
-
-.mt-15 {
-    margin-top: .8rem;
+    overflow-x: auto;
+    /*background-color: yellowgreen;*/
 }
 
 .d-none {
@@ -21,7 +17,7 @@ input:-webkit-autofill:active{
     -webkit-box-shadow: 0 0 0 30px white inset !important;
 }
 
-.popOut-taskCard {
+.taskCard {
     /*background: #FFFFFF;*/
     /*position: relative;*/
     position: absolute;
@@ -38,7 +34,7 @@ input:-webkit-autofill:active{
     z-index: 5;
 }
 
-.popOut-headline {
+.headline {
     /*width: 466px;*/
     box-sizing: border-box;
     /*width: 466px;*/
@@ -67,7 +63,7 @@ input:-webkit-autofill:active{
 }
 
 
-.popOut-contentContainer {
+.contentContainer {
     display: flex;
     width: 962px;
     /*height: 506px;*/
@@ -77,7 +73,7 @@ input:-webkit-autofill:active{
     position: relative;
 }
 
-.popOut-leftContent {
+.leftContent {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -92,7 +88,7 @@ input:-webkit-autofill:active{
     left: 74px;
 }
 
-.popOut-midLine {
+.midLine {
     margin-left: 59px;
     width: 0px;
     height: 669px;
@@ -100,7 +96,7 @@ input:-webkit-autofill:active{
 
 }
 
-.popOut-rightContent {
+.rightContent {
     margin-left: 59px;
     display: flex;
     flex-direction: column;
@@ -111,7 +107,7 @@ input:-webkit-autofill:active{
     /*height: 356px;*/
 }
 
-.popOut-buttonsContainer {
+.buttonsContainer {
     box-sizing: border-box;
     margin-left: 700px;
     margin-top: -60px;
@@ -122,7 +118,7 @@ input:-webkit-autofill:active{
     gap: 25px;
 }
 
-.popOut-clearButton {
+.clearButton {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
@@ -142,19 +138,19 @@ input:-webkit-autofill:active{
 
 }
 
-.popOut-clearButton:hover {
+.clearButton:hover {
     border: 1px solid #32daff;
     color: #32daff;
     z-index: 2;
 }
 
-.popOut-clearButtonImgblue {
+.clearButtonImgblue {
     filter: invert(69%) sepia(81%) saturate(1437%) hue-rotate(158deg) brightness(103%) contrast(103%);
     z-index: 2;
 }
 
 
-.popOut-createButton {
+.createButton {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 700;
@@ -172,13 +168,13 @@ input:-webkit-autofill:active{
     z-index: 2;
 }
 
-.popOut-createButton:hover {
+.createButton:hover {
     background-color: #007cee;
     border: none;
     z-index: 2;
 }
 
-.popOut-titleContainer {
+.titleContainer {
     width: 422px;
     height: 104px;
     display: flex;
@@ -186,7 +182,7 @@ input:-webkit-autofill:active{
     gap: 8px;
 }
 
-.popOut-title {
+.title {
     width: 65px;
     height: 25px;
     font-family: 'Inter';
@@ -198,7 +194,7 @@ input:-webkit-autofill:active{
     color: #000000;
 }
 
-#popOut-title {
+#title {
     /*width: 422px;*/
     height: 51px;
     background: #FFFFFF;
@@ -212,7 +208,7 @@ input:-webkit-autofill:active{
     line-height: 120%;
 }
 
-#popOut-title::placeholder {
+#title::placeholder {
     width: 114px;
     height: 25px;
     font-family: 'Inter';
@@ -223,7 +219,7 @@ input:-webkit-autofill:active{
     color: #D1D1D1;
 }
 
-.popOut-descriptionContainer {
+.descriptionContainer {
     width: 422px;
     height: 172px;
     display: flex;
@@ -231,7 +227,7 @@ input:-webkit-autofill:active{
     gap: 8px;
 }
 
-.popOut-description {
+.description {
     width: 154px;
     height: 25px;
     font-family: 'Inter';
@@ -242,7 +238,7 @@ input:-webkit-autofill:active{
     color: #000000;
 }
 
-#popOut-description::placeholder {
+#description::placeholder {
     width: 190px;
     height: 25px;
     font-family: 'Inter';
@@ -254,7 +250,7 @@ input:-webkit-autofill:active{
 }
 
 
-#popOut-description {
+#description {
     height: 119px;
     background: #FFFFFF;
     border: 1px solid #D1D1D1;
@@ -268,8 +264,8 @@ input:-webkit-autofill:active{
     line-height: 120%;
 }
 
-.popOut-category,
-.popOut-assignedTo {
+.category,
+.assignedTo {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
@@ -280,7 +276,7 @@ input:-webkit-autofill:active{
     margin-top: 34px;
 }
 
-.popOut-categoryContainer {
+.categoryContainer {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -288,8 +284,8 @@ input:-webkit-autofill:active{
     width: 422px;
 }
 
-.popOut-inputContainer,
-.popOut-contactInputContainer {
+.inputContainer,
+.contactInputContainer {
     box-sizing: border-box;
     width: 100%;
     display: flex;
@@ -306,7 +302,7 @@ input:-webkit-autofill:active{
     border-radius: 10px;
 }
 
-#popOut-input {
+#input {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
@@ -318,7 +314,7 @@ input:-webkit-autofill:active{
     background-color: none;
 }
 
-#popOut-assignInput{
+#assignInput{
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
@@ -329,8 +325,8 @@ input:-webkit-autofill:active{
     width: 270px;
 }
 
-.popOut-categoryList,
-.popOut-assignedList {
+.categoryList,
+.assignedList {
     box-sizing: border-box;
     width: 100%;
     height: 150px;
@@ -344,13 +340,13 @@ input:-webkit-autofill:active{
     overflow-y: auto;
 }
 
-.popOut-categoryList div:hover,
-.popOut-assignedList div:hover {
+.categoryList div:hover,
+.assignedList div:hover {
     background-color: lightgray;
 }
 
-.popOut-categoryAndColor,
-.popOut-assignedContact {
+.categoryAndColor,
+.assignedContact {
     box-sizing: border-box;
     width: 100%;
     height: 30px;
@@ -370,22 +366,22 @@ input:-webkit-autofill:active{
     color: #000000;
 }
 
-.popOut-buttonOpenClose {
+.buttonOpenClose {
     cursor: pointer;
     padding-left: 90px;
 }
 
-.popOut-dropDownDisplay {
+.dropDownDisplay {
     display: block;
 }
 
-.popOut-color {
+.color {
     width: 15px;
     height: 15px;
     border-radius: 100%;
 }
 
-#popOut-newCategoryInput {
+#newCategoryInput {
     width: 50px;
     height: 51px;
     /* padding-right: 20px; */
@@ -398,12 +394,12 @@ input:-webkit-autofill:active{
     display: none;
 }
 
-#popOut-newCategoryInput img {
+#newCategoryInput img {
     width: 16px;
     height: 16px;
 }
 
-.popOut-newCategoryColorsBox{
+.newCategoryColorsBox{
     width: 422px;
     height: 51px;
     /*background-color: #D1D1D1;*/
@@ -413,43 +409,10 @@ input:-webkit-autofill:active{
     display: none;
 }
 
-/*badge colors */
-.orange {
-    background: #ff8a00;
-}
-
-.red {
-    background: #ff0000;
-}
-
-.blue {
-    background: #0038ff;
-}
-
-.lightblue {
-    background: #8aa4ff;
-}
-
-.pink {
-    background: #e200be;
-}
-
-.lightpink {
-    background: #fc71ff;
-}
-
-.green {
-    background: #2ad300;
-}
-
-.turquo {
-    background: #1fd7c1;
-}
-
 
 /*badge colors */
 
-.popOut-assignContainer {
+.assignContainer {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -457,7 +420,7 @@ input:-webkit-autofill:active{
     width: 422px;
 }
 
-.popOut-date {
+.date {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
@@ -466,7 +429,7 @@ input:-webkit-autofill:active{
     color: #000000;
 }
 
-#popOut-date {
+#date {
     box-sizing: border-box;
     width: 420px;
     height: 51px;
@@ -485,11 +448,11 @@ input:-webkit-autofill:active{
     padding-right: 21px;
 }
 
-#popOut-date::placeholder {
+#date::placeholder {
     color: #D1D1D1;
 }
 
-.popOut-priority {
+.priority {
     width: 39px;
     height: 25px;
     font-family: 'Inter';
@@ -501,7 +464,7 @@ input:-webkit-autofill:active{
     margin-top: 34px;
 }
 
-.popOut-priorityBoxesContainer {
+.priorityBoxesContainer {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -512,9 +475,9 @@ input:-webkit-autofill:active{
     height: 61px;
 }
 
-.popOut-prioUrgentBox,
-.popOut-prioMediumBox,
-.popOut-prioLowBox {
+.prioUrgentBox,
+.prioMediumBox,
+.prioLowBox {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -527,14 +490,14 @@ input:-webkit-autofill:active{
     border-radius: 10px;
 }
 
-.popOut-prioUrgentBox:hover,
-.popOut-prioMediumBox:hover,
-.popOut-prioLowBox:hover {
+.prioUrgentBox:hover,
+.prioMediumBox:hover,
+.prioLowBox:hover {
     transform: scale(1.1);
 }
 
 
-.popOut-subtasks {
+.subtasks {
     width: 92px;
     height: 25px;
     font-family: 'Inter';
@@ -547,7 +510,7 @@ input:-webkit-autofill:active{
 }
 
 
-.popOut-addSubtaskContainer {
+.addSubtaskContainer {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -562,7 +525,7 @@ input:-webkit-autofill:active{
     border-radius: 10px;
 }
 
-#popOut-subtaskOninput {
+#subtaskOninput {
     width: 50px;
     height: 51px;
     padding-right: 20px;
@@ -575,12 +538,12 @@ input:-webkit-autofill:active{
     display: none;
 }
 
-#popOut-subtaskOninput img {
+#subtaskOninput img {
     width: 16px;
     height: 16px;
 }
 
-.popOut-line {
+.line {
     box-sizing: border-box;
     margin-left: 5px;
     margin-right: 5px;
@@ -589,7 +552,7 @@ input:-webkit-autofill:active{
     border: 1px solid #D1D1D1;
 }
 
-.popOut-subtasksInput {
+.subtasksInput {
     margin-left: 21px;
     outline: none;
     border: none;
@@ -600,7 +563,7 @@ input:-webkit-autofill:active{
     line-height: 120%;
 }
 
-.popOut-subtasksInput::placeholder {
+.subtasksInput::placeholder {
     width: 178px;
     height: 25px;
     font-family: 'Inter';
@@ -611,12 +574,12 @@ input:-webkit-autofill:active{
     color: #D1D1D1;
 }
 
-.popOut-addSubtaskBtn {
+.addSubtaskBtn {
     margin-right: 21px;
     /*display: none;*/
 }
 
-.popOut-SubtaskAppendixContainer {
+.SubtaskAppendixContainer {
     box-sizing: border-box;
     width: 100%;
     height: auto;
@@ -645,7 +608,7 @@ input:-webkit-autofill:active{
 }
 
 
-.popOut-messageAddedTask {
+.messageAddedTask {
     position: absolute;
     left: 450px;
     bottom: 74px;
@@ -663,7 +626,7 @@ input:-webkit-autofill:active{
     z-index: 3;
 }
 
-.popOut-messageAddedTask p {
+.messageAddedTask p {
     width: 235px;
     height: 24px;
     font-family: 'Inter';
@@ -674,13 +637,13 @@ input:-webkit-autofill:active{
     color: #FFFFFF;
 }
 
-.popOut-messageAddedTask img {
+.messageAddedTask img {
     width: 22px;
     height: 26px;
     transform: rotate(-180deg);
 }
 
-.popOut-whitecolor {
+.whitecolor {
     filter: invert(0%) sepia(100%) saturate(0%) hue-rotate(21deg) brightness(97%) contrast(103%);
 }
 
@@ -688,7 +651,7 @@ input:-webkit-autofill:active{
 Check Mark design
 */
 /* The container */
-.popOut-container {
+.container {
     position: relative;
     padding-left: 40px;
     margin-bottom: 8px;
@@ -704,7 +667,7 @@ Check Mark design
 }
 
 /* Hide the browser's default checkbox */
-.popOut-container input {
+.container input {
     position: absolute;
     opacity: 0;
     cursor: pointer;
@@ -726,7 +689,7 @@ Check Mark design
 }
 
 /* When the checkbox is checked, add a blue background */
-.popOut-container input:checked~.checkmark {
+.container input:checked~.checkmark {
     background-color: #f4f4f4F4;
 }
 
@@ -738,12 +701,12 @@ Check Mark design
 }
 
 /* Show the checkmark when checked */
-.popOut-container input:checked~.checkmark:after {
+.container input:checked~.checkmark:after {
     display: block;
 }
 
 /* Style the checkmark/indicator */
-.popOut-container .checkmark:after {
+.container .checkmark:after {
     left: 6px;
     top: 2px;
     width: 2px;
@@ -759,7 +722,7 @@ Check Mark design
 checkbox filled design
 */
 /* The container */
-.popOut-filledCheckboxContainer {
+.filledCheckboxContainer {
     position: relative;
     padding-left: 40px;
     margin-bottom: 8px;
@@ -775,7 +738,7 @@ checkbox filled design
 }
 
 /* Hide the browser's default checkbox */
-.popOut-filledCheckboxContainer input {
+.filledCheckboxContainer input {
     position: absolute;
     opacity: 0;
     cursor: pointer;
@@ -797,7 +760,7 @@ checkbox filled design
 }
 
 /* When the checkbox is checked, add a background */
-.popOut-filledCheckboxContainer input:checked~.checkmark {
+.filledCheckboxContainer input:checked~.checkmark {
     background-color: #f4f4f4F4;
 }
 
@@ -809,12 +772,12 @@ checkbox filled design
 }
 
 /* Show the checkmark when checked */
-.popOut-filledCheckboxContainer input:checked~.checkmark:after {
+.filledCheckboxContainer input:checked~.checkmark:after {
     display: block;
 }
 
 /* Style the checkmark/indicator */
-.popOut-filledCheckboxContainer .checkmark:after {
+.filledCheckboxContainer .checkmark:after {
     left: 3px;
     top: 3px;
     width: 4px;
