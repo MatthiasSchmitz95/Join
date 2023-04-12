@@ -5,144 +5,126 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Task PopOut</title>
+    <title>Add Task</title>
 
     <link rel="stylesheet" href="./styles/style.css">
     <link rel="stylesheet" href="./fonts.css">
-    <link rel="stylesheet" href="./styles/addTaskPopOut.css">
+    <!--<link rel="stylesheet" href="styles/board.css">-->
+    <link rel="stylesheet" href="/styles/addTaskPopOut.css">
     <script src="./js/board.js"></script>
     <script src="./js/main.js"></script>
-    <script src="./js/addTaskPopOut.js"></script>
-    <script src="./js/mini_backend.js"></script>
     <script src="./js/addTask.js"></script>
+    <script src="./js/mini_backend.js"></script>
+    <script src="./js/register.js"></script>
+    <script src="js/summary.js"></script>
+    <!--<script src="./js/addTaskPopOut.js"></script>-->
 </head>
 
+<body onload="renderSubtasks(); updateCalender('date');" id="body">
+    <form class="taskCard d-none" onsubmit="addTask(); return false" id="popOut-taskCard">
 
-
-<body onload="updateCalender(); loadUserData()">
-
-    <form class="popOut-taskCard d-none" onsubmit="addTask(); return false" id="popOut-taskCard">
-
-        <div class="popOut-headline">
-            Add Task
-        </div>
-        <div class="popOut-contentContainer">
-            <div class="popOut-leftContent">
-                <div class="popOut-titleContainer">
-                    <label for="title" class="popOut-title">Title</label>
-                    <input type="text" id="popOut-title" placeholder="Enter a title" required />
+        <div class="headline">Add Task</div>
+        <div class="contentContainer">
+            <div class="leftContent">
+                <div class="titleContainer">
+                    <label for="title" class="title">Title</label>
+                    <input type="text" id="title" placeholder="Enter a title" required />
                 </div>
 
-                <div class="popOut-descriptionContainer">
-                    <label for="description" class="popOut-description">Description</label>
-                    <textarea id="popOut-description" placeholder="Enter a description" required></textarea>
+                <div class="descriptionContainer">
+                    <label for="description" class="description">Description</label>
+                    <textarea id="description" placeholder="Enter a description" required></textarea>
                 </div>
 
 
-                <div class="popOut-categoryContainer">
-                    <label for="popOut-category" class="popOut-category">Category</label>
-                    <div class="popOut-inputContainer" id="popOut-inputContainer">
-                        <input id="popOut-input" type="text" placeholder="Select task Category" required>
-                        <div id="popOut-color" class="popOut-color"></div>
-                        <div id="popOut-buttonDropDown" class="popOut-buttonOpenClose" onclick="dropDown()"><img
+                <div class="categoryContainer">
+                    <label for="category" class="category">Category</label>
+                    <div class="inputContainer" id="inputContainer">
+                        <input id="input" type="text" placeholder="Select task Category" required>
+                        <div id="color" class="color"></div>
+                        <div id="buttonDropDown" class="buttonOpenClose" onclick="dropDown()"><img
                                 src="assets/img/dropdown-arrow.png"></div>
-                        <div id="popOut-newCategoryInput">
+                        <div id="newCategoryInput">
                             <img src="assets/img/icon_clear.png" id="clearSubtaskInput" onclick="rejectNewCategory()">
-                            <div class="popOut-line"></div>
+                            <div class="line"></div>
                             <img src="assets/img/checkmark.png" id="selectedSubtask" onclick="addNewCategory()">
                         </div>
                     </div>
-                    <div id="popOut-categoryList" class="popOut-categoryList"></div>
-                    <div class="popOut-newCategoryColorsBox" id="popOut-newCategoryColorsBox">
-                        <div class="popOut-color" style="background-color:#8AA4FF ;" onclick="newColor('#8AA4FF')">
-                        </div>
-                        <div class="popOut-color" style="background-color:#FF0000 ;" onclick="newColor('#FF0000')">
-                        </div>
-                        <div class="popOut-color" style="background-color:#2AD300 ;" onclick="newColor('#2AD300')">
-                        </div>
-                        <div class="popOut-color" style="background-color:#FF8A00 ;" onclick="newColor('#FF8A00')">
-                        </div>
-                        <div class="popOut-color" style="background-color:#E200BE ;" onclick="newColor('#E200BE')">
-                        </div>
-                        <div class="popOut-color" style="background-color:#0038FF ;" onclick="newColor('#0038FF')">
-                        </div>
+                    <div id="categoryList" class="categoryList"></div>
+                    <div class="newCategoryColorsBox" id="newCategoryColorsBox">
+                        <div class="color" style="background-color:#8AA4FF ;" onclick="newColor('#8AA4FF')"></div>
+                        <div class="color" style="background-color:#FF0000 ;" onclick="newColor('#FF0000')"></div>
+                        <div class="color" style="background-color:#2AD300 ;" onclick="newColor('#2AD300')"></div>
+                        <div class="color" style="background-color:#FF8A00 ;" onclick="newColor('#FF8A00')"></div>
+                        <div class="color" style="background-color:#E200BE ;" onclick="newColor('#E200BE')"></div>
+                        <div class="color" style="background-color:#0038FF ;" onclick="newColor('#0038FF')"></div>
                     </div>
                 </div>
 
-                <div class="popOut-assignContainer">
-                    <label for="popOut-assignedTo" class="popOut-assignedTo">Assigned to</label>
-                    <div class="popOut-contactInputContainer" id="popOut-contactInputContainer">
-                        <input id="popOut-assignInput" type="text" placeholder="Select contacts to assign" required>
-
-                        <div id="popOut-assignDropDown" class="popOut-buttonOpenClose" onclick="dropDownAssignTo()"><img
+                <div class="assignContainer">
+                    <label for="assignedTo" class="assignedTo">Assigned to</label>
+                    <div class="contactInputContainer" id="contactInputContainer">
+                        <input id="assignInput" type="text" placeholder="Select contacts to assign" required />
+                        <div id="assignDropDown" class="buttonOpenClose" onclick="dropDownAssignTo()"><img
                                 src="assets/img/dropdown-arrow.png"></div>
                     </div>
-                    <div id="popOut-assignedList" class="popOut-assignedList"></div>
+                    <div id="assignedList" class="assignedList"></div>
                 </div>
             </div>
 
 
-            <div class="popOut-midLine"></div>
+            <div class="midLine"></div>
 
+            <div class="rightContent">
+                <label for="date" class="date">Due date</label>
+                <input id="date" placeholder="dd/mm/yyyy" type="date" required>
 
-            <div class="popOut-rightContent">
-                <label for="popOut-date" class="popOut-date">Due date</label>
-                <input id="popOut-date" placeholder="dd/mm/yyyy" type="date" required>
-
-                <label for="popOut-priority" class="popOut-priority">Prio</label>
-                <div class="popOut-priorityBoxesContainer">
-                    <div class="popOut-prioUrgentBox" id="popOut-prioUrgentBox" onclick="insertUrgent()">urgent <img
-                            id="popOut-prioUrgentImg" src="assets\img\urgent.png"></div>
-                    <div class="popOut-prioMediumBox" id="popOut-prioMediumBox" onclick="insertMedium()">Medium <img
-                            id="popOut-prioMediumImg" src="assets\img\medium.png"></div>
-                    <div class="popOut-prioLowBox" id="popOut-prioLowBox" onclick="insertLow()">low <img
-                            id="popOut-prioLowImg" src="assets\img\low.png"></div>
+                <label for="priority" class="priority">Prio</label>
+                <div class="priorityBoxesContainer">
+                    <div class="prioUrgentBox" id="prioUrgentBox" onclick="insertUrgent()">urgent <img
+                            id="prioUrgentImg" src="assets\img\urgent.png"></div>
+                    <div class="prioMediumBox" id="prioMediumBox" onclick="insertMedium()">Medium <img
+                            id="prioMediumImg" src="assets\img\medium.png"></div>
+                    <div class="prioLowBox" id="prioLowBox" onclick="insertLow()">low <img id="prioLowImg"
+                            src="assets\img\low.png"></div>
                 </div>
 
-                <label for="popOut-subtasks" class="popOut-subtasks">Subtasks</label>
-                <div class="popOut-addSubtaskContainer">
-                    <input class="popOut-subtasksInput" id="popOut-subtasksInput" placeholder="Add new Subtask"
-                        required>
-                    <div class="popOut-addSubtaskBtn" id="popOut-addSubtaskBtn" onclick="createNewSubtask()"><img
+                <label for="subtasks" class="subtasks">Subtasks</label>
+                <div class="addSubtaskContainer">
+                    <input class="subtasksInput" id="subtasksInput" placeholder="Add new Subtask" />
+                    <div class="addSubtaskBtn" id="addSubtaskBtn" onclick="createNewSubtask()"><img
                             src="assets/img/plus.png"></div>
-                    <div id="popOut-subtaskOninput">
-                        <img src="assets/img/icon_clear.png" id="popOut-clearSubtaskInput" onclick="deleteSubTask()">
-                        <div class="popOut-line"></div>
-                        <img src="assets/img/checkmark.png" id="popOut-finishEditingSubtask" onclick="addSubTask()">
+                    <div id="subtaskOninput">
+                        <img src="assets/img/icon_clear.png" id="clearSubtaskInput" onclick="deleteSubTask()">
+                        <div class="line"></div>
+                        <img src="assets/img/checkmark.png" id="selectedSubtask" onclick="addSubTask()">
                     </div>
                 </div>
 
-                <div class="popOut-SubtaskAppendixContainer" id="popOut-SubtaskAppendixContainer">
-                    <label class="popOut-container">
-                        <!--<input type="checkbox">
-                        <span class="checkmark"></span>
-                        <div class="popOut-subtaskCheck">Subtask 1</div>-->
-                    </label>
-                </div>
-
+                <div class="SubtaskAppendixContainer" id="SubtaskAppendixContainer"></div>
             </div>
         </div>
 
-        <div class="popOut-buttonsContainer">
-            <button class="popOut-clearButton" onmouseover="clearBtnhover()" onmouseout="clearBtnCancelhover()" onclick="clearAllAddTaskFields()">Clear
-                <img class="popOut-clearBtnImg" id="popOut-clearBtnImg" src="assets/img/cross-mark.svg">
+        <div class="buttonsContainer">
+            <button class="clearButton" onmouseover="clearBtnhover()" onmouseout="clearBtnCancelhover()"
+                onclick="clearAllAddTaskFields()">Clear <img class="clearBtnImg" id="clearBtnImg"
+                    src="assets/img/cross-mark.svg">
             </button>
-            <button class="popOut-createButton" type="submit" id="popOut-addTaskBtn">Create Task <img
-                    class="popOut-createBtnImg" src="assets/img/right-mark.png"></button>
+            <button class="createButton" type="submit" id="addTaskBtn">Create Task <img class="createBtnImg"
+                    src="assets/img/right-mark.png"></button>
         </div>
 
-        <div id="popOut-messageAddedTask" class="popOut-messageAddedTask">
+        <div id="messageAddedTask" class="messageAddedTask">
             <p>Task added to board</p>
             <img src="assets/img/board-icon.png">
         </div>
 
-
         <div class="closeBtn"><img src="./assets/img/closeBtn.png" id="closeBtn-addTaskPopOut"
-                onclick="closePopOutAddTask()"></div>
+            onclick="closePopOutAddTask()"></div>
     </form>
 
 
-    <script src="./js/addTaskPopOut.js"></script>
+    <script src="./js/addTask.js"></script>
 </body>
 
 </html>

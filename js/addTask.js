@@ -335,9 +335,9 @@ async function addTask() {
     document.getElementById('prioMediumImg').classList.remove('Img-white');
     document.getElementById('prioLowImg').classList.remove('Img-white');
     deleteSubTask();
-    setTimeout(function () {
+    /*setTimeout(function () {
                 window.location = "./board.html";
-    }, 3600)
+    }, 3600)*/
     await saveTasksToBackend();
     await saveUserAccountsToBackend();
 
@@ -467,3 +467,4 @@ function updateCalender(id) {
 function clearAllAddTaskFields() {
     window.location.reload();
 }
+
