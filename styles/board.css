@@ -146,6 +146,14 @@ h2 {
     width: 100%;
 }
 
+.progress{
+    width: 138px;
+}
+
+.progressBar{
+    height: 8px;
+}
+
 .initiales{
     width: 35px;
     height: 35px;
@@ -195,7 +203,7 @@ h2 {
     padding-left: 70px;
     padding-right: 70px;
     gap: 25px;
-    /* width: 623px; */
+    width: 562px; 
     /* height: 824px; */
     z-index: 5;
     background: #FFFFFF;

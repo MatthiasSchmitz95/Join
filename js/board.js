@@ -4,27 +4,40 @@ let loadOverlay = false;
 
 function updateHTML() {
     updateHTMLToDo()
-    updateHTMLInProgress()
-    updateHTMLAwaitingFeedback()
-    updateHTMLDone()
+    /* updateHTMLInProgress()
+     updateHTMLAwaitingFeedback()
+     updateHTMLDone()*/
 }
 
 
 async function updateHTMLToDo() {
     await loadTasksFromBackend();
     await loadUserAccountsFromBackend();
-    let user = userAccounts[activeUser]['userName'];
-    let todo = tasks.filter(t => t['progress'] == 'To Do' && t['contact'].includes(user));
+    let user = userAccounts[activeUser]['userTasks'];
     document.getElementById('toDoContent').innerHTML = '';
-
-    for (let i = 0; i < todo.length; i++) {
-        const cards = todo[i];
-        document.getElementById('toDoContent').innerHTML += generateHTML(cards), priorityImgCard(cards), changeBackgroundColor(cards), renderUserInitiales(cards);
-
+    document.getElementById('inProgressContent').innerHTML = '';
+    document.getElementById('awaitingFeedbackContent').innerHTML = '';
+    document.getElementById('doneContent').innerHTML = '';
+    for (let i = 0; i < user.length; i++) {
+        const userTasks = user[i];
+        cards = userTasks['progress'];
+        if (cards == 'To Do') {
+            document.getElementById('toDoContent').innerHTML += generateHTML(userTasks), priorityImgCard(userTasks), changeBackgroundColor(userTasks), renderUserInitiales(userTasks), changeProgressbar(userTasks['id']);
+        }
+        if (cards == 'In progress') {
+            document.getElementById('inProgressContent').innerHTML += generateHTML(userTasks), priorityImgCard(userTasks), changeBackgroundColor(userTasks), renderUserInitiales(userTasks), changeProgressbar(userTasks['id']);
+        }
+        if (cards == 'Awaiting Feedback') {
+            document.getElementById('awaitingFeedbackContent').innerHTML += generateHTML(userTasks), priorityImgCard(userTasks), changeBackgroundColor(userTasks), renderUserInitiales(userTasks), changeProgressbar(userTasks['id']);
+        }
+        if (cards == 'Done') {
+            document.getElementById('doneContent').innerHTML += generateHTML(userTasks), priorityImgCard(userTasks), changeBackgroundColor(userTasks), renderUserInitiales(userTasks), changeProgressbar(userTasks['id']);
+        }
     }
 }
 
 
+/*
 async function updateHTMLInProgress() {
     await loadTasksFromBackend();
     await loadUserAccountsFromBackend();
@@ -34,7 +47,7 @@ async function updateHTMLInProgress() {
 
     for (let index = 0; index < inProgress.length; index++) {
         const cards = inProgress[index];
-        document.getElementById('inProgressContent').innerHTML += generateHTML(cards), priorityImgCard(cards), changeBackgroundColor(cards), renderUserInitiales(cards);
+        
 
     }
 }
@@ -49,7 +62,7 @@ async function updateHTMLAwaitingFeedback() {
 
     for (let index = 0; index < awaiting.length; index++) {
         const cards = awaiting[index];
-        document.getElementById('awaitingFeedbackContent').innerHTML += generateHTML(cards), priorityImgCard(cards), changeBackgroundColor(cards), renderUserInitiales(cards);
+        
     }
 }
 
@@ -63,9 +76,9 @@ async function updateHTMLDone() {
 
     for (let index = 0; index < done.length; index++) {
         const cards = done[index];
-        document.getElementById('doneContent').innerHTML += generateHTML(cards), priorityImgCard(cards), changeBackgroundColor(cards), renderUserInitiales(cards);
+       
     }
-}
+}*/
 
 
 function generateHTML(cards) {
@@ -78,6 +91,15 @@ function generateHTML(cards) {
         <div class="text-color" >
         ${cards['description']}
         </div>
+        <div>
+         <div class="progress">
+            <div id="progressBar${cards['id']}" class="progressBar">
+            </div>
+         </div>
+         <div>
+
+         </div>
+        </div>
         <div class="position-cards-bottom">
            <div class="flex" id="userInitiales${cards['id']}" >
            </div> 
@@ -89,22 +111,25 @@ function generateHTML(cards) {
 }
 
 
-async function renderUserInitiales(cards){
+async function renderUserInitiales(cards) {
     let contact = document.getElementById(`userInitiales${cards['id']}`);
-    contact.innerHTML = ''; 
-    for (let i = 0; i < userAccounts.length; i++) {
-        const element = await userAccounts[i]['userName'];
-        let initiales = await userAccounts[i]['userInitials'];
-        let color = await userAccounts[i]['userColor'];
-        let contacts = '';
-        if (cards.contact.includes(element)) {
-            contacts = initiales;
+    let user = userAccounts[activeUser]['userContacts'];
+    let userContacts = cards['contact'];
+    contact.innerHTML = '';
+    for (let i = 0; i < user.length; i++) {
+        const users = user[i];
+        const abc = user[i]['name'];
+        for (let j = 0; j < userContacts.length; j++) {
+            const userContact = userContacts[j];
+            const ids = cards['id'].toString() + i.toString();
+            if (abc.includes(userContact)) {
+                contact.innerHTML += `<div id="circle${ids}" class="initiales">${users['letters']} </div>`
+                setTimeout(() => {
+                    changeBackgroundCircle(i, abc, userContact, users, cards, ids);
+                }, 0);
+            }
         }
-        if (!contacts == '') {
-            contact.innerHTML += `<div id="circle${[i]}" class="initiales">${contacts}</div>` ;
-            changeBackgroundCircle(i, color);
-        } 
-    } 
+    }
 }
 
 
@@ -115,10 +140,12 @@ function changeBackgroundColor(cards) {
 }
 
 
-async function changeBackgroundCircle(i, color){
-    let backgroundCircle = document.getElementById(`circle${i}`);
-    backgroundCircle.style.backgroundColor = `${await color}`;
-
+async function changeBackgroundCircle(i, abc, userContact, users, cards, ids) {
+    let backgroundCircle = document.getElementById(`circle${ids}`);
+    let color = users['color'];
+    if (abc.includes(userContact)) {
+        backgroundCircle.style.backgroundColor = `${color}`;
+    }
 }
 
 
@@ -146,18 +173,21 @@ function allowDrop(ev) {
 
 
 async function moveTo(category) {
-    tasks[currentDraggedElement]['progress'] = category;
+    let user = userAccounts[activeUser]['userTasks'];
+    user[currentDraggedElement]['progress'] = category;
     await saveTasksToBackend();
+    await saveUserAccountsToBackend();
     updateHTML();
 }
 
 
 function showOverlay(cards) {
-    let todo = tasks.find((item) => item.id === cards);
+    let user = userAccounts[activeUser]['userTasks'];
+    let todo = user.find((item) => item.id === cards);
     document.getElementById('overlay-background').classList.add('overlay-background');
     let overlay = document.getElementById('overlay');
     overlay.classList.remove('d-none');
-    
+
     overlay.innerHTML = /*html*/`        
     <div class="overlay-header">
         <div class="overlay-department">
@@ -195,18 +225,19 @@ function showOverlay(cards) {
 }
 
 
-function generateAssignedTo(todo){
-   let contacts = document.getElementById('assignedTo');
+function generateAssignedTo(todo) {
+    let contacts = document.getElementById('assignedTo');
     for (let i = 0; i < todo.contact.length; i++) {
         const element = todo.contact[i];
-        contacts.innerHTML +=`
-       <div>${(element)}</div>` 
+        contacts.innerHTML += `
+       <div>${(element)}</div>`
     }
 }
 
 
 function showOverlayChange(cards) {
-    let todo = tasks.find((item) => item.id === cards);
+    let user = userAccounts[activeUser]['userTasks'];
+    let todo = user.find((item) => item.id === cards);
     let overlay = document.getElementById('overlay');
     overlay.innerHTML = /*html*/`
    <div class="overlay-header"> 
@@ -225,6 +256,18 @@ function showOverlayChange(cards) {
     <div class="width-chances">
        Due date <br>
        <input id="inputDueDate" class="input-chances-title" type="date" value="2023-02-03" min="023-02-01" max="023-02-28" placeholder="${(todo['dueDate'])}">
+    </div>
+    <div id="subtasks">
+    <div class="addSubtaskContainer">
+                    <input class="subtasksInput" id="subtasksInput" placeholder="Add new Subtask" />
+                    <div class="addSubtaskBtn" id="addSubtaskBtn" onclick="createNewSubtask()"><img
+                            src="assets/img/plus.png"></div>
+                    <div id="subtaskOninput">
+                        <img src="assets/img/icon_clear.png" id="clearSubtaskInput" onclick="deleteSubTask()">
+                        <div class="line"></div>
+                        <img src="assets/img/checkmark.png" id="selectedSubtask" onclick="addSubTask()">
+                    </div>
+                </div>
     </div>
     <label for="priority" class="priority">Prio</label>
                 <div  class="priorityBoxesContainer">
@@ -255,6 +298,7 @@ function showOverlayChange(cards) {
     </div>
      `;
     insertPriority(cards);
+    renderSubtasksBoard(cards);
 }
 
 
@@ -312,7 +356,8 @@ function insertLow() {
 
 
 function insertPriority(cards) {
-    let todo = tasks.find((item) => item.id === cards);
+    let user = userAccounts[activeUser]['userTasks'];
+    let todo = user.find((item) => item.id === cards);
     if (todo.priority == 'urgent') {
         insertUrgent()
     } else if (todo.priority == 'Medium') {
@@ -322,10 +367,10 @@ function insertPriority(cards) {
     }
 }
 
-
-function dropDownAssignTo() {
-    /* document.getElementById('categoryList').classList.toggle('dropDownDisplay');*/
-    //closeDropdownCategory();
+/*
+function dropDownAssignTo() 
+     document.getElementById('categoryList').classList.toggle('dropDownDisplay');
+    closeDropdownCategory();
     var assignToDropDown = document.getElementById('assignedList');
 
     if (assignToDropDown.style.display == "block") {
@@ -336,38 +381,38 @@ function dropDownAssignTo() {
         assignToDropDown.style.display = "block";
         //assignToInputContainer.style.borderBottom = "none";
         /* Four values */
-        /* top-left top-right bottom-right bottom-left */
-        //assignToInputContainer.style.borderRadius = "10px 10px 0 0";
-        renderAssignTo();
-    }
+/* top-left top-right bottom-right bottom-left 
+//assignToInputContainer.style.borderRadius = "10px 10px 0 0";
+renderAssignTo();
+}
 
 }
 
 
 function renderAssignTo() {
-    let assignedContactList = document.getElementById('assignedList');
-    assignedContactList.innerHTML = "";
+let assignedContactList = document.getElementById('assignedList');
+assignedContactList.innerHTML = "";
 
-    for (let i = 0; i < userAccounts.length; i++) {
-        /*const contact = contactArray[i];*/
-        var userName = userAccounts[i]['userName'];
+for (let i = 0; i < userAccounts.length; i++) {
+/*const contact = contactArray[i];
+var userName = userAccounts[i]['userName'];
 
-        assignedContactList.innerHTML += /*html*/`
-        <div class="assignedContact" onclick="chooseContact(${i}, '${userName}')" > 
-            <div>${userName}</div>
-            <label class="filledCheckboxContainer">
-                <input type="checkbox">
-                <span class="checkmark"></span>
-            <div class="subtaskCheck"></div>
-        </label>
-        </div>
-        `;
-    }
+assignedContactList.innerHTML += `
+<div class="assignedContact" onclick="chooseContact(${i}, '${userName}')" > 
+    <div>${userName}</div>
+    <label class="filledCheckboxContainer">
+        <input type="checkbox">
+        <span class="checkmark"></span>
+    <div class="subtaskCheck"></div>
+</label>
+</div>
+`;
+}
 }
 
 /*
 function showAddTaskPopOut() {
-    document.getElementById('popOut-taskCard').classList.remove('d-none');
+document.getElementById('popOut-taskCard').classList.remove('d-none');
 }
 
 
@@ -377,7 +422,8 @@ function closePopOutAddTask() {
 
 
 async function saveInputTask(cards) {
-    let todo = tasks.find((item) => item.id === cards);
+    let user = userAccounts[activeUser]['userTasks'];
+    let todo = user.find((item) => item.id === cards);
     let newTitle = document.getElementById('inputTittle').value;
     let newDescription = document.getElementById('inputDescription').value;
     let newDueDate = document.getElementById('inputDueDate').value;
@@ -389,6 +435,42 @@ async function saveInputTask(cards) {
     todo.dueDate = newDueDate;
     console.log(todo);
     await saveTasksToBackend()
+    await saveUserAccountsToBackend();
     updateHTML()
     showOverlay(cards)
 }
+
+
+function renderSubtasksBoard(cards) {
+    let user = userAccounts[activeUser]['userTasks'];
+    let todo = user.find((item) => item.id === cards);
+    let content = document.getElementById('subtasks');
+    content.innerHTML = "";
+    for (let j = 0; j < todo['subTask'].length; j++) {
+        const showSubTask = todo['subTask'][j];
+
+        content.innerHTML += /*html*/`
+            <label class="container">
+                <input type="checkbox" class="checkedSubTasks" onclick="chooseSubtasks()" value="${showSubTask}" />
+                <span class="checkmark" id="checkmark${j}"></span>
+                <div class="subtaskCheck">${showSubTask}</div>
+            </label>
+            `;
+    }
+}
+
+
+function changeProgressbar(cards) {
+    let progress = document.getElementById(`progressBar${cards}`);
+    let user = userAccounts[activeUser]['userTasks'];
+    let todo = user.find((item) => item.id === cards);
+    let result;
+        let maximum = todo['subTask'].length;
+        let present = selectedSubtasks.length;
+        if (present == 0) {
+            result = 0
+        }else{
+        result = maximum / present
+        console.log('ergebnis',result)
+    }
+    }
