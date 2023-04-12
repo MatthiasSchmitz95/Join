@@ -3,27 +3,40 @@ let loadOverlay = false;
 
 function updateHTML() {
     updateHTMLToDo()
-    updateHTMLInProgress()
+   /* updateHTMLInProgress()
     updateHTMLAwaitingFeedback()
-    updateHTMLDone()
+    updateHTMLDone()*/
 }
 
 
 async function updateHTMLToDo() {
     await loadTasksFromBackend();
     await loadUserAccountsFromBackend();
-    let user = userAccounts[activeUser]['userName'];
-    let todo = tasks.filter(t => t['progress'] == 'To Do' && t['contact'].includes(user));
+    let user = userAccounts[activeUser]['userTasks'];
     document.getElementById('toDoContent').innerHTML = '';
-
-    for (let i = 0; i < todo.length; i++) {
-        const cards = todo[i];
-        document.getElementById('toDoContent').innerHTML += generateHTML(cards), priorityImgCard(cards), changeBackgroundColor(cards), renderUserInitiales(cards);
-
+    document.getElementById('inProgressContent').innerHTML = '';
+    document.getElementById('awaitingFeedbackContent').innerHTML ='';
+    document.getElementById('doneContent').innerHTML = '';
+    for (let i = 0; i < user.length; i++) {
+        const userTasks = user[i];
+        cards = userTasks['progress'];
+        if (cards == 'To Do') {
+            document.getElementById('toDoContent').innerHTML += generateHTML(userTasks), priorityImgCard(userTasks), changeBackgroundColor(userTasks), renderUserInitiales(userTasks);
+        } 
+        if (cards == 'In progress') {
+            document.getElementById('inProgressContent').innerHTML += generateHTML(userTasks), priorityImgCard(userTasks), changeBackgroundColor(userTasks), renderUserInitiales(userTasks);  
+        }
+        if (cards == 'Awaiting Feedback') {
+            document.getElementById('awaitingFeedbackContent').innerHTML += generateHTML(userTasks), priorityImgCard(userTasks), changeBackgroundColor(userTasks), renderUserInitiales(userTasks);
+        }
+        if (cards == 'Done') {
+            document.getElementById('doneContent').innerHTML += generateHTML(userTasks), priorityImgCard(userTasks), changeBackgroundColor(userTasks), renderUserInitiales(userTasks);
+        }
     }
 }
 
 
+/*
 async function updateHTMLInProgress() {
     await loadTasksFromBackend();
     await loadUserAccountsFromBackend();
@@ -33,7 +46,7 @@ async function updateHTMLInProgress() {
 
     for (let index = 0; index < inProgress.length; index++) {
         const cards = inProgress[index];
-        document.getElementById('inProgressContent').innerHTML += generateHTML(cards), priorityImgCard(cards), changeBackgroundColor(cards), renderUserInitiales(cards);
+        
 
     }
 }
@@ -48,7 +61,7 @@ async function updateHTMLAwaitingFeedback() {
 
     for (let index = 0; index < awaiting.length; index++) {
         const cards = awaiting[index];
-        document.getElementById('awaitingFeedbackContent').innerHTML += generateHTML(cards), priorityImgCard(cards), changeBackgroundColor(cards), renderUserInitiales(cards);
+        
     }
 }
 
@@ -62,9 +75,9 @@ async function updateHTMLDone() {
 
     for (let index = 0; index < done.length; index++) {
         const cards = done[index];
-        document.getElementById('doneContent').innerHTML += generateHTML(cards), priorityImgCard(cards), changeBackgroundColor(cards), renderUserInitiales(cards);
+       
     }
-}
+}*/
 
 
 function generateHTML(cards) {
@@ -90,20 +103,23 @@ function generateHTML(cards) {
 
 async function renderUserInitiales(cards){
     let contact = document.getElementById(`userInitiales${cards['id']}`);
+    let user = userAccounts[activeUser]['userContacts'];
+    let userContacts = cards['contact']; 
     contact.innerHTML = ''; 
-    for (let i = 0; i < userAccounts.length; i++) {
-        const element = await userAccounts[i]['userName'];
-        let initiales = await userAccounts[i]['userInitials'];
-        let color = await userAccounts[i]['userColor'];
-        let contacts = '';
-        if (cards.contact.includes(element)) {
-            contacts = initiales;
+    for (let i = 0; i < user.length; i++) {
+        const users = user[i];
+        const abc = user[i]['name'];
+        for (let j = 0; j < userContacts.length; j++) {
+            const userContact = userContacts[j];
+            const ids =cards['id'].toString() + i.toString();
+            if (abc.includes(userContact)) {
+                contact.innerHTML += `<div id="circle${ids}" class="initiales">${users['letters']} </div>`
+                setTimeout(() => {
+                    changeBackgroundCircle(i, abc, userContact, users, cards, ids);
+                }, 0);
+            }
         }
-        if (!contacts == '') {
-            contact.innerHTML += `<div id="circle${[i]}" class="initiales">${contacts}</div>` ;
-            changeBackgroundCircle(i, color);
-        } 
-    } 
+    }
 }
 
 
@@ -114,10 +130,12 @@ function changeBackgroundColor(cards) {
 }
 
 
-async function changeBackgroundCircle(i, color){
-    let backgroundCircle = document.getElementById(`circle${i}`);
-    backgroundCircle.style.backgroundColor = `${await color}`;
-
+async function changeBackgroundCircle(i, abc, userContact, users, cards, ids){
+    let backgroundCircle = document.getElementById(`circle${ids}`);
+    let color = users['color'];
+    if (abc.includes(userContact)){
+    backgroundCircle.style.backgroundColor = `${color}`;
+    }
 }
 
 
@@ -145,14 +163,17 @@ function allowDrop(ev) {
 
 
 async function moveTo(category) {
-    tasks[currentDraggedElement]['progress'] = category;
+    let user = userAccounts[activeUser]['userTasks'];
+    user[currentDraggedElement]['progress'] = category;
     await saveTasksToBackend();
+    await saveUserAccountsToBackend();
     updateHTML();
 }
 
 
 function showOverlay(cards) {
-    let todo = tasks.find((item) => item.id === cards);
+    let user = userAccounts[activeUser]['userTasks'];
+    let todo = user.find((item) => item.id === cards);
     document.getElementById('overlay-background').classList.add('overlay-background');
     let overlay = document.getElementById('overlay');
     overlay.classList.remove('d-none');
@@ -205,7 +226,8 @@ function generateAssignedTo(todo){
 
 
 function showOverlayChange(cards) {
-    let todo = tasks.find((item) => item.id === cards);
+    let user = userAccounts[activeUser]['userTasks'];
+    let todo = user.find((item) => item.id === cards);
     let overlay = document.getElementById('overlay');
     overlay.innerHTML = /*html*/`
    <div class="overlay-header"> 
@@ -311,7 +333,8 @@ function insertLow() {
 
 
 function insertPriority(cards) {
-    let todo = tasks.find((item) => item.id === cards);
+    let user = userAccounts[activeUser]['userTasks'];
+    let todo = user.find((item) => item.id === cards);
     if (todo.priority == 'urgent') {
         insertUrgent()
     } else if (todo.priority == 'Medium') {
@@ -376,7 +399,8 @@ function closePopOutAddTask() {
 
 
 async function saveInputTask(cards) {
-    let todo = tasks.find((item) => item.id === cards);
+    let user = userAccounts[activeUser]['userTasks'];
+    let todo = user.find((item) => item.id === cards);
     let newTitle = document.getElementById('inputTittle').value;
     let newDescription = document.getElementById('inputDescription').value;
     let newDueDate = document.getElementById('inputDueDate').value;
@@ -388,6 +412,7 @@ async function saveInputTask(cards) {
     todo.dueDate = newDueDate;
     console.log(todo);
     await saveTasksToBackend()
+    await saveUserAccountsToBackend();
     updateHTML()
     showOverlay(cards)
 }
