@@ -138,7 +138,6 @@ function renderAssignTo() {
         `;
     }
 }
-
 function dropDownAssignTo() {
     /* document.getElementById('categoryList').classList.toggle('dropDownDisplay');*/
     closeDropdownCategory();
