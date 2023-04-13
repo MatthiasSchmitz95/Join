@@ -132,9 +132,11 @@ async function renderAssignTo() { //function to render AssignTo
     assignedContactList.innerHTML = ""; //clear container inside html
 
     /**render the user contacts */
-    for (let i = 0; i < userAccounts[activeUser]['userContacts'].length; i++) {
-        var userName = userAccounts[activeUser]['userContacts'][i]['name'];
-
+    //for (let i = 0; i < userAccounts[activeUser]['userContacts'].length; i++) {
+       // var userName = userAccounts[activeUser]['userContacts'][i]['name'];
+       
+    for (let i = 0; i < userAccounts.length; i++) {
+        var userName = userAccounts[i]['userName'];
         assignedContactList.innerHTML += /*html*/`
             <div class="assignedContact" >
                 <div>${userName}</div>
