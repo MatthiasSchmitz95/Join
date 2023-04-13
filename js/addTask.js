@@ -286,6 +286,7 @@ async function addTask() {
     var description = document.getElementById('description');
     /*var contact = document.getElementById('assignInput');*/
     let contact = choosedContacts;
+    let subTaskDone = [];
     var category = document.getElementById('input');
     var categoryColor = document.getElementById('color').style.background;
     var dueDate = document.getElementById('date');
@@ -316,6 +317,7 @@ async function addTask() {
         "contact": contact,
         "dueDate": dueDate.value,
         "subTask": subTask,
+        "subTaskDone": subTaskDone,
         "priority": priority,
         "priorityImg": priorityImg,
         "id": idTask,

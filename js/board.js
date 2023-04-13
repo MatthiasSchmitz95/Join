@@ -1,6 +1,6 @@
 let currentDraggedElement;
 let loadOverlay = false;
-
+let loadCircle =false;
 
 function updateHTML() {
     updateHTMLToDo()
@@ -91,12 +91,12 @@ function generateHTML(cards) {
         <div class="text-color" >
         ${cards['description']}
         </div>
-        <div>
+        <div class="position-progress">
          <div class="progress">
             <div id="progressBar${cards['id']}" class="progressBar">
             </div>
          </div>
-         <div>
+         <div class="count" id="countDone${cards['id']}">
 
          </div>
         </div>
@@ -115,22 +115,38 @@ async function renderUserInitiales(cards) {
     let contact = document.getElementById(`userInitiales${cards['id']}`);
     let user = userAccounts[activeUser]['userContacts'];
     let userContacts = cards['contact'];
+    let userContactsLength = userContacts.length;
     contact.innerHTML = '';
     for (let i = 0; i < user.length; i++) {
         const users = user[i];
         const abc = user[i]['name'];
-        for (let j = 0; j < userContacts.length; j++) {
+        for (let j = 0; j < userContactsLength; j++) {
             const userContact = userContacts[j];
             const ids = cards['id'].toString() + i.toString();
-            if (abc.includes(userContact)) {
+            if (abc.includes(userContact) && userContacts.length <= 3) {
                 contact.innerHTML += `<div id="circle${ids}" class="initiales">${users['letters']} </div>`
-                setTimeout(() => {
+                
                     changeBackgroundCircle(i, abc, userContact, users, cards, ids);
-                }, 0);
+                
+            } else if (abc.includes(userContact) &&  userContacts.length > 3) {
+                let allContacts = userContacts.length;
+                let count = j +1;
+                let newLenght = userContactsLength = 2;
+                let result = allContacts - newLenght;
+                result = '+' + result;
+                console.log(result)
+                contact.innerHTML += `<div id="circle${ids}" class="initiales">${users['letters']} </div>`;
+                changeBackgroundCircle(i, abc, userContact, users, cards, ids);
+                if (userContactsLength == count) {
+                    contact.innerHTML += `<div id="circle${ids}" class="initiales background-black">${result} </div>`;
+                }
+                
+                    
+                };
             }
         }
     }
-}
+
 
 
 function changeBackgroundColor(cards) {
@@ -299,6 +315,7 @@ function showOverlayChange(cards) {
      `;
     insertPriority(cards);
     renderSubtasksBoard(cards);
+
 }
 
 
@@ -410,16 +427,16 @@ assignedContactList.innerHTML += `
 }
 }
 
-/*
+
 function showAddTaskPopOut() {
 document.getElementById('popOut-taskCard').classList.remove('d-none');
 }
 
 
 function closePopOutAddTask() {
-    document.getElementById('popOut-taskCard').classList.add('d-none');
-}*/
-
+document.getElementById('popOut-taskCard').classList.add('d-none');
+}
+*/
 
 async function saveInputTask(cards) {
     let user = userAccounts[activeUser]['userTasks'];
@@ -427,6 +444,7 @@ async function saveInputTask(cards) {
     let newTitle = document.getElementById('inputTittle').value;
     let newDescription = document.getElementById('inputDescription').value;
     let newDueDate = document.getElementById('inputDueDate').value;
+    chooseSubtasksBoard(todo);
     if (newTitle == '') {
         newTitle = todo.title;
     }
@@ -441,36 +459,105 @@ async function saveInputTask(cards) {
 }
 
 
+async function chooseSubtasksBoard(todo) { //index, contact
+    todo.subTaskDone = [];
+    // selectedSubtasks.splice(0); //delete all choosed Contacts from last time
+
+    let allChekbox = document.querySelectorAll(`.checkedSubTasks`);
+    console.log(allChekbox.length);
+    for (let i = 0; i < allChekbox.length; i++) {
+        const checkbox = allChekbox[i];
+        if (checkbox.checked) {
+            todo.subTaskDone.push(checkbox.value);
+        }
+    }
+    await saveTasksToBackend()
+    await saveUserAccountsToBackend();
+}
+
+
 function renderSubtasksBoard(cards) {
     let user = userAccounts[activeUser]['userTasks'];
     let todo = user.find((item) => item.id === cards);
     let content = document.getElementById('subtasks');
+    let subTaskDone = todo.subTaskDone
     content.innerHTML = "";
     for (let j = 0; j < todo['subTask'].length; j++) {
         const showSubTask = todo['subTask'][j];
-
+        const subTaskIsDone = subTaskDone.includes(showSubTask);
+        const checkedAttribute = subTaskIsDone ? 'checked' : '';
         content.innerHTML += /*html*/`
-            <label class="container">
-                <input type="checkbox" class="checkedSubTasks" onclick="chooseSubtasks()" value="${showSubTask}" />
-                <span class="checkmark" id="checkmark${j}"></span>
-                <div class="subtaskCheck">${showSubTask}</div>
-            </label>
-            `;
+    <label class="container">
+        <input type="checkbox" class="checkedSubTasks" onclick="chooseSubtasks()" value="${showSubTask}" ${checkedAttribute} />
+        <span class="checkmark" id="checkmark${j}"></span>
+        <div class="subtaskCheck">${showSubTask}</div>
+    </label>
+`;
+
     }
 }
 
 
-function changeProgressbar(cards) {
+async function changeProgressbar(cards) {
     let progress = document.getElementById(`progressBar${cards}`);
+    let contant =  document.getElementById(`countDone${cards}`);
     let user = userAccounts[activeUser]['userTasks'];
     let todo = user.find((item) => item.id === cards);
     let result;
-        let maximum = todo['subTask'].length;
-        let present = selectedSubtasks.length;
-        if (present == 0) {
-            result = 0
-        }else{
-        result = maximum / present
-        console.log('ergebnis',result)
+    let maximum = todo['subTask'].length;
+    let present = todo.subTaskDone.length;
+         if (present == 0) {
+             result = 0
+         }else{
+         result = present*100 / maximum;
+         result = result+'%'
+         console.log('ergebnis',result);
+         }
+    progress.style.width = result;
+    contant.innerHTML = present+'/'+ maximum + "" + 'Done';
+    if (maximum == 0) {
+        contant.classList.add('d-none');
     }
+}
+
+
+function filterHtml(){
+    let search = document.getElementById('search').value;
+    search = search.toLowerCase();
+    let text = userAccounts[activeUser]['userTasks'];
+    for (let i = 0; i < text.length; i++) {
+        let element = text[i]['title'];
+        element = element.toLowerCase();
+        if (element.includes(search)) {
+            renderfilter(search, i)
+        }
     }
+}
+
+
+async function renderfilter(search,j){
+    await loadTasksFromBackend();
+    await loadUserAccountsFromBackend();
+    let user = userAccounts[activeUser]['userTasks'];
+    let text = userAccounts[activeUser]['userTasks'][j]['title'];
+    document.getElementById('toDoContent').innerHTML = '';
+    document.getElementById('inProgressContent').innerHTML = '';
+    document.getElementById('awaitingFeedbackContent').innerHTML = '';
+    document.getElementById('doneContent').innerHTML = '';
+    for (let i = 0; i < user.length; i++) {
+        const userTasks = user[i];
+        cards = userTasks['progress'];
+        if (cards == 'To Do' && userTasks['title'].toLowerCase().includes(search)) {
+            document.getElementById('toDoContent').innerHTML += generateHTML(userTasks), priorityImgCard(userTasks), changeBackgroundColor(userTasks), renderUserInitiales(userTasks), changeProgressbar(userTasks['id']);
+        }
+        if (cards == 'In progress' && userTasks['title'].toLowerCase().includes(search)) {
+            document.getElementById('inProgressContent').innerHTML += generateHTML(userTasks), priorityImgCard(userTasks), changeBackgroundColor(userTasks), renderUserInitiales(userTasks), changeProgressbar(userTasks['id']);
+        }
+        if (cards == 'Awaiting Feedback' && userTasks['title'].toLowerCase().includes(search)) {
+            document.getElementById('awaitingFeedbackContent').innerHTML += generateHTML(userTasks), priorityImgCard(userTasks), changeBackgroundColor(userTasks), renderUserInitiales(userTasks), changeProgressbar(userTasks['id']);
+        }
+        if (cards == 'Done' && userTasks['title'].toLowerCase().includes(search)) {
+            document.getElementById('doneContent').innerHTML += generateHTML(userTasks), priorityImgCard(userTasks), changeBackgroundColor(userTasks), renderUserInitiales(userTasks), changeProgressbar(userTasks['id']);
+        }
+    }
+}

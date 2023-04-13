@@ -142,6 +142,10 @@ h2 {
     color: white;
 }
 
+.background-black{
+    background-color: #000000;
+}
+
 .width100{
     width: 100%;
 }
@@ -152,6 +156,18 @@ h2 {
 
 .progressBar{
     height: 8px;
+    background-color: rgb(41,171,226);
+}
+
+.position-progress{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.count{
+    font-size: 12px;
 }
 
 .initiales{
