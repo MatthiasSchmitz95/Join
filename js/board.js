@@ -1,5 +1,6 @@
 let currentDraggedElement;
 let loadOverlay = false;
+let loadCircle =false;
 
 function updateHTML() {
     updateHTMLToDo()
@@ -122,27 +123,30 @@ async function renderUserInitiales(cards) {
         for (let j = 0; j < userContactsLength; j++) {
             const userContact = userContacts[j];
             const ids = cards['id'].toString() + i.toString();
-            if (abc.includes(userContact) && userContactsLength <= 3) {
+            if (abc.includes(userContact) && userContacts.length <= 3) {
                 contact.innerHTML += `<div id="circle${ids}" class="initiales">${users['letters']} </div>`
-                setTimeout(() => {
+                
                     changeBackgroundCircle(i, abc, userContact, users, cards, ids);
-                }, 0);
-            } else if (abc.includes(userContact) && userContactsLength > 3) {
+                
+            } else if (abc.includes(userContact) &&  userContacts.length > 3) {
                 let allContacts = userContacts.length;
+                let count = j +1;
                 let newLenght = userContactsLength = 2;
                 let result = allContacts - newLenght;
                 result = '+' + result;
                 console.log(result)
                 contact.innerHTML += `<div id="circle${ids}" class="initiales">${users['letters']} </div>`;
-                setTimeout(() => {
-                    changeBackgroundCircle(i, abc, userContact, users, cards, ids);
+                changeBackgroundCircle(i, abc, userContact, users, cards, ids);
+                if (userContactsLength == count) {
                     contact.innerHTML += `<div id="circle${ids}" class="initiales background-black">${result} </div>`;
+                }
+                
                     
-                }, 0);
+                };
             }
         }
     }
-}
+
 
 
 function changeBackgroundColor(cards) {
