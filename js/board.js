@@ -1,7 +1,6 @@
 let currentDraggedElement;
 let loadOverlay = false;
 
-
 function updateHTML() {
     updateHTMLToDo()
     /* updateHTMLInProgress()
@@ -410,16 +409,16 @@ assignedContactList.innerHTML += `
 }
 }
 
-/*
+
 function showAddTaskPopOut() {
 document.getElementById('popOut-taskCard').classList.remove('d-none');
 }
 
 
 function closePopOutAddTask() {
-    document.getElementById('popOut-taskCard').classList.add('d-none');
-}*/
-
+document.getElementById('popOut-taskCard').classList.add('d-none');
+}
+*/
 
 async function saveInputTask(cards) {
     let user = userAccounts[activeUser]['userTasks'];
