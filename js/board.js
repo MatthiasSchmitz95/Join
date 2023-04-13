@@ -519,3 +519,45 @@ async function changeProgressbar(cards) {
         contant.classList.add('d-none');
     }
 }
+
+
+function filterHtml(){
+    let search = document.getElementById('search').value;
+    search = search.toLowerCase();
+    let text = userAccounts[activeUser]['userTasks'];
+    for (let i = 0; i < text.length; i++) {
+        let element = text[i]['title'];
+        element = element.toLowerCase();
+        if (element.includes(search)) {
+            renderfilter(search, i)
+        }
+    }
+}
+
+
+async function renderfilter(search,j){
+    await loadTasksFromBackend();
+    await loadUserAccountsFromBackend();
+    let user = userAccounts[activeUser]['userTasks'];
+    let text = userAccounts[activeUser]['userTasks'][j]['title'];
+    document.getElementById('toDoContent').innerHTML = '';
+    document.getElementById('inProgressContent').innerHTML = '';
+    document.getElementById('awaitingFeedbackContent').innerHTML = '';
+    document.getElementById('doneContent').innerHTML = '';
+    for (let i = 0; i < user.length; i++) {
+        const userTasks = user[i];
+        cards = userTasks['progress'];
+        if (cards == 'To Do' && userTasks['title'].toLowerCase().includes(search)) {
+            document.getElementById('toDoContent').innerHTML += generateHTML(userTasks), priorityImgCard(userTasks), changeBackgroundColor(userTasks), renderUserInitiales(userTasks), changeProgressbar(userTasks['id']);
+        }
+        if (cards == 'In progress' && userTasks['title'].toLowerCase().includes(search)) {
+            document.getElementById('inProgressContent').innerHTML += generateHTML(userTasks), priorityImgCard(userTasks), changeBackgroundColor(userTasks), renderUserInitiales(userTasks), changeProgressbar(userTasks['id']);
+        }
+        if (cards == 'Awaiting Feedback' && userTasks['title'].toLowerCase().includes(search)) {
+            document.getElementById('awaitingFeedbackContent').innerHTML += generateHTML(userTasks), priorityImgCard(userTasks), changeBackgroundColor(userTasks), renderUserInitiales(userTasks), changeProgressbar(userTasks['id']);
+        }
+        if (cards == 'Done' && userTasks['title'].toLowerCase().includes(search)) {
+            document.getElementById('doneContent').innerHTML += generateHTML(userTasks), priorityImgCard(userTasks), changeBackgroundColor(userTasks), renderUserInitiales(userTasks), changeProgressbar(userTasks['id']);
+        }
+    }
+}
