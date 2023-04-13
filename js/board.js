@@ -114,17 +114,29 @@ async function renderUserInitiales(cards) {
     let contact = document.getElementById(`userInitiales${cards['id']}`);
     let user = userAccounts[activeUser]['userContacts'];
     let userContacts = cards['contact'];
+    let userContactsLength = userContacts.length;
     contact.innerHTML = '';
     for (let i = 0; i < user.length; i++) {
         const users = user[i];
         const abc = user[i]['name'];
-        for (let j = 0; j < userContacts.length; j++) {
+        for (let j = 0; j < userContactsLength; j++) {
             const userContact = userContacts[j];
             const ids = cards['id'].toString() + i.toString();
-            if (abc.includes(userContact)) {
+            if (abc.includes(userContact)&& userContactsLength <= 3) {
                 contact.innerHTML += `<div id="circle${ids}" class="initiales">${users['letters']} </div>`
                 setTimeout(() => {
                     changeBackgroundCircle(i, abc, userContact, users, cards, ids);
+                }, 0);
+            } else if (abc.includes(userContact)&& userContactsLength > 3) {
+                let allContacts = userContacts.length;
+                let newLenght = userContactsLength = 2;
+                let result = allContacts - newLenght;
+                result = '+'+ result;
+                console.log(result)
+                contact.innerHTML += `<div id="circle${ids}" class="initiales">${users['letters']} </div>`;
+                setTimeout(() => {
+                    changeBackgroundCircle(i, abc, userContact, users, cards, ids);
+                    contact.innerHTML += `<div id="circle${ids}" class="initiales background-black">${result} </div>`;
                 }, 0);
             }
         }
