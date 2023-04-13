@@ -4,15 +4,15 @@
 var categoriesArray = ['New Category', 'Sales', 'Marketing'];
 var colorsArray = ['', 'red', 'blue'];
 var newCategoryColors = ['#8AA4FF', '#FF0000', '#2AD300', '#FF8A00', '#E200BE', '#0038FF'];
-var categoryInputContainer = document.getElementById('inputContainer');
+var categoryInputContainer = document.getElementById('inputContainer'); //addTask.html line 40 - Input Container for Category
 
 function renderCategory() {
-    let categoryList = document.getElementById('categoryList');
+    let categoryList = document.getElementById('categoryList'); //addTask.html line 51 - container for category Input box
     categoryList.innerHTML = "";
-    for (let i = 0; i < categoriesArray.length; i++) {
-        const category = categoriesArray[i];
-        const color = colorsArray[i];
-
+    for (let i = 0; i < categoriesArray.length; i++) { //increment category Array form 0 to Array length
+        const category = categoriesArray[i]; //category Array Index values
+        const color = colorsArray[i]; //color Array Index values
+        //render Category and Color Dots
         categoryList.innerHTML += `
         <div class="categoryAndColor" onclick="chooseCategory(${i}, '${category}', '${color}')" >
             <div>${category}</div>
@@ -22,7 +22,7 @@ function renderCategory() {
     }
 }
 
-/*<div id="color" class="color"></div>*/
+/*set Category InputField to default as in beginning*/
 function unsetCategoryInputField() {
     categoryInputContainer.innerHTML = `
     <input id="input" type="text" placeholder="Select task Category" required>
@@ -32,92 +32,106 @@ function unsetCategoryInputField() {
         </div>`;
 }
 
-
+/* Show Category Select Menu - toggle at clicking on the dropdown Button */
 function dropDown() {
-    /* document.getElementById('categoryList').classList.toggle('dropDownDisplay');*/
-    var categoryDropDown = document.getElementById('categoryList');
-    if (categoryDropDown.style.display == "block") {
-        categoryDropDown.style.display = "none";
-        categoryInputContainer.style.border = "1px solid #D1D1D1";
-        categoryInputContainer.style.borderRadius = "10px";
-    } else {
-        categoryDropDown.style.display = "block";
-        categoryInputContainer.style.borderBottom = "none";
+    var categoryList = document.getElementById('categoryList');
+    if (categoryList.style.display == "block") { //the Container for Category is open ?
+        categoryList.style.display = "none"; //hide Container for Category 
+        categoryInputContainer.style.border = "1px solid #D1D1D1";  //Category Input Container show all border 
+        categoryInputContainer.style.borderRadius = "10px"; //Category Input Container show all Border radius with 10px
+    } else { //Container for Category is closed ?
+        categoryList.style.display = "block"; //shows Container for Category to rendern
+        categoryInputContainer.style.borderBottom = "none"; //Category Input Container has no border Bottom
         /* Four values */
         /* top-left top-right bottom-right bottom-left */
-        categoryInputContainer.style.borderRadius = "10px 10px 0 0";
-        renderCategory();
+        categoryInputContainer.style.borderRadius = "10px 10px 0 0"; //Category Input Container show only top-left top-right Border radius
+        renderCategory(); //render Category in the Container
     }
-    closeDropDownAssignTo();
+    closeDropDownAssignTo(); //close the "Assigned to"-Container -> if "Category Select" is active
 }
 
+/**close the Category Select Menu*/
 function closeDropdownCategory() {
-    var categoryDropDown = document.getElementById('categoryList');
-    categoryDropDown.style.display = "none";
+    var categoryList = document.getElementById('categoryList');
+    categoryList.style.display = "none";
     categoryInputContainer.style.border = "1px solid #D1D1D1";
     categoryInputContainer.style.borderRadius = "10px";
 }
 
+/**choose one Category from the Category Select Menu via dropDown
+ * parmeter: index = categoriesArray[index]
+ * parmeter: category = categoriesArray Value via index
+ * parmeter: color = background color of the colorsArray index
+ * */
 function chooseCategory(index, category, color) {
     let input = document.getElementById('input');
     input.value = '';
-    input.value = category;
+    input.value = category; //put in Category InputField the Value of the selected Category
     document.getElementById('color').style.background = color;
-    if (index == 0) {
-        input.value = '';
-        newCategoryInput();
+    if (index == 0) { //check if selected color index==0
+        input.value = ''; //clear the Category InputField
+        newCategoryInput(); //and call the newCategoryInput Function
     } else {
-        document.getElementById('newCategoryInput').style.display = "none";
-        document.getElementById('buttonDropDown').style.display = "flex";
+        document.getElementById('newCategoryInput').style.display = "none"; //hide newCategoryInput container -> hide "cross mark and check mark"
+        document.getElementById('buttonDropDown').style.display = "flex"; //shows Category DropDown Button
     }
 }
 
+/**
+ * function for selected category Input is New Category 
+ */
 function newCategoryInput() {
-    closeDropdownCategory();
-    document.getElementById('input').placeholder = 'New Category Name';
-    document.getElementById('newCategoryInput').style.display = "flex";
-    document.getElementById('buttonDropDown').style.display = "none";
-    document.getElementById('newCategoryColorsBox').style.display = "flex";
+    closeDropdownCategory(); //dropDown Category Menu closed
+    document.getElementById('input').placeholder = 'New Category Name'; //shows New Category Name in Category Input Field
+    document.getElementById('newCategoryInput').style.display = "flex"; //shows newCategoryInput container -> shows "cross mark and check mark"
+    document.getElementById('buttonDropDown').style.display = "none"; //hide Category DropDown Button
+    document.getElementById('newCategoryColorsBox').style.display = "flex"; //shows new category Color Container direct under the Category Input Field
 }
 
+/**function for input new Category Color
+ * parameter: color = string of colorhex value*/
 var newCategoryColor;
 function newColor(color) {
-    document.getElementById('color').style.background = color;
-    newCategoryColor = color;
+    document.getElementById('color').style.background = color; //change the background after parameter color
+    newCategoryColor = color; //save the color as a globale value
 }
 
+/**
+ * by clicking check mark on Category Input the function addNewCategory() was called 
+ */
 function addNewCategory() {
     var newCategory = document.getElementById('input');
-    categoriesArray.push(newCategory.value);
-    document.getElementById('newCategoryColorsBox').style.display = "none";
-    document.getElementById('newCategoryInput').style.display = "none";
-    document.getElementById('buttonDropDown').style.display = "flex";
-    renderCategory();
-    document.getElementById('color').style.background = newCategoryColor;
-    //document.getElementById('input').placeholder = 'Select task Category';
-    colorsArray.push(newCategoryColor);
-    console.log('Category Array added: ', categoriesArray);
-    console.log('Category Color added: ', colorsArray);
+    categoriesArray.push(newCategory.value); //new Input value pushed in the Category Array
+    document.getElementById('newCategoryColorsBox').style.display = "none"; //hide new category Color Container under the Category Input Field
+    document.getElementById('newCategoryInput').style.display = "none"; //hide newCategoryInput container -> hide "cross mark and check mark"
+    document.getElementById('buttonDropDown').style.display = "flex"; //shows Category DropDown Button
+    document.getElementById('color').style.background = newCategoryColor; //new Category Color showing in the Category Container
+    colorsArray.push(newCategoryColor); //new Color value pushed in the Color Array
+    /*console.log('Category Array added: ', categoriesArray);
+    console.log('Category Color added: ', colorsArray);*/
 }
 
+/**
+ * by clicking cross mark on Category Input the function addNewCategory() was called
+ */
 function rejectNewCategory() {
-    document.getElementById('buttonDropDown').style.display = "flex";
-    document.getElementById('newCategoryInput').style.display = "none";
-    document.getElementById('input').placeholder = 'Select task Category';
-    document.getElementById('newCategoryColorsBox').style.display = "none";
+    document.getElementById('buttonDropDown').style.display = "flex"; //shows Category DropDown Button
+    document.getElementById('newCategoryInput').style.display = "none"; //hide newCategoryInput container -> hide "cross mark and check mark"
+    document.getElementById('input').placeholder = 'Select task Category'; //refresh the placeholder to the beginning
+    document.getElementById('newCategoryColorsBox').style.display = "none"; //hide new category Color Container under the Category Input Field
 }
 
 /**
  * AssignTo 
  */
-var assignToInputContainer = document.getElementById('contactInputContainer');
-async function renderAssignTo() {
-    await loadUserAccountsFromBackend();
-    loadActiveUserLocal();
-    let assignedContactList = document.getElementById('assignedList');
-    assignedContactList.innerHTML = "";
+var assignToInputContainer = document.getElementById('contactInputContainer'); //get the container for AssignTo Input Field
+async function renderAssignTo() { //function to render AssignTo
+    await loadUserAccountsFromBackend(); //get Data of Users from Backend
+    loadActiveUserLocal(); //get Data of Users from Backend
+    let assignedContactList = document.getElementById('assignedList');  //container to render the list
+    assignedContactList.innerHTML = ""; //clear container inside html
 
-
+    /**render the user contacts */
     for (let i = 0; i < userAccounts[activeUser]['userContacts'].length; i++) {
         var userName = userAccounts[activeUser]['userContacts'][i]['name'];
 
@@ -133,67 +147,74 @@ async function renderAssignTo() {
     }
 }
 
-var choosedContacts = [];
+var choosedContacts = []; //an Array to save the checked Contacts with checkbox
 function chooseContact(name) { //index, contact
-    let inputAssignedContact = document.getElementById('assignInput');
-    inputAssignedContact.value = '';
-    inputAssignedContact.value = name;
+    let inputAssignedContact = document.getElementById('assignInput'); //get assign To Inputfield
+    inputAssignedContact.value = ''; //clear assign to Input Field
+    inputAssignedContact.value = name; //Assigned To field fill with the Contact names
     choosedContacts.splice(0); //delete all choosed Contacts from last time
 
-    let allChekbox = document.querySelectorAll('.checkboxForContacts');
+    let allChekbox = document.querySelectorAll('.checkboxForContacts'); //check all checkboxes with the class '.checkboxForContacts'
     for (let i = 0; i < allChekbox.length; i++) {
         const checkbox = allChekbox[i];
-        if (checkbox.checked) {
-            choosedContacts.push(checkbox.value);
+        if (checkbox.checked) {  //if checkbox checked
+            choosedContacts.push(checkbox.value); //push the checked Contacts in the Array
         }
     }
     console.log('chooesedContact', choosedContacts);
 }
 
+/**
+ * Show AssignTo Select Menu - toggle at clicking on the dropdown Button
+ */
 function dropDownAssignTo() {
-    var assignToDropDown = document.getElementById('assignedList');
+    var assignedList = document.getElementById('assignedList'); //get the id of AssignedList container to render contacts 
 
-    if (assignToDropDown.style.display == "block") {
-        assignToDropDown.style.display = "none";
-        assignToInputContainer.style.border = "1px solid #D1D1D1";
-        assignToInputContainer.style.borderRadius = "10px";
-    } else {
-        assignToDropDown.style.display = "block";
-        assignToInputContainer.style.borderBottom = "none";
+    if (assignedList.style.display == "block") { //the Container for Contacts is open ?
+        assignedList.style.display = "none"; //hide the Container for Contacts 
+        assignToInputContainer.style.border = "1px solid #D1D1D1"; //shows all border
+        assignToInputContainer.style.borderRadius = "10px"; //set all border radius to 10px
+    } else { //the Container for Contacts is closed ?
+        assignedList.style.display = "block"; //shows the Container for Contacts  
+        assignToInputContainer.style.borderBottom = "none"; //hide the AssignedTo container Border bottom
         /* Four values */
         /* top-left top-right bottom-right bottom-left */
-        assignToInputContainer.style.borderRadius = "10px 10px 0 0";
-        renderAssignTo();
+        assignToInputContainer.style.borderRadius = "10px 10px 0 0"; //shows AssignedTo container top-left top-right border radius
+        renderAssignTo(); //show or render the contacts
     }
     closeDropdownCategory();
 }
 
+/**
+ * close the dropdown Select Menu
+ */
 function closeDropDownAssignTo() {
-    var assignToDropDown = document.getElementById('assignedList');
-    assignToDropDown.style.display = "none";
-    assignToInputContainer.style.border = "1px solid #D1D1D1";
-    assignToInputContainer.style.borderRadius = "10px";
+    var assignedList = document.getElementById('assignedList'); //get the id of AssignedList container to render contact
+    assignedList.style.display = "none"; //hide the Container for Contacts 
+    assignToInputContainer.style.border = "1px solid #D1D1D1"; //shows all border
+    assignToInputContainer.style.borderRadius = "10px"; //set all border radius to 10px
 }
 
 /**
  * Subtask
  */
-var subTasks = ['Subtask 1'];
-var addsubtask = document.getElementById('addSubtaskBtn');
-var onInputSubTask = document.getElementById('subtaskOninput');
-var subtaskInput = document.getElementById('subtasksInput');
-var appendixSubtask = document.getElementById('SubtaskAppendixContainer');
+var subTasks = ['Subtask 1']; //default value in subTasks Array
+var addsubtask = document.getElementById('addSubtaskBtn'); //global variable for addsubTask button
+var onInputSubTask = document.getElementById('subtaskOninput'); //global variable for onInput container -> "cross mark and check mark images"
+var subtaskInput = document.getElementById('subtasksInput'); //global variable for subtasks input container
+var appendixSubtask = document.getElementById('SubtaskAppendixContainer'); //global variable for subtask container below the Subtask Input
 
+/**By clicking the + Symbol changed to New subTask Input*/
 function createNewSubtask() {
-    addsubtask.style.display = "none";
-    onInputSubTask.style.display = "flex";
+    addsubtask.style.display = "none"; //hide addsubTask button (+)
+    onInputSubTask.style.display = "flex"; //shows subtasks input container -> shows "cross mark and check mark images"
 }
 
-
+/**onclick cross mark all Subtasks are deleted except of the subTasks[0] -> it only left the default value in subTasks Array */
 function deleteSubTask() {
     subtaskInput.value = "";
-    addsubtask.style.display = "flex";
-    onInputSubTask.style.display = "none";
+    addsubtask.style.display = "flex"; //show addsubTask button (+)
+    onInputSubTask.style.display = "none"; //hide subtasks input container -> hide "cross mark and check mark images"
     appendixSubtask.innerHTML = "";
     appendixSubtask.innerHTML = `
             <label class="container">
@@ -202,42 +223,40 @@ function deleteSubTask() {
                     <div class="subtaskCheck">${subTasks[0]}</div>
             </label>
             `;
-    //to delete all from index 1
-    subTasks.splice(1);
+    subTasks.splice(1); //to delete all from index 1
 }
 
 
 function addSubTask() {
-    addsubtask.style.display = "flex";
-    onInputSubTask.style.display = "none";
+    addsubtask.style.display = "flex"; //show addsubTask button (+)
+    onInputSubTask.style.display = "none"; //hide subtasks input container -> hide "cross mark and check mark"
     if (subtaskInput.value != "") {
         let subTask = subtaskInput.value;
-        subTasks.push(subTask);
-        //console.log(subTasks);
-        renderSubtasks();
+        subTasks.push(subTask); //push the subTask Value to subTasks array
+        renderSubtasks(); //render the subtasks below SubTask input field
     }
-    subtaskInput.value = "";
-    addsubtask.style.display = "flex";
-    onInputSubTask.style.display = "none";
+    subtaskInput.value = ""; //clear the SubTask Input Field
 }
 
-var selectedSubtasks = [];
+
+var selectedSubtasks = []; //An Array to save the checkmarked subtasks 
 function chooseSubtasks(id) { //index, contact
     selectedSubtasks.splice(0); //delete all choosed Contacts from last time
 
-    let allChekbox = document.querySelectorAll(`.checkedSubTasks`);
+    let allChekbox = document.querySelectorAll(`.checkedSubTasks`); //check all checkboxes with the class `.checkedSubTasks`
     console.log(allChekbox.length);
     for (let i = 0; i < allChekbox.length; i++) {
         const checkbox = allChekbox[i];
-        if (checkbox.checked) {
-            selectedSubtasks.push(checkbox.value);
+        if (checkbox.checked) { //if one of the Subtasks checkbox checked
+            selectedSubtasks.push(checkbox.value); //push in SelectedSubtasks[Array] value
         }
     }
     console.log('choosedSubtasks', selectedSubtasks);
 }
 
-
-function renderSubtasks() {
+/**render SubTask at the bottom of the subTask Input filed */
+async function renderSubtasks() {
+    await includeHTML();
     appendixSubtask.innerHTML = "";
     for (let i = 0; i < subTasks.length; i++) {
         const showSubTask = subTasks[i];
@@ -255,15 +274,14 @@ function renderSubtasks() {
 /**
  * AddTask JSON Array
  */
-
 var priority;
 var priorityImg;
 async function addTask() {
-    
+
     await loadUserAccountsFromBackend();
 
-    var tasks = userAccounts[activeUser].userTasks;
-
+    tasks = userAccounts[activeUser].userTasks;
+    /**read every Input Fields and Buttons to get value*/
     var title = document.getElementById('title');
     var description = document.getElementById('description');
     /*var contact = document.getElementById('assignInput');*/
@@ -275,18 +293,21 @@ async function addTask() {
     var subTask = selectedSubtasks;
     if (document.getElementById('prioUrgentBox').classList.contains('bgUrgent')) {
         priority = document.getElementById('prioUrgentBox').innerText;
-        priorityImg = document.getElementById('prioUrgentImg').src;
+        var priorityImg = document.createElement("prioUrgentImg");
+        priorityImg.src = "assets/img/urgent.png";
     } else if (document.getElementById('prioMediumBox').classList.contains('bgMedium')) {
         priority = document.getElementById('prioMediumBox').innerText;
-        priorityImg = document.getElementById('prioMediumImg').src;
+        var priorityImg = document.createElement("prioMediumImg");
+        priorityImg.src = "assets/img/medium.png";
     } else {
         priority = document.getElementById('prioLowBox').innerText;
-        priorityImg = document.getElementById('prioLowImg').src;
+        var priorityImg = document.createElement("prioLowImg");
+        priorityImg.src = "assets/img/low.png";
     }
-
     var idTask = tasks.length;
     var progress = "To Do";
 
+    /**put every value to the newTask as a JSON Array */
     var newTask = {
         "title": title.value,
         "description": description.value,
@@ -301,30 +322,30 @@ async function addTask() {
         "progress": progress
     };
 
-    tasks.push(newTask);
+    tasks.push(newTask); //new Task was pushed into tasks Array
     console.log(newTask);
 
+    /**dorpdowns were closed by creating or adding Task */
     closeDropdownCategory();
     closeDropDownAssignTo();
-
+    /**shows Task added to board Window with annimation*/
     document.getElementById('messageAddedTask').style.display = "flex";
     document.getElementById('messageAddedTask').classList.add('animate');
     setTimeout(function () {
         document.getElementById('messageAddedTask').style.display = "none";
     }, 3900)
     document.getElementById('addTaskBtn').classList.add('buttonDisabled');
-    setTimeout(function () {
-        document.getElementById('addTaskBtn').classList.add('buttonEnabled');
+    setTimeout(function () { 
+        document.getElementById('addTaskBtn').classList.add('buttonEnabled'); //during one Task added blocked the addTaskBtn
     }, 4000)
+    /**Set other Inputfields to default values and the prio Buttons to the original text and color*/
     title.value = "";
     description.value = "";
     category.value = "";
     unsetCategoryInputField();
-    //contact.value = "";
     document.getElementById('assignInput').value = "";
     inputAssignedContact = "";
     dueDate.value = "";
-    //subTask.value = "";
     document.getElementById('prioUrgentBox').classList.remove('bgUrgent');
     document.getElementById('prioMediumBox').classList.remove('bgMedium');
     document.getElementById('prioLowBox').classList.remove('bgLow');
@@ -338,21 +359,15 @@ async function addTask() {
     /*setTimeout(function () {
                 window.location = "./board.html";
     }, 3600)*/
+
+    /**save Tasks and User acc. to backend as JSON Array*/
     await saveTasksToBackend();
     await saveUserAccountsToBackend();
-
-    //userAccounts[activeUser].userTasks.push(tasks); //hier zeigt ein Error
-    //noch zusammen zu schauen
-
-    //chooseContact();
-    
     console.log(choosedContacts);
     choosedContacts = [];
-
-
 }
 
-
+/**By clicking the Priority Urgent button the Text and Image color change to white --> Prio Medium and Prio Low change to their original color */
 function insertUrgent() {
     document.getElementById('prioUrgentBox').classList.add('bgTextWhite');
     document.getElementById('prioMediumBox').classList.remove('bgTextWhite');
@@ -364,9 +379,9 @@ function insertUrgent() {
     document.getElementById('prioUrgentBox').classList.toggle('bgUrgent');
     document.getElementById('prioMediumBox').classList.remove('bgMedium');
     document.getElementById('prioLowBox').classList.remove('bgLow');
-
 }
 
+/**toggle the white Text and Image of Priority Urgent to original color*/
 function toggleInsertUrgent() {
     document.getElementById("prioUrgentBox").addEventListener("click", function handleClick(event) {
         const hasClass = event.target.classList.contains('bgUrgent');
@@ -383,6 +398,7 @@ function toggleInsertUrgent() {
     });
 }
 
+/**By clicking the Priority Medium button the Text and Image color change to white --> Prio Urgent and Prio Low change to their original color */
 function insertMedium() {
     document.getElementById('prioMediumBox').classList.add('bgTextWhite');
     document.getElementById('prioUrgentBox').classList.remove('bgTextWhite');
@@ -397,6 +413,7 @@ function insertMedium() {
 
 }
 
+/**toggle the white Text and Image of Priority Medium to original color*/
 function toggleInsertMedium() {
     document.getElementById("prioMediumBox").addEventListener("click", function handleClick(event) {
         const hasClass = event.target.classList.contains('bgMedium');
@@ -414,7 +431,7 @@ function toggleInsertMedium() {
 }
 
 
-
+/**By clicking the Priority low button the Text and Image color change to white --> Prio Urgent and Prio Medium change to their original color */
 function insertLow() {
     document.getElementById('prioLowBox').classList.add('bgTextWhite');
     document.getElementById('prioUrgentBox').classList.remove('bgTextWhite');
@@ -428,6 +445,7 @@ function insertLow() {
     document.getElementById('prioMediumBox').classList.remove('bgMedium');
 }
 
+/**toggle the white Text and Image of Priority Low to original color*/
 function toggleInsertLow() {
     document.getElementById("prioLowBox").addEventListener("click", function handleClick(event) {
         const hasClass = event.target.classList.contains('bgLow');
@@ -444,11 +462,12 @@ function toggleInsertLow() {
     });
 }
 
-
+/**change clear button Image to blue by hover */
 function clearBtnhover() {
     document.getElementById('clearBtnImg').classList.add('clearButtonImgblue');
 }
 
+/**change clear button Image to the original color*/
 function clearBtnCancelhover() {
     document.getElementById('clearBtnImg').classList.remove('clearButtonImgblue');
 }
@@ -469,13 +488,12 @@ function clearAllAddTaskFields() {
     window.location.reload();
 }
 
+/**show AddTaskPopOut.html*/
 function showAddTaskPopOut() {
     document.getElementById('popOut-taskCard').classList.remove('d-none');
-    /*document.getElementsByClassName(id).classList.remove = "d-none";*/
 }
 
-
+/**hide AddTaskPopOut.html*/
 function closePopOutAddTask() {
     document.getElementById('popOut-taskCard').classList.add('d-none');
-    /*document.getElementsByClassName(id).classList.add = "d-none";*/
 }
