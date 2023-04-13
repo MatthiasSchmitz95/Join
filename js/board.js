@@ -90,12 +90,12 @@ function generateHTML(cards) {
         <div class="text-color" >
         ${cards['description']}
         </div>
-        <div>
+        <div class="position-progress">
          <div class="progress">
             <div id="progressBar${cards['id']}" class="progressBar">
             </div>
          </div>
-         <div>
+         <div class="count" id="countDone${cards['id']}">
 
          </div>
         </div>
@@ -122,21 +122,22 @@ async function renderUserInitiales(cards) {
         for (let j = 0; j < userContactsLength; j++) {
             const userContact = userContacts[j];
             const ids = cards['id'].toString() + i.toString();
-            if (abc.includes(userContact)&& userContactsLength <= 3) {
+            if (abc.includes(userContact) && userContactsLength <= 3) {
                 contact.innerHTML += `<div id="circle${ids}" class="initiales">${users['letters']} </div>`
                 setTimeout(() => {
                     changeBackgroundCircle(i, abc, userContact, users, cards, ids);
                 }, 0);
-            } else if (abc.includes(userContact)&& userContactsLength > 3) {
+            } else if (abc.includes(userContact) && userContactsLength > 3) {
                 let allContacts = userContacts.length;
                 let newLenght = userContactsLength = 2;
                 let result = allContacts - newLenght;
-                result = '+'+ result;
+                result = '+' + result;
                 console.log(result)
                 contact.innerHTML += `<div id="circle${ids}" class="initiales">${users['letters']} </div>`;
                 setTimeout(() => {
                     changeBackgroundCircle(i, abc, userContact, users, cards, ids);
                     contact.innerHTML += `<div id="circle${ids}" class="initiales background-black">${result} </div>`;
+                    
                 }, 0);
             }
         }
@@ -310,6 +311,7 @@ function showOverlayChange(cards) {
      `;
     insertPriority(cards);
     renderSubtasksBoard(cards);
+
 }
 
 
@@ -438,6 +440,7 @@ async function saveInputTask(cards) {
     let newTitle = document.getElementById('inputTittle').value;
     let newDescription = document.getElementById('inputDescription').value;
     let newDueDate = document.getElementById('inputDueDate').value;
+    chooseSubtasksBoard(todo);
     if (newTitle == '') {
         newTitle = todo.title;
     }
@@ -452,36 +455,63 @@ async function saveInputTask(cards) {
 }
 
 
+async function chooseSubtasksBoard(todo) { //index, contact
+    todo.subTaskDone = [];
+    // selectedSubtasks.splice(0); //delete all choosed Contacts from last time
+
+    let allChekbox = document.querySelectorAll(`.checkedSubTasks`);
+    console.log(allChekbox.length);
+    for (let i = 0; i < allChekbox.length; i++) {
+        const checkbox = allChekbox[i];
+        if (checkbox.checked) {
+            todo.subTaskDone.push(checkbox.value);
+        }
+    }
+    await saveTasksToBackend()
+    await saveUserAccountsToBackend();
+}
+
+
 function renderSubtasksBoard(cards) {
     let user = userAccounts[activeUser]['userTasks'];
     let todo = user.find((item) => item.id === cards);
     let content = document.getElementById('subtasks');
+    let subTaskDone = todo.subTaskDone
     content.innerHTML = "";
     for (let j = 0; j < todo['subTask'].length; j++) {
         const showSubTask = todo['subTask'][j];
-
+        const subTaskIsDone = subTaskDone.includes(showSubTask);
+        const checkedAttribute = subTaskIsDone ? 'checked' : '';
         content.innerHTML += /*html*/`
-            <label class="container">
-                <input type="checkbox" class="checkedSubTasks" onclick="chooseSubtasks()" value="${showSubTask}" />
-                <span class="checkmark" id="checkmark${j}"></span>
-                <div class="subtaskCheck">${showSubTask}</div>
-            </label>
-            `;
+    <label class="container">
+        <input type="checkbox" class="checkedSubTasks" onclick="chooseSubtasks()" value="${showSubTask}" ${checkedAttribute} />
+        <span class="checkmark" id="checkmark${j}"></span>
+        <div class="subtaskCheck">${showSubTask}</div>
+    </label>
+`;
+
     }
 }
 
 
-function changeProgressbar(cards) {
+async function changeProgressbar(cards) {
     let progress = document.getElementById(`progressBar${cards}`);
+    let contant =  document.getElementById(`countDone${cards}`);
     let user = userAccounts[activeUser]['userTasks'];
     let todo = user.find((item) => item.id === cards);
     let result;
-        let maximum = todo['subTask'].length;
-        let present = selectedSubtasks.length;
-        if (present == 0) {
-            result = 0
-        }else{
-        result = maximum / present
-        console.log('ergebnis',result)
+    let maximum = todo['subTask'].length;
+    let present = todo.subTaskDone.length;
+         if (present == 0) {
+             result = 0
+         }else{
+         result = present*100 / maximum;
+         result = result+'%'
+         console.log('ergebnis',result);
+         }
+    progress.style.width = result;
+    contant.innerHTML = present+'/'+ maximum + "" + 'Done';
+    if (maximum == 0) {
+        contant.classList.add('d-none');
     }
-    }
+}
