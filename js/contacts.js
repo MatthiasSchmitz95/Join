@@ -48,10 +48,12 @@ async function sortNames() {
     }
 }
 
+
 function circleColor(j) {
     let color = userAccounts[activeUser].userContacts[j]['color'];
     document.getElementById('circle' + j).style.backgroundColor = color;
 }
+
 
 function showContact(j, bothLetters) {
     let color = userAccounts[activeUser].userContacts[j]['color'];
@@ -68,11 +70,13 @@ function showContact(j, bothLetters) {
     document.getElementById('floating-contact-container').style.display = "";
 }
 
+
 function editContactCard(j) {
     changeButtonTemplate(j);
     setInputfields(j);
     showCard();
 }
+
 
 async function deleteContact(j) {
     letters = [];
@@ -84,6 +88,7 @@ async function deleteContact(j) {
     changeTextTo('deleted');
     successfulAnimation();
 }
+
 
 async function editContact(j) {
     letters = [];
@@ -98,11 +103,11 @@ async function editContact(j) {
     successfulAnimation();
 }
 
+
 function changeTextTo(text){
     document.getElementById('success').innerHTML =`Contact succesfully ${text}`;
 
 }
-
 
 
 function sortLetters() {
@@ -114,10 +119,12 @@ function sortLetters() {
     }
 }
 
+
 function showCard() {
     document.getElementById('bg').style.display = '';
     document.getElementById('contact-card').classList = 'add-contact-card';
 }
+
 
 function closeContactCard() {
     document.getElementById('contact-card').classList = 'hidden';
@@ -126,6 +133,7 @@ function closeContactCard() {
     resetInputfields();
 
 }
+
 
 function getInputValues() {
     let contact_email = document.getElementById('contact-email');
@@ -138,7 +146,6 @@ function getInputValues() {
     const remainingLetters = inputName.slice(1);
     contactName = firstLetter + remainingLetters;
     contactColor = randomUserColor();
-
     if (inputName.indexOf(' ') >= 0) {
         let helpLetter = contactName.split(" ");
         bothLetters = helpLetter[0].charAt(0).toUpperCase() + helpLetter[1].charAt(0).toUpperCase();
@@ -146,8 +153,8 @@ function getInputValues() {
     else {
         bothLetters = firstLetter;
     }
-
 }
+
 
 async function CreateNewContact() {
     await loadUserAccountsFromBackend();
@@ -164,11 +171,13 @@ async function CreateNewContact() {
     showContact(userName.length - 1, bothLetters);
 }
 
+
 function resetInputfields() {
     document.getElementById('contact-email').value = '';
     document.getElementById('contact-phone').value = '';
     document.getElementById('contact-name').value = '';
 }
+
 
 function setInputfields(j) {
     document.getElementById('contact-email').value = userAccounts[activeUser]['userContacts'][j]['email'];
@@ -176,6 +185,7 @@ function setInputfields(j) {
     document.getElementById('contact-name').value = userAccounts[activeUser]['userContacts'][j]['name'];
 
 }
+
 
 function successfulAnimation() {
 
@@ -190,6 +200,7 @@ function successfulAnimation() {
            , 1000);
 
 }
+
 
 function showAddTaskPopOut() {
     document.getElementById('popOut-taskCard').classList.remove('d-none');
@@ -210,6 +221,7 @@ function changeButtonTemplate(j) {
 
 }
 
+
 function changeButtonTemplateBack() {
     document.getElementById('btn-container').innerHTML = `                
     <button id="left-btn" onclick="closeContactCard()" class="btn-contact-white">Cancel<img class="cancel-img"
@@ -218,6 +230,7 @@ function changeButtonTemplateBack() {
     src="assets/img/contact-create-contact-button.png"></button>`;
 
 }
+
 
 function templateNameCard(i, name, email, j, bothLetters) {
     document.getElementById('contact-cards' + i).innerHTML += `
@@ -229,6 +242,7 @@ function templateNameCard(i, name, email, j, bothLetters) {
      </div>
     </div>`;
 }
+
 
 function templateLetter(letter, i) {
     document.getElementById('contact-container').innerHTML +=

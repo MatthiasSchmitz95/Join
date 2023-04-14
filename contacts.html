@@ -14,7 +14,6 @@
     <script src="./js/contacts.js"></script>
     <script src="./js/mini_backend.js"></script>
     <script src="js/register.js"></script>
-    <script src="js/addTaskPopOut.js"></script>
 
 
 
@@ -26,7 +25,6 @@
     <div onclick="closeContactCard()" id="bg" style="display: none;"></div>
     <div class="success" id="success" >Contact succesfully created</div>
     <div class="hidden" id="contact-card">
-
         <div class="card-container-left">
             <img src="assets/img/join-logo-contact-card.png">
             <h3>Add contact</h3>
@@ -55,17 +53,16 @@
         </div>
 
     </div>
+    <div w3-include-html="desktop-template.html"></div>
     <div class="desktop" id="desktop">
-        <div w3-include-html="desktop-template.html"></div>
-
-
+        
         <div class="left-container">
             <div class="contact-container" id="contact-container"></div>
         </div>
         <div class="right-container">
             <div class="html-topic">
                 <h2>Contacts</h2>
-                <span class="line"></span>
+                <span class="line-blue"></span>
                 <p>Better with a Team</p>
             </div>
             <div class="floating-contact-container" id="floating-contact-container" style="display: none">
