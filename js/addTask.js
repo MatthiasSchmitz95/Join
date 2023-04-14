@@ -4,7 +4,15 @@
 var categoriesArray = ['New Category', 'Sales', 'Marketing'];
 var colorsArray = ['', 'red', 'blue'];
 var newCategoryColors = ['#8AA4FF', '#FF0000', '#2AD300', '#FF8A00', '#E200BE', '#0038FF'];
-var categoryInputContainer = document.getElementById('inputContainer'); //addTask.html line 40 - Input Container for Category
+var categoryInputContainer; //addTask.html line 40 - Input Container for Category
+var assignToInputContainer; //get the container for AssignTo Input Field
+var onInputSubTask ; //global variable for onInput container -> "cross mark and check mark images"
+var subtaskInput; //global variable for subtasks input container
+var appendixSubtask; //global variable for subtask container below the Subtask Input
+var categoryList;
+
+
+var addsubtask; //global variable for addsubTask button
 
 function renderCategory() {
     let categoryList = document.getElementById('categoryList'); //addTask.html line 51 - container for category Input box
@@ -34,7 +42,8 @@ function unsetCategoryInputField() {
 
 /* Show Category Select Menu - toggle at clicking on the dropdown Button */
 function dropDown() {
-    var categoryList = document.getElementById('categoryList');
+    categoryList = document.getElementById('categoryList');
+    categoryInputContainer = document.getElementById('inputContainer');
     if (categoryList.style.display == "block") { //the Container for Category is open ?
         categoryList.style.display = "none"; //hide Container for Category 
         categoryInputContainer.style.border = "1px solid #D1D1D1";  //Category Input Container show all border 
@@ -124,7 +133,6 @@ function rejectNewCategory() {
 /**
  * AssignTo 
  */
-var assignToInputContainer = document.getElementById('contactInputContainer'); //get the container for AssignTo Input Field
 async function renderAssignTo() { //function to render AssignTo
     await loadUserAccountsFromBackend(); //get Data of Users from Backend
     loadActiveUserLocal(); //get Data of Users from Backend
@@ -171,8 +179,8 @@ function chooseContact(name) { //index, contact
  * Show AssignTo Select Menu - toggle at clicking on the dropdown Button
  */
 function dropDownAssignTo() {
-    var assignedList = document.getElementById('assignedList'); //get the id of AssignedList container to render contacts 
-
+    var assignedList = document.getElementById('assignedList'); //get the id of AssignedList container to render contacts
+    assignToInputContainer = document.getElementById('contactInputContainer'); 
     if (assignedList.style.display == "block") { //the Container for Contacts is open ?
         assignedList.style.display = "none"; //hide the Container for Contacts 
         assignToInputContainer.style.border = "1px solid #D1D1D1"; //shows all border
@@ -193,6 +201,7 @@ function dropDownAssignTo() {
  */
 function closeDropDownAssignTo() {
     var assignedList = document.getElementById('assignedList'); //get the id of AssignedList container to render contact
+    assignToInputContainer = document.getElementById('contactInputContainer');
     assignedList.style.display = "none"; //hide the Container for Contacts 
     assignToInputContainer.style.border = "1px solid #D1D1D1"; //shows all border
     assignToInputContainer.style.borderRadius = "10px"; //set all border radius to 10px
@@ -202,19 +211,24 @@ function closeDropDownAssignTo() {
  * Subtask
  */
 var subTasks = ['Subtask 1']; //default value in subTasks Array
-var addsubtask = document.getElementById('addSubtaskBtn'); //global variable for addsubTask button
-var onInputSubTask = document.getElementById('subtaskOninput'); //global variable for onInput container -> "cross mark and check mark images"
-var subtaskInput = document.getElementById('subtasksInput'); //global variable for subtasks input container
-var appendixSubtask = document.getElementById('SubtaskAppendixContainer'); //global variable for subtask container below the Subtask Input
+
+
+
 
 /**By clicking the + Symbol changed to New subTask Input*/
 function createNewSubtask() {
+    addsubtask = document.getElementById('addSubtaskBtn');
+    onInputSubTask = document.getElementById('subtaskOninput');
     addsubtask.style.display = "none"; //hide addsubTask button (+)
     onInputSubTask.style.display = "flex"; //shows subtasks input container -> shows "cross mark and check mark images"
 }
 
 /**onclick cross mark all Subtasks are deleted except of the subTasks[0] -> it only left the default value in subTasks Array */
 function deleteSubTask() {
+    addsubtask = document.getElementById('addSubtaskBtn');
+    onInputSubTask = document.getElementById('subtaskOninput');
+    subtaskInput = document.getElementById('subtasksInput');
+    appendixSubtask = document.getElementById('SubtaskAppendixContainer');
     subtaskInput.value = "";
     addsubtask.style.display = "flex"; //show addsubTask button (+)
     onInputSubTask.style.display = "none"; //hide subtasks input container -> hide "cross mark and check mark images"
@@ -231,6 +245,7 @@ function deleteSubTask() {
 
 
 function addSubTask() {
+    subtaskInput = document.getElementById('subtasksInput');
     addsubtask.style.display = "flex"; //show addsubTask button (+)
     onInputSubTask.style.display = "none"; //hide subtasks input container -> hide "cross mark and check mark"
     if (subtaskInput.value != "") {
@@ -259,7 +274,7 @@ function chooseSubtasks(id) { //index, contact
 
 /**render SubTask at the bottom of the subTask Input filed */
 async function renderSubtasks() {
-    await includeHTML();
+    appendixSubtask = document.getElementById('SubtaskAppendixContainer');
     appendixSubtask.innerHTML = "";
     for (let i = 0; i < subTasks.length; i++) {
         const showSubTask = subTasks[i];
@@ -361,9 +376,9 @@ async function addTask() {
     document.getElementById('prioMediumImg').classList.remove('Img-white');
     document.getElementById('prioLowImg').classList.remove('Img-white');
     deleteSubTask();
-    /*setTimeout(function () {
+    setTimeout(function () {
                 window.location = "./board.html";
-    }, 3600)*/
+    }, 3600)
 
     /**save Tasks and User acc. to backend as JSON Array*/
     await saveTasksToBackend();
