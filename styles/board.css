@@ -182,10 +182,22 @@ h2 {
     margin-left: -8px;
 }
 
+.initiales-Overlay{
+    width: 45px;
+    height: 45px;
+    border: 2px solid #FFFFFF;
+    border-radius: 58px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .position-cards-bottom{
     display: flex;
     width: 100%;
     justify-content: space-between;
+    align-items: center;
 }
 
 .flex{
@@ -400,6 +412,13 @@ h2 {
     line-height: 120%;
     color: #000000;
     margin-bottom: 8px;
+}
+
+.position-assigend-to{
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    margin-top: 25px;
 }
 
 .inputContainer,

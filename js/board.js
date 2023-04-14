@@ -198,7 +198,7 @@ function showOverlay(cards) {
 }
 
 
-function changeBackgroundOverlay(cards){
+function changeBackgroundOverlay(cards) {
     let background = document.getElementById(`overlayDepartment${cards['id']}`);
     let color = cards['categoryColor'];
     background.style.backgroundColor = `${color}`;
@@ -207,11 +207,33 @@ function changeBackgroundOverlay(cards){
 
 function generateAssignedTo(todo) {
     let contacts = document.getElementById('assignedTo');
+    let user = userAccounts[activeUser]['userContacts'];
+
     for (let i = 0; i < todo.contact.length; i++) {
         const element = todo.contact[i];
-        contacts.innerHTML += `
-       <div>${(element)}</div>`
-    }
+        for (let j = 0; j < user.length; j++) {
+            const users= user[j];
+            let userLetter = users['letters'];
+            let userName = users['name']
+            if (userName.includes(element)) {
+                contacts.innerHTML += `
+                <div class="position-assigend-to">
+                <div id="changeCircleOverlay${j}" class="initiales-Overlay">${userLetter}</div>
+                <div>${element}</div>
+                </div>`;
+                changeBackgroundCircleOverlay(users, j)
+            }
+            
+            
+        }
+    } 
+}
+
+
+function changeBackgroundCircleOverlay(users, j){
+    let background = document.getElementById(`changeCircleOverlay${j}`);
+    let color = users['color'];
+    background.style.background = `${color}`;
 }
 
 
@@ -379,7 +401,7 @@ function dropDownAssignToBoard(cards) {
 }
 
 
-function closeDropdownCategoryBoard(){
+function closeDropdownCategoryBoard() {
     let categoryInputContainer = document.getElementById('inputContainer'); //addTask.html line 40 - Input Container for Category
     let categoryList = document.getElementById('categoryList');
     categoryList.style.display = "none";
