@@ -131,12 +131,13 @@ async function renderAssignTo() { //function to render AssignTo
     let assignedContactList = document.getElementById('assignedList');  //container to render the list
     assignedContactList.innerHTML = ""; //clear container inside html
 
+    //for (let i = 0; i < userAccounts.length; i++) {
+    //    var userName = userAccounts[i]['userName'];
+
     /**render the user contacts */
-    //for (let i = 0; i < userAccounts[activeUser]['userContacts'].length; i++) {
-       // var userName = userAccounts[activeUser]['userContacts'][i]['name'];
-       
-    for (let i = 0; i < userAccounts.length; i++) {
-        var userName = userAccounts[i]['userName'];
+    for (let i = 0; i < userAccounts[activeUser]['userContacts'].length; i++) {
+        var userName = userAccounts[activeUser]['userContacts'][i]['name'];
+
         assignedContactList.innerHTML += /*html*/`
             <div class="assignedContact" >
                 <div>${userName}</div>
@@ -339,7 +340,7 @@ async function addTask() {
         document.getElementById('messageAddedTask').style.display = "none";
     }, 3900)
     document.getElementById('addTaskBtn').classList.add('buttonDisabled');
-    setTimeout(function () { 
+    setTimeout(function () {
         document.getElementById('addTaskBtn').classList.add('buttonEnabled'); //during one Task added blocked the addTaskBtn
     }, 4000)
     /**Set other Inputfields to default values and the prio Buttons to the original text and color*/
