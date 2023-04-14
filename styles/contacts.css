@@ -2,27 +2,7 @@
 body{
    background-color:  #F5F5F5;
 }
-/* width */
-::-webkit-scrollbar {
-    width: 15px;
-  }
-  
-  /* Track */
-  ::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px grey; 
-    border-radius: 10px;
-  }
-   
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: #A8A8A8; 
-    border-radius: 10px;
-  }
-  
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: #A8A8A8; 
-  }
+
 
 
 
@@ -78,6 +58,27 @@ a {
     height: calc(100vh - 89px);
 
 }
+/* width */
+.left-container::-webkit-scrollbar {
+    width: 15px;
+  }
+  
+  /* Track */
+  .left-container::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 10px;
+  }
+   
+  /* Handle */
+  .left-container::-webkit-scrollbar-thumb {
+    background: #A8A8A8; 
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  .left-container::-webkit-scrollbar-thumb:hover {
+    background: #A8A8A8; 
+  }
 
 .contact-container {
     margin-top: 2px;
