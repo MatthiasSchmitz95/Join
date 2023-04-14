@@ -1,6 +1,7 @@
 let currentDraggedElement;
 let loadOverlay = false;
-let loadCircle =false;
+let loadCircle = false;
+let choosedContact = []; //an Array to save the checked Contacts with checkbox
 
 function updateHTML() {
     updateHTMLToDo()
@@ -35,50 +36,6 @@ async function updateHTMLToDo() {
         }
     }
 }
-
-
-/*
-async function updateHTMLInProgress() {
-    await loadTasksFromBackend();
-    await loadUserAccountsFromBackend();
-    let user = userAccounts[activeUser]['userName'];
-    let inProgress = tasks.filter(t => t['progress'] == 'In progress' && t['contact'].includes(user));
-    document.getElementById('inProgressContent').innerHTML = '';
-
-    for (let index = 0; index < inProgress.length; index++) {
-        const cards = inProgress[index];
-        
-
-    }
-}
-
-
-async function updateHTMLAwaitingFeedback() {
-    await loadTasksFromBackend();
-    await loadUserAccountsFromBackend();
-    let user = userAccounts[activeUser]['userName'];
-    let awaiting = tasks.filter(t => t['progress'] == 'Awaiting Feedback' && t['contact'].includes(user));
-    document.getElementById('awaitingFeedbackContent').innerHTML = '';
-
-    for (let index = 0; index < awaiting.length; index++) {
-        const cards = awaiting[index];
-        
-    }
-}
-
-
-async function updateHTMLDone() {
-    await loadTasksFromBackend();
-    await loadUserAccountsFromBackend();
-    let user = userAccounts[activeUser]['userName'];
-    let done = tasks.filter(t => t['progress'] == 'Done' && t['contact'].includes(user));
-    document.getElementById('doneContent').innerHTML = '';
-
-    for (let index = 0; index < done.length; index++) {
-        const cards = done[index];
-       
-    }
-}*/
 
 
 function generateHTML(cards) {
@@ -125,12 +82,12 @@ async function renderUserInitiales(cards) {
             const ids = cards['id'].toString() + i.toString();
             if (abc.includes(userContact) && userContacts.length <= 3) {
                 contact.innerHTML += `<div id="circle${ids}" class="initiales">${users['letters']} </div>`
-                
-                    changeBackgroundCircle(i, abc, userContact, users, cards, ids);
-                
-            } else if (abc.includes(userContact) &&  userContacts.length > 3) {
+
+                changeBackgroundCircle(i, abc, userContact, users, cards, ids);
+
+            } else if (abc.includes(userContact) && userContacts.length > 3) {
                 let allContacts = userContacts.length;
-                let count = j +1;
+                let count = j + 1;
                 let newLenght = userContactsLength = 2;
                 let result = allContacts - newLenght;
                 result = '+' + result;
@@ -140,12 +97,12 @@ async function renderUserInitiales(cards) {
                 if (userContactsLength == count) {
                     contact.innerHTML += `<div id="circle${ids}" class="initiales background-black">${result} </div>`;
                 }
-                
-                    
-                };
-            }
+
+
+            };
         }
     }
+}
 
 
 
@@ -168,7 +125,7 @@ async function changeBackgroundCircle(i, abc, userContact, users, cards, ids) {
 function priorityImgCard(cards) {
     let prio = document.getElementById(`priorityImage${cards['id']}`);
     let card = cards['priority'];
-    if (card == 'urgent') {
+    if (card == 'Urgent') {
         prio.innerHTML = '<img src="assets/img/urgent.png">';
     } else if (card == 'Medium') {
         prio.innerHTML = '<img src="assets/img/medium.png">';
@@ -203,10 +160,9 @@ function showOverlay(cards) {
     document.getElementById('overlay-background').classList.add('overlay-background');
     let overlay = document.getElementById('overlay');
     overlay.classList.remove('d-none');
-
     overlay.innerHTML = /*html*/`        
     <div class="overlay-header">
-        <div class="overlay-department">
+        <div class="overlay-department" id="overlayDepartment${cards}">
             ${(todo.category)}
         </div>
         <div class="close-icon">
@@ -223,7 +179,7 @@ function showOverlay(cards) {
         <b>Due date:</b> ${(todo['dueDate'])}
     </div>
     <div class="overlay-date">
-        <b>Priority:</b> ${(todo.priority)} ${todo.priorityImg}
+        <b>Priority:</b> ${(todo.priority)} <img src="${todo.priorityImg}">
     </div>
     <div class="overlay-date">
         <b>Assigned to:</b>  <div id="assignedTo">
@@ -237,7 +193,15 @@ function showOverlay(cards) {
     </div>
     `;
     loadOverlay = true;
-    generateAssignedTo(todo)
+    generateAssignedTo(todo);
+    changeBackgroundOverlay(todo)
+}
+
+
+function changeBackgroundOverlay(cards){
+    let background = document.getElementById(`overlayDepartment${cards['id']}`);
+    let color = cards['categoryColor'];
+    background.style.backgroundColor = `${color}`;
 }
 
 
@@ -299,7 +263,7 @@ function showOverlayChange(cards) {
         <div class="contactInputContainer" id="contactInputContainer">
             <input class="assign-input" id="assignInput" type="text" placeholder="Select contacts to assign" required>
 
-            <div id="assignDropDown" class="buttonOpenClose" onclick="dropDownAssignTo()"><img
+            <div id="assignDropDown" class="buttonOpenClose" onclick="dropDownAssignToBoard(${cards})"><img
                 src="assets/img/dropdown-arrow.png"></div>
         </div>
             <div id="assignedList" class="assignedList"></div>
@@ -315,7 +279,7 @@ function showOverlayChange(cards) {
      `;
     insertPriority(cards);
     renderSubtasksBoard(cards);
-
+    chanceTextarea(cards);
 }
 
 
@@ -375,7 +339,7 @@ function insertLow() {
 function insertPriority(cards) {
     let user = userAccounts[activeUser]['userTasks'];
     let todo = user.find((item) => item.id === cards);
-    if (todo.priority == 'urgent') {
+    if (todo.priority == 'Urgent') {
         insertUrgent()
     } else if (todo.priority == 'Medium') {
         insertMedium()
@@ -384,59 +348,96 @@ function insertPriority(cards) {
     }
 }
 
-/*
-function dropDownAssignTo() 
-     document.getElementById('categoryList').classList.toggle('dropDownDisplay');
-    closeDropdownCategory();
-    var assignToDropDown = document.getElementById('assignedList');
+function chanceTextarea(cards) {
 
-    if (assignToDropDown.style.display == "block") {
-        assignToDropDown.style.display = "none";
-        assignToInputContainer.style.border = "1px solid #D1D1D1";
-        assignToInputContainer.style.borderRadius = "10px";
-    } else {
-        assignToDropDown.style.display = "block";
-        //assignToInputContainer.style.borderBottom = "none";
+    document.addEventListener("DOMContentLoaded", function () {
+        var textarea = document.getElementById(`inputDescription${cards}`);
+        var placeholder = textarea.getAttribute("placeholder");
+        var numLines = (placeholder.match(/\n/g) || []).length + 1;
+        textarea.setAttribute("rows", numLines);
+    });
+
+}
+
+
+function dropDownAssignToBoard(cards) {
+    let assignedList = document.getElementById('assignedList'); //get the id of AssignedList container to render contacts 
+    let assignToInputContainer = document.getElementById('contactInputContainer'); //get the container for AssignTo Input Field
+    if (assignedList.style.display == "block") { //the Container for Contacts is open ?
+        assignedList.style.display = "none"; //hide the Container for Contacts 
+        assignToInputContainer.style.border = "1px solid #D1D1D1"; //shows all border
+        assignToInputContainer.style.borderRadius = "10px"; //set all border radius to 10px
+    } else { //the Container for Contacts is closed ?
+        assignedList.style.display = "block"; //shows the Container for Contacts  
+        assignToInputContainer.style.borderBottom = "none"; //hide the AssignedTo container Border bottom
         /* Four values */
-/* top-left top-right bottom-right bottom-left 
-//assignToInputContainer.style.borderRadius = "10px 10px 0 0";
-renderAssignTo();
-}
-
-}
-
-
-function renderAssignTo() {
-let assignedContactList = document.getElementById('assignedList');
-assignedContactList.innerHTML = "";
-
-for (let i = 0; i < userAccounts.length; i++) {
-/*const contact = contactArray[i];
-var userName = userAccounts[i]['userName'];
-
-assignedContactList.innerHTML += `
-<div class="assignedContact" onclick="chooseContact(${i}, '${userName}')" > 
-    <div>${userName}</div>
-    <label class="filledCheckboxContainer">
-        <input type="checkbox">
-        <span class="checkmark"></span>
-    <div class="subtaskCheck"></div>
-</label>
-</div>
-`;
-}
+        /* top-left top-right bottom-right bottom-left */
+        assignToInputContainer.style.borderRadius = "10px 10px 0 0"; //shows AssignedTo container top-left top-right border radius
+        renderAssignToBoard(cards); //show or render the contacts
+    }
+    closeDropdownCategoryBoard();
 }
 
 
-function showAddTaskPopOut() {
-document.getElementById('popOut-taskCard').classList.remove('d-none');
+function closeDropdownCategoryBoard(){
+    let categoryInputContainer = document.getElementById('inputContainer'); //addTask.html line 40 - Input Container for Category
+    let categoryList = document.getElementById('categoryList');
+    categoryList.style.display = "none";
+    categoryInputContainer.style.border = "1px solid #D1D1D1";
+    categoryInputContainer.style.borderRadius = "10px";
+
 }
 
 
-function closePopOutAddTask() {
-document.getElementById('popOut-taskCard').classList.add('d-none');
+async function renderAssignToBoard(cards) { //function to render AssignTo
+    await loadUserAccountsFromBackend(); //get Data of Users from Backend
+    loadActiveUserLocal(); //get Data of Users from Backend
+    let user = userAccounts[activeUser]['userTasks'];
+    let todo = user.find((item) => item.id === cards);
+    let assignedContactList = document.getElementById('assignedList');  //container to render the list
+    assignedContactList.innerHTML = ""; //clear container inside html
+
+    let users = userAccounts[activeUser]['userContacts'];
+
+
+    for (let i = 0; i < users.length; i++) {
+        let userName = users[i]['name'];
+
+        const element = todo.contact;
+
+
+        const contact = element.includes(userName);
+        const checkedAttribute = contact ? 'checked' : '';
+        assignedContactList.innerHTML += /*html*/`
+
+            <div class="assignedContact" >
+                <div>${userName}</div>
+                <label class="filledCheckboxContainer">
+                    <input type="checkbox" class="checkboxForContacts" value="${userName}" ${checkedAttribute} onclick="chooseContactBoard('${userName}')">
+                        <span class="checkmark"></span>
+                </label>
+            </div>
+            `;
+    }
 }
-*/
+
+
+function chooseContactBoard(name) { //index, contact
+    let inputAssignedContact = document.getElementById('assignInput'); //get assign To Inputfield
+    inputAssignedContact.value = ''; //clear assign to Input Field
+    inputAssignedContact.value = name; //Assigned To field fill with the Contact names
+    choosedContact.splice(0); //delete all choosed Contacts from last time
+
+    let allChekbox = document.querySelectorAll('.checkboxForContacts'); //check all checkboxes with the class '.checkboxForContacts'
+    for (let i = 0; i < allChekbox.length; i++) {
+        const checkbox = allChekbox[i];
+        if (checkbox.checked) {  //if checkbox checked
+            choosedContact.push(checkbox.value); //push the checked Contacts in the Array
+        }
+    }
+    console.log('chooesedContact', choosedContacts);
+}
+
 
 async function saveInputTask(cards) {
     let user = userAccounts[activeUser]['userTasks'];
@@ -444,13 +445,34 @@ async function saveInputTask(cards) {
     let newTitle = document.getElementById('inputTittle').value;
     let newDescription = document.getElementById('inputDescription').value;
     let newDueDate = document.getElementById('inputDueDate').value;
+    let priority;
+    let priorityImg;
+    if (document.getElementById('prioUrgentBox').classList.contains('bgUrgent')) {
+        priority = document.getElementById('prioUrgentBox').innerText;
+        priorityImg = document.createElement("prioUrgentImg");
+        priorityImg = "assets/img/urgent.png";
+    } else if (document.getElementById('prioMediumBox').classList.contains('bgMedium')) {
+        priority = document.getElementById('prioMediumBox').innerText;
+        priorityImg = document.createElement("prioMediumImg");
+        priorityImg = "assets/img/medium.png";
+    } else {
+        priority = document.getElementById('prioLowBox').innerText;
+        priorityImg = document.createElement("prioLowImg");
+        priorityImg = "assets/img/low.png";
+    }
     chooseSubtasksBoard(todo);
     if (newTitle == '') {
         newTitle = todo.title;
     }
+    if (!todo.contact.includes(todo.contact)) {
+        todo.contact = choosedContact
+    }
     todo.title = newTitle;
     todo.description = newDescription;
     todo.dueDate = newDueDate;
+    todo.priority = priority;
+    todo.priorityImg = priorityImg;
+    todo.contact = choosedContact
     console.log(todo);
     await saveTasksToBackend()
     await saveUserAccountsToBackend();
@@ -500,28 +522,28 @@ function renderSubtasksBoard(cards) {
 
 async function changeProgressbar(cards) {
     let progress = document.getElementById(`progressBar${cards}`);
-    let contant =  document.getElementById(`countDone${cards}`);
+    let contant = document.getElementById(`countDone${cards}`);
     let user = userAccounts[activeUser]['userTasks'];
     let todo = user.find((item) => item.id === cards);
     let result;
     let maximum = todo['subTask'].length;
     let present = todo.subTaskDone.length;
-         if (present == 0) {
-             result = 0
-         }else{
-         result = present*100 / maximum;
-         result = result+'%'
-         console.log('ergebnis',result);
-         }
+    if (present == 0) {
+        result = 0
+    } else {
+        result = present * 100 / maximum;
+        result = result + '%'
+        console.log('ergebnis', result);
+    }
     progress.style.width = result;
-    contant.innerHTML = present+'/'+ maximum + "" + 'Done';
+    contant.innerHTML = present + '/' + maximum + "" + 'Done';
     if (maximum == 0) {
         contant.classList.add('d-none');
     }
 }
 
 
-function filterHtml(){
+function filterHtml() {
     let search = document.getElementById('search').value;
     search = search.toLowerCase();
     let text = userAccounts[activeUser]['userTasks'];
@@ -535,7 +557,7 @@ function filterHtml(){
 }
 
 
-async function renderfilter(search,j){
+async function renderfilter(search, j) {
     await loadTasksFromBackend();
     await loadUserAccountsFromBackend();
     let user = userAccounts[activeUser]['userTasks'];
