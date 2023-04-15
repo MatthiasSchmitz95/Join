@@ -17,7 +17,7 @@
     <script src="./js/register.js"></script>
 </head>
 
-<body onload="init('addTask'); renderSubtasks(); updateCalender();">
+<body onload="onloadAddTask()">
     <div w3-include-html="desktop-template.html"></div>
     <form class="taskCard" onsubmit="addTask(); return false" id="popOut-taskCard">
 
@@ -99,13 +99,7 @@
                     </div>
                 </div>
 
-                <div class="SubtaskAppendixContainer" id="SubtaskAppendixContainer">
-                    <!--<label class="container">
-                        <input type="checkbox" />
-                        <span class="checkmark"></span>
-                        <div class="subtaskCheck">Subtask 1</div>
-                    </label>-->
-                </div>
+                <div class="SubtaskAppendixContainer" id="SubtaskAppendixContainer"></div>
             </div>
         </div>
 

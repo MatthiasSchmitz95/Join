@@ -6,6 +6,12 @@ let phone;
 let letters = [];
 let contactColor = randomUserColor();
 
+function onloadContact(){
+    init('contacts');
+    sortNames();
+    sortLetters();
+    updateCalender('date');
+}
 
 function getFrontLettersUser() {
     let userName = userAccounts[activeUser].userContacts;

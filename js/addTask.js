@@ -6,13 +6,20 @@ var colorsArray = ['', 'red', 'blue'];
 var newCategoryColors = ['#8AA4FF', '#FF0000', '#2AD300', '#FF8A00', '#E200BE', '#0038FF'];
 var categoryInputContainer; //addTask.html line 40 - Input Container for Category
 var assignToInputContainer; //get the container for AssignTo Input Field
-var onInputSubTask ; //global variable for onInput container -> "cross mark and check mark images"
+var onInputSubTask; //global variable for onInput container -> "cross mark and check mark images"
 var subtaskInput; //global variable for subtasks input container
 var appendixSubtask; //global variable for subtask container below the Subtask Input
 var categoryList;
-
+var choosedContacts = []; //an Array to save the checked Contacts with checkbox
 
 var addsubtask; //global variable for addsubTask button
+var subTasks = ['Subtask 1']; //default value in subTasks Array
+
+function onloadAddTask() {
+    init('addTask');
+    renderSubtasks();
+    updateCalender();
+}
 
 function renderCategory() {
     let categoryList = document.getElementById('categoryList'); //addTask.html line 51 - container for category Input box
@@ -62,6 +69,7 @@ function dropDown() {
 /**close the Category Select Menu*/
 function closeDropdownCategory() {
     var categoryList = document.getElementById('categoryList');
+    categoryInputContainer = document.getElementById('inputContainer');
     categoryList.style.display = "none";
     categoryInputContainer.style.border = "1px solid #D1D1D1";
     categoryInputContainer.style.borderRadius = "10px";
@@ -156,9 +164,15 @@ async function renderAssignTo() { //function to render AssignTo
             </div>
             `;
     }
+        assignedContactList.innerHTML += /*html*/`
+            <div class="assignedContact" >
+                <div>invite new contacts</div>
+                <img src="assets/img/new_contact.png" class="newContactImg">
+            </div>
+        `;
 }
 
-var choosedContacts = []; //an Array to save the checked Contacts with checkbox
+
 function chooseContact(name) { //index, contact
     let inputAssignedContact = document.getElementById('assignInput'); //get assign To Inputfield
     inputAssignedContact.value = ''; //clear assign to Input Field
@@ -180,7 +194,7 @@ function chooseContact(name) { //index, contact
  */
 function dropDownAssignTo() {
     var assignedList = document.getElementById('assignedList'); //get the id of AssignedList container to render contacts
-    assignToInputContainer = document.getElementById('contactInputContainer'); 
+    assignToInputContainer = document.getElementById('contactInputContainer');
     if (assignedList.style.display == "block") { //the Container for Contacts is open ?
         assignedList.style.display = "none"; //hide the Container for Contacts 
         assignToInputContainer.style.border = "1px solid #D1D1D1"; //shows all border
@@ -210,11 +224,6 @@ function closeDropDownAssignTo() {
 /**
  * Subtask
  */
-var subTasks = ['Subtask 1']; //default value in subTasks Array
-
-
-
-
 /**By clicking the + Symbol changed to New subTask Input*/
 function createNewSubtask() {
     addsubtask = document.getElementById('addSubtaskBtn');
@@ -273,7 +282,7 @@ function chooseSubtasks(id) { //index, contact
 }
 
 /**render SubTask at the bottom of the subTask Input filed */
-async function renderSubtasks() {
+function renderSubtasks() {
     appendixSubtask = document.getElementById('SubtaskAppendixContainer');
     appendixSubtask.innerHTML = "";
     for (let i = 0; i < subTasks.length; i++) {
@@ -377,7 +386,7 @@ async function addTask() {
     document.getElementById('prioLowImg').classList.remove('Img-white');
     deleteSubTask();
     setTimeout(function () {
-                window.location = "./board.html";
+        window.location = "./board.html";
     }, 3600)
 
     /**save Tasks and User acc. to backend as JSON Array*/

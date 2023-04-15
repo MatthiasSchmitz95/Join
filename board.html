@@ -15,12 +15,12 @@
     
     <script src="./js/board.js"></script>
     <script src="js/mini_backend.js"></script>
-    <script src="js/addTask.js"></script>
+    <script src="./js/addTask.js"></script>
     
     
 </head>
 
-<body id="body" onload="init('board'), updateHTML(), loadActiveUserLocal();  updateCalender('date');">
+<body id="body" onload="onloadBoard()">
     <div id="overlay-background" onclick="closeOverlay()">
     </div>
     <div id="desktop" class="desktop">
@@ -88,7 +88,6 @@
     </div>
 
     <div w3-include-html="addTaskPopOut.html"></div>
-    
 </body>
 
 </html>

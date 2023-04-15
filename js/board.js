@@ -10,6 +10,13 @@ function updateHTML() {
      updateHTMLDone()*/
 }
 
+function onloadBoard() {
+    init('board');
+    updateHTML();
+    loadActiveUserLocal();
+    updateCalender('date');
+}
+
 
 async function updateHTMLToDo() {
     await loadTasksFromBackend();
@@ -212,7 +219,7 @@ function generateAssignedTo(todo) {
     for (let i = 0; i < todo.contact.length; i++) {
         const element = todo.contact[i];
         for (let j = 0; j < user.length; j++) {
-            const users= user[j];
+            const users = user[j];
             let userLetter = users['letters'];
             let userName = users['name']
             if (userName.includes(element)) {
@@ -223,14 +230,14 @@ function generateAssignedTo(todo) {
                 </div>`;
                 changeBackgroundCircleOverlay(users, j)
             }
-            
-            
+
+
         }
-    } 
+    }
 }
 
 
-function changeBackgroundCircleOverlay(users, j){
+function changeBackgroundCircleOverlay(users, j) {
     let background = document.getElementById(`changeCircleOverlay${j}`);
     let color = users['color'];
     background.style.background = `${color}`;

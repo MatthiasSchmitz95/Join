@@ -13,7 +13,7 @@
     <script src="./js/main.js"></script>
     <script src="./js/contacts.js"></script>
     <script src="./js/mini_backend.js"></script>
-    <script src="js/register.js"></script>
+    <script src="./js/register.js"></script>
     <script src="./js/addTask.js"></script>
 
 
@@ -22,7 +22,7 @@
     
 </head>
 
-<body onload="init('contacts');sortNames();sortLetters();updateCalender('date');">
+<body onload="onloadContact()">
     <div onclick="closeContactCard()" id="bg" style="display: none;"></div>
     <div class="success" id="success" >Contact succesfully created</div>
     <div class="hidden" id="contact-card">
@@ -95,7 +95,6 @@
 
     </div>
     <div w3-include-html="addTaskPopOut.html"></div>
-
 </body>
 
 </html>
