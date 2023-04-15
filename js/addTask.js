@@ -15,6 +15,10 @@ var choosedContacts = []; //an Array to save the checked Contacts with checkbox
 var addsubtask; //global variable for addsubTask button
 var subTasks = ['Subtask 1']; //default value in subTasks Array
 
+var userName; //for Assigned To users
+var newAssingedContact;
+var bothLetters;
+
 function onloadAddTask() {
     init('addTask');
     renderSubtasks();
@@ -152,7 +156,7 @@ async function renderAssignTo() { //function to render AssignTo
 
     /**render the user contacts */
     for (let i = 0; i < userAccounts[activeUser]['userContacts'].length; i++) {
-        var userName = userAccounts[activeUser]['userContacts'][i]['name'];
+        userName = userAccounts[activeUser]['userContacts'][i]['name'];
 
         assignedContactList.innerHTML += /*html*/`
             <div class="assignedContact" >
@@ -164,8 +168,8 @@ async function renderAssignTo() { //function to render AssignTo
             </div>
             `;
     }
-        assignedContactList.innerHTML += /*html*/`
-            <div class="assignedContact" >
+    assignedContactList.innerHTML += /*html*/`
+            <div class="assignedContact" onclick="assignToInput()">
                 <div>invite new contacts</div>
                 <img src="assets/img/new_contact.png" class="newContactImg">
             </div>
@@ -195,6 +199,7 @@ function chooseContact(name) { //index, contact
 function dropDownAssignTo() {
     var assignedList = document.getElementById('assignedList'); //get the id of AssignedList container to render contacts
     assignToInputContainer = document.getElementById('contactInputContainer');
+    document.getElementById('circleContactsContainer').style.display = "none";
     if (assignedList.style.display == "block") { //the Container for Contacts is open ?
         assignedList.style.display = "none"; //hide the Container for Contacts 
         assignToInputContainer.style.border = "1px solid #D1D1D1"; //shows all border
@@ -220,6 +225,88 @@ function closeDropDownAssignTo() {
     assignToInputContainer.style.border = "1px solid #D1D1D1"; //shows all border
     assignToInputContainer.style.borderRadius = "10px"; //set all border radius to 10px
 }
+
+
+function assignToInput() {
+    closeDropdownCategory(); //dropDown Category Menu closed
+    document.getElementById('assignInput').placeholder = 'contact Email'; //shows New Category Name in Category Input Field
+    document.getElementById('newAssignToInput').style.display = "flex"; //shows newCategoryInput container -> shows "cross mark and check mark"
+    document.getElementById('assignDropDown').style.display = "none"; //hide Category DropDown Button
+    closeDropDownAssignTo();
+}
+
+function rejectAssignTo() {
+    document.getElementById('assignInput').value = "";
+    document.getElementById('assignInput').placeholder = "Select contacts to assign";
+    closeDropDownAssignTo();
+    document.getElementById('newAssignToInput').style.display = "none"; //hide newCategoryInput container -> shows "cross mark and check mark"
+    document.getElementById('assignDropDown').style.display = "flex"; //shows Category DropDown Button
+    document.getElementById('circleContactsContainer').style.display = "none";
+}
+
+var newContacts = [];
+function addnewContact() {
+    newAssingedContact = document.getElementById('assignInput');
+    newContacts.push(newAssingedContact.value);
+    console.log(newContacts);
+    renderCircleName();
+    document.getElementById('circleContactsContainer').style.display = "flex";
+    document.getElementById('newAssignToInput').style.display = "none"; //hide newCategoryInput container -> shows "cross mark and check mark"
+    document.getElementById('assignDropDown').style.display = "flex"; //shows Category DropDown Button
+}
+
+//userName = userAccounts[activeUser]['userContacts'][i]['name'];
+function showContactsByTwoLetters(userName, newUserName) {
+    if (!!userName) {
+        for (let i = 0; i < userAccounts[activeUser]['userContacts'].length; i++) {
+            console.log(userName);
+            inputName = userName[i]['name'];
+            const firstLetter = inputName.charAt(0).toUpperCase();
+            const remainingLetters = inputName.slice(1);
+            contactName = firstLetter + remainingLetters;
+            contactColor = randomUserColor();
+            if (inputName.indexOf(' ') >= 0) {
+                let helpLetter = contactName.split(" ");
+                bothLetters = helpLetter[0].charAt(0).toUpperCase() + helpLetter[1].charAt(0).toUpperCase();
+            }
+            else {
+                bothLetters = firstLetter;
+            }
+            console.log(bothLetters);
+        }
+    } /*else{
+        
+            console.log(userName);
+            inputName = newUserName;
+            const firstLetter = inputName.charAt(0).toUpperCase();
+            const remainingLetters = inputName.slice(1);
+            contactName = firstLetter + remainingLetters;
+            contactColor = randomUserColor();
+            if (inputName.indexOf(' ') >= 0) {
+                let helpLetter = contactName.split(" ");
+                bothLetters = helpLetter[0].charAt(0).toUpperCase() + helpLetter[1].charAt(0).toUpperCase();
+            }
+            else {
+                bothLetters = firstLetter;
+            }
+            console.log(bothLetters);
+    }*/
+}
+
+function renderCircleName() {
+    showContactsByTwoLetters(userAccounts[activeUser]['userContacts']);
+    document.getElementById('circleContactsContainer').innerHTML = "";
+    for (let i = 0; i < userAccounts[activeUser]['userContacts'].length; i++) {
+        document.getElementById('circleContactsContainer').innerHTML += `
+        <div class="circleContact" id="circleContact">  ${bothLetters}
+        </div>
+        `;
+    }
+    /* showContactsByTwoLetters(newContacts);
+     document.getElementById('circleContactsContainer').innerHTML += `<div class="circleContact" id="circleContact">  
+     ${bothLetters} </div>`;*/
+}
+
 
 /**
  * Subtask
@@ -526,3 +613,4 @@ function showAddTaskPopOut() {
 function closePopOutAddTask() {
     document.getElementById('popOut-taskCard').classList.add('d-none');
 }
+

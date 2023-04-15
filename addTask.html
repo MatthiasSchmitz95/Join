@@ -10,11 +10,13 @@
     <link rel="stylesheet" href="./styles/style.css">
     <link rel="stylesheet" href="./fonts.css">
     <link rel="stylesheet" href="./styles/addTask.css">
+
     <script src="./js/board.js"></script>
     <script src="./js/main.js"></script>
     <script src="./js/addTask.js"></script>
     <script src="./js/mini_backend.js"></script>
     <script src="./js/register.js"></script>
+
 </head>
 
 <body onload="onloadAddTask()">
@@ -43,9 +45,9 @@
                         <div id="buttonDropDown" class="buttonOpenClose" onclick="dropDown()"><img
                                 src="assets/img/dropdown-arrow.png"></div>
                         <div id="newCategoryInput">
-                            <img src="assets/img/icon_clear.png" id="clearSubtaskInput" onclick="rejectNewCategory()">
+                            <img src="assets/img/icon_clear.png" onclick="rejectNewCategory()">
                             <div class="line"></div>
-                            <img src="assets/img/checkmark.png" id="selectedSubtask" onclick="addNewCategory()">
+                            <img src="assets/img/checkmark.png" onclick="addNewCategory()">
                         </div>
                     </div>
                     <div id="categoryList" class="categoryList"></div>
@@ -65,8 +67,14 @@
                         <input id="assignInput" type="text" placeholder="Select contacts to assign" required />
                         <div id="assignDropDown" class="buttonOpenClose" onclick="dropDownAssignTo()"><img
                                 src="assets/img/dropdown-arrow.png"></div>
+                        <div id="newAssignToInput">
+                            <img src="assets/img/icon_clear.png" onclick="rejectAssignTo()">
+                            <div class="line"></div>
+                            <img src="assets/img/checkmark.png" onclick="addnewContact()">
+                        </div>
                     </div>
                     <div id="assignedList" class="assignedList"></div>
+                    <div class="circleContactsContainer" id="circleContactsContainer"></div>
                 </div>
             </div>
 
