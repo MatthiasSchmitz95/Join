@@ -1,6 +1,4 @@
-/**
- * Category
- */
+
 var categoriesArray = ['New Category', 'Sales', 'Marketing'];
 var colorsArray = ['', 'red', 'blue'];
 var newCategoryColors = ['#8AA4FF', '#FF0000', '#2AD300', '#FF8A00', '#E200BE', '#0038FF'];
@@ -17,7 +15,7 @@ var subTasks = ['Subtask 1']; //default value in subTasks Array
 
 var userName; //for Assigned To users
 var newAssingedContact;
-var bothLetters;
+var newLetters2;
 
 function onloadAddTask() {
     init('addTask');
@@ -267,12 +265,12 @@ function showContactsByTwoLetters(userName, newUserName) {
             contactColor = randomUserColor();
             if (inputName.indexOf(' ') >= 0) {
                 let helpLetter = contactName.split(" ");
-                bothLetters = helpLetter[0].charAt(0).toUpperCase() + helpLetter[1].charAt(0).toUpperCase();
+                newLetters2 = helpLetter[0].charAt(0).toUpperCase() + helpLetter[1].charAt(0).toUpperCase();
             }
             else {
-                bothLetters = firstLetter;
+                newLetters2 = firstLetter;
             }
-            console.log(bothLetters);
+            console.log(newLetters2);
         }
     } /*else{
         
@@ -284,12 +282,12 @@ function showContactsByTwoLetters(userName, newUserName) {
             contactColor = randomUserColor();
             if (inputName.indexOf(' ') >= 0) {
                 let helpLetter = contactName.split(" ");
-                bothLetters = helpLetter[0].charAt(0).toUpperCase() + helpLetter[1].charAt(0).toUpperCase();
+                newLetters2 = helpLetter[0].charAt(0).toUpperCase() + helpLetter[1].charAt(0).toUpperCase();
             }
             else {
-                bothLetters = firstLetter;
+                newLetters2 = firstLetter;
             }
-            console.log(bothLetters);
+            console.log(newLetters2);
     }*/
 }
 
@@ -298,13 +296,13 @@ function renderCircleName() {
     document.getElementById('circleContactsContainer').innerHTML = "";
     for (let i = 0; i < userAccounts[activeUser]['userContacts'].length; i++) {
         document.getElementById('circleContactsContainer').innerHTML += `
-        <div class="circleContact" id="circleContact">  ${bothLetters}
+        <div class="circleContact" id="circleContact">  ${newLetters2}
         </div>
         `;
     }
     /* showContactsByTwoLetters(newContacts);
      document.getElementById('circleContactsContainer').innerHTML += `<div class="circleContact" id="circleContact">  
-     ${bothLetters} </div>`;*/
+     ${newLetters2} </div>`;*/
 }
 
 
