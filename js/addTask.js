@@ -16,6 +16,11 @@ var subTasks = ['Subtask 1']; //default value in subTasks Array
 var userName; //for Assigned To users
 var newAssingedContact;
 var newLetters2;
+var newContactIn2letters;
+
+var selectedContactLetters =[];
+var newContacts = [];
+var newAddedContactLetters = [];
 
 function onloadAddTask() {
     init('addTask');
@@ -177,7 +182,7 @@ async function renderAssignTo() { //function to render AssignTo
 
 function chooseContact(name) { //index, contact
     let inputAssignedContact = document.getElementById('assignInput'); //get assign To Inputfield
-    inputAssignedContact.value = ''; //clear assign to Input Field
+    //inputAssignedContact.value = ""; //clear assign to Input Field
     inputAssignedContact.value = name; //Assigned To field fill with the Contact names
     choosedContacts.splice(0); //delete all choosed Contacts from last time
 
@@ -225,8 +230,9 @@ function closeDropDownAssignTo() {
 }
 
 
-function assignToInput() {
+function assignToInput() { //click here to invite new Contact via email
     closeDropdownCategory(); //dropDown Category Menu closed
+    document.getElementById('assignInput').value = "";
     document.getElementById('assignInput').placeholder = 'contact Email'; //shows New Category Name in Category Input Field
     document.getElementById('newAssignToInput').style.display = "flex"; //shows newCategoryInput container -> shows "cross mark and check mark"
     document.getElementById('assignDropDown').style.display = "none"; //hide Category DropDown Button
@@ -242,91 +248,79 @@ function rejectAssignTo() {
     document.getElementById('circleContactsContainer').style.display = "none";
 }
 
-var newContacts = [];
+
 function addnewContact() {
     newAssingedContact = document.getElementById('assignInput');
-    newContacts.push(newAssingedContact.value);
-    console.log(newContacts);
+    newContacts.push(newAssingedContact.value); //to load newContacts array
+    //console.log(newContacts);
+
     renderCircleName();
     document.getElementById('circleContactsContainer').style.display = "flex";
     document.getElementById('newAssignToInput').style.display = "none"; //hide newCategoryInput container -> shows "cross mark and check mark"
     document.getElementById('assignDropDown').style.display = "flex"; //shows Category DropDown Button
 }
 
-//userName = userAccounts[activeUser]['userContacts'][i]['name'];
-function showContactsByTwoLetters(userName, newUserName) {
-    if (!!userName) {
-        for (let i = 0; i < userAccounts[activeUser]['userContacts'].length; i++) {
-            console.log(userName);
-            inputName = userName[i]['name'];
-            const firstLetter = inputName.charAt(0).toUpperCase();
-            const remainingLetters = inputName.slice(1);
+function showContactsByTwoLetters() { //good
+        for (let i = 0; i < choosedContacts.length; i++) {
+            let chosenContact = choosedContacts[i];
+            const firstLetter = chosenContact.charAt(0).toUpperCase();
+            const remainingLetters = chosenContact.slice(1);
             contactName = firstLetter + remainingLetters;
-            contactColor = randomUserColor();
-            if (inputName.indexOf(' ') >= 0) {
+            /*contactColor = randomUserColor();*/
+            if (chosenContact.indexOf(' ') >= 0) { //Wenn ein TrennZeichen "leer" gibt
                 let helpLetter = contactName.split(" ");
                 newLetters2 = helpLetter[0].charAt(0).toUpperCase() + helpLetter[1].charAt(0).toUpperCase();
+                selectedContactLetters.push(newLetters2);
             }
             else {
                 newLetters2 = firstLetter;
-            }
-            console.log(newLetters2);
+                selectedContactLetters.push(newLetters2);
+            }  
         }
-    }
-}/*else{
-        
-            console.log(userName);
-            inputName = newUserName;
-            const firstLetter = inputName.charAt(0).toUpperCase();
-            const remainingLetters = inputName.slice(1);
-            contactName = firstLetter + remainingLetters;
-            contactColor = randomUserColor();
-            if (inputName.indexOf(' ') >= 0) {
-                let helpLetter = contactName.split(" ");
-                newLetters2 = helpLetter[0].charAt(0).toUpperCase() + helpLetter[1].charAt(0).toUpperCase();
-            }
-            else {
-                newLetters2 = firstLetter;
-            }
-            console.log(newLetters2);
-    }
-}*/
+        //console.log(selectedContactLetters);
+}
 
-/*function showContactsByTwoLetters() {
-    let user = userAccounts[activeUser]['userContacts'];
-    for (let j = 0; j < user.length; j++) {
-        const users = user[j];
-        let userLetter = users['letters'];
-        if (userName.includes(element)) {
-            contacts.innerHTML += `
-                <div class="initiales-Overlay">${userLetter}</div>
-            `;
+function showNewAddedContactsByTwoLetters() { //to check
+    for (let i = 0; i < newContacts.length; i++) {
+        let addedNewContact = newContacts[i];
+        const firstLetter = addedNewContact.charAt(0).toUpperCase();
+        const remainingLetters = addedNewContact.slice(1);
+        contactName = firstLetter + remainingLetters;
+        /*contactColor = randomUserColor();*/
+        if (addedNewContact.indexOf('.') >= 0) { //Wenn ein TrennZeichen "Punkt" gibt
+            let helpLetter = contactName.split(" "); //teil auf in zwei Teile
+            newContactIn2letters = helpLetter[0].charAt(0).toUpperCase(); /*  + helpLetter[1].charAt(0).toUpperCase() --> zu korrigieren*/
+            newAddedContactLetters.push(newContactIn2letters);
         }
+        else {
+            newContactIn2letters = firstLetter;
+            newAddedContactLetters.push(newContactIn2letters);
+        }  
     }
-}*/
+    console.log(newAddedContactLetters);
+}
 
 function renderCircleName() {
-    showContactsByTwoLetters(userAccounts[activeUser]['userContacts']);
-    let user = document.getElementById('circleContactsContainer').innerHTML = "";
-    for (let i = 0; i < userAccounts[activeUser]['userContacts'].length; i++) {
+    showContactsByTwoLetters();
+    showNewAddedContactsByTwoLetters();
+    document.getElementById('circleContactsContainer').innerHTML = "";
+    for (let i = 0; i < selectedContactLetters.length; i++) {
+        const letters = selectedContactLetters[i];
         document.getElementById('circleContactsContainer').innerHTML += `
-        <div class="circleContact" id="circleContact">  ${newLetters2}
+        <div class="circleContact" id="circleContact">  ${letters}
         </div>
         `;
     }
-    /*let user = document.getElementById('circleContactsContainer').innerHTML = "";
-    for (let j = 0; j < user.length; j++) {
-        const users = user[j];
-        let userLetter = users['letters'];
-        if (userName.includes(element)) {
-            document.getElementById('circleContactsContainer').innerHTML += `
-                <div class="initiales-Overlay">${userLetter}</div>
-            `;
-        }
-    }
-    /* showContactsByTwoLetters(newContacts);
-     document.getElementById('circleContactsContainer').innerHTML += `<div class="circleContact" id="circleContact">  
-     ${newLetters2} </div>`;*/
+    
+    //for (let i = 0; i < newAddedContactLetters.length; i++) {}
+        document.getElementById('circleContactsContainer').innerHTML += `
+        <div class="circleContact" id="circleContact">  ${newAddedContactLetters}
+        </div>
+    `;
+    
+    selectedContactLetters.splice(0); //delete all at call function
+    newAddedContactLetters.splice(0); //delete all at call function
+    newContacts.splice(0);//delete all at call function
 }
 
 
