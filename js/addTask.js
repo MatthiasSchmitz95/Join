@@ -46,7 +46,7 @@ function unsetCategoryInputField() {
     categoryInputContainer.innerHTML = `
     <input id="input" type="text" placeholder="Select task Category" required>
         <div id="color" class="color"></div>
-        <div id="buttonDropDown" class="buttonOpenClose" onclick="dropDown()">
+        <div id="buttonDropDown" class="buttonOpenCloseCategory" onclick="dropDown()">
         <img src="assets/img/dropdown-arrow.png">
         </div>`;
 }
