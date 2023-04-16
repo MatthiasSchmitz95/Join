@@ -44,8 +44,14 @@
                     <input id="assignInput" type="text" placeholder="Select contacts to assign" required />
                     <div id="assignDropDown" class="buttonOpenClose" onclick="dropDownAssignTo()"><img
                             src="assets/img/dropdown-arrow.png"></div>
+                    <div id="newAssignToInput">
+                        <img src="assets/img/icon_clear.png" onclick="rejectAssignTo()">
+                        <div class="line"></div>
+                        <img src="assets/img/checkmark.png" onclick="addnewContact()">
+                    </div>
                 </div>
                 <div id="assignedList" class="assignedList"></div>
+                <div class="circleContactsContainer" id="circleContactsContainer"></div>
             </div>
         </div>
 
