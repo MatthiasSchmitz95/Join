@@ -272,7 +272,8 @@ function showContactsByTwoLetters(userName, newUserName) {
             }
             console.log(newLetters2);
         }
-    } /*else{
+    }
+}/*else{
         
             console.log(userName);
             inputName = newUserName;
@@ -288,17 +289,40 @@ function showContactsByTwoLetters(userName, newUserName) {
                 newLetters2 = firstLetter;
             }
             console.log(newLetters2);
-    }*/
-}
+    }
+}*/
+
+/*function showContactsByTwoLetters() {
+    let user = userAccounts[activeUser]['userContacts'];
+    for (let j = 0; j < user.length; j++) {
+        const users = user[j];
+        let userLetter = users['letters'];
+        if (userName.includes(element)) {
+            contacts.innerHTML += `
+                <div class="initiales-Overlay">${userLetter}</div>
+            `;
+        }
+    }
+}*/
 
 function renderCircleName() {
     showContactsByTwoLetters(userAccounts[activeUser]['userContacts']);
-    document.getElementById('circleContactsContainer').innerHTML = "";
+    let user = document.getElementById('circleContactsContainer').innerHTML = "";
     for (let i = 0; i < userAccounts[activeUser]['userContacts'].length; i++) {
         document.getElementById('circleContactsContainer').innerHTML += `
         <div class="circleContact" id="circleContact">  ${newLetters2}
         </div>
         `;
+    }
+    /*let user = document.getElementById('circleContactsContainer').innerHTML = "";
+    for (let j = 0; j < user.length; j++) {
+        const users = user[j];
+        let userLetter = users['letters'];
+        if (userName.includes(element)) {
+            document.getElementById('circleContactsContainer').innerHTML += `
+                <div class="initiales-Overlay">${userLetter}</div>
+            `;
+        }
     }
     /* showContactsByTwoLetters(newContacts);
      document.getElementById('circleContactsContainer').innerHTML += `<div class="circleContact" id="circleContact">  
