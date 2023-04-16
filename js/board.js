@@ -3,6 +3,7 @@ let loadOverlay = false;
 let loadCircle = false;
 let choosedContact = []; //an Array to save the checked Contacts with checkbox
 
+
 function updateHTML() {
     updateHTMLToDo()
     /* updateHTMLInProgress()
@@ -31,12 +32,15 @@ async function updateHTMLToDo() {
         cards = userTasks['progress'];
         if (cards == 'To Do') {
             document.getElementById('toDoContent').innerHTML += generateHTML(userTasks), priorityImgCard(userTasks), changeBackgroundColor(userTasks), renderUserInitiales(userTasks), changeProgressbar(userTasks['id']);
+
         }
         if (cards == 'In progress') {
             document.getElementById('inProgressContent').innerHTML += generateHTML(userTasks), priorityImgCard(userTasks), changeBackgroundColor(userTasks), renderUserInitiales(userTasks), changeProgressbar(userTasks['id']);
+            inProgressSummary++;
         }
         if (cards == 'Awaiting Feedback') {
             document.getElementById('awaitingFeedbackContent').innerHTML += generateHTML(userTasks), priorityImgCard(userTasks), changeBackgroundColor(userTasks), renderUserInitiales(userTasks), changeProgressbar(userTasks['id']);
+            
         }
         if (cards == 'Done') {
             document.getElementById('doneContent').innerHTML += generateHTML(userTasks), priorityImgCard(userTasks), changeBackgroundColor(userTasks), renderUserInitiales(userTasks), changeProgressbar(userTasks['id']);
