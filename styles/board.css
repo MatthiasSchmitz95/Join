@@ -227,24 +227,23 @@ h2 {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    /* padding: 50px; */
     padding-bottom: 40px;
     padding-top: 40px;
     padding-left: 70px;
     padding-right: 70px;
     gap: 25px;
-    width: 562px; 
-    /* height: 824px; */
+    width: 562px;
     z-index: 5;
     background: #FFFFFF;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
     border-radius: 30px;
     position: absolute;
-    top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%);
     box-sizing: border-box;
+    top: 150px;
 }
+
 
 .overlay-department {
     padding: 4px 36.5px;
