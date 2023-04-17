@@ -235,7 +235,7 @@ function closeDropDownAssignTo() {
 function assignToInput() { //click here to invite new Contact via email
     closeDropdownCategory(); //dropDown Category Menu closed
     document.getElementById('assignInput').value = "";
-    document.getElementById('assignInput').placeholder = 'contact Email'; //shows New Category Name in Category Input Field
+    document.getElementById('assignInput').placeholder = 'contact Mail (jon.doe@gmail.com)'; //shows New Category Name in Category Input Field
     document.getElementById('newAssignToInput').style.display = "flex"; //shows newCategoryInput container -> shows "cross mark and check mark"
     document.getElementById('assignDropDown').style.display = "none"; //hide Category DropDown Button
     closeDropDownAssignTo();
@@ -268,8 +268,13 @@ function changeEmailToContactName(){
     const splitStringName = nameString.split(".");
     const firstString = splitStringName[0];
     const secondString = splitStringName[1];
-    const newStringName = firstString.charAt(0).toUpperCase() + firstString.slice(1) + ' ' + secondString.charAt(0).toUpperCase() + secondString.slice(1);
-    choseContacts.push(newStringName);
+    if(secondString == undefined){
+        const newStringName = firstString.charAt(0).toUpperCase() + firstString.slice(1);
+        choseContacts.push(newStringName);
+    }else{
+        const newStringName = firstString.charAt(0).toUpperCase() + firstString.slice(1) + ' ' + secondString.charAt(0).toUpperCase() + secondString.slice(1);
+        choseContacts.push(newStringName);
+    }
     console.log('added new contact for Task: ', choseContacts.slice(-1)); //show choseContact last index
     console.log('chosen contact Array update: ',choseContacts); //show choseContact Array
 }
