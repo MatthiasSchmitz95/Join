@@ -3,6 +3,8 @@ let inProgressSummary = 0;
 let awaitingFeedbackSummary = 0;
 let doneSummary = 0;
 let urgents = 0;
+let dateSummary = [];
+
 
 async function setName() {
     await init('summary');
@@ -14,34 +16,54 @@ async function setName() {
 }
 
 
-
-function setTasks(){
-  document.getElementById('task-in-board-nr').innerHTML =   toDoSummary  ;
-  document.getElementById('task-in-progress-nr').innerHTML = inProgressSummary;
-  document.getElementById('awaiting-feedback-nr').innerHTML = awaitingFeedbackSummary;
+function setTasks() {
+    document.getElementById('task-in-board-nr').innerHTML = toDoSummary;
+    document.getElementById('task-in-progress-nr').innerHTML = inProgressSummary;
+    document.getElementById('awaiting-feedback-nr').innerHTML = awaitingFeedbackSummary;
 }
 
-function setUrgencies(){
-  document.getElementById('urgent-nr').innerHTML = urgents;
- // document.getElementById('deadline-date').innerHTML =;
+
+function setUrgencies() {
+    document.getElementById('urgent-nr').innerHTML = urgents;
+    document.getElementById('deadline-date').innerHTML = dateSummary[0];
 }
-/*
-function setDos(){
-  document.getElementById('do-nr').innerHTML =;
-  document.getElementById('done-nr').innerHTML =;
-}*/
+
+
+function setDos() {
+    document.getElementById('do-nr').innerHTML = toDoSummary;
+    document.getElementById('done-nr').innerHTML = doneSummary;
+}
+
+
+function sortDates() {
+    dateSummary.sort((a, b) => new Date(a).getTime() - new Date(b).getTime());
+}
+
 
 async function countTasks() {
     await loadTasksFromBackend();
     await loadUserAccountsFromBackend();
     await setName();
+    checkingConditions()
+    setTasks();
+    setUrgencies();
+    setDos();
+    sortDates();
+}
+
+
+function checkingConditions() {
     let user = userAccounts[activeUser]['userTasks'];
     for (let i = 0; i < user.length; i++) {
         const userTasks = user[i];
         let urgent = userTasks['priority'];
+        let date = userTasks['dueDate'];
         cards = userTasks['progress'];
         if (cards == 'To Do') {
             toDoSummary++;
+        }
+        if (cards == 'done') {
+            doneSummary++
         }
         if (cards == 'In progress') {
             inProgressSummary++;
@@ -53,10 +75,9 @@ async function countTasks() {
             doneSummary++;
         }
         if (urgent == 'Urgent') {
+            dateSummary.push(date);
             urgents++;
-            
         }
     }
-    setTasks();
-    setUrgencies();
+
 }
