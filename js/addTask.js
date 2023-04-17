@@ -449,15 +449,15 @@ async function addTask() {
     if (document.getElementById('prioUrgentBox').classList.contains('bgUrgent')) {
         priority = document.getElementById('prioUrgentBox').innerText;
         var priorityImg = document.createElement("prioUrgentImg");
-        priorityImg.src = "assets/img/urgent.png";
+        priorityImg = "assets/img/urgent.png";
     } else if (document.getElementById('prioMediumBox').classList.contains('bgMedium')) {
         priority = document.getElementById('prioMediumBox').innerText;
         var priorityImg = document.createElement("prioMediumImg");
-        priorityImg.src = "assets/img/medium.png";
+        priorityImg = "assets/img/medium.png";
     } else {
         priority = document.getElementById('prioLowBox').innerText;
         var priorityImg = document.createElement("prioLowImg");
-        priorityImg.src = "assets/img/low.png";
+        priorityImg = "assets/img/low.png";
     }
     var idTask = tasks.length;
     var progress = "To Do";

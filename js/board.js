@@ -31,52 +31,25 @@ async function updateHTMLToDo() {
         const userTasks = user[i];
         cards = userTasks['progress'];
         if (cards == 'To Do') {
-            document.getElementById('toDoContent').innerHTML += generateHTML(userTasks), priorityImgCard(userTasks), changeBackgroundColor(userTasks), renderUserInitiales(userTasks), changeProgressbar(userTasks['id']);
+            document.getElementById('toDoContent').innerHTML += generateHTML1(userTasks) + generateHTML2(userTasks), priorityImgCard(userTasks), changeBackgroundColor(userTasks), renderUserInitiales(userTasks), changeProgressbar(userTasks['id']);
 
         }
         if (cards == 'In progress') {
-            document.getElementById('inProgressContent').innerHTML += generateHTML(userTasks), priorityImgCard(userTasks), changeBackgroundColor(userTasks), renderUserInitiales(userTasks), changeProgressbar(userTasks['id']);
-            inProgressSummary++;
+            document.getElementById('inProgressContent').innerHTML += generateHTML1(userTasks) + generateHTML2(userTasks), priorityImgCard(userTasks), changeBackgroundColor(userTasks), renderUserInitiales(userTasks), changeProgressbar(userTasks['id']);
+           
         }
         if (cards == 'Awaiting Feedback') {
-            document.getElementById('awaitingFeedbackContent').innerHTML += generateHTML(userTasks), priorityImgCard(userTasks), changeBackgroundColor(userTasks), renderUserInitiales(userTasks), changeProgressbar(userTasks['id']);
+            document.getElementById('awaitingFeedbackContent').innerHTML += generateHTML1(userTasks) + generateHTML2(userTasks), priorityImgCard(userTasks), changeBackgroundColor(userTasks), renderUserInitiales(userTasks), changeProgressbar(userTasks['id']);
             
         }
         if (cards == 'Done') {
-            document.getElementById('doneContent').innerHTML += generateHTML(userTasks), priorityImgCard(userTasks), changeBackgroundColor(userTasks), renderUserInitiales(userTasks), changeProgressbar(userTasks['id']);
+            document.getElementById('doneContent').innerHTML += generateHTML1(userTasks) + generateHTML2(userTasks), priorityImgCard(userTasks), changeBackgroundColor(userTasks), renderUserInitiales(userTasks), changeProgressbar(userTasks['id']);
         }
     }
 }
 
 
-function generateHTML(cards) {
-    return /*html*/`
-    <div draggable="true" ondragstart="startDragging(${cards['id']})" onclick="showOverlay(${cards['id']})" class="card">
-        <div id="backgroundColor${cards['id']}" class="background">
-            ${cards['category']}
-        </div>
-        <div><b>${cards['title']}</b></div>
-        <div class="text-color" >
-        ${cards['description']}
-        </div>
-        <div class="position-progress">
-         <div class="progress">
-            <div id="progressBar${cards['id']}" class="progressBar">
-            </div>
-         </div>
-         <div class="count" id="countDone${cards['id']}">
 
-         </div>
-        </div>
-        <div class="position-cards-bottom">
-           <div class="flex" id="userInitiales${cards['id']}" >
-           </div> 
-           <div id="priorityImage${cards['id']}">
-           </div>
-        </div>  
-    </div>`;
-
-}
 
 
 async function renderUserInitiales(cards) {
@@ -158,7 +131,8 @@ function allowDrop(ev) {
 
 async function moveTo(category) {
     let user = userAccounts[activeUser]['userTasks'];
-    user[currentDraggedElement]['progress'] = category;
+    let todo = user.find((item) => item.id === currentDraggedElement);
+    todo['progress'] = category;
     await saveTasksToBackend();
     await saveUserAccountsToBackend();
     updateHTML();
@@ -171,38 +145,7 @@ function showOverlay(cards) {
     document.getElementById('overlay-background').classList.add('overlay-background');
     let overlay = document.getElementById('overlay');
     overlay.classList.remove('d-none');
-    overlay.innerHTML = /*html*/`        
-    <div class="overlay-header">
-        <div class="overlay-department" id="overlayDepartment${cards}">
-            ${(todo.category)}
-        </div>
-        <div class="close-icon">
-            <img onclick="closeOverlay()" src="assets/img/close-overlay.svg">
-        </div>
-    </div>
-    <div class="overlay-title">
-        ${(todo.title)}
-    </div>
-    <div class="overlay-text">
-        ${(todo.description)}
-    </div>
-    <div class="overlay-date">
-        <b>Due date:</b> ${(todo['dueDate'])}
-    </div>
-    <div class="overlay-date">
-        <b>Priority:</b> ${(todo.priority)} <img src="${todo.priorityImg}">
-    </div>
-    <div class="overlay-date">
-        <b>Assigned to:</b>  <div id="assignedTo">
-
-                            </div>
-    </div>
-    <div class="overlay-edit-task-position">
-        <div class="overlay-edit-task" onclick="showOverlayChange(${cards})">
-          <img src="assets/img/edit-task.svg">
-        </div>
-    </div>
-    `;
+    overlay.innerHTML = renderShowOverlay1(todo, cards)+renderShowOverlay2(todo)+renderShowOverlay3(cards);
     loadOverlay = true;
     generateAssignedTo(todo);
     changeBackgroundOverlay(todo)
@@ -219,7 +162,6 @@ function changeBackgroundOverlay(cards) {
 function generateAssignedTo(todo) {
     let contacts = document.getElementById('assignedTo');
     let user = userAccounts[activeUser]['userContacts'];
-
     for (let i = 0; i < todo.contact.length; i++) {
         const element = todo.contact[i];
         for (let j = 0; j < user.length; j++) {
@@ -227,15 +169,8 @@ function generateAssignedTo(todo) {
             let userLetter = users['letters'];
             let userName = users['name']
             if (userName.includes(element)) {
-                contacts.innerHTML += `
-                <div class="position-assigend-to">
-                <div id="changeCircleOverlay${j}" class="initiales-Overlay">${userLetter}</div>
-                <div>${element}</div>
-                </div>`;
-                changeBackgroundCircleOverlay(users, j)
+                contacts.innerHTML += generateAssignedToHTML(j, userLetter, element),changeBackgroundCircleOverlay(users, j)   
             }
-
-
         }
     }
 }
@@ -252,64 +187,11 @@ function showOverlayChange(cards) {
     let user = userAccounts[activeUser]['userTasks'];
     let todo = user.find((item) => item.id === cards);
     let overlay = document.getElementById('overlay');
-    overlay.innerHTML = /*html*/`
-   <div class="overlay-header"> 
-        <div class="width-chances">
-            Title
-           <input id="inputTittle" type=text class="input-chances-title" placeholder="${(todo.title)}">
-        </div>
-        <div class="close-icon-change">
-            <img  onclick="closeOverlay()" src="assets/img/close-overlay.svg">
-        </div>
-    </div>
-    <div class="width-chances">
-        Description <br>
-        <textarea id="inputDescription" onkeyup="textAreaAdjust(this)" style="overflow:hidden" class="input-chances-text">${(todo.description)}</textarea>
-    </div>
-    <div class="width-chances">
-       Due date <br>
-       <input id="inputDueDate" class="input-chances-title" type="date" value="2023-02-03" min="023-02-01" max="023-02-28" placeholder="${(todo['dueDate'])}">
-    </div>
-    <div id="subtasks">
-    <div class="addSubtaskContainer">
-                    <input class="subtasksInput" id="subtasksInput" placeholder="Add new Subtask" />
-                    <div class="addSubtaskBtn" id="addSubtaskBtn" onclick="createNewSubtask()"><img
-                            src="assets/img/plus.png"></div>
-                    <div id="subtaskOninput">
-                        <img src="assets/img/icon_clear.png" id="clearSubtaskInput" onclick="deleteSubTask()">
-                        <div class="line"></div>
-                        <img src="assets/img/checkmark.png" id="selectedSubtask" onclick="addSubTask()">
-                    </div>
-                </div>
-    </div>
-    <label for="priority" class="priority">Prio</label>
-                <div  class="priorityBoxesContainer">
-                    <div class="prioUrgentBox" id="prioUrgentBox" onclick="insertUrgent()">Urgent <img
-                            id="prioUrgentImg" src="assets/img/urgent.png"></div>
-                    <div class="prioMediumBox" id="prioMediumBox" onclick="insertMedium()">Medium <img
-                            id="prioMediumImg" src="assets/img/medium.png"></div>
-                    <div class="prioLowBox" id="prioLowBox" onclick="insertLow()">Low <img id="prioLowImg"
-                            src="assets/img/low.png"></div>
-                </div>
-    <div class="assignContainer">
-        <label for="assignedTo" class="assignedTo">Assigned to</label>
-        <div class="contactInputContainer" id="contactInputContainer">
-            <input class="assign-input" id="assignInput" type="text" placeholder="Select contacts to assign" required>
-
-            <div id="assignDropDown" class="buttonOpenClose" onclick="dropDownAssignToBoard(${cards})"><img
-                src="assets/img/dropdown-arrow.png"></div>
-        </div>
-            <div id="assignedList" class="assignedList"></div>
-    </div>
-    <div>
-
-    </div>
-    <div class="overlay-edit-task-position">
-        <div class="overlay-chance-task" onclick="saveInputTask(${cards})">
-            OK<img src="assets/img/right.svg">
-        </div>
-    </div>
-     `;
+    let HTML1 = showOverlayChangeHTML1(todo);
+    let HTML2 = showOverlayChangeHTML2(todo);
+    let HTML3 =showOverlayChangeHTML3();
+    let HTML4 =showOverlayChangeHTML4(cards)
+    overlay.innerHTML = HTML1 + HTML2 + HTML3 + HTML4;
     insertPriority(cards);
     renderSubtasksBoard(cards);
     chanceTextarea(cards);
@@ -403,12 +285,10 @@ function dropDownAssignToBoard(cards) {
     } else { //the Container for Contacts is closed ?
         assignedList.style.display = "block"; //shows the Container for Contacts  
         assignToInputContainer.style.borderBottom = "none"; //hide the AssignedTo container Border bottom
-        /* Four values */
-        /* top-left top-right bottom-right bottom-left */
         assignToInputContainer.style.borderRadius = "10px 10px 0 0"; //shows AssignedTo container top-left top-right border radius
         renderAssignToBoard(cards); //show or render the contacts
     }
-    closeDropdownCategoryBoard();
+     closeDropdownCategoryBoard();
 }
 
 
@@ -418,95 +298,60 @@ function closeDropdownCategoryBoard() {
     categoryList.style.display = "none";
     categoryInputContainer.style.border = "1px solid #D1D1D1";
     categoryInputContainer.style.borderRadius = "10px";
-
 }
 
 
-async function renderAssignToBoard(cards) { //function to render AssignTo
-    await loadUserAccountsFromBackend(); //get Data of Users from Backend
-    loadActiveUserLocal(); //get Data of Users from Backend
+async function renderAssignToBoard(cards) {
     let user = userAccounts[activeUser]['userTasks'];
     let todo = user.find((item) => item.id === cards);
     let assignedContactList = document.getElementById('assignedList');  //container to render the list
     assignedContactList.innerHTML = ""; //clear container inside html
-
     let users = userAccounts[activeUser]['userContacts'];
+    renderAssignToBoardContacts(users,assignedContactList, todo)
+}
 
 
+function renderAssignToBoardContacts(users,assignedContactList, todo){
     for (let i = 0; i < users.length; i++) {
         let userName = users[i]['name'];
-
         const element = todo.contact;
-
-
         const contact = element.includes(userName);
         const checkedAttribute = contact ? 'checked' : '';
-        assignedContactList.innerHTML += /*html*/`
-
-            <div class="assignedContact" >
-                <div>${userName}</div>
-                <label class="filledCheckboxContainer">
-                    <input type="checkbox" class="checkboxForContacts" value="${userName}" ${checkedAttribute} onclick="chooseContactBoard('${userName}')">
-                        <span class="checkmark"></span>
-                </label>
-            </div>
-            `;
+        assignedContactList.innerHTML += renderAssignToBoardContactsHTML(userName, checkedAttribute)
     }
 }
 
 
-function chooseContactBoard(name) { //index, contact
-    let inputAssignedContact = document.getElementById('assignInput'); //get assign To Inputfield
-    inputAssignedContact.value = ''; //clear assign to Input Field
-    inputAssignedContact.value = name; //Assigned To field fill with the Contact names
-    choosedContact.splice(0); //delete all choosed Contacts from last time
-
-    let allChekbox = document.querySelectorAll('.checkboxForContacts'); //check all checkboxes with the class '.checkboxForContacts'
+function chooseContactBoard(name) { 
+    let inputAssignedContact = document.getElementById('assignInput'); 
+    inputAssignedContact.value = ''; 
+    inputAssignedContact.value = name; 
+    choosedContact.splice(0); 
+    let allChekbox = document.querySelectorAll('.checkboxForContacts'); 
     for (let i = 0; i < allChekbox.length; i++) {
         const checkbox = allChekbox[i];
-        if (checkbox.checked) {  //if checkbox checked
-            choosedContact.push(checkbox.value); //push the checked Contacts in the Array
+        if (checkbox.checked) {  
+            choosedContact.push(checkbox.value); 
         }
     }
-    console.log('chooesedContact', choosedContacts);
 }
 
 
 async function saveInputTask(cards) {
     let user = userAccounts[activeUser]['userTasks'];
     let todo = user.find((item) => item.id === cards);
-    let newTitle = document.getElementById('inputTittle').value;
     let newDescription = document.getElementById('inputDescription').value;
     let newDueDate = document.getElementById('inputDueDate').value;
-    let priority;
-    let priorityImg;
-    if (document.getElementById('prioUrgentBox').classList.contains('bgUrgent')) {
-        priority = document.getElementById('prioUrgentBox').innerText;
-        priorityImg = document.createElement("prioUrgentImg");
-        priorityImg = "assets/img/urgent.png";
-    } else if (document.getElementById('prioMediumBox').classList.contains('bgMedium')) {
-        priority = document.getElementById('prioMediumBox').innerText;
-        priorityImg = document.createElement("prioMediumImg");
-        priorityImg = "assets/img/medium.png";
-    } else {
-        priority = document.getElementById('prioLowBox').innerText;
-        priorityImg = document.createElement("prioLowImg");
-        priorityImg = "assets/img/low.png";
-    }
-    chooseSubtasksBoard(todo);
-    if (newTitle == '') {
-        newTitle = todo.title;
-    }
-    if (!todo.contact.includes(todo.contact)) {
-        todo.contact = choosedContact
-    }
-    todo.title = newTitle;
     todo.description = newDescription;
     todo.dueDate = newDueDate;
-    todo.priority = priority;
-    todo.priorityImg = priorityImg;
-    todo.contact = choosedContact
-    console.log(todo);
+    newTitleSave(todo)
+    prioritySave(todo)
+    chooseSubtasksBoard(todo);
+    newTitleSave(todo)
+    await saveAndNewRender(cards) 
+}
+
+async function saveAndNewRender(cards){
     await saveTasksToBackend()
     await saveUserAccountsToBackend();
     updateHTML()
@@ -514,10 +359,57 @@ async function saveInputTask(cards) {
 }
 
 
-async function chooseSubtasksBoard(todo) { //index, contact
-    todo.subTaskDone = [];
-    // selectedSubtasks.splice(0); //delete all choosed Contacts from last time
+function newTitleSave(todo){
+    let newTitle = document.getElementById('inputTittle').value;
+    if (newTitle == '') {
+        newTitle = todo.title;
+    }
+    todo.title = newTitle;
+}
 
+
+function contactChoosed(todo) {
+    if (choosedContact.length === 0) {
+        for (let i = 0; i < todo['contact'].length; i++) {
+            const element = todo['contact'][i];
+            choosedContact.push(element);
+        }  
+    }
+    if (!todo.contact.includes(todo.contact)) {
+        todo.contact = choosedContact
+    }
+}
+
+
+function getPriority() {
+    let priority;
+    let priorityImg;
+    if (document.getElementById('prioUrgentBox').classList.contains('bgUrgent')) {
+        priority = document.getElementById('prioUrgentBox').innerText;
+        priorityImg = "assets/img/urgent.png";
+    } else if (document.getElementById('prioMediumBox').classList.contains('bgMedium')) {
+         priority = document.getElementById('prioMediumBox').innerText;
+        priorityImg = "assets/img/medium.png";
+    } else {
+        priority = document.getElementById('prioLowBox').innerText;
+        priorityImg = "assets/img/low.png";
+    }
+    return { priority, priorityImg };
+}
+
+function setPriority(todo, priority, priorityImg) {
+    todo.priority = priority;
+    todo.priorityImg = priorityImg;
+}
+
+function prioritySave(todo) {
+    const { priority, priorityImg } = getPriority();
+    setPriority(todo, priority, priorityImg);
+}
+
+
+async function chooseSubtasksBoard(todo) { 
+    todo.subTaskDone = [];
     let allChekbox = document.querySelectorAll(`.checkedSubTasks`);
     console.log(allChekbox.length);
     for (let i = 0; i < allChekbox.length; i++) {
@@ -615,4 +507,13 @@ async function renderfilter(search, j) {
             document.getElementById('doneContent').innerHTML += generateHTML(userTasks), priorityImgCard(userTasks), changeBackgroundColor(userTasks), renderUserInitiales(userTasks), changeProgressbar(userTasks['id']);
         }
     }
+}
+
+async function deleteTaskActiveUser(number){
+    let user = userAccounts[activeUser]['userTasks'];//[number];
+    user.splice(number,1);
+    console.log(userAccounts);
+    await saveTasksToBackend()
+    await saveUserAccountsToBackend();
+    
 }
