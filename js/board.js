@@ -158,7 +158,8 @@ function allowDrop(ev) {
 
 async function moveTo(category) {
     let user = userAccounts[activeUser]['userTasks'];
-    user[currentDraggedElement]['progress'] = category;
+    let todo = user.find((item) => item.id === currentDraggedElement);
+    todo['progress'] = category;
     await saveTasksToBackend();
     await saveUserAccountsToBackend();
     updateHTML();
@@ -468,7 +469,7 @@ function chooseContactBoard(name) { //index, contact
             choosedContact.push(checkbox.value); //push the checked Contacts in the Array
         }
     }
-    console.log('chooesedContact', choosedContacts);
+    console.log('chooesedContact', choosedContact);
 }
 
 
@@ -497,6 +498,13 @@ async function saveInputTask(cards) {
     if (newTitle == '') {
         newTitle = todo.title;
     }
+    if (choosedContact.length === 0) {
+        for (let i = 0; i < todo['contact'].length; i++) {
+            const element = todo['contact'][i];
+            choosedContact.push(element);
+        }
+        
+    }
     if (!todo.contact.includes(todo.contact)) {
         todo.contact = choosedContact
     }
@@ -505,7 +513,7 @@ async function saveInputTask(cards) {
     todo.dueDate = newDueDate;
     todo.priority = priority;
     todo.priorityImg = priorityImg;
-    todo.contact = choosedContact
+    //todo.contact = choosedContact
     console.log(todo);
     await saveTasksToBackend()
     await saveUserAccountsToBackend();
@@ -615,4 +623,13 @@ async function renderfilter(search, j) {
             document.getElementById('doneContent').innerHTML += generateHTML(userTasks), priorityImgCard(userTasks), changeBackgroundColor(userTasks), renderUserInitiales(userTasks), changeProgressbar(userTasks['id']);
         }
     }
+}
+
+async function deleteTaskActiveUser(number){
+    let user = userAccounts[activeUser]['userTasks'];//[number];
+    user.splice(number,1);
+    console.log(userAccounts);
+    await saveTasksToBackend()
+    await saveUserAccountsToBackend();
+    
 }
