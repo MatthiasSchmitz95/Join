@@ -8,19 +8,13 @@ var onInputSubTask; //global variable for onInput container -> "cross mark and c
 var subtaskInput; //global variable for subtasks input container
 var appendixSubtask; //global variable for subtask container below the Subtask Input
 var categoryList;
-var choosedContacts = []; //an Array to save the checked Contacts with checkbox
+var choseContacts = []; //an Array to save the checked Contacts with checkbox
 
 var addsubtask; //global variable for addsubTask button
 var subTasks = ['Subtask 1']; //default value in subTasks Array
 
-var userName; //for Assigned To users
-var newAssingedContact;
-var newLetters2;
-var newContactIn2letters;
 
-var selectedContactLetters =[];
-var newContacts = [];
-var newAddedContactLetters = [];
+
 
 function onloadAddTask() {
     init('addTask');
@@ -148,12 +142,20 @@ function rejectNewCategory() {
 /**
  * AssignTo 
  */
+var userName; //for Assigned To users
+var newAssingedContact;
+var newLetters2;
+//var newContactIn2letters;
+
+var selectedContactLetters =[];
+var newContacts = [];
+var newAddedContactLetters = [];
+
 async function renderAssignTo() { //function to render AssignTo
     await loadUserAccountsFromBackend(); //get Data of Users from Backend
     loadActiveUserLocal(); //get Data of Users from Backend
     let assignedContactList = document.getElementById('assignedList');  //container to render the list
     assignedContactList.innerHTML = ""; //clear container inside html
-
     //for (let i = 0; i < userAccounts.length; i++) {
     //    var userName = userAccounts[i]['userName'];
 
@@ -184,16 +186,16 @@ function chooseContact(name) { //index, contact
     let inputAssignedContact = document.getElementById('assignInput'); //get assign To Inputfield
     //inputAssignedContact.value = ""; //clear assign to Input Field
     inputAssignedContact.value = name; //Assigned To field fill with the Contact names
-    choosedContacts.splice(0); //delete all choosed Contacts from last time
+    choseContacts.splice(0); //delete all chose Contacts from last time
 
     let allChekbox = document.querySelectorAll('.checkboxForContacts'); //check all checkboxes with the class '.checkboxForContacts'
     for (let i = 0; i < allChekbox.length; i++) {
         const checkbox = allChekbox[i];
         if (checkbox.checked) {  //if checkbox checked
-            choosedContacts.push(checkbox.value); //push the checked Contacts in the Array
+            choseContacts.push(checkbox.value); //push the checked Contacts in the Array
         }
     }
-    console.log('chooesedContact', choosedContacts);
+    console.log('chosenContact', choseContacts);
 }
 
 /**
@@ -252,21 +254,35 @@ function rejectAssignTo() {
 function addnewContact() {
     newAssingedContact = document.getElementById('assignInput');
     newContacts.push(newAssingedContact.value); //to load newContacts array
-    //console.log(newContacts);
-
     renderCircleName();
+    changeEmailToContactName();
     document.getElementById('circleContactsContainer').style.display = "flex";
     document.getElementById('newAssignToInput').style.display = "none"; //hide newCategoryInput container -> shows "cross mark and check mark"
     document.getElementById('assignDropDown').style.display = "flex"; //shows Category DropDown Button
 }
 
+function changeEmailToContactName(){
+    let stringEmail = newAssingedContact.value;
+    const splitStringEmail = stringEmail.split("@");
+    let nameString = splitStringEmail[0];
+    const splitStringName = nameString.split(".");
+    const firstString = splitStringName[0];
+    const secondString = splitStringName[1];
+    const newStringName = firstString.charAt(0).toUpperCase() + firstString.slice(1) + ' ' + secondString.charAt(0).toUpperCase() + secondString.slice(1);
+    choseContacts.push(newStringName);
+    console.log('added new contact for Task: ', choseContacts.slice(-1)); //show choseContact last index
+    console.log('chosen contact Array update: ',choseContacts); //show choseContact Array
+}
+
+var arrayContactColor = [];
 function showContactsByTwoLetters() { //good
-        for (let i = 0; i < choosedContacts.length; i++) {
-            let chosenContact = choosedContacts[i];
+        for (let i = 0; i < choseContacts.length; i++) {
+            let chosenContact = choseContacts[i];
             const firstLetter = chosenContact.charAt(0).toUpperCase();
             const remainingLetters = chosenContact.slice(1);
             contactName = firstLetter + remainingLetters;
-            /*contactColor = randomUserColor();*/
+            contactColor = randomUserColor();
+            arrayContactColor.push(contactColor);
             if (chosenContact.indexOf(' ') >= 0) { //Wenn ein TrennZeichen "leer" gibt
                 let helpLetter = contactName.split(" ");
                 newLetters2 = helpLetter[0].charAt(0).toUpperCase() + helpLetter[1].charAt(0).toUpperCase();
@@ -277,25 +293,30 @@ function showContactsByTwoLetters() { //good
                 selectedContactLetters.push(newLetters2);
             }  
         }
-        //console.log(selectedContactLetters);
+        console.log(selectedContactLetters);
 }
+
 
 function showNewAddedContactsByTwoLetters() { //to check
     for (let i = 0; i < newContacts.length; i++) {
         let addedNewContact = newContacts[i];
         const firstLetter = addedNewContact.charAt(0).toUpperCase();
-        const remainingLetters = addedNewContact.slice(1);
-        contactName = firstLetter + remainingLetters;
-        /*contactColor = randomUserColor();*/
-        if (addedNewContact.indexOf('.') >= 0) { //Wenn ein TrennZeichen "Punkt" gibt
-            let helpLetter = contactName.split(" "); //teil auf in zwei Teile
-            newContactIn2letters = helpLetter[0].charAt(0).toUpperCase(); /*  + helpLetter[1].charAt(0).toUpperCase() --> zu korrigieren*/
-            newAddedContactLetters.push(newContactIn2letters);
+        const splitStringEmail = addedNewContact.split("@");
+        let nameString = splitStringEmail[0];
+        contactColor = randomUserColor();
+        arrayContactColor.push(contactColor);
+        const splitStringName = nameString.split(".");
+        if(splitStringName[1] == undefined){
+            newLetters2 =  firstLetter;
+            newAddedContactLetters.push(newLetters2);
+            
+        }else{
+            let secondString = splitStringName[1];
+            let secondLetter = secondString.charAt(0).toUpperCase();
+            newLetters2 =  firstLetter+ secondLetter;
+            newAddedContactLetters.push(newLetters2);
         }
-        else {
-            newContactIn2letters = firstLetter;
-            newAddedContactLetters.push(newContactIn2letters);
-        }  
+        
     }
     console.log(newAddedContactLetters);
 }
@@ -303,24 +324,27 @@ function showNewAddedContactsByTwoLetters() { //to check
 function renderCircleName() {
     showContactsByTwoLetters();
     showNewAddedContactsByTwoLetters();
+    
     document.getElementById('circleContactsContainer').innerHTML = "";
     for (let i = 0; i < selectedContactLetters.length; i++) {
         const letters = selectedContactLetters[i];
+        const bgContactColor =  arrayContactColor[i];
         document.getElementById('circleContactsContainer').innerHTML += `
-        <div class="circleContact" id="circleContact">  ${letters}
+        <div class="circleContact" id="circleContact" style="background-color: ${bgContactColor} !important">  ${letters}
         </div>
         `;
     }
     
-    //for (let i = 0; i < newAddedContactLetters.length; i++) {}
+    const bgContactColor =  arrayContactColor.slice(-1); //last Index of colorArray Array
         document.getElementById('circleContactsContainer').innerHTML += `
-        <div class="circleContact" id="circleContact">  ${newAddedContactLetters}
+        <div class="circleContact" id="circleContact" style="background-color: ${bgContactColor} !important">  ${newAddedContactLetters}
         </div>
     `;
     
     selectedContactLetters.splice(0); //delete all at call function
     newAddedContactLetters.splice(0); //delete all at call function
     newContacts.splice(0);//delete all at call function
+    console.log (arrayContactColor);
 }
 
 
@@ -371,7 +395,7 @@ function addSubTask() {
 
 var selectedSubtasks = []; //An Array to save the checkmarked subtasks 
 function chooseSubtasks(id) { //index, contact
-    selectedSubtasks.splice(0); //delete all choosed Contacts from last time
+    selectedSubtasks.splice(0); //delete all chose Contacts from last time
 
     let allChekbox = document.querySelectorAll(`.checkedSubTasks`); //check all checkboxes with the class `.checkedSubTasks`
     console.log(allChekbox.length);
@@ -381,7 +405,7 @@ function chooseSubtasks(id) { //index, contact
             selectedSubtasks.push(checkbox.value); //push in SelectedSubtasks[Array] value
         }
     }
-    console.log('choosedSubtasks', selectedSubtasks);
+    console.log('chooseSubtasks', selectedSubtasks);
 }
 
 /**render SubTask at the bottom of the subTask Input filed */
@@ -415,7 +439,7 @@ async function addTask() {
     var title = document.getElementById('title');
     var description = document.getElementById('description');
     /*var contact = document.getElementById('assignInput');*/
-    let contact = choosedContacts;
+    let contact = choseContacts;
     let subTaskDone = [];
     var category = document.getElementById('input');
     var categoryColor = document.getElementById('color').style.background;
@@ -495,8 +519,8 @@ async function addTask() {
     /**save Tasks and User acc. to backend as JSON Array*/
     await saveTasksToBackend();
     await saveUserAccountsToBackend();
-    console.log(choosedContacts);
-    choosedContacts = [];
+    console.log(choseContacts);
+    choseContacts = [];
 }
 
 /**By clicking the Priority Urgent button the Text and Image color change to white --> Prio Medium and Prio Low change to their original color */
