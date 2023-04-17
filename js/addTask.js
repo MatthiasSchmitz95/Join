@@ -13,6 +13,12 @@ var choseContacts = []; //an Array to save the checked Contacts with checkbox
 var addsubtask; //global variable for addsubTask button
 var subTasks = ['Subtask 1']; //default value in subTasks Array
 
+var userName; //for Assigned To users
+var newAssingedContact;
+var newLetters2;
+var selectedContactLetters =[];
+var newContacts = [];
+var newAddedContactLetters = [];
 
 
 
@@ -142,15 +148,6 @@ function rejectNewCategory() {
 /**
  * AssignTo 
  */
-var userName; //for Assigned To users
-var newAssingedContact;
-var newLetters2;
-//var newContactIn2letters;
-
-var selectedContactLetters =[];
-var newContacts = [];
-var newAddedContactLetters = [];
-
 async function renderAssignTo() { //function to render AssignTo
     await loadUserAccountsFromBackend(); //get Data of Users from Backend
     loadActiveUserLocal(); //get Data of Users from Backend
@@ -259,6 +256,8 @@ function addnewContact() {
     document.getElementById('circleContactsContainer').style.display = "flex";
     document.getElementById('newAssignToInput').style.display = "none"; //hide newCategoryInput container -> shows "cross mark and check mark"
     document.getElementById('assignDropDown').style.display = "flex"; //shows Category DropDown Button
+    newContacts.splice(0);//delete all at call function
+    choseContacts.splice(0);//delete all at call function
 }
 
 function changeEmailToContactName(){
