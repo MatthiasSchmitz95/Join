@@ -36,7 +36,7 @@ async function updateHTMLToDo() {
         }
         if (cards == 'In progress') {
             document.getElementById('inProgressContent').innerHTML += generateHTML(userTasks), priorityImgCard(userTasks), changeBackgroundColor(userTasks), renderUserInitiales(userTasks), changeProgressbar(userTasks['id']);
-            inProgressSummary++;
+           
         }
         if (cards == 'Awaiting Feedback') {
             document.getElementById('awaitingFeedbackContent').innerHTML += generateHTML(userTasks), priorityImgCard(userTasks), changeBackgroundColor(userTasks), renderUserInitiales(userTasks), changeProgressbar(userTasks['id']);
