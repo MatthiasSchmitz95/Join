@@ -340,49 +340,71 @@ function chooseContactBoard(name) {
 async function saveInputTask(cards) {
     let user = userAccounts[activeUser]['userTasks'];
     let todo = user.find((item) => item.id === cards);
-    let newTitle = document.getElementById('inputTittle').value;
     let newDescription = document.getElementById('inputDescription').value;
     let newDueDate = document.getElementById('inputDueDate').value;
-    let priority;
-    let priorityImg;
-    if (document.getElementById('prioUrgentBox').classList.contains('bgUrgent')) {
-        priority = document.getElementById('prioUrgentBox').innerText;
-        priorityImg = document.createElement("prioUrgentImg");
-        priorityImg = "assets/img/urgent.png";
-    } else if (document.getElementById('prioMediumBox').classList.contains('bgMedium')) {
-        priority = document.getElementById('prioMediumBox').innerText;
-        priorityImg = document.createElement("prioMediumImg");
-        priorityImg = "assets/img/medium.png";
-    } else {
-        priority = document.getElementById('prioLowBox').innerText;
-        priorityImg = document.createElement("prioLowImg");
-        priorityImg = "assets/img/low.png";
-    }
-    chooseSubtasksBoard(todo);
-    if (newTitle == '') {
-        newTitle = todo.title;
-    }
-    if (choosedContact.length === 0) {
-        for (let i = 0; i < todo['contact'].length; i++) {
-            const element = todo['contact'][i];
-            choosedContact.push(element);
-        }
-        
-    }
-    if (!todo.contact.includes(todo.contact)) {
-        todo.contact = choosedContact
-    }
-    todo.title = newTitle;
     todo.description = newDescription;
     todo.dueDate = newDueDate;
-    todo.priority = priority;
-    todo.priorityImg = priorityImg;
-    //todo.contact = choosedContact
-    console.log(todo);
+    newTitleSave(todo)
+    prioritySave(todo)
+    chooseSubtasksBoard(todo);
+    newTitleSave(todo)
+    await saveAndNewRender(cards) 
+}
+
+async function saveAndNewRender(cards){
     await saveTasksToBackend()
     await saveUserAccountsToBackend();
     updateHTML()
     showOverlay(cards)
+}
+
+
+function newTitleSave(todo){
+    let newTitle = document.getElementById('inputTittle').value;
+    if (newTitle == '') {
+        newTitle = todo.title;
+    }
+    todo.title = newTitle;
+}
+
+
+function contactChoosed(todo) {
+    if (choosedContact.length === 0) {
+        for (let i = 0; i < todo['contact'].length; i++) {
+            const element = todo['contact'][i];
+            choosedContact.push(element);
+        }  
+    }
+    if (!todo.contact.includes(todo.contact)) {
+        todo.contact = choosedContact
+    }
+}
+
+
+function getPriority() {
+    let priority;
+    let priorityImg;
+    if (document.getElementById('prioUrgentBox').classList.contains('bgUrgent')) {
+        priority = document.getElementById('prioUrgentBox').innerText;
+        priorityImg = "assets/img/urgent.png";
+    } else if (document.getElementById('prioMediumBox').classList.contains('bgMedium')) {
+         priority = document.getElementById('prioMediumBox').innerText;
+        priorityImg = "assets/img/medium.png";
+    } else {
+        priority = document.getElementById('prioLowBox').innerText;
+        priorityImg = "assets/img/low.png";
+    }
+    return { priority, priorityImg };
+}
+
+function setPriority(todo, priority, priorityImg) {
+    todo.priority = priority;
+    todo.priorityImg = priorityImg;
+}
+
+function prioritySave(todo) {
+    const { priority, priorityImg } = getPriority();
+    setPriority(todo, priority, priorityImg);
 }
 
 
