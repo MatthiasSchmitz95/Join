@@ -177,3 +177,15 @@ function renderSubtasksBoardHTML(showSubTask, checkedAttribute, j){
     <div class="subtaskCheck">${showSubTask}</div>
 </label>`;
 }
+
+
+function renderUserInitialeHTML1(idStr, user){
+    return `
+    <div id="circle${idStr}" class="initiales">${user.letters} </div>`;
+}
+
+
+function renderUserInitialeHTML2(idStr, count){
+    return  `
+    <div id="circle${idStr}" class="initiales background-black">+${count}</div>`;
+}
