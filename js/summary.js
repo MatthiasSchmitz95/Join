@@ -6,6 +6,7 @@ let urgents = 0;
 let dateSummary = [];
 
 
+
 async function setName() {
     await init('summary');
     let userName = userAccounts[activeUser].userName;
@@ -17,7 +18,8 @@ async function setName() {
 
 
 function setTasks() {
-    document.getElementById('task-in-board-nr').innerHTML = toDoSummary;
+    let tasksSummary = toDoSummary+inProgressSummary+awaitingFeedbackSummary;
+    document.getElementById('task-in-board-nr').innerHTML = tasksSummary;
     document.getElementById('task-in-progress-nr').innerHTML = inProgressSummary;
     document.getElementById('awaiting-feedback-nr').innerHTML = awaitingFeedbackSummary;
 }

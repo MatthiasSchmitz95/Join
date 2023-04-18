@@ -106,7 +106,7 @@ function showOverlayChangeHTML1(todo){
 function showOverlayChangeHTML2(todo){
     return`<div class="width-chances">
     Due date <br>
-    <input id="inputDueDate" class="input-chances-title" type="date" value="2023-02-03" min="023-02-01" max="023-02-28" placeholder="${(todo['dueDate'])}">
+    <input class="input-chances-title" type="date" id="date" value="${(todo['dueDate'])}" placeholder="${(todo['dueDate'])}">
  </div>
  <div id="subtasks">
  <div class="addSubtaskContainer">
@@ -167,4 +167,25 @@ function renderAssignToBoardContactsHTML(userName, checkedAttribute){
                 <span class="checkmark"></span>
         </label>
     </div>`;
+}
+
+
+function renderSubtasksBoardHTML(showSubTask, checkedAttribute, j){
+    return `<label class="container">
+    <input type="checkbox" class="checkedSubTasks" onclick="chooseSubtasks()" value="${showSubTask}" ${checkedAttribute} />
+    <span class="checkmark" id="checkmark${j}"></span>
+    <div class="subtaskCheck">${showSubTask}</div>
+</label>`;
+}
+
+
+function renderUserInitialeHTML1(idStr, user){
+    return `
+    <div id="circle${idStr}" class="initiales">${user.letters} </div>`;
+}
+
+
+function renderUserInitialeHTML2(idStr, count){
+    return  `
+    <div id="circle${idStr}" class="initiales background-black">+${count}</div>`;
 }
