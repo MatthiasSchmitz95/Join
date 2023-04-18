@@ -7,8 +7,8 @@ let dateSummary = [];
 
 
 
-async function setName() {
-    await init('summary');
+ function setName() {
+    
     let userName = userAccounts[activeUser].userName;
     document.getElementById('name').innerHTML = userName;
     //setTasks();
@@ -43,9 +43,10 @@ function sortDates() {
 
 
 async function countTasks() {
+    await init('summary');
     await loadTasksFromBackend();
     await loadUserAccountsFromBackend();
-    await setName();
+    setName();
     checkingConditions()
     setTasks();
     setUrgencies();
