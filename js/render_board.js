@@ -106,7 +106,7 @@ function showOverlayChangeHTML1(todo){
 function showOverlayChangeHTML2(todo){
     return`<div class="width-chances">
     Due date <br>
-    <input id="inputDueDate" class="input-chances-title" type="date" value="2023-02-03" min="023-02-01" max="023-02-28" placeholder="${(todo['dueDate'])}">
+    <input class="input-chances-title" type="date" id="date" value="${(todo['dueDate'])}" placeholder="${(todo['dueDate'])}">
  </div>
  <div id="subtasks">
  <div class="addSubtaskContainer">

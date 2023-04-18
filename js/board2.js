@@ -49,7 +49,7 @@ async function saveInputTask(cards) {
     let user = userAccounts[activeUser]['userTasks'];
     let todo = user.find((item) => item.id === cards);
     let newDescription = document.getElementById('inputDescription').value;
-    let newDueDate = document.getElementById('inputDueDate').value;
+    let newDueDate = document.getElementById('date').value;
     todo.description = newDescription;
     todo.dueDate = newDueDate;
     newTitleSave(todo);

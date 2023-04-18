@@ -8,7 +8,7 @@ function onloadBoard() {
     init('board');
     updateHTML();
     loadActiveUserLocal();
-    updateCalender('date');
+   
 }
 
 
@@ -200,6 +200,7 @@ function showOverlayChange(cards) {
     insertPriority(cards);
     renderSubtasksBoard(cards);
     chanceTextarea(cards);
+    updateCalender();
 }
 
 
