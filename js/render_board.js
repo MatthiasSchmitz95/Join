@@ -168,3 +168,12 @@ function renderAssignToBoardContactsHTML(userName, checkedAttribute){
         </label>
     </div>`;
 }
+
+
+function renderSubtasksBoardHTML(showSubTask, checkedAttribute, j){
+    return `<label class="container">
+    <input type="checkbox" class="checkedSubTasks" onclick="chooseSubtasks()" value="${showSubTask}" ${checkedAttribute} />
+    <span class="checkmark" id="checkmark${j}"></span>
+    <div class="subtaskCheck">${showSubTask}</div>
+</label>`;
+}
