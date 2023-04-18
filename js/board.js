@@ -126,6 +126,7 @@ function priorityImgCard(cards) {
 
 function startDragging(id) {
     currentDraggedElement = id;
+    document.getElementById('html').style.backgroundColor = 'rgb(0,0,0,0.1)';
 }
 
 
@@ -140,6 +141,7 @@ async function moveTo(category) {
     todo['progress'] = category;
     await saveTasksToBackend();
     await saveUserAccountsToBackend();
+    document.getElementById('html').style.backgroundColor = 'rgb(255,255,255)';
     updateHTML();
 }
 
