@@ -463,7 +463,7 @@ async function addTask() {
         var priorityImg = document.createElement("prioLowImg");
         priorityImg = "assets/img/low.png";
     }
-    var idTask = tasks.length;
+    var idTask = generateTaskId(tasks);
     var progress = "To Do";
 
     /**put every value to the newTask as a JSON Array */
@@ -526,6 +526,31 @@ async function addTask() {
     console.log(choseContacts);
     choseContacts = [];
 }
+
+
+function generateTaskId(tasks) {
+    var id = tasks.length;
+    var idExists = true;
+    while (idExists) {
+      // Überprüfe, ob die generierte ID bereits vorhanden ist
+      for (var i = 0; i < tasks.length; i++) {
+        if (tasks[i].id === id) {
+          idExists = true;
+          break;
+        }
+        else {
+          idExists = false;
+        }
+      }
+      // Wenn die ID bereits existiert, generiere eine neue ID
+      if (idExists) {
+        id++;
+      }
+    }
+    return id;
+  }
+  
+
 
 /**By clicking the Priority Urgent button the Text and Image color change to white --> Prio Medium and Prio Low change to their original color */
 function insertUrgent() {
