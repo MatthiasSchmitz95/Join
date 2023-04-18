@@ -4,13 +4,22 @@ async function init(id) {
   await includeHTML();
   highlightSelectedNav(id);
   await loadUserData();
+  changeProfileImg();
   //await backend.deleteItem('tasks');
 }
 
-async function loadUserData(){
+async function loadUserData() {
   await loadUserAccountsFromBackend();
   loadActiveUserLocal();
   await loadTasksFromBackend()
+}
+
+function changeProfileImg() {
+  let userInitials = userAccounts[activeUser]['userInitials'];
+  let userColor = userAccounts[activeUser]['userInitials'];
+  document.getElementById('profile-img').innerHTML = '';
+  document.getElementById('profile-img').style.backgroundColor = userColor;
+
 }
 
 
@@ -65,11 +74,11 @@ async function loadTasksFromBackend() {
   console.log('Tasks loadet', tasks);
 }
 
-async function saveUserAccountsToBackend(){
+async function saveUserAccountsToBackend() {
   await backend.setItem('userAccounts', JSON.stringify(userAccounts));
 }
 
-async function saveTasksToBackend(){
+async function saveTasksToBackend() {
   await backend.setItem('tasks', JSON.stringify(tasks));
 }
 
