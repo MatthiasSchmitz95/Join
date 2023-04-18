@@ -10,17 +10,30 @@ var appendixSubtask; //global variable for subtask container below the Subtask I
 var categoryList;
 var choseContacts = []; //an Array to save the checked Contacts with checkbox
 
+var priority;
+var priorityImg;
 var addsubtask; //global variable for addsubTask button
 var subTasks = ['Subtask 1']; //default value in subTasks Array
 
 var userName; //for Assigned To users
 var newAssingedContact;
 var newLetters2;
-var selectedContactLetters =[];
+var selectedContactLetters = [];
 var newContacts = [];
 var newAddedContactLetters = [];
 
-
+/**Variable for addTask() function */
+var title;
+var description;
+var contact;
+var subTaskDone;
+var category;
+var categoryColor;
+var dueDate;
+var subTask;
+var idTask;
+var progress;
+/** *********************/
 
 function onloadAddTask() {
     init('addTask');
@@ -65,7 +78,6 @@ function dropDown() {
     } else { //Container for Category is closed ?
         categoryList.style.display = "block"; //shows Container for Category to rendern
         categoryInputContainer.style.borderBottom = "none"; //Category Input Container has no border Bottom
-        /* Four values */
         /* top-left top-right bottom-right bottom-left */
         categoryInputContainer.style.borderRadius = "10px 10px 0 0"; //Category Input Container show only top-left top-right Border radius
         renderCategory(); //render Category in the Container
@@ -131,8 +143,6 @@ function addNewCategory() {
     document.getElementById('buttonDropDown').style.display = "flex"; //shows Category DropDown Button
     document.getElementById('color').style.background = newCategoryColor; //new Category Color showing in the Category Container
     colorsArray.push(newCategoryColor); //new Color value pushed in the Color Array
-    /*console.log('Category Array added: ', categoriesArray);
-    console.log('Category Color added: ', colorsArray);*/
 }
 
 /**
@@ -165,7 +175,7 @@ async function renderAssignTo() { //function to render AssignTo
                 <div>${userName}</div>
                 <label class="filledCheckboxContainer">
                     <input type="checkbox" class="checkboxForContacts" value="${userName}" onclick="chooseContact('${userName}')">
-                        <span class="checkmark"></span>
+                    <span class="checkmark"></span>
                 </label>
             </div>
             `;
@@ -209,7 +219,6 @@ function dropDownAssignTo() {
     } else { //the Container for Contacts is closed ?
         assignedList.style.display = "block"; //shows the Container for Contacts  
         assignToInputContainer.style.borderBottom = "none"; //hide the AssignedTo container Border bottom
-        /* Four values */
         /* top-left top-right bottom-right bottom-left */
         assignToInputContainer.style.borderRadius = "10px 10px 0 0"; //shows AssignedTo container top-left top-right border radius
         renderAssignTo(); //show or render the contacts
@@ -242,8 +251,8 @@ function rejectAssignTo() {
     document.getElementById('assignInput').value = "";
     document.getElementById('assignInput').placeholder = "Select contacts to assign";
     closeDropDownAssignTo();
-    document.getElementById('newAssignToInput').style.display = "none"; //hide newCategoryInput container -> shows "cross mark and check mark"
-    document.getElementById('assignDropDown').style.display = "flex"; //shows Category DropDown Button
+    document.getElementById('newAssignToInput').style.display = "none"; //hide AssignToInput container -> shows "cross mark and check mark"
+    document.getElementById('assignDropDown').style.display = "flex"; //shows AssignTo DropDown Button
     document.getElementById('circleContactsContainer').style.display = "none";
 }
 
@@ -256,48 +265,48 @@ function addnewContact() {
     document.getElementById('circleContactsContainer').style.display = "flex";
     document.getElementById('newAssignToInput').style.display = "none"; //hide newCategoryInput container -> shows "cross mark and check mark"
     document.getElementById('assignDropDown').style.display = "flex"; //shows Category DropDown Button
-    newContacts.splice(0);//delete all at call function
-    choseContacts.splice(0);//delete all at call function
+    newContacts.splice(0);//delete all by call this function
+    //choseContacts.splice(0);//delete all by call this function
 }
 
-function changeEmailToContactName(){
+function changeEmailToContactName() {
     let stringEmail = newAssingedContact.value;
     const splitStringEmail = stringEmail.split("@");
     let nameString = splitStringEmail[0];
     const splitStringName = nameString.split(".");
     const firstString = splitStringName[0];
     const secondString = splitStringName[1];
-    if(secondString == undefined){
+    if (secondString == undefined) {
         const newStringName = firstString.charAt(0).toUpperCase() + firstString.slice(1);
         choseContacts.push(newStringName);
-    }else{
+    } else {
         const newStringName = firstString.charAt(0).toUpperCase() + firstString.slice(1) + ' ' + secondString.charAt(0).toUpperCase() + secondString.slice(1);
         choseContacts.push(newStringName);
     }
     console.log('added new contact for Task: ', choseContacts.slice(-1)); //show choseContact last index
-    console.log('chosen contact Array update: ',choseContacts); //show choseContact Array
+    console.log('chosen contact Array update: ', choseContacts); //show choseContact Array
 }
 
 var arrayContactColor = [];
 function showContactsByTwoLetters() { //good
-        for (let i = 0; i < choseContacts.length; i++) {
-            let chosenContact = choseContacts[i];
-            const firstLetter = chosenContact.charAt(0).toUpperCase();
-            const remainingLetters = chosenContact.slice(1);
-            contactName = firstLetter + remainingLetters;
-            contactColor = randomUserColor();
-            arrayContactColor.push(contactColor);
-            if (chosenContact.indexOf(' ') >= 0) { //Wenn ein TrennZeichen "leer" gibt
-                let helpLetter = contactName.split(" ");
-                newLetters2 = helpLetter[0].charAt(0).toUpperCase() + helpLetter[1].charAt(0).toUpperCase();
-                selectedContactLetters.push(newLetters2);
-            }
-            else {
-                newLetters2 = firstLetter;
-                selectedContactLetters.push(newLetters2);
-            }  
+    for (let i = 0; i < choseContacts.length; i++) {
+        let chosenContact = choseContacts[i];
+        const firstLetter = chosenContact.charAt(0).toUpperCase();
+        const remainingLetters = chosenContact.slice(1);
+        contactName = firstLetter + remainingLetters;
+        contactColor = randomUserColor();
+        arrayContactColor.push(contactColor);
+        if (chosenContact.indexOf(' ') >= 0) { //Wenn ein TrennZeichen "leer" gibt
+            let helpLetter = contactName.split(" ");
+            newLetters2 = helpLetter[0].charAt(0).toUpperCase() + helpLetter[1].charAt(0).toUpperCase();
+            selectedContactLetters.push(newLetters2);
         }
-        console.log(selectedContactLetters);
+        else {
+            newLetters2 = firstLetter;
+            selectedContactLetters.push(newLetters2);
+        }
+    }
+    console.log(selectedContactLetters);
 }
 
 
@@ -310,17 +319,17 @@ function showNewAddedContactsByTwoLetters() { //to check
         contactColor = randomUserColor();
         arrayContactColor.push(contactColor);
         const splitStringName = nameString.split(".");
-        if(splitStringName[1] == undefined){
-            newLetters2 =  firstLetter;
+        if (splitStringName[1] == undefined) {
+            newLetters2 = firstLetter;
             newAddedContactLetters.push(newLetters2);
-            
-        }else{
+
+        } else {
             let secondString = splitStringName[1];
             let secondLetter = secondString.charAt(0).toUpperCase();
-            newLetters2 =  firstLetter+ secondLetter;
+            newLetters2 = firstLetter + secondLetter;
             newAddedContactLetters.push(newLetters2);
         }
-        
+
     }
     console.log(newAddedContactLetters);
 }
@@ -328,27 +337,32 @@ function showNewAddedContactsByTwoLetters() { //to check
 function renderCircleName() {
     showContactsByTwoLetters();
     showNewAddedContactsByTwoLetters();
-    
     document.getElementById('circleContactsContainer').innerHTML = "";
     for (let i = 0; i < selectedContactLetters.length; i++) {
         const letters = selectedContactLetters[i];
-        const bgContactColor =  arrayContactColor[i];
-        document.getElementById('circleContactsContainer').innerHTML += `
-        <div class="circleContact" id="circleContact" style="background-color: ${bgContactColor} !important">  ${letters}
-        </div>
-        `;
+        const bgContactColor = arrayContactColor[i];
+        renderNamesInTwoLetters(bgContactColor, letters);
     }
-    
-    const bgContactColor =  arrayContactColor.slice(-1); //last Index of colorArray Array
-        document.getElementById('circleContactsContainer').innerHTML += `
-        <div class="circleContact" id="circleContact" style="background-color: ${bgContactColor} !important">  ${newAddedContactLetters}
-        </div>
+    const bgContactColor = arrayContactColor.slice(-1); //last Index of colorArray Array
+    showAddedContactInTwoLetters(bgContactColor, newAddedContactLetters);
+    selectedContactLetters.splice(0); //delete all by call this function
+    newAddedContactLetters.splice(0); //delete all by call this function
+    newContacts.splice(0);//delete all by call this function
+    console.log(arrayContactColor);
+}
+
+function renderNamesInTwoLetters(bgContactColor, letters){
+    return document.getElementById('circleContactsContainer').innerHTML += `
+    <div class="circleContact" id="circleContact" style="background-color: ${bgContactColor} !important">  ${letters}
+    </div>
     `;
-    
-    selectedContactLetters.splice(0); //delete all at call function
-    newAddedContactLetters.splice(0); //delete all at call function
-    newContacts.splice(0);//delete all at call function
-    console.log (arrayContactColor);
+}
+
+function showAddedContactInTwoLetters(bgContactColor, newAddedContactLetters){
+    return document.getElementById('circleContactsContainer').innerHTML += `
+    <div class="circleContact" id="circleContact" style="background-color: ${bgContactColor} !important">  ${newAddedContactLetters}
+    </div>
+    `;
 }
 
 
@@ -375,11 +389,9 @@ function deleteSubTask() {
     appendixSubtask.innerHTML = "";
     appendixSubtask.innerHTML = `
             <label class="container">
-                <input type="checkbox">
-                    <span class="checkmark"></span>
-                    <div class="subtaskCheck">${subTasks[0]}</div>
-            </label>
-            `;
+                <input type="checkbox"> <span class="checkmark"></span>
+                <div class="subtaskCheck">${subTasks[0]}</div>
+            </label> `;
     subTasks.splice(1); //to delete all from index 1
 }
 
@@ -400,7 +412,6 @@ function addSubTask() {
 var selectedSubtasks = []; //An Array to save the checkmarked subtasks 
 function chooseSubtasks(id) { //index, contact
     selectedSubtasks.splice(0); //delete all chose Contacts from last time
-
     let allChekbox = document.querySelectorAll(`.checkedSubTasks`); //check all checkboxes with the class `.checkedSubTasks`
     console.log(allChekbox.length);
     for (let i = 0; i < allChekbox.length; i++) {
@@ -431,43 +442,23 @@ function renderSubtasks() {
 
 /**
  * AddTask JSON Array
+ * read every Input Fields and Buttons to get values
  */
-var priority;
-var priorityImg;
 async function addTask() {
-
     await loadUserAccountsFromBackend();
-
     tasks = userAccounts[activeUser].userTasks;
-    /**read every Input Fields and Buttons to get value*/
-    var title = document.getElementById('title');
-    var description = document.getElementById('description');
-    /*var contact = document.getElementById('assignInput');*/
-    let contact = choseContacts;
-    let subTaskDone = [];
-    var category = document.getElementById('input');
-    var categoryColor = document.getElementById('color').style.background;
-    var dueDate = document.getElementById('date');
-    //var subTask = document.getElementById('subtasksInput');
-    var subTask = selectedSubtasks;
-    if (document.getElementById('prioUrgentBox').classList.contains('bgUrgent')) {
-        priority = document.getElementById('prioUrgentBox').innerText;
-        var priorityImg = document.createElement("prioUrgentImg");
-        priorityImg = "assets/img/urgent.png";
-    } else if (document.getElementById('prioMediumBox').classList.contains('bgMedium')) {
-        priority = document.getElementById('prioMediumBox').innerText;
-        var priorityImg = document.createElement("prioMediumImg");
-        priorityImg = "assets/img/medium.png";
-    } else {
-        priority = document.getElementById('prioLowBox').innerText;
-        var priorityImg = document.createElement("prioLowImg");
-        priorityImg = "assets/img/low.png";
-    }
-    var idTask = generateTaskId(tasks);
-    var progress = "To Do";
-
-    /**put every value to the newTask as a JSON Array */
-    var newTask = {
+    title = document.getElementById('title');
+    description = document.getElementById('description');
+    contact = choseContacts; //assigns the contact with the values of choseContact Array
+    subTaskDone = [];
+    category = document.getElementById('input');
+    categoryColor = document.getElementById('color').style.background;
+    dueDate = document.getElementById('date');
+    getPriorityInformation();
+    subTask = selectedSubtasks; //assigns the subTask with the value of selectedSubtasks Array
+    idTask = generateTaskId(tasks);
+    progress = "To Do";
+    var newTask = { /**put every value to the newTask as a JSON Array */
         "title": title.value,
         "description": description.value,
         "category": category.value,
@@ -481,24 +472,37 @@ async function addTask() {
         "id": idTask,
         "progress": progress
     };
-
     tasks.push(newTask); //new Task was pushed into tasks Array
     console.log(newTask);
+    /**save Tasks and User acc. to backend as JSON Array*/
+    await saveTasksToBackend();
+    await saveUserAccountsToBackend();
+    annimationTaskAddedToBoard(); //shows small window of Info Task added to Bard and navigated to board.html
+    setAllFieldsToDefault(); //change to default
+    closeDropdownCategory();/**dorpdowns were closed by creating or adding Task */
+    closeDropDownAssignTo();/**dorpdowns were closed by creating or adding Task */
+    //console.log(choseContacts);
+    choseContacts = [];
+}
 
-    /**dorpdowns were closed by creating or adding Task */
-    closeDropdownCategory();
-    closeDropDownAssignTo();
-    /**shows Task added to board Window with annimation*/
-    document.getElementById('messageAddedTask').style.display = "flex";
-    document.getElementById('messageAddedTask').classList.add('animate');
-    setTimeout(function () {
-        document.getElementById('messageAddedTask').style.display = "none";
-    }, 3900)
-    document.getElementById('addTaskBtn').classList.add('buttonDisabled');
-    setTimeout(function () {
-        document.getElementById('addTaskBtn').classList.add('buttonEnabled'); //during one Task added blocked the addTaskBtn
-    }, 4000)
-    /**Set other Inputfields to default values and the prio Buttons to the original text and color*/
+function getPriorityInformation(){
+    if (document.getElementById('prioUrgentBox').classList.contains('bgUrgent')) {
+        priority = document.getElementById('prioUrgentBox').innerText;
+        priorityImg = document.createElement("prioUrgentImg");
+        priorityImg = "assets/img/urgent.png";
+    } else if (document.getElementById('prioMediumBox').classList.contains('bgMedium')) {
+        priority = document.getElementById('prioMediumBox').innerText;
+        priorityImg = document.createElement("prioMediumImg");
+        priorityImg = "assets/img/medium.png";
+    } else {
+        priority = document.getElementById('prioLowBox').innerText;
+        priorityImg = document.createElement("prioLowImg");
+        priorityImg = "assets/img/low.png";
+    }
+}
+
+/**Set other Inputfields to default values and the prio Buttons to the original text and color*/
+function setAllFieldsToDefault() {
     title.value = "";
     description.value = "";
     category.value = "";
@@ -516,40 +520,48 @@ async function addTask() {
     document.getElementById('prioMediumImg').classList.remove('Img-white');
     document.getElementById('prioLowImg').classList.remove('Img-white');
     deleteSubTask();
+}
+
+/**animation if the Task is created or added*/
+function annimationTaskAddedToBoard() {
+    /**shows Task added to board Window with annimation*/
+    document.getElementById('messageAddedTask').style.display = "flex";
+    document.getElementById('messageAddedTask').classList.add('animate');
+    setTimeout(function () {
+        document.getElementById('messageAddedTask').style.display = "none";
+    }, 3900)
+    document.getElementById('addTaskBtn').classList.add('buttonDisabled');
+    setTimeout(function () {
+        document.getElementById('addTaskBtn').classList.add('buttonEnabled'); //during one Task added blocked the addTaskBtn
+    }, 4000)
     setTimeout(function () {
         window.location = "./board.html";
     }, 3600)
-
-    /**save Tasks and User acc. to backend as JSON Array*/
-    await saveTasksToBackend();
-    await saveUserAccountsToBackend();
-    console.log(choseContacts);
-    choseContacts = [];
 }
 
-
+/**function to generate new Id if one Id contains in the Task*/
 function generateTaskId(tasks) {
     var id = tasks.length;
     var idExists = true;
     while (idExists) {
-      // Überprüfe, ob die generierte ID bereits vorhanden ist
-      for (var i = 0; i < tasks.length; i++) {
-        if (tasks[i].id === id) {
-          idExists = true;
-          break;
+        // Überprüfe, ob die generierte ID bereits vorhanden ist
+        for (var i = 0; i < tasks.length; i++) {
+            if (tasks[i].id === id) {
+                idExists = true;
+                break;
+            }
+            else {
+                idExists = false;
+            }
         }
-        else {
-          idExists = false;
+        // Wenn die ID bereits existiert, generiere eine neue ID
+        if (idExists) {
+            id++;
         }
-      }
-      // Wenn die ID bereits existiert, generiere eine neue ID
-      if (idExists) {
-        id++;
-      }
     }
     return id;
-  }
-  
+}
+
 
 
 /**By clicking the Priority Urgent button the Text and Image color change to white --> Prio Medium and Prio Low change to their original color */
