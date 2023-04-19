@@ -145,6 +145,11 @@ h2 {
     cursor: pointer;
 }
 
+.dragging {
+    transform:rotate(15deg);
+    transition: all 125ms;
+  }
+
 .background{
     padding: 4px 25px;
     border-radius: 8px;

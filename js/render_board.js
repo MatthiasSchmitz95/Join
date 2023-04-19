@@ -1,6 +1,6 @@
 function generateHTML1(cards) {
     return /*html*/`
-    <div draggable="true" ondragstart="startDragging(${cards['id']})" onclick="showOverlay(${cards['id']})" class="card">
+    <div draggable="true" id="dragMe${cards['id']}" ondragstart="startDragging(${cards['id']})" onclick="showOverlay(${cards['id']})" class="card">
         <div id="backgroundColor${cards['id']}" class="background">
             ${cards['category']}
         </div>

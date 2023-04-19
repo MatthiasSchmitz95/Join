@@ -1,7 +1,9 @@
 let currentDraggedElement;
 let loadOverlay = false;
 let loadCircle = false;
-let choosedContact = []; //an Array to save the checked Contacts with checkbox
+let choosedContact = []; 
+let dragElement;
+let isDragging = false;
 
 
 function onloadBoard() {
@@ -126,7 +128,9 @@ function priorityImgCard(cards) {
 
 function startDragging(id) {
     currentDraggedElement = id;
+    dragElement = document.getElementById(`dragMe${id}`);
     document.getElementById('html').style.backgroundColor = 'rgb(0,0,0,0.1)';
+    document.getElementById(`dragMe${id}`).classList.add('dragging');
 }
 
 
