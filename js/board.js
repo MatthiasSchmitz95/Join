@@ -2,9 +2,6 @@ let currentDraggedElement;
 let loadOverlay = false;
 let loadCircle = false;
 let choosedContact = []; 
-let dragElement;
-let isDragging = false;
-
 
 function onloadBoard() {
     init('board');
@@ -128,7 +125,6 @@ function priorityImgCard(cards) {
 
 function startDragging(id) {
     currentDraggedElement = id;
-    dragElement = document.getElementById(`dragMe${id}`);
     document.getElementById('html').style.backgroundColor = 'rgb(0,0,0,0.1)';
     document.getElementById(`dragMe${id}`).classList.add('dragging');
 }

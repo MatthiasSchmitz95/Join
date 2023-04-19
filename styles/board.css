@@ -1,9 +1,4 @@
 
-
-.desktop {
-    position: relative;
-}
-
 .board-header {
     display: flex;
     flex-direction: row;
