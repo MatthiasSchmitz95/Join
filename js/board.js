@@ -147,6 +147,10 @@ async function moveTo(category) {
 
 
 function showOverlay(cards) {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
     let user = userAccounts[activeUser]['userTasks'];
     let todo = user.find((item) => item.id === cards);
     document.getElementById('overlay-background').classList.add('overlay-background');
