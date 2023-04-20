@@ -286,4 +286,29 @@
         font-size: 47px;
         line-height: 120%;
     }
+
+    .working-headlines {
+        width: unset;
+    }
+
+    .position-board-flex {
+        width: 100%;
+    }
+    .width100{
+        width: 100%;
+    }
+
+    .margin-left {
+        margin-left: 33px;
+    }
+
+    .margin-right {
+        margin-right: 33px;
+    }
+
+    .card{
+        margin-left: 33px;
+        margin-right: 33px;
+        width: unset;
+    }
 }

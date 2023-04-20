@@ -36,7 +36,7 @@
                 <input class="search-input" onchange="filterHtml()" id="search" type="text" placeholder=" Find Task">
                 <button class="add-button" onclick="showAddTaskPopOut()">Add task <img class="add-button-img"
                         src="assets/img/Capa1.svg"></button>
-                <button class="add-button-small"><img src="assets/img/Capa1.svg" alt=""></button>
+                <button onclick="showAddTaskPopOut()" class="add-button-small"><img src="assets/img/Capa1.svg" alt=""></button>
             </div>
         </div>
         <div class="search-button">
@@ -45,7 +45,7 @@
         <div>
             <div class="working-class position-board">
                 <div class="position-board-flex">
-                    <div>
+                    <div class="width100">
                         <div class="working-headlines">
                             <div class="margin-left">
                                 To do</div>
@@ -57,7 +57,7 @@
                             class="drag-drop-height">
                         </div>
                     </div>
-                    <div>
+                    <div class="width100">
                         <div class="working-headlines">
                             <div class="margin-left">
                                 In progress</div>
@@ -71,7 +71,7 @@
                     </div>
                 </div>
                 <div class="position-board-flex">
-                    <div>
+                    <div class="width100">
                         <div class="working-headlines">
                             <div class="margin-left">
                                 Awaiting Feedback</div>
@@ -83,7 +83,7 @@
                             id="awaitingFeedbackContent" class="drag-drop-height">
                         </div>
                     </div>
-                    <div>
+                    <div class="width100">
                         <div class="working-headlines">
                             <div class="margin-left">
                                 Done</div>
