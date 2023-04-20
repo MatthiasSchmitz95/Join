@@ -683,15 +683,19 @@ async function updateCalender() {
 /*clear all field of AddTask page*/
 function clearAllAddTaskFields() {
     window.location.reload();
+    document.getElementById('clearBtnImg').classList.remove('clearButtonImgblue');
+    document.getElementById('clearBtnImg').classList.add('clearButtonImgGray');
 }
 
 /**show AddTaskPopOut.html*/
 function showAddTaskPopOut() {
-    document.getElementById('popOut-taskCard').classList.remove('d-none');
-}
+    document.getElementById('bg').style.display = '';
+    document.getElementById('popOut-taskCard').classList = "popOut-taskCard";
+} 
 
 /**hide AddTaskPopOut.html*/
 function closePopOutAddTask() {
-    document.getElementById('popOut-taskCard').classList.add('d-none');
+    document.getElementById('popOut-taskCard').classList = "popOut-hidden";
+    document.getElementById('bg').style.display = 'none';
 }
 

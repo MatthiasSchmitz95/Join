@@ -18,11 +18,9 @@ input:-webkit-autofill:active{
 }
 
 .popOut-taskCard {
-    /*background: #FFFFFF;*/
-    /*position: relative;*/
     position: absolute;
-    top: -30px;
-    left: 80px;
+    top: -11px;
+    left: 130px;
     width: 1116px;
     height: 914px;
     background: #FFFFFF;
@@ -31,7 +29,26 @@ input:-webkit-autofill:active{
     display: flex;
     flex-direction: column;
     margin: 100px;
-    z-index: 5;
+    z-index: 6;
+    transform: translate(0px, 0px);
+    transition: 200ms;
+}
+
+.popOut-hidden{
+    position: absolute;
+    top: -11px;
+    left: 130px;
+    width: 1116px;
+    height: 914px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    margin: 100px;
+    z-index: 6;
+    transform: translate(1870px, 0px);
+    transition: 200ms;
 }
 
 .headline {
