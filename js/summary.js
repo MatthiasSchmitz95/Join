@@ -48,11 +48,12 @@ async function initSummary() {
     await loadTasksFromBackend();
     await loadUserAccountsFromBackend();
     setName();
-    checkingConditions()
+    checkingConditions();
+    sortDates();
     setTasks();
     setUrgencies();
     setDos();
-    sortDates();
+   
 }
 
 
