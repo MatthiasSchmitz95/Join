@@ -10,22 +10,23 @@
     <link rel="stylesheet" href="./styles/style.css">
     <link rel="stylesheet" href="./fonts.css">
     <link rel="stylesheet" href="./styles/board.css">
+    <link rel="stylesheet" href="styles/board2.css">
     <link rel="stylesheet" href="styles/addTaskPopOut.css">
     <script src="./js/main.js"></script>
-    
+
     <script src="./js/board.js"></script>
     <script src="js/board2.js"></script>
     <script src="js/render_board.js"></script>
     <script src="js/mini_backend.js"></script>
     <script src="./js/addTask.js"></script>
-    
-    
+
+
 </head>
 
 <body id="body" onload="onloadBoard()">
     <div id="overlay-background" onclick="closeOverlay()">
     </div>
-    <div id="desktop" class="desktop">
+    <div id="desktop">
         <div w3-include-html="desktop-template.html"></div>
         <div class="board-header">
             <div class="board-header-h2">
@@ -33,63 +34,77 @@
             </div>
             <div class="search-button">
                 <input class="search-input" onchange="filterHtml()" id="search" type="text" placeholder=" Find Task">
-                <button class="add-button" onclick="showAddTaskPopOut()">Add task <img class="add-button-img" src="assets/img/Capa1.svg"></button>
+                <button class="add-button" onclick="showAddTaskPopOut()">Add task <img class="add-button-img"
+                        src="assets/img/Capa1.svg"></button>
+                <button class="add-button-small"><img src="assets/img/Capa1.svg" alt=""></button>
             </div>
+        </div>
+        <div class="search-button">
+            <input class="search-input-small" onchange="filterHtml()" id="search" type="text" placeholder=" Find Task">
         </div>
         <div>
-        <div class="working-class">
-            <div class="position-board">
-                <div class="working-headlines">
-                    <div class="margin-left">
-                        To do</div>
-                    <div onclick="showAddTaskPopOut('popOut-taskCard')">
-                        <img class="plus-btn margin-right" src="assets/img/todo-plus.svg" alt="">
+            <div class="working-class position-board">
+                <div class="position-board-flex">
+                    <div>
+                        <div class="working-headlines">
+                            <div class="margin-left">
+                                To do</div>
+                            <div onclick="showAddTaskPopOut('popOut-taskCard')">
+                                <img class="plus-btn margin-right" src="assets/img/todo-plus.svg" alt="">
+                            </div>
+                        </div>
+                        <div ondrop="moveTo('To Do')" ondragover="allowDrop(event)" id="toDoContent"
+                            class="drag-drop-height">
+                        </div>
+                    </div>
+                    <div>
+                        <div class="working-headlines">
+                            <div class="margin-left">
+                                In progress</div>
+                            <div onclick="showAddTaskPopOut('popOut-taskCard')">
+                                <img class="plus-btn margin-right" src="assets/img/todo-plus.svg" alt="">
+                            </div>
+                        </div>
+                        <div ondrop="moveTo('In progress')" ondragover="allowDrop(event)" id="inProgressContent"
+                            class="drag-drop-height">
+                        </div>
                     </div>
                 </div>
-                <div ondrop="moveTo('To Do')" ondragover="allowDrop(event)" id="toDoContent" class="drag-drop-height">
-                </div>
-            </div>
-            <div>
-                <div class="working-headlines">
-                    <div class="margin-left">
-                        In progress</div>
-                    <div onclick="showAddTaskPopOut('popOut-taskCard')">
-                        <img class="plus-btn margin-right" src="assets/img/todo-plus.svg" alt="">
+                <div class="position-board-flex">
+                    <div>
+                        <div class="working-headlines">
+                            <div class="margin-left">
+                                Awaiting Feedback</div>
+                            <div onclick="showAddTaskPopOut('popOut-taskCard')">
+                                <img class="plus-btn margin-right" src="assets/img/todo-plus.svg" alt="">
+                            </div>
+                        </div>
+                        <div ondrop="moveTo('Awaiting Feedback')" ondragover="allowDrop(event)"
+                            id="awaitingFeedbackContent" class="drag-drop-height">
+                        </div>
                     </div>
-                </div>
-                <div ondrop="moveTo('In progress')" ondragover="allowDrop(event)" id="inProgressContent" class="drag-drop-height">
-                </div>
-            </div>
-            <div>
-                <div class="working-headlines">
-                    <div class="margin-left">
-                        Awaiting Feedback</div>
-                    <div onclick="showAddTaskPopOut('popOut-taskCard')">
-                        <img class="plus-btn margin-right" src="assets/img/todo-plus.svg" alt="">
+                    <div>
+                        <div class="working-headlines">
+                            <div class="margin-left">
+                                Done</div>
+                            <div onclick="showAddTaskPopOut('popOut-taskCard')">
+                                <img class="plus-btn margin-right" src="assets/img/todo-plus.svg" alt="">
+                            </div>
+                        </div>
+                        <div ondrop="moveTo('Done')" ondragover="allowDrop(event)" id="doneContent"
+                            class="drag-drop-height">
+                        </div>
                     </div>
-                </div>
-                <div ondrop="moveTo('Awaiting Feedback')" ondragover="allowDrop(event)" id="awaitingFeedbackContent" class="drag-drop-height">
-                </div>
-            </div>
-            <div>
-                <div class="working-headlines">
-                    <div class="margin-left">
-                        Done</div>
-                    <div onclick="showAddTaskPopOut('popOut-taskCard')">
-                        <img class="plus-btn margin-right" src="assets/img/todo-plus.svg" alt="">
-                    </div>
-                </div>
-                <div ondrop="moveTo('Done')" ondragover="allowDrop(event)" id="doneContent" class="drag-drop-height">
                 </div>
             </div>
         </div>
     </div>
-    </div>
 
-    <div id="overlay" class="overlay d-none" >
+    <div id="overlay" class="overlay d-none">
     </div>
 
     <div w3-include-html="addTaskPopOut.html"></div>
+
 </body>
 
 </html>
