@@ -5,8 +5,8 @@ body {
     background: #f6f7f8;
 }
 
-.mt-15 {
-    margin-top: .8rem;
+textarea {
+    resize: none;
 }
 
 .d-none {
@@ -119,7 +119,7 @@ body {
     color: #58B9E3;
 }
 
-.clearButton:active{
+.clearButton:active {
     border: 1px solid #5E6776;
     color: #5E6776;
 }
