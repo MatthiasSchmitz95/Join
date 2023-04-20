@@ -313,7 +313,7 @@ h2 {
 }
 
 .color-change:hover {
-    filter: invert(59%) sepia(35%) saturate(1765%) hue-rotate(165deg) brightness(94%) contrast(87%);
+    filter: invert(63%) sepia(57%) saturate(2561%) hue-rotate(165deg) brightness(93%) contrast(90%);
 }
 
 .overlay-delete-task:active {
