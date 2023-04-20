@@ -171,7 +171,7 @@
 
 @media(max-width: 1300px) {
     .board-header {
-        gap: 7%;
+        gap: 27%;
         margin-left: 240px;
     }
 
@@ -181,5 +181,43 @@
         margin-top: 37px;
         flex-direction: column;
         justify-content:flex-start;
+        align-items: center;
+    }
+
+    .position-board-flex{
+        width: 85%;
+    }
+
+    .drag-drop-height{
+        min-height: 80%;
+    }
+}
+
+@media(max-width: 1080px){
+    .board-header {
+        gap: 5%;
+    }
+    .search-button{
+        gap: 24px;
+    }
+}
+
+@media(max-width: 900px){
+    .board-header{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-top: 114px;
+        justify-content: center;
+        margin-left: unset;
+        width: unset;
+    }
+
+    .position-board{
+        margin: unset;
+    }
+
+    .drag-drop-height{
+        padding-bottom: 70px;
     }
 }

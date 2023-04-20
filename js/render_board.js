@@ -69,6 +69,9 @@ function renderShowOverlay3(cards){
                         </div>
 </div>
 <div class="overlay-edit-task-position">
+<div class="overlay-delete-task" onclick=" deleteTaskActiveUser(${cards})">
+      <img class="color-change" src="assets/img/delete.svg">
+    </div>
     <div class="overlay-edit-task" onclick="showOverlayChange(${cards})">
       <img src="assets/img/edit-task.svg">
     </div>
@@ -148,7 +151,7 @@ function showOverlayChangeHTML4(cards){
     </div>
     <div id="assignedList" class="assignedList"></div>
     </div>
-    <div>
+    <div class="display" id="contactOverlayChange">
     </div>
     <div class="overlay-edit-task-position">
     <div class="overlay-chance-task" onclick="saveInputTask(${cards})">
@@ -188,4 +191,9 @@ function renderUserInitialeHTML1(idStr, user){
 function renderUserInitialeHTML2(idStr, count){
     return  `
     <div id="circle${idStr}" class="initiales background-black">+${count}</div>`;
+}
+
+function renderContactsOverlayChangeHTML(idStr, user){
+    return `
+    <div id="round${idStr}" class="initiales-Overlay">${user.letters} </div>`;
 }

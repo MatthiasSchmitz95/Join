@@ -148,7 +148,7 @@ async function moveTo(category) {
 
 function showOverlay(cards) {
     window.scrollTo({
-        top: 0,
+        top: 90,
         behavior: "smooth"
       });
     let user = userAccounts[activeUser]['userTasks'];
@@ -206,6 +206,7 @@ function showOverlayChange(cards) {
     insertPriority(cards);
     renderSubtasksBoard(cards);
     chanceTextarea(cards);
+    renderContactsOverlayChange(todo);
     updateCalender();
 }
 
@@ -303,3 +304,16 @@ function dropDownAssignToBoard(cards) {
      closeDropdownCategoryBoard();
 }
 
+function renderContactsOverlayChange(cards){
+    let contant = document.getElementById('contactOverlayChange');
+    contant.innerHTML = '';
+    const { id, contact } = cards;
+    const user = userAccounts[activeUser].userContacts;
+    const userWithContacts = user.filter(({ name }) => contact.includes(name));
+    const userContactsLength = userWithContacts.length;
+    userWithContacts.forEach((user, index) => {
+        const idStr = id.toString() + index.toString();
+        contant.innerHTML += renderContactsOverlayChangeHTML(idStr, user);
+        changeBackgroundCircle(`round${idStr}`, user.color);
+    })
+}

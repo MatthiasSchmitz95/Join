@@ -232,10 +232,15 @@ function renderFilterHtmlDone(userTasks, search, cards){
 
 
 async function deleteTaskActiveUser(number){
-    let user = userAccounts[activeUser]['userTasks'];//[number];
-    user.splice(number,1);
-    console.log(userAccounts);
+    let user = userAccounts[activeUser]['userTasks'];
+    for (let i = 0; i < user.length; i++) {
+        if (user[i].id === number){
+        user.splice(i, 1); 
+        break;
+    }
+} 
     await saveTasksToBackend()
-    await saveUserAccountsToBackend();
-    
+    await saveUserAccountsToBackend();  
+    closeOverlay();
+    updateHTML(); 
 }

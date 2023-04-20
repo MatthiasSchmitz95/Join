@@ -1,4 +1,3 @@
-
 .board-header {
     display: flex;
     flex-direction: row;
@@ -42,7 +41,8 @@ h2 {
     height: 51px;
     border: 1px solid #A8A8A8;
     border-radius: 10px;
-    background: url(/assets/img/search-input.svg) no-repeat  right top;;
+    background: url(/assets/img/search-input.svg) no-repeat right top;
+    ;
     background-position: right center;
     background-position-x: 220px;
 }
@@ -64,10 +64,10 @@ h2 {
 }
 
 .add-button:hover {
-    background-color: rgb(41,171,226);
+    background-color: rgb(41, 171, 226);
 }
 
-.add-button:active{
+.add-button:active {
     background-color: rgb(9, 25, 49);
 }
 
@@ -75,21 +75,21 @@ h2 {
     margin-left: 6px;
 }
 
-.plus-btn:hover{
+.plus-btn:hover {
     filter: invert(59%) sepia(35%) saturate(1765%) hue-rotate(165deg) brightness(94%) contrast(87%);
 }
 
-.plus-btn:active{
+.plus-btn:active {
     filter: invert(73%) sepia(2%) saturate(2510%) hue-rotate(177deg) brightness(72%) contrast(87%);
 }
 
-.position-board{
+.position-board {
     margin-left: 240px;
     position: relative;
     margin-right: 10px;
 }
 
-.position-board-flex{
+.position-board-flex {
     display: flex;
     justify-content: space-around;
     width: 50%;
@@ -139,46 +139,46 @@ h2 {
 }
 
 .dragging {
-    transform:rotate(15deg);
+    transform: rotate(15deg);
     transition: all 125ms;
-  }
+}
 
-.background{
+.background {
     padding: 4px 25px;
     border-radius: 8px;
     margin-bottom: 10px;
     color: white;
 }
 
-.background-black{
+.background-black {
     background-color: #000000;
 }
 
-.width100{
+.width100 {
     width: 100%;
 }
 
-.progress{
+.progress {
     width: 138px;
 }
 
-.progressBar{
+.progressBar {
     height: 8px;
-    background-color: rgb(41,171,226);
+    background-color: rgb(41, 171, 226);
 }
 
-.position-progress{
+.position-progress {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 20px;
 }
 
-.count{
+.count {
     font-size: 12px;
 }
 
-.initiales{
+.initiales {
     width: 35px;
     height: 35px;
     border: 1px solid #FFFFFF;
@@ -190,7 +190,7 @@ h2 {
     margin-left: -8px;
 }
 
-.initiales-Overlay{
+.initiales-Overlay {
     width: 45px;
     height: 45px;
     border: 2px solid #FFFFFF;
@@ -201,19 +201,19 @@ h2 {
     align-items: center;
 }
 
-.position-cards-bottom{
+.position-cards-bottom {
     display: flex;
     width: 100%;
     justify-content: space-between;
     align-items: center;
 }
 
-.flex{
+.flex {
     display: flex;
     padding-left: 8px;
 }
 
-.text-color{
+.text-color {
     color: rgb(184, 184, 184);
 }
 
@@ -266,54 +266,67 @@ h2 {
     font-size: 21px;
 }
 
-.overlay-date{
+.overlay-date {
     font-size: 21px;
 }
 
-.drag-drop-height{
-    min-height: 800px;
+.drag-drop-height {
+    min-height: 525px;
+    padding-bottom: 50px;
 }
 
-.close-icon{
+.close-icon {
     margin-top: -15px;
     margin-right: -15px;
     cursor: pointer;
 }
 
-.close-icon-change{
+.close-icon-change {
     margin-top: -27px;
     margin-right: -27px;
     cursor: pointer;
 }
 
-.overlay-header{
+.overlay-header {
     display: flex;
     justify-content: space-between;
     width: 100%;
 }
 
-.overlay-edit-task{
-    display: flex;  
+.overlay-edit-task {
+    display: flex;
     justify-content: center;
     align-items: center;
     padding: 0px;
     gap: 6px;
-    width: 57px;
-    height: 57px;
+    width: 50px;
+    height: 50px;
     background: #2A3647;
-    border-radius: 10px;
+    border-radius: 0px 10px 10px 0px;
     cursor: pointer;
 }
 
-.overlay-edit-task:hover {
-    background-color: rgb(41,171,226);
+.overlay-delete-task {
+    cursor: pointer;
 }
 
-.overlay-edit-task:active{
+.color-change:hover {
+    filter: invert(59%) sepia(35%) saturate(1765%) hue-rotate(165deg) brightness(94%) contrast(87%);
+}
+
+.overlay-delete-task:active {
+    filter: invert(73%) sepia(2%) saturate(2510%) hue-rotate(177deg) brightness(72%) contrast(87%);
+}
+
+.overlay-edit-task:hover {
+    background-color: rgb(41, 171, 226);
+}
+
+.overlay-edit-task:active {
     background-color: rgb(9, 25, 49);
 }
 
-.overlay-chance-task{
+.overlay-chance-task {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -330,20 +343,20 @@ h2 {
 }
 
 .overlay-chance-task:hover {
-    background-color: rgb(41,171,226);
+    background-color: rgb(41, 171, 226);
 }
 
-.overlay-chance-task:active{
+.overlay-chance-task:active {
     background-color: rgb(9, 25, 49);
 }
 
-.overlay-edit-task-position{
+.overlay-edit-task-position {
     width: 100%;
     display: flex;
     justify-content: end;
 }
 
-.overlay-background{
+.overlay-background {
     z-index: 1;
     position: fixed;
     top: 0;
@@ -351,4 +364,8 @@ h2 {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.6);
+}
+
+.display{
+    display: flex;
 }
