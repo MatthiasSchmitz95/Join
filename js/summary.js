@@ -11,9 +11,6 @@ let dateSummary = [];
     
     let userName = userAccounts[activeUser].userName;
     document.getElementById('name').innerHTML = userName;
-    //setTasks();
-    //setUrgencies();
-    //setDos();
 }
 
 
@@ -27,7 +24,11 @@ function setTasks() {
 
 function setUrgencies() {
     document.getElementById('urgent-nr').innerHTML = urgents;
-    document.getElementById('deadline-date').innerHTML = dateSummary[0];
+    if (dateSummary.length == 0) {
+        document.getElementById('deadline-date').innerHTML ='no deadlines';     
+    } else {
+        document.getElementById('deadline-date').innerHTML = dateSummary[0];    
+    }  
 }
 
 
@@ -42,7 +43,7 @@ function sortDates() {
 }
 
 
-async function countTasks() {
+async function initSummary() {
     await init('summary');
     await loadTasksFromBackend();
     await loadUserAccountsFromBackend();
