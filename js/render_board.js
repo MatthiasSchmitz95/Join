@@ -161,12 +161,12 @@ function showOverlayChangeHTML4(cards){
 }
 
 
-function renderAssignToBoardContactsHTML(userName, checkedAttribute){
+function renderAssignToBoardContactsHTML(userName, checkedAttribute, todo){
     return `
     <div class="assignedContact" >
         <div>${userName}</div>
         <label class="filledCheckboxContainer">
-            <input type="checkbox" class="checkboxForContacts" value="${userName}" ${checkedAttribute} onclick="chooseContactBoard('${userName}')">
+            <input type="checkbox" class="checkboxForContacts" value="${userName}" ${checkedAttribute} onclick="chooseContactBoard('${userName}', ${todo})">
                 <span class="checkmark"></span>
         </label>
     </div>`;

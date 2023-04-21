@@ -25,12 +25,12 @@ function renderAssignToBoardContacts(users,assignedContactList, todo){
         const element = todo.contact;
         const contact = element.includes(userName);
         const checkedAttribute = contact ? 'checked' : '';
-        assignedContactList.innerHTML += renderAssignToBoardContactsHTML(userName, checkedAttribute)
+        assignedContactList.innerHTML += renderAssignToBoardContactsHTML(userName, checkedAttribute, todo)
     }
 }
 
 
-function chooseContactBoard(name) { 
+function chooseContactBoard(name, todo) { 
     let inputAssignedContact = document.getElementById('assignInput'); 
     inputAssignedContact.value = ''; 
     inputAssignedContact.value = name; 
@@ -39,7 +39,8 @@ function chooseContactBoard(name) {
     for (let i = 0; i < allChekbox.length; i++) {
         const checkbox = allChekbox[i];
         if (checkbox.checked) {  
-            choosedContact.push(checkbox.value); 
+            choosedContact.push(checkbox.value);
+            renderContactsOverlayChange(todo) 
         }
     }
 }
@@ -87,7 +88,7 @@ function contactChoosed(todo) {
     }
     if (!todo.contact.includes(todo.contact)) {
         todo.contact = choosedContact
-    }
+    } 
 }
 
 
