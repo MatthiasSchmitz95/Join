@@ -41,6 +41,9 @@ function renderShowOverlay1(todo, cards){
         <div class="close-icon">
             <img onclick="closeOverlay()" src="assets/img/close-overlay.svg">
         </div>
+        <div class="close-icon-small">
+            <img onclick="closeOverlay()" src="assets/img/backarrow.svg" alt="">
+        </div>
     </div>
     <div class="overlay-title">
         ${(todo.title)}
@@ -95,7 +98,7 @@ function showOverlayChangeHTML1(todo){
             <input id="inputTittle" type=text class="input-chances-title" placeholder="${(todo.title)}">
          </div>
          <div class="close-icon-change">
-             <img  onclick="closeOverlay()" src="assets/img/close-overlay.svg">
+             <img onclick="closeOverlay()" src="assets/img/close-overlay.svg">
          </div>
      </div>
      <div class="width-chances">
@@ -111,7 +114,7 @@ function showOverlayChangeHTML2(todo){
     Due date <br>
     <input class="input-chances-title" type="date" id="date" value="${(todo['dueDate'])}" placeholder="${(todo['dueDate'])}">
  </div>
- <div id="subtasks">
+ <div id="subtasks" class="subtasks-flex">
  <div class="addSubtaskContainer">
                  <input class="subtasksInput" id="subtasksInput" placeholder="Add new Subtask" />
                  <div class="addSubtaskBtn" id="addSubtaskBtn" onclick="createNewSubtask()"><img
