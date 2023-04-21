@@ -166,7 +166,7 @@ function renderAssignToBoardContactsHTML(userName, checkedAttribute, todo){
     <div class="assignedContact" >
         <div>${userName}</div>
         <label class="filledCheckboxContainer">
-            <input type="checkbox" class="checkboxForContacts" value="${userName}" ${checkedAttribute} onclick="chooseContactBoard('${userName}', ${todo})">
+            <input type="checkbox" class="checkboxForContacts" value="${userName}" ${checkedAttribute} onclick="chooseContactBoard('${userName}', ${todo['id']})">
                 <span class="checkmark"></span>
         </label>
     </div>`;

@@ -30,7 +30,9 @@ function renderAssignToBoardContacts(users,assignedContactList, todo){
 }
 
 
-function chooseContactBoard(name, todo) { 
+function chooseContactBoard(name, cards) {
+    let user = userAccounts[activeUser]['userTasks'];
+    let todo = user.find((item) => item.id === cards); 
     let inputAssignedContact = document.getElementById('assignInput'); 
     inputAssignedContact.value = ''; 
     inputAssignedContact.value = name; 
@@ -40,9 +42,8 @@ function chooseContactBoard(name, todo) {
         const checkbox = allChekbox[i];
         if (checkbox.checked) {  
             choosedContact.push(checkbox.value);
-            renderContactsOverlayChange(todo) 
-        }
-    }
+            renderContactsOverlayChange(todo); 
+        }} 
 }
 
 

@@ -310,18 +310,29 @@ function renderContactsOverlayChange(cards){
     const { id, contact } = cards;
     const user = userAccounts[activeUser].userContacts;
     if(choosedContact.length == 0){
+        renderContactsWithContacts(id, contact, contant, user);
+    }
+    if(choosedContact.length >= 1){
+        renderContactsChoosedContacts(id, contact, contant, user);
+    }
+}
+
+
+function renderContactsChoosedContacts(id, contact, contant, user){
+    const userWithContacts = user.filter(({ name }) => choosedContact.includes(name));
+    userWithContacts.forEach((user, index) => {
+        const idStr = id.toString() + index.toString();
+        contant.innerHTML += renderContactsOverlayChangeHTML(idStr, user);
+        changeBackgroundCircle(`round${idStr}`, user.color);
+    })
+}
+
+
+function renderContactsWithContacts(id, contact, contant, user){
     const userWithContacts = user.filter(({ name }) => contact.includes(name));
     userWithContacts.forEach((user, index) => {
         const idStr = id.toString() + index.toString();
         contant.innerHTML += renderContactsOverlayChangeHTML(idStr, user);
         changeBackgroundCircle(`round${idStr}`, user.color);
-    })}
-    if(choosedContact.length >= 1){
-        const userWithContacts = user.filter(({ name }) => choosedContact.includes(name));
-        userWithContacts.forEach((user, index) => {
-            const idStr = id.toString() + index.toString();
-            contant.innerHTML += renderContactsOverlayChangeHTML(idStr, user);
-            changeBackgroundCircle(`round${idStr}`, user.color);
-        })
-    }
+    })
 }
