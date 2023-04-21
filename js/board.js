@@ -309,11 +309,19 @@ function renderContactsOverlayChange(cards){
     contant.innerHTML = '';
     const { id, contact } = cards;
     const user = userAccounts[activeUser].userContacts;
+    if(choosedContact.length == 0){
     const userWithContacts = user.filter(({ name }) => contact.includes(name));
-    const userContactsLength = userWithContacts.length;
     userWithContacts.forEach((user, index) => {
         const idStr = id.toString() + index.toString();
         contant.innerHTML += renderContactsOverlayChangeHTML(idStr, user);
         changeBackgroundCircle(`round${idStr}`, user.color);
-    })
+    })}
+    if(choosedContact.length >= 1){
+        const userWithContacts = user.filter(({ name }) => choosedContact.includes(name));
+        userWithContacts.forEach((user, index) => {
+            const idStr = id.toString() + index.toString();
+            contant.innerHTML += renderContactsOverlayChangeHTML(idStr, user);
+            changeBackgroundCircle(`round${idStr}`, user.color);
+        })
+    }
 }

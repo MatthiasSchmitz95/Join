@@ -169,6 +169,15 @@
     border-radius: 10px;
 }
 
+.add-button-small{
+    display: none;
+}
+
+.search-input-small{
+    display: none;
+}
+
+
 @media(max-width: 1300px) {
     .board-header {
         gap: 27%;
@@ -191,6 +200,13 @@
     .drag-drop-height {
         min-height: 80%;
     }
+    .add-button-small{
+        display: none;
+    }
+
+    .search-input-small{
+        display: none;
+    }
 }
 
 @media(max-width: 1080px) {
@@ -200,6 +216,13 @@
 
     .search-button {
         gap: 24px;
+    }
+    .add-button-small{
+        display: none;
+    }
+
+    .search-input-small{
+        display: none;
     }
 }
 
@@ -221,6 +244,15 @@
     .drag-drop-height {
         padding-bottom: 70px;
     }
+
+    .search-input-small{
+        display: none;
+    }
+
+    .add-button-small{
+        display: none;
+    }
+
 }
 
 @media(max-width: 640px) {
