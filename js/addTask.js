@@ -13,7 +13,7 @@ var choseContacts = []; //an Array to save the checked Contacts with checkbox
 var priority;
 var priorityImg;
 var addsubtask; //global variable for addsubTask button
-var subTasks = ['Subtask 1']; //default value in subTasks Array
+var subTasks = []; //default value in subTasks Array
 
 var userName; //for Assigned To users
 var newAssingedContact;
@@ -45,8 +45,8 @@ function renderCategory() {
     let categoryList = document.getElementById('categoryList'); //addTask.html line 51 - container for category Input box
     categoryList.innerHTML = "";
     for (let i = 0; i < categoriesArray.length; i++) { //increment category Array form 0 to Array length
-        const category = categoriesArray[i]; //category Array Index values
-        const color = colorsArray[i]; //color Array Index values
+        const category = categoriesArray[i]; //render category Array Index values for dropDown Menu
+        const color = colorsArray[i]; //render color Array Index values for color circles
         //render Category and Color Dots
         categoryList.innerHTML += `
         <div class="categoryAndColor" onclick="chooseCategory(${i}, '${category}', '${color}')" >
@@ -70,17 +70,10 @@ function unsetCategoryInputField() {
 /* Show Category Select Menu - toggle at clicking on the dropdown Button */
 function dropDown() {
     categoryList = document.getElementById('categoryList');
-    categoryInputContainer = document.getElementById('inputContainer');
     if (categoryList.style.display == "block") { //the Container for Category is open ?
-        categoryList.style.display = "none"; //hide Container for Category 
-        categoryInputContainer.style.border = "1px solid #D1D1D1";  //Category Input Container show all border 
-        categoryInputContainer.style.borderRadius = "10px"; //Category Input Container show all Border radius with 10px
+        closeDropdownCategory();
     } else { //Container for Category is closed ?
-        categoryList.style.display = "block"; //shows Container for Category to rendern
-        categoryInputContainer.style.borderBottom = "none"; //Category Input Container has no border Bottom
-        /* top-left top-right bottom-right bottom-left */
-        categoryInputContainer.style.borderRadius = "10px 10px 0 0"; //Category Input Container show only top-left top-right Border radius
-        renderCategory(); //render Category in the Container
+        showDropdownCategory();
     }
     closeDropDownAssignTo(); //close the "Assigned to"-Container -> if "Category Select" is active
 }
@@ -89,9 +82,20 @@ function dropDown() {
 function closeDropdownCategory() {
     var categoryList = document.getElementById('categoryList');
     categoryInputContainer = document.getElementById('inputContainer');
-    categoryList.style.display = "none";
-    categoryInputContainer.style.border = "1px solid #D1D1D1";
-    categoryInputContainer.style.borderRadius = "10px";
+    categoryList.style.display = "none"; //hide Container for Category 
+    categoryInputContainer.style.border = "1px solid #D1D1D1"; //Category Input Container show all border 
+    categoryInputContainer.style.borderRadius = "10px"; //Category Input Container show all Border radius with 10px
+}
+
+/**show the Category Select Menu*/
+function showDropdownCategory() {
+    categoryList = document.getElementById('categoryList');
+    categoryInputContainer = document.getElementById('inputContainer');
+    categoryList.style.display = "block"; //shows Container for Category to rendern
+    categoryInputContainer.style.borderBottom = "none"; //Category Input Container has no border Bottom
+    /* top-left top-right bottom-right bottom-left */
+    categoryInputContainer.style.borderRadius = "10px 10px 0 0"; //Category Input Container show only top-left top-right Border radius
+    renderCategory(); //render Category in the Container
 }
 
 /**choose one Category from the Category Select Menu via dropDown
@@ -165,7 +169,6 @@ async function renderAssignTo() { //function to render AssignTo
     assignedContactList.innerHTML = ""; //clear container inside html
     //for (let i = 0; i < userAccounts.length; i++) {
     //    var userName = userAccounts[i]['userName'];
-
     /**render the user contacts */
     for (let i = 0; i < userAccounts[activeUser]['userContacts'].length; i++) {
         userName = userAccounts[activeUser]['userContacts'][i]['name'];
@@ -241,7 +244,7 @@ function closeDropDownAssignTo() {
 function assignToInput() { //click here to invite new Contact via email
     closeDropdownCategory(); //dropDown Category Menu closed
     document.getElementById('assignInput').value = "";
-    document.getElementById('assignInput').placeholder = 'contact Mail (jon.doe@gmail.com)'; //shows New Category Name in Category Input Field
+    document.getElementById('assignInput').placeholder = 'contact Mail'; //shows New Category Name in Category Input Field
     document.getElementById('newAssignToInput').style.display = "flex"; //shows newCategoryInput container -> shows "cross mark and check mark"
     document.getElementById('assignDropDown').style.display = "none"; //hide Category DropDown Button
     closeDropDownAssignTo();
@@ -351,14 +354,14 @@ function renderCircleName() {
     console.log(arrayContactColor);
 }
 
-function renderNamesInTwoLetters(bgContactColor, letters){
+function renderNamesInTwoLetters(bgContactColor, letters) {
     return document.getElementById('circleContactsContainer').innerHTML += `
     <div class="circleContact" id="circleContact" style="background-color: ${bgContactColor} !important">  ${letters}
     </div>
     `;
 }
 
-function showAddedContactInTwoLetters(bgContactColor, newAddedContactLetters){
+function showAddedContactInTwoLetters(bgContactColor, newAddedContactLetters) {
     return document.getElementById('circleContactsContainer').innerHTML += `
     <div class="circleContact" id="circleContact" style="background-color: ${bgContactColor} !important">  ${newAddedContactLetters}
     </div>
@@ -485,7 +488,7 @@ async function addTask() {
     choseContacts = [];
 }
 
-function getPriorityInformation(){
+function getPriorityInformation() {
     if (document.getElementById('prioUrgentBox').classList.contains('bgUrgent')) {
         priority = document.getElementById('prioUrgentBox').innerText;
         priorityImg = document.createElement("prioUrgentImg");
@@ -691,7 +694,7 @@ function clearAllAddTaskFields() {
 function showAddTaskPopOut() {
     document.getElementById('bg').style.display = '';
     document.getElementById('popOut-taskCard').classList = "popOut-taskCard";
-} 
+}
 
 /**hide AddTaskPopOut.html*/
 function closePopOutAddTask() {
