@@ -3,6 +3,7 @@ let loadOverlay = false;
 let loadCircle = false;
 let choosedContact = []; 
 
+
 function onloadBoard() {
     init('board');
     updateHTML();
