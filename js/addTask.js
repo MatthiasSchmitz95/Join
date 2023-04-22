@@ -200,6 +200,7 @@ function chooseContact(name) { //index, contact
         const checkbox = allChekbox[i];
         if (checkbox.checked) {  //if checkbox checked
             choseContacts.push(checkbox.value); //push the checked Contacts in the Array
+            displayChosenContactsForTask();
         }
     }
     console.log('chosenContact', choseContacts);
@@ -278,7 +279,8 @@ function showDropDownAssignTo() {
     if (choseContacts == '') {
         renderAssignTo(); //show or render the contacts
     } else {
-        renderAssignToCheckMarked();
+        renderAssignToCheckMarked(); 
+        displayChosenContactsForTask();
     }
 }
 
@@ -305,15 +307,20 @@ function rejectAssignTo() {
 function addnewContact() {
     newAssingedContact = document.getElementById('assignInput');
     newContacts.push(newAssingedContact.value); //to load newContacts array
-    renderCircleName();
+    /*renderCircleName();
     changeEmailToContactName();
     document.getElementById('circleContactsContainer').style.display = "flex";
     document.getElementById('newAssignToInput').style.display = "none"; //hide newCategoryInput container -> shows "cross mark and check mark"
     document.getElementById('assignDropDown').style.display = "flex"; //shows Category DropDown Button
-    newContacts.splice(0);//delete all by call this function
-    //choseContacts.splice(0);//delete all by call this function
+    newContacts.splice(0);//delete all by call this function*/
 }
 
+function displayChosenContactsForTask(){
+    document.getElementById('circleContactsContainer').style.display = "flex";
+    renderCircleName();
+}
+
+/*
 function changeEmailToContactName() {
     let stringEmail = newAssingedContact.value;
     const splitStringEmail = stringEmail.split("@");
@@ -330,9 +337,10 @@ function changeEmailToContactName() {
     }
     console.log('added new contact for Task: ', choseContacts.slice(-1)); //show choseContact last index
     console.log('chosen contact Array update: ', choseContacts); //show choseContact Array
-}
+}*/
 
 var arrayContactColor = [];
+
 function showContactsByTwoLetters() { //good
     for (let i = 0; i < choseContacts.length; i++) {
         let chosenContact = choseContacts[i];
@@ -351,10 +359,10 @@ function showContactsByTwoLetters() { //good
             selectedContactLetters.push(newLetters2);
         }
     }
-    console.log(selectedContactLetters);
+    //console.log(selectedContactLetters);
 }
 
-
+/*
 function showNewAddedContactsByTwoLetters() { //to check
     for (let i = 0; i < newContacts.length; i++) {
         let addedNewContact = newContacts[i];
@@ -377,23 +385,23 @@ function showNewAddedContactsByTwoLetters() { //to check
 
     }
     console.log(newAddedContactLetters);
-}
+}*/
 
 function renderCircleName() {
     showContactsByTwoLetters();
-    showNewAddedContactsByTwoLetters();
+    //showNewAddedContactsByTwoLetters();
     document.getElementById('circleContactsContainer').innerHTML = "";
     for (let i = 0; i < selectedContactLetters.length; i++) {
         const letters = selectedContactLetters[i];
         const bgContactColor = arrayContactColor[i];
         renderNamesInTwoLetters(bgContactColor, letters);
     }
-    const bgContactColor = arrayContactColor.slice(-1); //last Index of colorArray Array
-    showAddedContactInTwoLetters(bgContactColor, newAddedContactLetters);
+    bgContactColor = arrayContactColor.slice(-1); //last Index of colorArray Array
+    //showAddedContactInTwoLetters(bgContactColor, newAddedContactLetters);
     selectedContactLetters.splice(0); //delete all by call this function
     newAddedContactLetters.splice(0); //delete all by call this function
     newContacts.splice(0);//delete all by call this function
-    console.log(arrayContactColor);
+    //console.log(arrayContactColor);
 }
 
 function renderNamesInTwoLetters(bgContactColor, letters) {
@@ -403,12 +411,12 @@ function renderNamesInTwoLetters(bgContactColor, letters) {
     `;
 }
 
-function showAddedContactInTwoLetters(bgContactColor, newAddedContactLetters) {
+/*function showAddedContactInTwoLetters(bgContactColor, newAddedContactLetters) {
     return document.getElementById('circleContactsContainer').innerHTML += `
     <div class="circleContact" id="circleContact" style="background-color: ${bgContactColor} !important">  ${newAddedContactLetters}
     </div>
     `;
-}
+}*/
 
 
 /**
@@ -460,7 +468,7 @@ function chooseSubtasks(id) { //index, contact
             selectedSubtasks.push(checkbox.value); //push in SelectedSubtasks[Array] value
         }
     }
-    console.log('selectedSubtasks', selectedSubtasks);
+    //console.log('selectedSubtasks', selectedSubtasks);
 }
 
 /**render SubTask at the bottom of the subTask Input filed */
@@ -623,12 +631,12 @@ function toggleInsertUrgent() {
     document.getElementById("prioUrgentBox").addEventListener("click", function handleClick(event) {
         const hasClass = event.target.classList.contains('bgUrgent');
         if (hasClass) {
-            console.log('applied bg White');
+            //console.log('applied bg White');
             document.getElementById('prioUrgentBox').classList.add('bgTextWhite');
             document.getElementById('prioUrgentImg').classList.add("Img-white");
         }
         else {
-            console.log('removed bg White');
+            //console.log('removed bg White');
             document.getElementById('prioUrgentBox').classList.remove('bgTextWhite');
             document.getElementById('prioUrgentImg').classList.remove("Img-white");
         }
@@ -655,12 +663,12 @@ function toggleInsertMedium() {
     document.getElementById("prioMediumBox").addEventListener("click", function handleClick(event) {
         const hasClass = event.target.classList.contains('bgMedium');
         if (hasClass) {
-            console.log('applied bg White');
+            //console.log('applied bg White');
             document.getElementById('prioMediumBox').classList.add('bgTextWhite');
             document.getElementById('prioMediumImg').classList.add("Img-white");
         }
         else {
-            console.log('removed bg White');
+            //console.log('removed bg White');
             document.getElementById('prioMediumBox').classList.remove('bgTextWhite');
             document.getElementById('prioMediumImg').classList.remove("Img-white");
         }
@@ -687,12 +695,12 @@ function toggleInsertLow() {
     document.getElementById("prioLowBox").addEventListener("click", function handleClick(event) {
         const hasClass = event.target.classList.contains('bgLow');
         if (hasClass) {
-            console.log('applied bg White');
+            //console.log('applied bg White');
             document.getElementById('prioLowBox').classList.add('bgTextWhite');
             document.getElementById('prioLowImg').classList.add("Img-white");
         }
         else {
-            console.log('removed bg White');
+            //console.log('removed bg White');
             document.getElementById('prioLowBox').classList.remove('bgTextWhite');
             document.getElementById('prioLowImg').classList.remove("Img-white");
         }
