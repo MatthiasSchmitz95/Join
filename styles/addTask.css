@@ -766,7 +766,7 @@ checkbox filled design
 /* The container */
 .filledCheckboxContainer {
     position: relative;
-    padding-left: 40px;
+    padding-left: 20px;
     margin-bottom: 8px;
     cursor: pointer;
     font-size: 19px;
@@ -800,13 +800,12 @@ checkbox filled design
 }
 
 .newContactImg {
-    position: absolute;
-    padding-left: 352px;
     margin-bottom: 8px;
     cursor: pointer;
     filter: invert(100%) sepia(76%) saturate(129%) hue-rotate(332deg) brightness(111%) contrast(101%);
     width: 23px;
     height: 23px;
+    /*margin-top: -30px;*/
 }
 
 /* When the checkbox is checked, add a background */

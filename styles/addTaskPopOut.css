@@ -18,7 +18,7 @@ input:-webkit-autofill:active{
 }
 
 .popOut-taskCard {
-    position: absolute;
+   /* position: absolute;*/
     top: -11px;
     left: 130px;
     width: 1116px;
@@ -32,10 +32,22 @@ input:-webkit-autofill:active{
     z-index: 6;
     transform: translate(0px, 0px);
     transition: 200ms;
+
+    position: fixed;
+    /*left: 50%;
+    top: 50%;
+    width: 1212px;
+    height: 594px;
+    border-radius: 30px;
+    display: flex;
+    z-index: 9;
+    transform: translate(-50%, -50%);
+    transition: 200ms;*/
 }
 
 .popOut-hidden{
-    position: absolute;
+    /*position: absolute;*/
+    position: fixed;
     top: -11px;
     left: 130px;
     width: 1116px;
@@ -799,7 +811,7 @@ checkbox filled design
 /* The container */
 .filledCheckboxContainer {
     position: relative;
-    padding-left: 40px;
+    padding-left: 20px;
     margin-bottom: 8px;
     cursor: pointer;
     font-size: 19px;
@@ -863,8 +875,6 @@ checkbox filled design
 }
 
 .newContactImg{
-    position: absolute;
-    padding-left: 352px;
     margin-bottom: 8px;
     cursor: pointer;
     filter: invert(100%) sepia(76%) saturate(129%) hue-rotate(332deg) brightness(111%) contrast(101%);

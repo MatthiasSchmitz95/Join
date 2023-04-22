@@ -167,17 +167,14 @@ async function renderAssignTo() { //function to render AssignTo
     loadActiveUserLocal(); //get Data of Users from Backend
     let assignedContactList = document.getElementById('assignedList');  //container to render the list
     assignedContactList.innerHTML = ""; //clear container inside html
-    //for (let i = 0; i < userAccounts.length; i++) {
-    //    var userName = userAccounts[i]['userName'];
     /**render the user contacts */
     for (let i = 0; i < userAccounts[activeUser]['userContacts'].length; i++) {
         userName = userAccounts[activeUser]['userContacts'][i]['name'];
-
         assignedContactList.innerHTML += /*html*/`
             <div class="assignedContact" >
                 <div>${userName}</div>
                 <label class="filledCheckboxContainer">
-                    <input type="checkbox" class="checkboxForContacts" value="${userName}" onclick="chooseContact('${userName}')">
+                    <input type="checkbox" class="checkboxForContacts" value="${userName}" onclick="chooseContact('${userName} ')">
                     <span class="checkmark"></span>
                 </label>
             </div>
@@ -208,6 +205,42 @@ function chooseContact(name) { //index, contact
     console.log('chosenContact', choseContacts);
 }
 
+async function renderAssignToCheckMarked() {
+    await loadUserAccountsFromBackend(); //get Data of Users from Backend
+    loadActiveUserLocal(); //get Data of Users from Backend
+    let assignedContactList = document.getElementById('assignedList');  //container to render the list
+    assignedContactList.innerHTML = ""; //clear container inside html
+    for (let i = 0; i < userAccounts[activeUser]['userContacts'].length; i++) {
+        let userName = userAccounts[activeUser]['userContacts'][i]['name'];
+        const element = choseContacts;
+        const contact = element.includes(userName);
+        const checkedAttribute = contact ? 'checked' : '';
+        assignedContactList.innerHTML += renderAssignToCheckMarkedHTML(userName, checkedAttribute)
+    }
+    assignedContactList.innerHTML += renderAssignToCheckMarkedHTMLNewContact();
+}
+
+function renderAssignToCheckMarkedHTML(userName, checkedAttribute) {
+    return `
+    <div class="assignedContact" >
+        <div>${userName}</div>
+        <label class="filledCheckboxContainer">
+            <input type="checkbox" class="checkboxForContacts" value="${userName}" ${checkedAttribute} onclick="chooseContact('${userName} ')">
+                <span class="checkmark"></span>
+        </label>
+    </div>
+    `;
+}
+
+function renderAssignToCheckMarkedHTMLNewContact() {
+    return /*html*/`
+    <div class="assignedContact" onclick="assignToInput()">
+            <div>invite new contacts</div>
+            <img src="assets/img/new_contact.png" class="newContactImg">
+        </div>
+    `;
+}
+
 /**
  * Show AssignTo Select Menu - toggle at clicking on the dropdown Button
  */
@@ -216,15 +249,9 @@ function dropDownAssignTo() {
     assignToInputContainer = document.getElementById('contactInputContainer');
     document.getElementById('circleContactsContainer').style.display = "none";
     if (assignedList.style.display == "block") { //the Container for Contacts is open ?
-        assignedList.style.display = "none"; //hide the Container for Contacts 
-        assignToInputContainer.style.border = "1px solid #D1D1D1"; //shows all border
-        assignToInputContainer.style.borderRadius = "10px"; //set all border radius to 10px
+        closeDropDownAssignTo();
     } else { //the Container for Contacts is closed ?
-        assignedList.style.display = "block"; //shows the Container for Contacts  
-        assignToInputContainer.style.borderBottom = "none"; //hide the AssignedTo container Border bottom
-        /* top-left top-right bottom-right bottom-left */
-        assignToInputContainer.style.borderRadius = "10px 10px 0 0"; //shows AssignedTo container top-left top-right border radius
-        renderAssignTo(); //show or render the contacts
+        showDropDownAssignTo();
     }
     closeDropdownCategory();
 }
@@ -238,6 +265,21 @@ function closeDropDownAssignTo() {
     assignedList.style.display = "none"; //hide the Container for Contacts 
     assignToInputContainer.style.border = "1px solid #D1D1D1"; //shows all border
     assignToInputContainer.style.borderRadius = "10px"; //set all border radius to 10px
+}
+
+
+function showDropDownAssignTo() {
+    var assignedList = document.getElementById('assignedList'); //get the id of AssignedList container to render contact
+    assignToInputContainer = document.getElementById('contactInputContainer');
+    assignedList.style.display = "block"; //shows the Container for Contacts  
+    assignToInputContainer.style.borderBottom = "none"; //hide the AssignedTo container Border bottom
+    /* top-left top-right bottom-right bottom-left */
+    assignToInputContainer.style.borderRadius = "10px 10px 0 0"; //shows AssignedTo container top-left top-right border radius
+    if (choseContacts == '') {
+        renderAssignTo(); //show or render the contacts
+    } else {
+        renderAssignToCheckMarked();
+    }
 }
 
 
@@ -692,13 +734,19 @@ function clearAllAddTaskFields() {
 
 /**show AddTaskPopOut.html*/
 function showAddTaskPopOut() {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
     document.getElementById('bg').style.display = '';
     document.getElementById('popOut-taskCard').classList = "popOut-taskCard";
+    document.getElementById('body').style = "overflow-y: hidden;";
 }
 
 /**hide AddTaskPopOut.html*/
 function closePopOutAddTask() {
     document.getElementById('popOut-taskCard').classList = "popOut-hidden";
     document.getElementById('bg').style.display = 'none';
+    document.getElementById('body').style = "overflow-y: auto;";
 }
 
