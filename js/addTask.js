@@ -14,7 +14,7 @@ var priority;
 var priorityImg;
 var addsubtask; //global variable for addsubTask button
 var subTasks = []; //default value in subTasks Array
-
+var selectedSubtasks = []; //An Array to save the checkmarked subtasks 
 var userName; //for Assigned To users
 var newAssingedContact;
 var newLetters2;
@@ -431,13 +431,8 @@ function deleteSubTask() {
     subtaskInput.value = "";
     addsubtask.style.display = "flex"; //show addsubTask button (+)
     onInputSubTask.style.display = "none"; //hide subtasks input container -> hide "cross mark and check mark images"
-    appendixSubtask.innerHTML = "";
-    appendixSubtask.innerHTML = `
-            <label class="container">
-                <input type="checkbox"> <span class="checkmark"></span>
-                <div class="subtaskCheck">${subTasks[0]}</div>
-            </label> `;
-    subTasks.splice(1); //to delete all from index 1
+    subTasks.pop(); //to delete all from index 1
+    renderSubtasks();
 }
 
 
@@ -454,7 +449,7 @@ function addSubTask() {
 }
 
 
-var selectedSubtasks = []; //An Array to save the checkmarked subtasks 
+
 function chooseSubtasks(id) { //index, contact
     selectedSubtasks.splice(0); //delete all chose Contacts from last time
     let allChekbox = document.querySelectorAll(`.checkedSubTasks`); //check all checkboxes with the class `.checkedSubTasks`
@@ -465,7 +460,7 @@ function chooseSubtasks(id) { //index, contact
             selectedSubtasks.push(checkbox.value); //push in SelectedSubtasks[Array] value
         }
     }
-    console.log('chooseSubtasks', selectedSubtasks);
+    console.log('selectedSubtasks', selectedSubtasks);
 }
 
 /**render SubTask at the bottom of the subTask Input filed */
