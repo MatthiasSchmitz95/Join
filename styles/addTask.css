@@ -5,8 +5,8 @@ body {
     background: #f6f7f8;
 }
 
-.mt-15 {
-    margin-top: .8rem;
+textarea {
+    resize: none;
 }
 
 .d-none {
@@ -115,12 +115,21 @@ body {
 }
 
 .clearButton:hover {
-    border: 1px solid #32daff;
-    color: #32daff;
+    border: 1px solid #58B9E3;
+    color: #58B9E3;
+}
+
+.clearButton:active {
+    border: 1px solid #5E6776;
+    color: #5E6776;
 }
 
 .clearButtonImgblue {
-    filter: invert(69%) sepia(81%) saturate(1437%) hue-rotate(158deg) brightness(103%) contrast(103%);
+    filter: invert(76%) sepia(51%) saturate(1615%) hue-rotate(168deg) brightness(92%) contrast(92%);
+}
+
+.clearButtonImgGray {
+    filter: invert(41%) sepia(6%) saturate(1189%) hue-rotate(179deg) brightness(92%) contrast(84%);
 }
 
 .createButton {
@@ -141,8 +150,13 @@ body {
 }
 
 .createButton:hover {
-    background-color: #007cee;
     border: none;
+    background-color: #29ABE2;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.createButton:active {
+    background-color: #091931;
 }
 
 .titleContainer {
@@ -752,7 +766,7 @@ checkbox filled design
 /* The container */
 .filledCheckboxContainer {
     position: relative;
-    padding-left: 40px;
+    padding-left: 20px;
     margin-bottom: 8px;
     cursor: pointer;
     font-size: 19px;
@@ -786,13 +800,12 @@ checkbox filled design
 }
 
 .newContactImg {
-    position: absolute;
-    padding-left: 352px;
     margin-bottom: 8px;
     cursor: pointer;
     filter: invert(100%) sepia(76%) saturate(129%) hue-rotate(332deg) brightness(111%) contrast(101%);
     width: 23px;
     height: 23px;
+    /*margin-top: -30px;*/
 }
 
 /* When the checkbox is checked, add a background */

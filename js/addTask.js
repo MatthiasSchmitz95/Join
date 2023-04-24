@@ -13,8 +13,8 @@ var choseContacts = []; //an Array to save the checked Contacts with checkbox
 var priority;
 var priorityImg;
 var addsubtask; //global variable for addsubTask button
-var subTasks = ['Subtask 1']; //default value in subTasks Array
-
+var subTasks = []; //default value in subTasks Array
+var selectedSubtasks = []; //An Array to save the checkmarked subtasks 
 var userName; //for Assigned To users
 var newAssingedContact;
 var newLetters2;
@@ -45,8 +45,8 @@ function renderCategory() {
     let categoryList = document.getElementById('categoryList'); //addTask.html line 51 - container for category Input box
     categoryList.innerHTML = "";
     for (let i = 0; i < categoriesArray.length; i++) { //increment category Array form 0 to Array length
-        const category = categoriesArray[i]; //category Array Index values
-        const color = colorsArray[i]; //color Array Index values
+        const category = categoriesArray[i]; //render category Array Index values for dropDown Menu
+        const color = colorsArray[i]; //render color Array Index values for color circles
         //render Category and Color Dots
         categoryList.innerHTML += `
         <div class="categoryAndColor" onclick="chooseCategory(${i}, '${category}', '${color}')" >
@@ -70,17 +70,10 @@ function unsetCategoryInputField() {
 /* Show Category Select Menu - toggle at clicking on the dropdown Button */
 function dropDown() {
     categoryList = document.getElementById('categoryList');
-    categoryInputContainer = document.getElementById('inputContainer');
     if (categoryList.style.display == "block") { //the Container for Category is open ?
-        categoryList.style.display = "none"; //hide Container for Category 
-        categoryInputContainer.style.border = "1px solid #D1D1D1";  //Category Input Container show all border 
-        categoryInputContainer.style.borderRadius = "10px"; //Category Input Container show all Border radius with 10px
+        closeDropdownCategory();
     } else { //Container for Category is closed ?
-        categoryList.style.display = "block"; //shows Container for Category to rendern
-        categoryInputContainer.style.borderBottom = "none"; //Category Input Container has no border Bottom
-        /* top-left top-right bottom-right bottom-left */
-        categoryInputContainer.style.borderRadius = "10px 10px 0 0"; //Category Input Container show only top-left top-right Border radius
-        renderCategory(); //render Category in the Container
+        showDropdownCategory();
     }
     closeDropDownAssignTo(); //close the "Assigned to"-Container -> if "Category Select" is active
 }
@@ -89,9 +82,20 @@ function dropDown() {
 function closeDropdownCategory() {
     var categoryList = document.getElementById('categoryList');
     categoryInputContainer = document.getElementById('inputContainer');
-    categoryList.style.display = "none";
-    categoryInputContainer.style.border = "1px solid #D1D1D1";
-    categoryInputContainer.style.borderRadius = "10px";
+    categoryList.style.display = "none"; //hide Container for Category 
+    categoryInputContainer.style.border = "1px solid #D1D1D1"; //Category Input Container show all border 
+    categoryInputContainer.style.borderRadius = "10px"; //Category Input Container show all Border radius with 10px
+}
+
+/**show the Category Select Menu*/
+function showDropdownCategory() {
+    categoryList = document.getElementById('categoryList');
+    categoryInputContainer = document.getElementById('inputContainer');
+    categoryList.style.display = "block"; //shows Container for Category to rendern
+    categoryInputContainer.style.borderBottom = "none"; //Category Input Container has no border Bottom
+    /* top-left top-right bottom-right bottom-left */
+    categoryInputContainer.style.borderRadius = "10px 10px 0 0"; //Category Input Container show only top-left top-right Border radius
+    renderCategory(); //render Category in the Container
 }
 
 /**choose one Category from the Category Select Menu via dropDown
@@ -163,18 +167,14 @@ async function renderAssignTo() { //function to render AssignTo
     loadActiveUserLocal(); //get Data of Users from Backend
     let assignedContactList = document.getElementById('assignedList');  //container to render the list
     assignedContactList.innerHTML = ""; //clear container inside html
-    //for (let i = 0; i < userAccounts.length; i++) {
-    //    var userName = userAccounts[i]['userName'];
-
     /**render the user contacts */
     for (let i = 0; i < userAccounts[activeUser]['userContacts'].length; i++) {
         userName = userAccounts[activeUser]['userContacts'][i]['name'];
-
         assignedContactList.innerHTML += /*html*/`
             <div class="assignedContact" >
                 <div>${userName}</div>
                 <label class="filledCheckboxContainer">
-                    <input type="checkbox" class="checkboxForContacts" value="${userName}" onclick="chooseContact('${userName}')">
+                    <input type="checkbox" class="checkboxForContacts" value="${userName}" onclick="chooseContact('${userName} ')">
                     <span class="checkmark"></span>
                 </label>
             </div>
@@ -200,9 +200,46 @@ function chooseContact(name) { //index, contact
         const checkbox = allChekbox[i];
         if (checkbox.checked) {  //if checkbox checked
             choseContacts.push(checkbox.value); //push the checked Contacts in the Array
+            displayChosenContactsForTask();
         }
     }
     console.log('chosenContact', choseContacts);
+}
+
+async function renderAssignToCheckMarked() {
+    await loadUserAccountsFromBackend(); //get Data of Users from Backend
+    loadActiveUserLocal(); //get Data of Users from Backend
+    let assignedContactList = document.getElementById('assignedList');  //container to render the list
+    assignedContactList.innerHTML = ""; //clear container inside html
+    for (let i = 0; i < userAccounts[activeUser]['userContacts'].length; i++) {
+        let userName = userAccounts[activeUser]['userContacts'][i]['name'];
+        const element = choseContacts;
+        const contact = element.includes(userName);
+        const checkedAttribute = contact ? 'checked' : '';
+        assignedContactList.innerHTML += renderAssignToCheckMarkedHTML(userName, checkedAttribute)
+    }
+    assignedContactList.innerHTML += renderAssignToCheckMarkedHTMLNewContact();
+}
+
+function renderAssignToCheckMarkedHTML(userName, checkedAttribute) {
+    return `
+    <div class="assignedContact" >
+        <div>${userName}</div>
+        <label class="filledCheckboxContainer">
+            <input type="checkbox" class="checkboxForContacts" value="${userName}" ${checkedAttribute} onclick="chooseContact('${userName} ')">
+                <span class="checkmark"></span>
+        </label>
+    </div>
+    `;
+}
+
+function renderAssignToCheckMarkedHTMLNewContact() {
+    return /*html*/`
+    <div class="assignedContact" onclick="assignToInput()">
+            <div>invite new contacts</div>
+            <img src="assets/img/new_contact.png" class="newContactImg">
+        </div>
+    `;
 }
 
 /**
@@ -213,15 +250,9 @@ function dropDownAssignTo() {
     assignToInputContainer = document.getElementById('contactInputContainer');
     document.getElementById('circleContactsContainer').style.display = "none";
     if (assignedList.style.display == "block") { //the Container for Contacts is open ?
-        assignedList.style.display = "none"; //hide the Container for Contacts 
-        assignToInputContainer.style.border = "1px solid #D1D1D1"; //shows all border
-        assignToInputContainer.style.borderRadius = "10px"; //set all border radius to 10px
+        closeDropDownAssignTo();
     } else { //the Container for Contacts is closed ?
-        assignedList.style.display = "block"; //shows the Container for Contacts  
-        assignToInputContainer.style.borderBottom = "none"; //hide the AssignedTo container Border bottom
-        /* top-left top-right bottom-right bottom-left */
-        assignToInputContainer.style.borderRadius = "10px 10px 0 0"; //shows AssignedTo container top-left top-right border radius
-        renderAssignTo(); //show or render the contacts
+        showDropDownAssignTo();
     }
     closeDropdownCategory();
 }
@@ -238,10 +269,26 @@ function closeDropDownAssignTo() {
 }
 
 
+function showDropDownAssignTo() {
+    var assignedList = document.getElementById('assignedList'); //get the id of AssignedList container to render contact
+    assignToInputContainer = document.getElementById('contactInputContainer');
+    assignedList.style.display = "block"; //shows the Container for Contacts  
+    assignToInputContainer.style.borderBottom = "none"; //hide the AssignedTo container Border bottom
+    /* top-left top-right bottom-right bottom-left */
+    assignToInputContainer.style.borderRadius = "10px 10px 0 0"; //shows AssignedTo container top-left top-right border radius
+    if (choseContacts == '') {
+        renderAssignTo(); //show or render the contacts
+    } else {
+        renderAssignToCheckMarked(); 
+        displayChosenContactsForTask();
+    }
+}
+
+
 function assignToInput() { //click here to invite new Contact via email
     closeDropdownCategory(); //dropDown Category Menu closed
     document.getElementById('assignInput').value = "";
-    document.getElementById('assignInput').placeholder = 'contact Mail (jon.doe@gmail.com)'; //shows New Category Name in Category Input Field
+    document.getElementById('assignInput').placeholder = 'contact Mail'; //shows New Category Name in Category Input Field
     document.getElementById('newAssignToInput').style.display = "flex"; //shows newCategoryInput container -> shows "cross mark and check mark"
     document.getElementById('assignDropDown').style.display = "none"; //hide Category DropDown Button
     closeDropDownAssignTo();
@@ -260,15 +307,20 @@ function rejectAssignTo() {
 function addnewContact() {
     newAssingedContact = document.getElementById('assignInput');
     newContacts.push(newAssingedContact.value); //to load newContacts array
-    renderCircleName();
+    /*renderCircleName();
     changeEmailToContactName();
     document.getElementById('circleContactsContainer').style.display = "flex";
     document.getElementById('newAssignToInput').style.display = "none"; //hide newCategoryInput container -> shows "cross mark and check mark"
     document.getElementById('assignDropDown').style.display = "flex"; //shows Category DropDown Button
-    newContacts.splice(0);//delete all by call this function
-    //choseContacts.splice(0);//delete all by call this function
+    newContacts.splice(0);//delete all by call this function*/
 }
 
+function displayChosenContactsForTask(){
+    document.getElementById('circleContactsContainer').style.display = "flex";
+    renderCircleName();
+}
+
+/*
 function changeEmailToContactName() {
     let stringEmail = newAssingedContact.value;
     const splitStringEmail = stringEmail.split("@");
@@ -285,9 +337,10 @@ function changeEmailToContactName() {
     }
     console.log('added new contact for Task: ', choseContacts.slice(-1)); //show choseContact last index
     console.log('chosen contact Array update: ', choseContacts); //show choseContact Array
-}
+}*/
 
 var arrayContactColor = [];
+
 function showContactsByTwoLetters() { //good
     for (let i = 0; i < choseContacts.length; i++) {
         let chosenContact = choseContacts[i];
@@ -306,10 +359,10 @@ function showContactsByTwoLetters() { //good
             selectedContactLetters.push(newLetters2);
         }
     }
-    console.log(selectedContactLetters);
+    //console.log(selectedContactLetters);
 }
 
-
+/*
 function showNewAddedContactsByTwoLetters() { //to check
     for (let i = 0; i < newContacts.length; i++) {
         let addedNewContact = newContacts[i];
@@ -332,38 +385,38 @@ function showNewAddedContactsByTwoLetters() { //to check
 
     }
     console.log(newAddedContactLetters);
-}
+}*/
 
 function renderCircleName() {
     showContactsByTwoLetters();
-    showNewAddedContactsByTwoLetters();
+    //showNewAddedContactsByTwoLetters();
     document.getElementById('circleContactsContainer').innerHTML = "";
     for (let i = 0; i < selectedContactLetters.length; i++) {
         const letters = selectedContactLetters[i];
         const bgContactColor = arrayContactColor[i];
         renderNamesInTwoLetters(bgContactColor, letters);
     }
-    const bgContactColor = arrayContactColor.slice(-1); //last Index of colorArray Array
-    showAddedContactInTwoLetters(bgContactColor, newAddedContactLetters);
+    bgContactColor = arrayContactColor.slice(-1); //last Index of colorArray Array
+    //showAddedContactInTwoLetters(bgContactColor, newAddedContactLetters);
     selectedContactLetters.splice(0); //delete all by call this function
     newAddedContactLetters.splice(0); //delete all by call this function
     newContacts.splice(0);//delete all by call this function
-    console.log(arrayContactColor);
+    //console.log(arrayContactColor);
 }
 
-function renderNamesInTwoLetters(bgContactColor, letters){
+function renderNamesInTwoLetters(bgContactColor, letters) {
     return document.getElementById('circleContactsContainer').innerHTML += `
     <div class="circleContact" id="circleContact" style="background-color: ${bgContactColor} !important">  ${letters}
     </div>
     `;
 }
 
-function showAddedContactInTwoLetters(bgContactColor, newAddedContactLetters){
+/*function showAddedContactInTwoLetters(bgContactColor, newAddedContactLetters) {
     return document.getElementById('circleContactsContainer').innerHTML += `
     <div class="circleContact" id="circleContact" style="background-color: ${bgContactColor} !important">  ${newAddedContactLetters}
     </div>
     `;
-}
+}*/
 
 
 /**
@@ -386,13 +439,8 @@ function deleteSubTask() {
     subtaskInput.value = "";
     addsubtask.style.display = "flex"; //show addsubTask button (+)
     onInputSubTask.style.display = "none"; //hide subtasks input container -> hide "cross mark and check mark images"
-    appendixSubtask.innerHTML = "";
-    appendixSubtask.innerHTML = `
-            <label class="container">
-                <input type="checkbox"> <span class="checkmark"></span>
-                <div class="subtaskCheck">${subTasks[0]}</div>
-            </label> `;
-    subTasks.splice(1); //to delete all from index 1
+    subTasks.pop(); //to delete all from index 1
+    renderSubtasks();
 }
 
 
@@ -409,7 +457,7 @@ function addSubTask() {
 }
 
 
-var selectedSubtasks = []; //An Array to save the checkmarked subtasks 
+
 function chooseSubtasks(id) { //index, contact
     selectedSubtasks.splice(0); //delete all chose Contacts from last time
     let allChekbox = document.querySelectorAll(`.checkedSubTasks`); //check all checkboxes with the class `.checkedSubTasks`
@@ -420,7 +468,7 @@ function chooseSubtasks(id) { //index, contact
             selectedSubtasks.push(checkbox.value); //push in SelectedSubtasks[Array] value
         }
     }
-    console.log('chooseSubtasks', selectedSubtasks);
+    //console.log('selectedSubtasks', selectedSubtasks);
 }
 
 /**render SubTask at the bottom of the subTask Input filed */
@@ -485,7 +533,7 @@ async function addTask() {
     choseContacts = [];
 }
 
-function getPriorityInformation(){
+function getPriorityInformation() {
     if (document.getElementById('prioUrgentBox').classList.contains('bgUrgent')) {
         priority = document.getElementById('prioUrgentBox').innerText;
         priorityImg = document.createElement("prioUrgentImg");
@@ -583,12 +631,12 @@ function toggleInsertUrgent() {
     document.getElementById("prioUrgentBox").addEventListener("click", function handleClick(event) {
         const hasClass = event.target.classList.contains('bgUrgent');
         if (hasClass) {
-            console.log('applied bg White');
+            //console.log('applied bg White');
             document.getElementById('prioUrgentBox').classList.add('bgTextWhite');
             document.getElementById('prioUrgentImg').classList.add("Img-white");
         }
         else {
-            console.log('removed bg White');
+            //console.log('removed bg White');
             document.getElementById('prioUrgentBox').classList.remove('bgTextWhite');
             document.getElementById('prioUrgentImg').classList.remove("Img-white");
         }
@@ -615,12 +663,12 @@ function toggleInsertMedium() {
     document.getElementById("prioMediumBox").addEventListener("click", function handleClick(event) {
         const hasClass = event.target.classList.contains('bgMedium');
         if (hasClass) {
-            console.log('applied bg White');
+            //console.log('applied bg White');
             document.getElementById('prioMediumBox').classList.add('bgTextWhite');
             document.getElementById('prioMediumImg').classList.add("Img-white");
         }
         else {
-            console.log('removed bg White');
+            //console.log('removed bg White');
             document.getElementById('prioMediumBox').classList.remove('bgTextWhite');
             document.getElementById('prioMediumImg').classList.remove("Img-white");
         }
@@ -647,12 +695,12 @@ function toggleInsertLow() {
     document.getElementById("prioLowBox").addEventListener("click", function handleClick(event) {
         const hasClass = event.target.classList.contains('bgLow');
         if (hasClass) {
-            console.log('applied bg White');
+            //console.log('applied bg White');
             document.getElementById('prioLowBox').classList.add('bgTextWhite');
             document.getElementById('prioLowImg').classList.add("Img-white");
         }
         else {
-            console.log('removed bg White');
+            //console.log('removed bg White');
             document.getElementById('prioLowBox').classList.remove('bgTextWhite');
             document.getElementById('prioLowImg').classList.remove("Img-white");
         }
@@ -683,15 +731,25 @@ async function updateCalender() {
 /*clear all field of AddTask page*/
 function clearAllAddTaskFields() {
     window.location.reload();
+    document.getElementById('clearBtnImg').classList.remove('clearButtonImgblue');
+    document.getElementById('clearBtnImg').classList.add('clearButtonImgGray');
 }
 
 /**show AddTaskPopOut.html*/
 function showAddTaskPopOut() {
-    document.getElementById('popOut-taskCard').classList.remove('d-none');
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+    document.getElementById('bg').style.display = '';
+    document.getElementById('popOut-taskCard').classList = "popOut-taskCard";
+    document.getElementById('body').style = "overflow-y: hidden;";
 }
 
 /**hide AddTaskPopOut.html*/
 function closePopOutAddTask() {
-    document.getElementById('popOut-taskCard').classList.add('d-none');
+    document.getElementById('popOut-taskCard').classList = "popOut-hidden";
+    document.getElementById('bg').style.display = 'none';
+    document.getElementById('body').style = "overflow-y: auto;";
 }
 

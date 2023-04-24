@@ -7,18 +7,15 @@ let dateSummary = [];
 
 
 
- function setName() {
-    
+function setName() {
+
     let userName = userAccounts[activeUser].userName;
     document.getElementById('name').innerHTML = userName;
-    //setTasks();
-    //setUrgencies();
-    //setDos();
 }
 
 
 function setTasks() {
-    let tasksSummary = toDoSummary+inProgressSummary+awaitingFeedbackSummary;
+    let tasksSummary = toDoSummary + inProgressSummary + awaitingFeedbackSummary + doneSummary;
     document.getElementById('task-in-board-nr').innerHTML = tasksSummary;
     document.getElementById('task-in-progress-nr').innerHTML = inProgressSummary;
     document.getElementById('awaiting-feedback-nr').innerHTML = awaitingFeedbackSummary;
@@ -27,7 +24,11 @@ function setTasks() {
 
 function setUrgencies() {
     document.getElementById('urgent-nr').innerHTML = urgents;
-    document.getElementById('deadline-date').innerHTML = dateSummary[0];
+    if (dateSummary.length == 0) {
+        document.getElementById('deadline-date').innerHTML = 'no deadlines';
+    } else {
+        document.getElementById('deadline-date').innerHTML = dateSummary[0];
+    }
 }
 
 
@@ -41,17 +42,33 @@ function sortDates() {
     dateSummary.sort((a, b) => new Date(a).getTime() - new Date(b).getTime());
 }
 
+function getTime() {
+    const date = new Date();
+    let t = date.getHours();
+    console.log(t);
+    if (t > 4.59 && t < 12) {
+        document.getElementById('greeting').innerHTML = 'Good morning,';
+    }
+    if (t > 11.59 && t < 18) {
+        document.getElementById('greeting').innerHTML = 'Good afternoon,';
+    }
+    if (t > 17.59 || t === 0 || t > 0 && t < 5) {
+        document.getElementById('greeting').innerHTML = 'Good evening,';
+    }
+}
 
-async function countTasks() {
+async function initSummary() {
     await init('summary');
     await loadTasksFromBackend();
     await loadUserAccountsFromBackend();
+    getTime();
     setName();
-    checkingConditions()
+    checkingConditions();
+    sortDates();
     setTasks();
     setUrgencies();
     setDos();
-    sortDates();
+
 }
 
 
@@ -77,7 +94,7 @@ function checkingConditions() {
         if (cards == 'Done') {
             doneSummary++;
         }
-        if (urgent == 'Urgent') {
+        if (urgent == 'Urgent' && cards !== 'Done') {
             dateSummary.push(date);
             urgents++;
         }

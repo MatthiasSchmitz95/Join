@@ -5,24 +5,26 @@ body {
     /*background-color: yellowgreen;*/
 }
 
+textarea {
+    resize: none;
+}
+
 .d-none {
     display: none !important;
 }
 
 /* Change auto chrome bg color to white*/
 input:-webkit-autofill,
-input:-webkit-autofill:hover, 
-input:-webkit-autofill:focus, 
-input:-webkit-autofill:active{
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
     -webkit-box-shadow: 0 0 0 30px white inset !important;
 }
 
 .popOut-taskCard {
-    /*background: #FFFFFF;*/
-    /*position: relative;*/
-    position: absolute;
-    top: -30px;
-    left: 80px;
+    position: fixed;
+    top: -11px;
+    left: 130px;
     width: 1116px;
     height: 914px;
     background: #FFFFFF;
@@ -31,11 +33,29 @@ input:-webkit-autofill:active{
     display: flex;
     flex-direction: column;
     margin: 100px;
-    z-index: 5;
+    z-index: 6;
+    transform: translate(0px, 0px);
+    transition: 200ms;
+}
+
+.popOut-hidden {
+    position: fixed;
+    top: -11px;
+    left: 130px;
+    width: 1116px;
+    height: 914px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    margin: 100px;
+    z-index: 6;
+    transform: translate(1870px, 0px);
+    transition: 200ms;
 }
 
 .headline {
-    /*width: 466px;*/
     box-sizing: border-box;
     /*width: 466px;*/
     height: 78px;
@@ -51,14 +71,14 @@ input:-webkit-autofill:active{
     display: flex;
 }
 
-.closeBtn{
+.closeBtn {
     position: absolute;
     left: 1056px;
     top: 26px;
     cursor: pointer;
 }
 
-.closeBtn:hover{
+.closeBtn:hover {
     background-color: whitesmoke;
 }
 
@@ -116,15 +136,6 @@ input:-webkit-autofill:active{
     display: flex;
     justify-content: flex-start;
     gap: 25px;
-    /*position: absolute;
-    top: 90%;
-    left: 4%;
-    width: 338px;
-    height: 61px;
-    display: flex;
-    justify-content: flex-start;
-    gap: 25px;
-    box-sizing: border-box;*/
 }
 
 .clearButton {
@@ -133,7 +144,6 @@ input:-webkit-autofill:active{
     font-weight: 400;
     font-size: 21px;
     line-height: 120%;
-    /* or 25px */
     color: #2A3647;
     width: 136px;
     height: 61px;
@@ -148,14 +158,21 @@ input:-webkit-autofill:active{
 }
 
 .clearButton:hover {
-    border: 1px solid #32daff;
-    color: #32daff;
-    z-index: 2;
+    border: 1px solid #58B9E3;
+    color: #58B9E3;
+}
+
+.clearButton:active {
+    border: 1px solid #5E6776;
+    color: #5E6776;
 }
 
 .clearButtonImgblue {
-    filter: invert(69%) sepia(81%) saturate(1437%) hue-rotate(158deg) brightness(103%) contrast(103%);
-    z-index: 2;
+    filter: invert(76%) sepia(51%) saturate(1615%) hue-rotate(168deg) brightness(92%) contrast(92%);
+}
+
+.clearButtonImgGray {
+    filter: invert(41%) sepia(6%) saturate(1189%) hue-rotate(179deg) brightness(92%) contrast(84%);
 }
 
 
@@ -178,9 +195,13 @@ input:-webkit-autofill:active{
 }
 
 .createButton:hover {
-    background-color: #007cee;
     border: none;
-    z-index: 2;
+    background-color: #29ABE2;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.createButton:active {
+    background-color: #091931;
 }
 
 .titleContainer {
@@ -299,13 +320,10 @@ input:-webkit-autofill:active{
     width: 100%;
     display: flex;
     align-items: center;
-    /*justify-content: space-between;*/
     padding-left: 21px;
     padding-right: 21px;
-
     width: 422px;
     height: 51px;
-
     background: #FFFFFF;
     border: 1px solid #D1D1D1;
     border-radius: 10px;
@@ -323,7 +341,7 @@ input:-webkit-autofill:active{
     background-color: none;
 }
 
-#assignInput{
+#assignInput {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
@@ -343,7 +361,6 @@ input:-webkit-autofill:active{
     background: #FFFFFF;
     border: 1px solid #D1D1D1;
     border-top: none;
-    /* Four values border-radius */
     /* top-left top-right bottom-right bottom-left */
     border-radius: 0 0 10px 10px;
     overflow-y: auto;
@@ -365,8 +382,6 @@ input:-webkit-autofill:active{
     padding-left: 21px;
     padding-right: 21px;
     padding-left: 5px;
-    /*width: 205px;
-    height: 25px;*/
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
@@ -393,11 +408,9 @@ input:-webkit-autofill:active{
 #newCategoryInput {
     width: 50px;
     height: 51px;
-    /* padding-right: 20px; */
     padding-left: 35px;
     display: flex;
     align-items: center;
-    /* justify-content: flex-end; */
     cursor: pointer;
     gap: 10px;
     display: none;
@@ -406,11 +419,9 @@ input:-webkit-autofill:active{
 #newAssignToInput {
     width: 50px;
     height: 51px;
-    /* padding-right: 20px; */
     padding-left: 35px;
     display: flex;
     align-items: center;
-    /* justify-content: flex-end; */
     cursor: pointer;
     gap: 10px;
     display: none;
@@ -422,7 +433,7 @@ input:-webkit-autofill:active{
     height: 16px;
 }
 
-.newCategoryColorsBox{
+.newCategoryColorsBox {
     width: 422px;
     height: 51px;
     /*background-color: #D1D1D1;*/
@@ -460,7 +471,6 @@ input:-webkit-autofill:active{
     height: 50px;
     border-radius: 100%;
     background-color: rebeccapurple;
-    /* flex-basis: max-content; */
     align-items: center;
     font-size: 28px;
     justify-content: center;
@@ -483,13 +493,11 @@ input:-webkit-autofill:active{
     background: #FFFFFF;
     border: 1px solid #D1D1D1;
     border-radius: 10px;
-
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
     font-size: 21px;
     line-height: 120%;
-    /*color: #D1D1D1;*/
     color: #000000;
     padding-left: 21px;
     padding-right: 21px;
@@ -771,7 +779,7 @@ checkbox filled design
 /* The container */
 .filledCheckboxContainer {
     position: relative;
-    padding-left: 40px;
+    padding-left: 20px;
     margin-bottom: 8px;
     cursor: pointer;
     font-size: 19px;
@@ -834,9 +842,7 @@ checkbox filled design
     background: black;
 }
 
-.newContactImg{
-    position: absolute;
-    padding-left: 352px;
+.newContactImg {
     margin-bottom: 8px;
     cursor: pointer;
     filter: invert(100%) sepia(76%) saturate(129%) hue-rotate(332deg) brightness(111%) contrast(101%);

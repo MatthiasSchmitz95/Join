@@ -17,15 +17,17 @@
     <title>summary</title>
 </head>
 
-<body onload="countTasks()">
+<body onload="initSummary()">
 
 
     <div w3-include-html="desktop-template.html"></div>
     <div class="desktop">
         <div class="html-topic">
             <h2>Summary</h2>
+            <div class="html-topic-sub">
             <span class="line"></span>
             <p>Everything in a nutshell!</p>
+        </div>
         </div>
 
         <div class="flex-center">
@@ -33,21 +35,21 @@
                 <div class="status-container">
                     <div class="single-container">
                         <a href="board.html" class="task-status">
-                            <div class="number" id="task-in-board-nr">5</div>
+                            <div class="number" id="task-in-board-nr"></div>
                             <p>Tasks in board</p>
 
                         </a>
                     </div>
                     <div class="single-container">
                         <a href="board.html" class="task-status">
-                            <div class="number" id="task-in-progress-nr">20</div>
+                            <div class="number" id="task-in-progress-nr"></div>
                             <p>Tasks in Progress</p>
 
                         </a>
                     </div>
                     <div class="single-container">
                         <a href="board.html" class="task-status">
-                            <div class="number" id="awaiting-feedback-nr">5</div>
+                            <div class="number" id="awaiting-feedback-nr"></div>
                             <p>Awaiting Feedback</p>
 
                         </a>
@@ -60,18 +62,18 @@
 
                         </div>
                         <div class="urgent-container">
-                            <div class="urgent-nr" id="urgent-nr">1</div>
+                            <div class="urgent-nr" id="urgent-nr"></div>
                             <p>Urgent</p>
                         </div>
                     </div>
                     <span class="line-grey"></span>
                     <div class="deadline-container">
-                        <div class="deadline-date" id="deadline-date">October 16,1022</div>
+                        <div class="deadline-date" id="deadline-date"></div>
                         <p>Upcoming Deadline</p>
                     </div>
                 </a>
                 <div class="do-counter-container">
-                    <div style="width:282.5px; height:160px">
+                    <div class="do-inner-container">
                         <a href="board.html" class="do-counter">
                             <div class="img-container">
                                 <img class="do-counter-img" src="assets/img/do-done.png">
@@ -80,20 +82,20 @@
 
 
                             <div class="do-nr-container">
-                                <div class="do-nr" id="do-nr">2</div>
+                                <div class="do-nr" id="do-nr"></div>
                                 <p>To-do</p>
                             </div>
                         </a>
                     </div>
 
-                    <div style="width:282.5px; height:160px">
+                    <div class="do-inner-container">
                         <a href="board.html" class="do-counter">
                             <div class="img-container">
                                 <img class="do-counter-img" src="assets/img/do-done.png">
                                 <img class="absolute-2" src="assets/img/done-icon.png">
                             </div>
                             <div class="do-nr-container">
-                                <div class="do-nr" id="done-nr">3</div>
+                                <div class="do-nr" id="done-nr"></div>
                                 <p>Done</p>
                             </div>
                         </a>
@@ -102,8 +104,8 @@
             </div>
 
             <div class="greeting-container">
-                <p>Good morning,</p>
-                <h3 id="name">Sofia Muller</h3>
+                <p id="greeting"></p>
+                <h3 id="name"></h3>
             </div>
         </div>
 

@@ -3,6 +3,7 @@ let loadOverlay = false;
 let loadCircle = false;
 let choosedContact = []; 
 
+
 function onloadBoard() {
     init('board');
     updateHTML();
@@ -125,7 +126,7 @@ function priorityImgCard(cards) {
 
 function startDragging(id) {
     currentDraggedElement = id;
-    document.getElementById('html').style.backgroundColor = 'rgb(0,0,0,0.1)';
+    document.getElementById('body').style.backgroundColor = 'rgb(0,0,0,0.1)';
     document.getElementById(`dragMe${id}`).classList.add('dragging');
 }
 
@@ -141,14 +142,14 @@ async function moveTo(category) {
     todo['progress'] = category;
     await saveTasksToBackend();
     await saveUserAccountsToBackend();
-    document.getElementById('html').style.backgroundColor = 'rgb(255,255,255)';
+    document.getElementById('body').style.backgroundColor = 'rgb(246,247,248)';
     updateHTML();
 }
 
 
 function showOverlay(cards) {
     window.scrollTo({
-        top: 0,
+        top: 90,
         behavior: "smooth"
       });
     let user = userAccounts[activeUser]['userTasks'];
@@ -206,6 +207,7 @@ function showOverlayChange(cards) {
     insertPriority(cards);
     renderSubtasksBoard(cards);
     chanceTextarea(cards);
+    renderContactsOverlayChange(todo);
     updateCalender();
 }
 
@@ -303,3 +305,35 @@ function dropDownAssignToBoard(cards) {
      closeDropdownCategoryBoard();
 }
 
+function renderContactsOverlayChange(cards){
+    let contant = document.getElementById('contactOverlayChange');
+    contant.innerHTML = '';
+    const { id, contact } = cards;
+    const user = userAccounts[activeUser].userContacts;
+    if(choosedContact.length == 0){
+        renderContactsWithContacts(id, contact, contant, user);
+    }
+    if(choosedContact.length >= 1){
+        renderContactsChoosedContacts(id, contact, contant, user);
+    }
+}
+
+
+function renderContactsChoosedContacts(id, contact, contant, user){
+    const userWithContacts = user.filter(({ name }) => choosedContact.includes(name));
+    userWithContacts.forEach((user, index) => {
+        const idStr = id.toString() + index.toString();
+        contant.innerHTML += renderContactsOverlayChangeHTML(idStr, user);
+        changeBackgroundCircle(`round${idStr}`, user.color);
+    })
+}
+
+
+function renderContactsWithContacts(id, contact, contant, user){
+    const userWithContacts = user.filter(({ name }) => contact.includes(name));
+    userWithContacts.forEach((user, index) => {
+        const idStr = id.toString() + index.toString();
+        contant.innerHTML += renderContactsOverlayChangeHTML(idStr, user);
+        changeBackgroundCircle(`round${idStr}`, user.color);
+    })
+}
