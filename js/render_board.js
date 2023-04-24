@@ -68,7 +68,7 @@ function renderShowOverlay2(todo){
 
 function renderShowOverlay3(cards){
     return `<div class="overlay-date">
-    <b>Assigned to:</b>  <div id="assignedTo">
+    <b>Assigned to:</b>  <div class="assigned-to-board" id="assignedTo">
                         </div>
 </div>
 <div class="overlay-edit-task-position">
@@ -132,7 +132,7 @@ function showOverlayChangeHTML3() {
 </div>
 </div>
 <label for="priority" class="priority">Prio</label>
-<div  class="priorityBoxesContainer">
+<div  class="priorityBoxesContainerBoard">
     <div class="prioUrgentBox" id="prioUrgentBox" onclick="insertUrgent()">Urgent <img
             id="prioUrgentImg" src="assets/img/urgent.png"></div>
     <div class="prioMediumBox" id="prioMediumBox" onclick="insertMedium()">Medium <img
