@@ -173,7 +173,6 @@ h3 {
 @media(max-width:900px) {
     .header {
         left: 0px;
-
     }
 
     .side-bar {
@@ -182,8 +181,6 @@ h3 {
         top: auto;
         flex-direction: row;
         padding: 0px;
-
-
     }
 
     .logo-container {
