@@ -248,7 +248,7 @@ function renderAssignToCheckMarkedHTMLNewContact() {
 function dropDownAssignTo() {
     var assignedList = document.getElementById('assignedList'); //get the id of AssignedList container to render contacts
     assignToInputContainer = document.getElementById('contactInputContainer');
-    document.getElementById('circleContactsContainer').style.display = "none";
+    document.getElementById('circleContactsContainer').style.display = "flex";
     if (assignedList.style.display == "block") { //the Container for Contacts is open ?
         closeDropDownAssignTo();
     } else { //the Container for Contacts is closed ?
@@ -279,7 +279,7 @@ function showDropDownAssignTo() {
     if (choseContacts == '') {
         renderAssignTo(); //show or render the contacts
     } else {
-        renderAssignToCheckMarked(); 
+        renderAssignToCheckMarked();
         displayChosenContactsForTask();
     }
 }
@@ -315,7 +315,7 @@ function addnewContact() {
     newContacts.splice(0);//delete all by call this function*/
 }
 
-function displayChosenContactsForTask(){
+function displayChosenContactsForTask() {
     document.getElementById('circleContactsContainer').style.display = "flex";
     renderCircleName();
 }
@@ -396,11 +396,12 @@ function renderCircleName() {
         const bgContactColor = arrayContactColor[i];
         renderNamesInTwoLetters(bgContactColor, letters);
     }
-    bgContactColor = arrayContactColor.slice(-1); //last Index of colorArray Array
+    //bgContactColor = arrayContactColor.slice(-1); //last Index of colorArray Array
     //showAddedContactInTwoLetters(bgContactColor, newAddedContactLetters);
     selectedContactLetters.splice(0); //delete all by call this function
     newAddedContactLetters.splice(0); //delete all by call this function
     newContacts.splice(0);//delete all by call this function
+    arrayContactColor.splice(0);
     //console.log(arrayContactColor);
 }
 

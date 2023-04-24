@@ -9,6 +9,11 @@ textarea {
     resize: none;
 }
 
+.d-column{
+    display: flex;
+    flex-direction: column;
+}
+
 .d-none {
     display: none;
 }
@@ -42,8 +47,9 @@ textarea {
 
 .contentContainer {
     display: flex;
+    flex-direction: column;
     width: 962px;
-    /*height: 506px;*/
+    height: 551px;
     height: auto;
     margin-left: 123px;
     margin-top: 41px;
@@ -52,47 +58,72 @@ textarea {
 
 .leftContent {
     display: flex;
-    flex-direction: column;
+    /*flex-direction: column;*/
     align-items: flex-start;
     padding: 0px;
     gap: 14px;
+    box-sizing: border-box;
+    /*width: 1208px;*/
+    box-sizing: border-box;
+    width: 100%;
+    height: 60%;
+}
 
-    width: 422px;
-    /*height: 506px;*/
-    height: auto;
+.topBoxLeft{
+    display: flex;
+    flex-direction: column;
+}
+
+.topBoxRight{
+    display: flex;
+    flex-direction: column;
+    margin-left: 59px;
+    gap: 8px;
 }
 
 .midLine {
+    box-sizing: border-box;
     margin-left: 59px;
-    /*margin-right: 59px;*/
     width: 0px;
-    height: 506px;
+    height: 100%;
     border: 1px solid #D1D1D1;
 }
 
 .rightContent {
-    margin-left: 59px;
+    /*margin-left: 59px;*/
     display: flex;
-    flex-direction: column;
+    /*flex-direction: column;*/
     align-items: flex-start;
     padding: 0px;
     gap: 14px;
+    box-sizing: border-box;
+    width: 100%;
+    height: 50%;
+}
 
-    width: 422px;
-    height: 506px;
+.BottomBoxLeft{
+    display: flex;
+    flex-direction: column;
+    margin-top: 34px;
+}
+
+.BottomBoxRight{
+    display: flex;
+    flex-direction: column;
+    margin-left: 59px;
+    gap: 8px;
 }
 
 .buttonsContainer {
-    /*margin-left: 83px;
-    margin-top: 93px;*/
-    position: absolute;
-    top: 800px;
-    left: 752px;
+    padding-left: 752px;
     width: 338px;
+    box-sizing: border-box;
     height: 61px;
+    width: 100%;
     display: flex;
     justify-content: flex-start;
     gap: 25px;
+    margin-top: 48px;
 }
 
 .clearButton {
@@ -210,6 +241,7 @@ textarea {
     display: flex;
     flex-direction: column;
     gap: 8px;
+    padding-top: 34px;
 }
 
 .description {
@@ -264,7 +296,6 @@ textarea {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 0px;
     width: 422px;
 }
 
@@ -425,7 +456,7 @@ input:-webkit-autofill:active {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 0px;
+    padding-top: 34px;
     width: 422px;
 }
 
@@ -433,7 +464,7 @@ input:-webkit-autofill:active {
     box-sizing: border-box;
     width: 100%;
     height: 70px;
-    display: flex;
+    display: none;
     justify-content: flex-start;
     align-items: center;
     /*background-color: lightgoldenrodyellow;*/
@@ -511,6 +542,10 @@ input:-webkit-autofill:active {
     gap: 10px;
     width: 420px;
     height: 61px;
+}
+
+.prioContainer{
+    padding-top: 34px;
 }
 
 .prioUrgentBox,
@@ -908,10 +943,8 @@ checkbox filled design
         position: relative;
     }
 
-    .leftContent {
-        gap: 9px;
-        width: 363px;
-        margin-bottom: 9px;
+    .leftContent{
+        flex-direction: column;
     }
 
     .titleContainer {
@@ -922,14 +955,29 @@ checkbox filled design
     .descriptionContainer {
         width: 363px !important;
         height: 120px;
+        padding-top: 9px;
     }
 
     #description {
         height: 93px;
     }
 
+    .topBoxRight{
+        display: flex;
+        flex-direction: column-reverse;
+        margin-left: 0;
+    }
+
+    .BottomBoxRight{
+        display: flex;
+        flex-direction: column;
+        margin-left: 0;
+        gap: 8px;
+    }
+
     .categoryContainer {
         width: 363px !important;
+        padding-top: 9px;
     }
 
     #input {
@@ -946,6 +994,7 @@ checkbox filled design
 
     .assignContainer {
         width: 363px !important;
+        padding-top: 9px;
     }
 
     .buttonOpenCloseCategory {
@@ -983,6 +1032,7 @@ checkbox filled design
     }
 
     .rightContent {
+        flex-direction: column;
         margin-left: 0px !important;
         width: 363px;
     }
@@ -995,6 +1045,7 @@ checkbox filled design
     .priorityBoxesContainer {
         width: 363px;
         height: 51px;
+        padding-top: 13px !important;
     }
 
     .priority {
@@ -1012,5 +1063,17 @@ checkbox filled design
         font-size: 16px;
     }
 
+    .date{
+        padding-bottom: 8px;
+    }
+
+    .BottomBoxLeft{
+        margin-top: 9px;
+        padding-top: 9px;
+    }
+
+    .prioContainer {
+        padding-top: 9px !important;
+    }
 
 }
