@@ -44,7 +44,6 @@ function sortDates() {
 
 function getTime() {
     const date = new Date();
-    date.setHours(12);
     let t = date.getHours();
     console.log(t);
     if (t > 4.59 && t < 12) {
