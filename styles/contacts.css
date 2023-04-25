@@ -55,7 +55,7 @@ a {
     width: 453px;
     background: #FFFFFF;
     box-shadow: 4px 0px 6px rgba(0, 0, 0, 0.08);
-    height: calc(100vh - 89px);
+    height: calc(100vh - 69px);
 
 }
 /* width */
@@ -227,7 +227,7 @@ a {
     display: flex;
     justify-content: flex-end;
     margin-right: 52px;
-    margin-bottom: 67px;
+    margin-bottom: 20px;
 }
 
 .button-container button:hover {
@@ -492,7 +492,7 @@ a {
 .floating-contact-container {
     display: flex;
     flex-direction: column;
-    margin-top: 82px;
+    margin-top: 48px;
     margin-left: 65px;
     height: 364px;
 }

@@ -19,12 +19,12 @@
 
 
 
-    
+
 </head>
 
 <body onload="onloadContact()">
     <div onclick="closeContactCard()" id="bg" style="display: none;"></div>
-    <div class="success" id="success" >Contact succesfully created</div>
+    <div class="success" id="success">Contact succesfully created</div>
     <div class="hidden" id="contact-card">
         <div class="card-container-left">
             <img src="assets/img/join-logo-contact-card.png">
@@ -45,53 +45,59 @@
                 </div>
             </div>
             <div class="btn-container" id="btn-container">
-                <button id="left-btn" onclick="closeContactCard()" class="btn-contact-white">Cancel<img class="cancel-img"
-                        src="assets/img/contact-cancel-button.png"></button>
-                <button id="right-btn" onclick="CreateNewContact()" class="btn-contact-blue">Create contact<img class="create-contact-img"
-                        src="assets/img/contact-create-contact-button.png"></button>
+                <button id="left-btn" onclick="closeContactCard()" class="btn-contact-white">Cancel<img
+                        class="cancel-img" src="assets/img/contact-cancel-button.png"></button>
+                <button id="right-btn" onclick="CreateNewContact()" class="btn-contact-blue">Create contact<img
+                        class="create-contact-img" src="assets/img/contact-create-contact-button.png"></button>
 
             </div>
         </div>
 
     </div>
-    
+
     <div class="desktop" id="desktop">
         <div w3-include-html="desktop-template.html"></div>
-        
-        <div class="left-container">
-            <div class="contact-container" id="contact-container"></div>
-        </div>
-        <div class="right-container">
-            <div class="html-topic">
-                <h2>Contacts</h2>
-                <span class="line-blue"></span>
-                <p>Better with a Team</p>
+        <div style="display:flex;">
+            <div class="left-container">
+                <div class="contact-container" id="contact-container"></div>
             </div>
-            <div class="floating-contact-container" id="floating-contact-container" style="display: none">
-                <div class="name-container" id="name-container">
-                    <div class="contact-circle" id="contact-circle">
-                        <p id="contact-circle-letters"></p>
+            <div class="right-container">
+                <div class="html-topic">
+                    <h2>Contacts</h2>
+                    <span class="line-blue"></span>
+                    <p>Better with a Team</p>
+                </div>
+                <div class="floating-contact-container" id="floating-contact-container" style="display: none">
+                    <div class="name-container" id="name-container">
+                        <div class="contact-circle" id="contact-circle">
+                            <p id="contact-circle-letters"></p>
+                        </div>
+                        <div style="margin-left: 54px;">
+                            <h4 id="float-contact-name">Anton Meyer</h4>
+                            <a onclick="showAddTaskPopOut()"><img src="assets/img/add-task-contact.png">
+                                <p>Add task</p>
+                            </a>
+                        </div>
                     </div>
-                    <div style="margin-left: 54px;">
-                        <h4 id="float-contact-name">Anton Meyer</h4>
-                        <a onclick="showAddTaskPopOut()"><img src="assets/img/add-task-contact.png"><p>Add task</p></a>
+                    <div class="contact-information" id="contact-information">
+                    </div>
+                    <div class="contact-details" id="contact-details">
+                        <h5>Email</h5>
+                        <p id="email">test@web.de</p>
+    
+                        <h5>Phone</h5>
+                        <p id="phone">+4911111111</p>
+    
                     </div>
                 </div>
-                <div class="contact-information" id="contact-information">
-                </div>
-                <div class="contact-details" id="contact-details">
-                    <h5>Email</h5>
-                    <p id="email">test@web.de</p>
-
-                    <h5>Phone</h5>
-                    <p id="phone">+4911111111</p>
-
+                <div class="button-container">
+                    <button onclick="showCard()">New contact<img class="img"
+                            src="assets/img/new-contact-button.png"></button>
                 </div>
 
+
             </div>
-            <div class="button-container">
-                <button onclick="showCard()">New contact<img class="img" src="assets/img/new-contact-button.png"></button>
-            </div>
+           
         </div>
 
     </div>
