@@ -169,6 +169,11 @@ h3 {
     color: white;
 }
 
+@media(max-width:900px){
+    .header{
+        left: 130px;
+    }
+}
 
 @media(max-width:800px) {
     .header {
@@ -193,7 +198,7 @@ h3 {
         width: 100%;
         height: auto;
         margin: 0px;
-
+        text-align: center;
     }
 
     .menu-container a {

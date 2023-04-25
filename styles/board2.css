@@ -193,15 +193,11 @@
         margin-top: 37px;
         flex-direction: column;
         justify-content: flex-start;
-        align-items: center;
+        align-items: flex-end;
     }
 
     .position-board-flex {
         width: 85%; 
-    }
-
-    .position-board{
-        margin-left: 240px ;
     }
 
     .drag-drop-height {
@@ -223,7 +219,12 @@
 
 @media(max-width: 1080px) {
     .board-header {
-        gap: 5%;
+        gap: unset;
+        width: 67vw;
+    }
+
+    h2{
+        font-size: 50px;
     }
 
     .search-button {
@@ -241,9 +242,14 @@
     .close-icon-small {
         display: none;
     }
+
+    .search-input{
+        background-position-x: 185px;
+        width: 220px;
+    }
 }
 
-@media(max-width: 900px) {
+@media(max-width: 800px) {
     .board-header {
         display: flex;
         flex-direction: row;
@@ -252,6 +258,12 @@
         justify-content: center;
         margin-left: unset;
         width: unset;
+    }
+
+    .working-class{
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
     }
 
     .position-board {
@@ -375,6 +387,8 @@
         gap: 20px;
         padding-left: 32px;
         padding-right: 32px;
+        border-bottom-left-radius: 30px;
+        border-bottom-right-radius: 30px;
     }
 
     .overlay-department{
@@ -473,6 +487,7 @@
     .input-chances-text{
         font-size: 16px;
     }
+
 }
 
 @media(max-width: 490px){
