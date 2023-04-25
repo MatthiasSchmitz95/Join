@@ -1119,6 +1119,7 @@ checkbox filled design
         top: 10px;
         height: 21.65px;
         padding-left: 380px;
+        display: flex;
     }
 
     .clearButtonImgblue {
