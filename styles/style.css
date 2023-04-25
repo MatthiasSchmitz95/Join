@@ -170,7 +170,7 @@ h3 {
 }
 
 
-@media(max-width:900px) {
+@media(max-width:800px) {
     .header {
         left: 0px;
     }
@@ -205,20 +205,20 @@ h3 {
         height: auto;
         margin-top: 14.5px;
     }
+    
+        h3{
+            font-size: 16px;
+            position: absolute;
+            top: 98px;
+            left: 34px;   
+        }
+    
+        .header{
+            display: flex;
+            justify-content: flex-end;
+        }
 
 }
 
-@media(max-width:640px){
-    h3{
-        font-size: 16px;
-        position: absolute;
-        top: 98px;
-        left: 34px;   
-    }
 
-    .header{
-        display: flex;
-        justify-content: flex-end;
-    }
 
-}
