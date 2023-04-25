@@ -200,8 +200,9 @@ function chooseContact(name) { //index, contact
         const checkbox = allChekbox[i];
         if (checkbox.checked) {  //if checkbox checked
             choseContacts.push(checkbox.value); //push the checked Contacts in the Array
-            displayChosenContactsForTask();
         }
+        displayChosenContactsForTask();
+
     }
     console.log('chosenContact', choseContacts);
 }
