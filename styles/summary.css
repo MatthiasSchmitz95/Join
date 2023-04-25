@@ -73,6 +73,7 @@ a {
     flex-direction: column;
     justify-content: space-between;
     margin-left: 123px;
+    margin-bottom: 153px;
 
 }
 
@@ -82,8 +83,10 @@ a {
 }
 
 .single-container {
+    display: flex;
     width: 180px;
     height: 180px;
+    justify-content: center;
 }
 
 .task-status {
@@ -421,6 +424,7 @@ a {
     }
 
     .line {
+        margin-top: 0px;
         margin-bottom: 41px;
         width: 90px;
         height: 0px;
@@ -444,7 +448,7 @@ a {
         margin: 0;
     }
 
-    .single-container a {
+    .single-container a{
         width: 110px;
         height: 110px;
         border-radius: 20px;
@@ -515,8 +519,8 @@ a {
     }
 
     .do-inner-container a:hover {
-        width: 187.5px;
-        height: 120px;
+        width: 177.5px;
+        height: 110px;
     }
 
     .do-counter-img {
@@ -555,12 +559,14 @@ a {
     }
 
     .html-topic{
-        margin-left: 34px;
+        margin-left: 33px;
     }
 
     .task-container{
-        margin-left: 34px;
+        margin-left: 33px;
+        margin-bottom: 142px;
     }
+
 
 }
 

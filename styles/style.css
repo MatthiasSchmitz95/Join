@@ -173,6 +173,7 @@ h3 {
 @media(max-width:800px) {
     .header {
         left: 0px;
+        
     }
 
     .side-bar {
@@ -216,6 +217,14 @@ h3 {
         .header{
             display: flex;
             justify-content: flex-end;
+        }
+
+        .legal-notice-container{
+            display: none;
+        }
+
+        .logo-container{
+            display: none;
         }
 
 }
