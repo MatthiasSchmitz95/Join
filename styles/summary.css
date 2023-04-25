@@ -564,3 +564,18 @@ a {
 
 }
 
+@media(max-width:410px){
+    .desktop{
+        margin-left:0px;
+    }
+
+    .html-topic{
+        margin-left: 5px;
+    }
+
+    .task-container{
+        margin-left: 5px;
+    }
+
+}
+

@@ -220,5 +220,11 @@ h3 {
 
 }
 
+@media(max-width:410px){
+    h3{
+        left: 5px;   
+    }
+}
+
 
 
