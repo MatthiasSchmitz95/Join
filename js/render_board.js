@@ -145,9 +145,9 @@ function showOverlayChangeHTML3() {
 
 
 function showOverlayChangeHTML4(cards){
-    return `<div class="assignContainer">
-    <label for="assignedTo" class="assignedTo">Assigned to</label>
-    <div class="contactInputContainer" id="contactInputContainer">
+    return `<div class="assignContainerBoard">
+    <label for="assignedTo" class="assignedToBoard">Assigned to</label>
+    <div class="contactInputContainerBoard" id="contactInputContainer">
     <input class="assign-input" id="assignInput" type="text" placeholder="Select contacts to assign" required>
     <div id="assignDropDown" class="buttonOpenClose" onclick="dropDownAssignToBoard(${cards})"><img
     src="assets/img/dropdown-arrow.png"></div>
