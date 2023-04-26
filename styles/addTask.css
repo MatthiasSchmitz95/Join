@@ -1,7 +1,7 @@
 body {
     margin: 0;
     overflow-y: auto;
-    overflow-x: hidden;
+    /*overflow-x: hidden;*/
     background: #f6f7f8;
 }
 
@@ -509,13 +509,12 @@ input:-webkit-autofill:active {
     font-weight: 400;
     font-size: 21px;
     line-height: 120%;
-    /*color: #D1D1D1;*/
-    color: #000000;
     padding-left: 21px;
     padding-right: 21px;
 }
 
-#date::placeholder {
+/*date InputField placeholder color*/
+input[type=date]:invalid::-webkit-datetime-edit {
     color: #D1D1D1;
 }
 
