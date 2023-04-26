@@ -1,7 +1,7 @@
 body {
     margin: 0;
     overflow-y: auto;
-    /*overflow-x: hidden;*/
+    overflow-x: hidden;
     background: #f6f7f8;
 }
 
@@ -9,7 +9,7 @@ textarea {
     resize: none;
 }
 
-.d-column{
+.d-column {
     display: flex;
     flex-direction: column;
 }
@@ -58,23 +58,20 @@ textarea {
 
 .leftContent {
     display: flex;
-    /*flex-direction: column;*/
     align-items: flex-start;
     padding: 0px;
     gap: 14px;
     box-sizing: border-box;
-    /*width: 1208px;*/
     box-sizing: border-box;
     width: 100%;
-    height: 60%;
 }
 
-.topBoxLeft{
+.topBoxLeft {
     display: flex;
     flex-direction: column;
 }
 
-.topBoxRight{
+.topBoxRight {
     display: flex;
     flex-direction: column;
     margin-left: 59px;
@@ -101,17 +98,18 @@ textarea {
     height: 50%;
 }
 
-.BottomBoxLeft{
+.BottomBoxLeft {
     display: flex;
     flex-direction: column;
     margin-top: 34px;
 }
 
-.BottomBoxRight{
+.BottomBoxRight {
     display: flex;
     flex-direction: column;
     margin-left: 59px;
     gap: 8px;
+    margin-top: -30px;
 }
 
 .buttonsContainer {
@@ -544,7 +542,7 @@ input:-webkit-autofill:active {
     height: 61px;
 }
 
-.prioContainer{
+.prioContainer {
     padding-top: 34px;
 }
 
@@ -928,7 +926,7 @@ checkbox filled design
         width: 466px;
         height: 78px;
         margin-left: 33px;
-        margin-top: 19px;
+        margin-top: 55px;
         font-size: 47px;
     }
 
@@ -943,7 +941,7 @@ checkbox filled design
         position: relative;
     }
 
-    .leftContent{
+    .leftContent {
         flex-direction: column;
     }
 
@@ -962,13 +960,13 @@ checkbox filled design
         height: 93px;
     }
 
-    .topBoxRight{
+    .topBoxRight {
         display: flex;
         flex-direction: column-reverse;
         margin-left: 0;
     }
 
-    .BottomBoxRight{
+    .BottomBoxRight {
         display: flex;
         flex-direction: column;
         margin-left: 0;
@@ -1063,17 +1061,82 @@ checkbox filled design
         font-size: 16px;
     }
 
-    .date{
+    .date {
         padding-bottom: 8px;
     }
 
-    .BottomBoxLeft{
+    .BottomBoxLeft {
         margin-top: 9px;
         padding-top: 9px;
     }
 
     .prioContainer {
         padding-top: 9px !important;
+    }
+
+    .buttonsContainer {
+        display: none;
+    }
+
+    .createButton {
+        display: none;
+    }
+
+    .createButtonResponsive {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 21px;
+        line-height: 120%;
+        color: #FFFFFF;
+        background: #2A3647;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        width: 124px;
+        height: 51px;
+        position: absolute;
+        top: -72px;
+        z-index: 2;
+        margin-left: 263px;
+    }
+
+    .createButtonResponsive:hover {
+        border: none;
+        background-color: #29ABE2;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+
+    .createButtonResponsive:active {
+        background-color: #091931;
+    }
+
+    .clearButtonResponsive{
+        border: none;
+        background-color: #F6F7F8;
+        position: absolute;
+        top: 10px;
+        height: 21.65px;
+        padding-left: 380px;
+        display: flex;
+    }
+
+    .clearButtonImgblue {
+        filter: invert(76%) sepia(51%) saturate(1615%) hue-rotate(168deg) brightness(92%) contrast(92%);
+    }
+    
+    .clearButtonImgGray {
+        filter: invert(41%) sepia(6%) saturate(1189%) hue-rotate(179deg) brightness(92%) contrast(84%);
+    }
+
+    .clearButton {
+        display: none;
+    }
+
+    .BottomBoxRight {
+        margin-top: -8px !important;
+        padding-bottom: 100px;
     }
 
 }

@@ -201,8 +201,7 @@ function chooseContact(name) { //index, contact
         if (checkbox.checked) {  //if checkbox checked
             choseContacts.push(checkbox.value); //push the checked Contacts in the Array
         }
-        displayChosenContactsForTask();
-
+        displayChosenContactsForTask(); //push the checked Contacts in the Array
     }
     console.log('chosenContact', choseContacts);
 }
@@ -754,4 +753,5 @@ function closePopOutAddTask() {
     document.getElementById('bg').style.display = 'none';
     document.getElementById('body').style = "overflow-y: auto;";
 }
+
 

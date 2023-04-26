@@ -134,13 +134,25 @@
                 onclick="clearAllAddTaskFields()">Clear <img class="clearBtnImg" id="clearBtnImg"
                     src="assets/img/cross-mark.svg">
             </button>
-            <button class="createButton" type="submit" id="addTaskBtn">Create Task <img class="createBtnImg"
-                    src="assets/img/right-mark.png"></button>
+            <button class="createButton" type="submit" id="addTaskBtn" onchange="changeCreateBtnText()">Create Task <img
+                    class="createBtnImg" src="assets/img/right-mark.png"></button>
         </div>
 
         <div id="messageAddedTask" class="messageAddedTask">
             <p>Task added to board</p>
             <img src="assets/img/board-icon.png">
+        </div>
+
+        <div>
+            <button class="createButtonResponsive d-none" type="submit" id="addTaskBtnResponsive">Create <img
+                    class="createBtnImg" src="assets/img/right-mark.png"></button>
+        </div>
+
+        <div>
+            <button class="clearButtonResponsive d-none" onmouseover="clearBtnhover()" onmouseout="clearBtnCancelhover()"
+                onclick="clearAllAddTaskFields()"><img class="clearBtnImg" id="clearBtnImg"
+                    src="assets/img/cross-mark.svg">
+            </button>
         </div>
 
     </form>
