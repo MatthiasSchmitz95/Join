@@ -55,7 +55,7 @@ a {
     width: 453px;
     background: #FFFFFF;
     box-shadow: 4px 0px 6px rgba(0, 0, 0, 0.08);
-    height: calc(100vh - 69px);
+    height: calc(100vh - 89px);
 
 }
 /* width */
@@ -169,7 +169,7 @@ a {
     width: calc(100% - 453px);
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
 }
 
 .line-blue {
