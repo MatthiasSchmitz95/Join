@@ -226,7 +226,6 @@ a {
 .button-container {
     display: flex;
     justify-content: flex-end;
-    margin-left:550px;
     margin-bottom:64px;
 }
 
