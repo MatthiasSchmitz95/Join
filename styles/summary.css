@@ -300,7 +300,7 @@ a {
 
 
 .do-counter:hover .blue img{
-    filter: invert(17%) sepia(50%) saturate(416%) hue-rotate(176deg) brightness(90%) contrast(87%);
+    filter: invert(17%) sepia(50%) saturate(416%) hue-rotate(176deg) brightness(30%) contrast(87%);
     
 }
 
