@@ -347,7 +347,8 @@ function showContactsByTwoLetters() { //good
         const firstLetter = chosenContact.charAt(0).toUpperCase();
         const remainingLetters = chosenContact.slice(1);
         contactName = firstLetter + remainingLetters;
-        contactColor = randomUserColor();
+        contactColor = getUserColor(i);
+        /*contactColor = randomUserColor();*/
         arrayContactColor.push(contactColor);
         if (chosenContact.indexOf(' ') >= 0) { //Wenn ein TrennZeichen "leer" gibt
             let helpLetter = contactName.split(" ");
@@ -754,4 +755,8 @@ function closePopOutAddTask() {
     document.getElementById('body').style = "overflow-y: auto;";
 }
 
-
+function getUserColor(userIndex){
+    const colorUser = userAccounts[activeUser]['userContacts'][userIndex]['color']; 
+    console.log(colorUser); 
+    return colorUser;  
+}
