@@ -169,7 +169,7 @@ a {
     width: calc(100% - 453px);
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: space-between;
 }
 
 .line-blue {
@@ -225,9 +225,9 @@ a {
 
 .button-container {
     display: flex;
-    justify-content: flex-end;
-    margin-right: 52px;
-    margin-bottom: 20px;
+    justify-content: flex-start;
+    margin-left:550px;
+    margin-bottom:64px;
 }
 
 .button-container button:hover {
@@ -272,7 +272,7 @@ a {
 }
 
 .card-container-left {
-    padding: 66px 42px;
+    padding: 66px 39px;
     width: 463px;
     background: #2A3647;
     color: white;
@@ -506,6 +506,7 @@ box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
     margin-top: 48px;
     margin-left: 65px;
     height: 364px;
+    margin-bottom: 164px;
 }
 
 .name-container {
