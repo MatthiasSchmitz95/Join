@@ -171,7 +171,7 @@ h3 {
 
 @media(max-width:900px){
     .header{
-        left: 130px;
+        padding-left: 90px;
     }
 }
 
