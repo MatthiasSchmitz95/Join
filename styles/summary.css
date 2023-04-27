@@ -169,8 +169,16 @@ a {
     height: 60px;
     justify-content: center;
     align-items: center;
-    background: #FF3D00;
     border-radius: 50%;
+}
+
+.orange{
+    background: #FF3D00;
+}
+
+.blue{
+    background: #2A3647;
+
 }
 
 .u-circle img {
@@ -286,16 +294,14 @@ a {
     height: 160px;
 }
 
-.do-counter:hover .do-counter-img {
-    filter: brightness(0) invert(1);
+.do-counter:hover .blue{
+    background-color: white;
 }
 
-.do-counter:hover .absolute {
-    filter: brightness(0) saturate(100%);
-}
 
-.do-counter:hover .absolute-2 {
-    filter: brightness(0) saturate(100%);
+.do-counter:hover .blue img{
+    filter: invert(17%) sepia(50%) saturate(416%) hue-rotate(176deg) brightness(90%) contrast(87%);
+    
 }
 
 .do-counter:hover .do-nr-container p {

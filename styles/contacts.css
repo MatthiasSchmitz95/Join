@@ -332,6 +332,13 @@ a {
 
 }
 
+.icon-container{
+    border-radius: 50%;
+    margin-left: 70px;
+    margin-right: 84px;
+
+}
+
 .close-contact-container {
     display: flex;
     justify-content: flex-end;
@@ -349,12 +356,7 @@ a {
 
 }
 
-.card-container-right img {
-    width: 120px;
-    height: 120px;
-    margin-left: 70px;
-    margin-right: 84px;
-}
+
 
 .card-container-right input {
     margin-right: 52px;
