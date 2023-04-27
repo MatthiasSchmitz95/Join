@@ -88,7 +88,7 @@
     border-radius: 10px;
 }
 
-.buttonOpenClose {
+.buttonOpenCloseBoard {
     cursor: pointer;
 }
 
@@ -116,6 +116,7 @@
     padding-left: 21px;
     font-family: 'Inter';
     font-size: 21px;
+    padding-right: 21px;
 }
 
 .input-chances-text {
@@ -125,6 +126,7 @@
     padding-left: 21px;
     font-family: 'Inter';
     font-size: 21px;
+    padding-right: 21px;
 }
 
 .assign-input {
@@ -381,18 +383,24 @@
     .overlay {
         width: 100%;
         background-color: #F6F7F8;
-        top: 90px;
+        height: calc(100% - 90px);
+        margin-top: 90px;
         border-radius: unset;
         gap: 20px;
         padding-left: 32px;
         padding-right: 32px;
-        border-bottom-left-radius: 30px;
-        border-bottom-right-radius: 30px;
+        top: -1px;
+        overflow-y: scroll;
+        margin-left: -1px;
     }
 
     .overlay-department {
         font-size: 21px;
     }
+
+    .noscroll { 
+        overflow: hidden;
+      }
 
     .overlay-header {
         display: flex;
@@ -405,7 +413,6 @@
         flex-direction: column;
         align-items: flex-end;
         justify-content: space-between;
-        margin-top: -78px;
         gap: 16px;
     }
 
@@ -424,6 +431,7 @@
 
     .overlay-edit-task {
         border-radius: 10px;
+        margin-bottom: 60px;
     }
 
     .close-icon {
@@ -454,12 +462,12 @@
         margin-top: 0px !important;
     }
 
-    .contactInputContainerBoard{
+    .contactInputContainerBoard {
         box-sizing: unset;
-        padding-left: unset;
         width: 90%;
     }
-    .buttonOpenClose{
+
+    .buttonOpenCloseBoard {
         padding-left: unset;
     }
 
@@ -482,6 +490,7 @@
     .overlay-chance-task {
         width: 85px;
         height: 40px;
+        margin-bottom: 60px;
     }
 
     .input-chances-title {
@@ -490,7 +499,6 @@
 
     #date {
         box-sizing: unset !important;
-        padding-right: unset !important;
         width: 90% !important;
         height: 51px !important;
         background: #FFFFFF !important;
@@ -505,6 +513,10 @@
 
     .input-chances-text {
         font-size: 16px;
+    }
+
+    .display-none{
+        display: none;
     }
 
 }

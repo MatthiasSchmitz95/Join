@@ -149,7 +149,7 @@ function showOverlayChangeHTML4(cards){
     <label for="assignedTo" class="assignedToBoard">Assigned to</label>
     <div class="contactInputContainerBoard" id="contactInputContainer">
     <input class="assign-input" id="assignInput" type="text" placeholder="Select contacts to assign" required>
-    <div id="assignDropDown" class="buttonOpenClose" onclick="dropDownAssignToBoard(${cards})"><img
+    <div id="assignDropDown" class="buttonOpenCloseBoard" onclick="dropDownAssignToBoard(${cards})"><img
     src="assets/img/dropdown-arrow.png"></div>
     </div>
     <div id="assignedList" class="assignedList"></div>

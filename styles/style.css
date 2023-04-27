@@ -51,7 +51,7 @@ h3 {
     height: 89px;
     background: #FFFFFF;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
-    z-index: 2;
+    z-index: 10;
 }
 
 .profile-container {
@@ -178,7 +178,6 @@ h3 {
 @media(max-width:800px) {
     .header {
         left: 0px;
-        
     }
 
     .side-bar {
@@ -187,6 +186,7 @@ h3 {
         top: auto;
         flex-direction: row;
         padding: 0px;
+        z-index: 10;
     }
 
     .logo-container {

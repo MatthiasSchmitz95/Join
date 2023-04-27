@@ -1,14 +1,14 @@
 let currentDraggedElement;
 let loadOverlay = false;
 let loadCircle = false;
-let choosedContact = []; 
+let choosedContact = [];
 
 
 function onloadBoard() {
     init('board');
     updateHTML();
     loadActiveUserLocal();
-   
+
 }
 
 
@@ -28,7 +28,7 @@ async function updateHTML() {
 }
 
 
-function renderHTML(cards, userTasks){
+function renderHTML(cards, userTasks) {
     updateHTMLToDo(cards, userTasks);
     updateHTMLInProgress(cards, userTasks);
     updateHTMLAwaitingFeedback(cards, userTasks);
@@ -36,35 +36,35 @@ function renderHTML(cards, userTasks){
 }
 
 
-function updateHTMLToDo(cards, userTasks){
+function updateHTMLToDo(cards, userTasks) {
     if (cards == 'To Do') {
         document.getElementById('toDoContent').innerHTML += generateHTML1(userTasks) + generateHTML2(userTasks), loadForUpdateHTML(userTasks);
     }
 }
 
 
-function updateHTMLInProgress(cards, userTasks){
+function updateHTMLInProgress(cards, userTasks) {
     if (cards == 'In progress') {
-        document.getElementById('inProgressContent').innerHTML += generateHTML1(userTasks) + generateHTML2(userTasks), loadForUpdateHTML(userTasks);           
+        document.getElementById('inProgressContent').innerHTML += generateHTML1(userTasks) + generateHTML2(userTasks), loadForUpdateHTML(userTasks);
     }
 }
 
 
-function updateHTMLAwaitingFeedback(cards, userTasks){
+function updateHTMLAwaitingFeedback(cards, userTasks) {
     if (cards == 'Awaiting Feedback') {
         document.getElementById('awaitingFeedbackContent').innerHTML += generateHTML1(userTasks) + generateHTML2(userTasks), loadForUpdateHTML(userTasks);
     }
 }
 
 
-function  updateHTMLDone(cards, userTasks){
+function updateHTMLDone(cards, userTasks) {
     if (cards == 'Done') {
-        document.getElementById('doneContent').innerHTML += generateHTML1(userTasks) + generateHTML2(userTasks), loadForUpdateHTML(userTasks);   
+        document.getElementById('doneContent').innerHTML += generateHTML1(userTasks) + generateHTML2(userTasks), loadForUpdateHTML(userTasks);
     }
 }
 
 
-async function  loadForUpdateHTML(userTasks){
+async function loadForUpdateHTML(userTasks) {
     priorityImgCard(userTasks);
     changeBackgroundColor(userTasks);
     SelectForRenderUserInitiales(userTasks);
@@ -77,11 +77,11 @@ async function SelectForRenderUserInitiales(cards) {
     const contactElem = document.getElementById(`userInitiales${id}`);
     contactElem.innerHTML = '';
     const user = userAccounts[activeUser].userContacts;
-    renderUserInitiales( id, contact, contactElem, user)
+    renderUserInitiales(id, contact, contactElem, user)
 }
 
 
-function renderUserInitiales(id, contact, contactElem, user){
+function renderUserInitiales(id, contact, contactElem, user) {
     const userWithContacts = user.filter(({ name }) => contact.includes(name));
     const userContactsLength = userWithContacts.length;
     const userToDisplay = userContactsLength <= 3 ? userWithContacts : userWithContacts.slice(0, 2);
@@ -148,20 +148,28 @@ async function moveTo(category) {
 
 
 function showOverlay(cards) {
-    window.scrollTo({
-        top: 90,
-        behavior: "smooth"
-      });
+    calcScrollTo();
+    document.getElementById('body').classList.add('noscroll');
+    document.getElementById('kanban').classList.add('display-none');
     let user = userAccounts[activeUser]['userTasks'];
     let todo = user.find((item) => item.id === cards);
     document.getElementById('overlay-background').classList.add('overlay-background');
     let overlay = document.getElementById('overlay');
     overlay.classList.remove('d-none');
-    overlay.innerHTML = renderShowOverlay1(todo, cards)+renderShowOverlay2(todo)+renderShowOverlay3(cards);
+    overlay.innerHTML = renderShowOverlay1(todo, cards) + renderShowOverlay2(todo) + renderShowOverlay3(cards);
     loadOverlay = true;
     generateAssignedTo(todo);
     changeBackgroundOverlay(todo)
 }
+
+
+function calcScrollTo() {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
 
 
 function changeBackgroundOverlay(cards) {
@@ -181,7 +189,7 @@ function generateAssignedTo(todo) {
             let userLetter = users['letters'];
             let userName = users['name']
             if (userName.includes(element)) {
-                contacts.innerHTML += generateAssignedToHTML(j, userLetter, element),changeBackgroundCircleOverlay(users, j)   
+                contacts.innerHTML += generateAssignedToHTML(j, userLetter, element), changeBackgroundCircleOverlay(users, j)
             }
         }
     }
@@ -195,20 +203,26 @@ function changeBackgroundCircleOverlay(users, j) {
 }
 
 
-function showOverlayChange(cards) {
+async function showOverlayChange(cards) {
     let user = userAccounts[activeUser]['userTasks'];
     let todo = user.find((item) => item.id === cards);
     let overlay = document.getElementById('overlay');
-    let HTML1 = showOverlayChangeHTML1(todo);
-    let HTML2 = showOverlayChangeHTML2(todo);
-    let HTML3 =showOverlayChangeHTML3();
-    let HTML4 =showOverlayChangeHTML4(cards)
-    overlay.innerHTML = HTML1 + HTML2 + HTML3 + HTML4;
+    document.getElementById('kanban').classList.add('display-none');
+    overlay.innerHTML = showOverlayChangeHTML(todo, cards);
     insertPriority(cards);
     renderSubtasksBoard(cards);
     chanceTextarea(cards);
     renderContactsOverlayChange(todo);
-    updateCalender();
+    await updateCalender();
+    document.getElementById('kanban').classList.add('display-none');
+}
+
+
+function showOverlayChangeHTML(todo, cards) {
+    return showOverlayChangeHTML1(todo)+
+    showOverlayChangeHTML2(todo)+
+    showOverlayChangeHTML3()+
+    showOverlayChangeHTML4(cards);
 }
 
 
@@ -223,6 +237,8 @@ function closeOverlay() {
         let overlay = document.getElementById('overlay');
         overlay.classList.add('d-none');
         document.getElementById('overlay-background').classList.remove('overlay-background');
+        document.getElementById('body').classList.remove('noscroll');
+        document.getElementById('kanban').classList.remove('display-none');
     }
 }
 
@@ -302,24 +318,24 @@ function dropDownAssignToBoard(cards) {
         assignToInputContainer.style.borderRadius = "10px 10px 0 0"; //shows AssignedTo container top-left top-right border radius
         renderAssignToBoard(cards); //show or render the contacts
     }
-     closeDropdownCategoryBoard();
+    closeDropdownCategoryBoard();
 }
 
-function renderContactsOverlayChange(cards){
+function renderContactsOverlayChange(cards) {
     let contant = document.getElementById('contactOverlayChange');
     contant.innerHTML = '';
     const { id, contact } = cards;
     const user = userAccounts[activeUser].userContacts;
-    if(choosedContact.length == 0){
+    if (choosedContact.length == 0) {
         renderContactsWithContacts(id, contact, contant, user);
     }
-    if(choosedContact.length >= 1){
+    if (choosedContact.length >= 1) {
         renderContactsChoosedContacts(id, contact, contant, user);
     }
 }
 
 
-function renderContactsChoosedContacts(id, contact, contant, user){
+function renderContactsChoosedContacts(id, contact, contant, user) {
     const userWithContacts = user.filter(({ name }) => choosedContact.includes(name));
     userWithContacts.forEach((user, index) => {
         const idStr = id.toString() + index.toString();
@@ -329,7 +345,7 @@ function renderContactsChoosedContacts(id, contact, contant, user){
 }
 
 
-function renderContactsWithContacts(id, contact, contant, user){
+function renderContactsWithContacts(id, contact, contant, user) {
     const userWithContacts = user.filter(({ name }) => contact.includes(name));
     userWithContacts.forEach((user, index) => {
         const idStr = id.toString() + index.toString();
