@@ -4,6 +4,7 @@ body {
 }
 
 .frame0 {
+    width: 100vw;
     overflow-y: auto;
     /*overflow-x: hidden;*/
     background: #f6f7f8;
@@ -884,7 +885,7 @@ checkbox filled design
 
 @media(max-width:1400px) {
     .taskCard {
-        width: 100vw;
+        width: 80vw;
     }
 
     .headline {
@@ -917,7 +918,12 @@ checkbox filled design
 
 @media(max-width: 1130px) {
     .taskCard {
-        width: 100vw;
+        width: 80vw;
+    }
+
+    .contentContainer {
+        width: 80vw;
+        margin-left: 0px !important;
     }
 
     .headline {
@@ -969,13 +975,16 @@ checkbox filled design
         margin-top: 89px;
         display: flex;
         flex-direction: column;
+        padding-left: 21px;
     }
 
     .headline {
-        width: 80vw;
+        width: 363px;
         display: flex;
+        justify-content: flex-start;
         height: 78px;
         margin-top: 55px;
+        margin-left: 0px;
         font-size: 47px;
     }
 
@@ -997,12 +1006,12 @@ checkbox filled design
     }
 
     .titleContainer {
-        width: 80vw !important;
+        width: 363px !important;
         height: 68px !important;
     }
 
     .descriptionContainer {
-        width: 80vw !important;
+        width: 363px !important;
         height: 120px;
         padding-top: 9px;
     }
@@ -1025,7 +1034,7 @@ checkbox filled design
     }
 
     .categoryContainer {
-        width: 80vw !important;
+        width: 363px !important;
         padding-top: 9px;
     }
 
@@ -1042,20 +1051,20 @@ checkbox filled design
     }
 
     .assignContainer {
-        width: 80vw !important;
+        width: 363px !important;
         padding-top: 9px;
     }
 
     .buttonOpenCloseCategory {
-        padding-left: 45px;
+        padding-left: 60px;
     }
 
     .buttonOpenClose {
-        padding-left: 10px;
+        padding-left: 38px;
     }
 
     .contactInputContainer {
-        width: 80vw !important;
+        width: 363px !important;
         height: 41px;
     }
 
@@ -1072,7 +1081,7 @@ checkbox filled design
     }
 
     .inputContainer {
-        width: 80vw;
+        width: 363px;
         height: 41px;
     }
 
@@ -1087,12 +1096,12 @@ checkbox filled design
     }
 
     #date {
-        width: 80vw;
+        width: 363px;
         height: 41px;
     }
 
     .priorityBoxesContainer {
-        width: 80vw;
+        width: 363px;
         height: 51px;
         padding-top: 13px !important;
     }
@@ -1103,7 +1112,7 @@ checkbox filled design
 
     .addSubtaskContainer {
         margin-top: 9px;
-        width: 80vw;
+        width: 363px;
         height: 41px;
     }
 
@@ -1123,7 +1132,7 @@ checkbox filled design
 
     .prioContainer {
         padding-top: 9px !important;
-        width: 80vw;
+        width: 363px;
     }
 
     .buttonsContainer {
@@ -1171,7 +1180,7 @@ checkbox filled design
         position: absolute;
         top: 27px;
         height: 21.65px;
-        padding-left: 360px;
+        padding-left: 335px;
         display: flex;
     }
 
