@@ -1,5 +1,9 @@
 body {
     margin: 0;
+    background: #f6f7f8;
+}
+
+.frame0 {
     overflow-y: auto;
     /*overflow-x: hidden;*/
     background: #f6f7f8;
@@ -19,8 +23,10 @@ textarea {
 }
 
 .taskCard {
+    /*height: 1024px;
+    width: 1440px;*/
     height: 1024px;
-    width: 1440px;
+    width: 100vw;
     background: #f6f7f8;
     position: absolute;
     top: 0;
@@ -32,7 +38,7 @@ textarea {
 }
 
 .headline {
-    /*width: 466px;*/
+    width: 80vw;
     height: 78px;
     margin-left: 123px;
     margin-top: 82px;
@@ -48,8 +54,10 @@ textarea {
 .contentContainer {
     display: flex;
     flex-direction: column;
-    width: 962px;
-    height: 551px;
+    box-sizing: border-box;
+    /*width: 962px;*/
+    /*height: 551px;*/
+    width: 80vw;
     height: auto;
     margin-left: 123px;
     margin-top: 41px;
@@ -73,7 +81,7 @@ textarea {
 
 .topBoxRight {
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     margin-left: 59px;
     gap: 8px;
 }
@@ -113,11 +121,11 @@ textarea {
 }
 
 .buttonsContainer {
-    padding-left: 752px;
+    padding-left: 779px;
     width: 338px;
     box-sizing: border-box;
     height: 61px;
-    width: 100%;
+    width: 80vw;
     display: flex;
     justify-content: flex-start;
     gap: 25px;
@@ -714,15 +722,8 @@ input[type=date]:invalid::-webkit-datetime-edit {
     z-index: 5;
 }
 
-/*
-.whitecolor {
-    filter: invert(0%) sepia(100%) saturate(0%) hue-rotate(21deg) brightness(97%) contrast(103%);
-}*/
-
-/*
-Check Mark design
-*/
-/* The container */
+/*Check Mark design
+The container */
 .container {
     position: relative;
     padding-left: 40px;
@@ -840,20 +841,6 @@ checkbox filled design
     /*margin-top: -30px;*/
 }
 
-/* When the checkbox is checked, add a background */
-/*
-.filledCheckboxContainer input:checked~.checkmark {
-    background-color: #f4f4f4F4;
-}*/
-
-/* Create the checkmark/indicator (hidden when not checked) */
-/*
-.checkmark:after {
-    content: "";
-    position: absolute;
-    display: none;
-}*/
-
 /* Show the checkmark when checked */
 .filledCheckboxContainer input:checked~.checkmark:after {
     display: block;
@@ -866,18 +853,6 @@ checkbox filled design
     background: black;
 }
 
-
-/* Style the checkmark/indicator */
-/*
-.filledCheckboxContainer .checkmark:after {
-    left: 4px;
-    top: 4px;
-    width: 4px;
-    height: 4px;
-    border: solid black;
-    border-width: 3px 3px 3px 3px;
-    background: black;
-}*/
 
 /*
 *Animation AddTask To board
@@ -907,10 +882,85 @@ checkbox filled design
     pointer-events: auto;
 }
 
-@media(max-width:900px) {
+@media(max-width:1400px) {
+    .taskCard {
+        width: 100vw;
+    }
+
+    .headline {
+        width: 80vw;
+        margin-left: 25px;
+    }
+
+    .contentContainer {
+        width: 80vw;
+        margin-left: 25px;
+    }
+
+    .buttonsContainer {
+        width: 80vw;
+        padding-left: 559px;
+    }
+
+    .midLine {
+        margin-left: 0px;
+    }
+
+    .topBoxRight {
+        margin-left: 0px;
+    }
+
+    .BottomBoxRight {
+        margin-left: 0px;
+    }
+}
+
+@media(max-width: 1130px) {
+    .taskCard {
+        width: 100vw;
+    }
+
+    .headline {
+        width: 70vw;
+        margin-left: 8px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .leftContent {
+        display: flex;
+        flex-direction: column !important;
+        align-items: center;
+    }
+
+    .midLine {
+        display: none;
+    }
+
+    .rightContent {
+        display: flex;
+        flex-direction: column !important;
+        align-items: center;
+    }
+
+    .buttonsContainer {
+        padding-left: 70px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .titleContainer {
+        box-sizing: border-box;
+        width: 100% !important;
+    }
+}
+
+@media(max-width:800px) {
     .taskCard {
         /*height: 766.98px;*/
         /*width: 1440px;*/
+        height: auto;
+        width: 100vw;
         background: #f6f7f8;
         position: absolute;
         top: 0;
@@ -922,9 +972,9 @@ checkbox filled design
     }
 
     .headline {
-        width: 466px;
+        width: 80vw;
+        display: flex;
         height: 78px;
-        margin-left: 33px;
         margin-top: 55px;
         font-size: 47px;
     }
@@ -932,7 +982,7 @@ checkbox filled design
     .contentContainer {
         display: flex;
         flex-direction: column;
-        /*width: 962px;*/
+        width: 80vw;
         height: 766.98px;
         height: auto;
         margin-left: 33px;
@@ -942,15 +992,17 @@ checkbox filled design
 
     .leftContent {
         flex-direction: column;
+        margin-left: 0px !important;
+        width: 363px;
     }
 
     .titleContainer {
-        width: 363px !important;
+        width: 80vw !important;
         height: 68px !important;
     }
 
     .descriptionContainer {
-        width: 363px !important;
+        width: 80vw !important;
         height: 120px;
         padding-top: 9px;
     }
@@ -973,7 +1025,7 @@ checkbox filled design
     }
 
     .categoryContainer {
-        width: 363px !important;
+        width: 80vw !important;
         padding-top: 9px;
     }
 
@@ -990,20 +1042,20 @@ checkbox filled design
     }
 
     .assignContainer {
-        width: 363px !important;
+        width: 80vw !important;
         padding-top: 9px;
     }
 
     .buttonOpenCloseCategory {
-        padding-left: 68px;
+        padding-left: 45px;
     }
 
     .buttonOpenClose {
-        padding-left: 44px;
+        padding-left: 10px;
     }
 
     .contactInputContainer {
-        width: 363px !important;
+        width: 80vw !important;
         height: 41px;
     }
 
@@ -1020,7 +1072,7 @@ checkbox filled design
     }
 
     .inputContainer {
-        width: 363px;
+        width: 80vw;
         height: 41px;
     }
 
@@ -1035,12 +1087,12 @@ checkbox filled design
     }
 
     #date {
-        width: 363px;
+        width: 80vw;
         height: 41px;
     }
 
     .priorityBoxesContainer {
-        width: 363px;
+        width: 80vw;
         height: 51px;
         padding-top: 13px !important;
     }
@@ -1051,7 +1103,7 @@ checkbox filled design
 
     .addSubtaskContainer {
         margin-top: 9px;
-        width: 363px;
+        width: 80vw;
         height: 41px;
     }
 
@@ -1071,9 +1123,11 @@ checkbox filled design
 
     .prioContainer {
         padding-top: 9px !important;
+        width: 80vw;
     }
 
     .buttonsContainer {
+        width: 80vw;
         display: none;
     }
 
@@ -1098,7 +1152,7 @@ checkbox filled design
         position: absolute;
         top: -72px;
         z-index: 2;
-        margin-left: 263px;
+        margin-left: 240px;
     }
 
     .createButtonResponsive:hover {
@@ -1111,20 +1165,20 @@ checkbox filled design
         background-color: #091931;
     }
 
-    .clearButtonResponsive{
+    .clearButtonResponsive {
         border: none;
         background-color: #F6F7F8;
         position: absolute;
-        top: 10px;
+        top: 27px;
         height: 21.65px;
-        padding-left: 380px;
+        padding-left: 360px;
         display: flex;
     }
 
     .clearButtonImgblue {
         filter: invert(76%) sepia(51%) saturate(1615%) hue-rotate(168deg) brightness(92%) contrast(92%);
     }
-    
+
     .clearButtonImgGray {
         filter: invert(41%) sepia(6%) saturate(1189%) hue-rotate(179deg) brightness(92%) contrast(84%);
     }
@@ -1138,4 +1192,34 @@ checkbox filled design
         padding-bottom: 100px;
     }
 
+    .side-bar {
+        width: 100vw !important;
+    }
+
+    .menu-container {
+        width: 100vw !important;
+    }
+
+    .header {
+        width: 100vw !important;
+    }
+
+    h3 {
+        font-size: 16px;
+        position: absolute;
+        top: 98px;
+        width: 80vw;
+        left: 10px;
+        display: flex;
+        justify-content: center;
+        padding-left: 22px;
+    }
+
+    .profile-container {
+        display: none;
+    }
+
+    .header{
+        z-index: 2;
+    }
 }
