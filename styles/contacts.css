@@ -652,10 +652,7 @@ a {
         font-size: 27px;
     }
 
-    .button-container {
-        position: fixed;
-        margin-right: 47px;
-    }
+
 }
 
 @media(max-width:1210px) {

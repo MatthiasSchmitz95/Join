@@ -75,7 +75,7 @@ async function initSummary() {
     await loadTasksFromBackend();
     await loadUserAccountsFromBackend();
     getTime();
-   // greetingsResponsive();
+    greetingsResponsive();
     setName();
     checkingConditions();
     sortDates();
