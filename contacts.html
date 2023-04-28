@@ -38,8 +38,8 @@
             </div>
             <div class="contact-flex">
                 <div class="icon-container" id="icon-container">
-                <img src="assets/img/add-contact-profile.png">
-            </div>
+                    <img src="assets/img/add-contact-profile.png">
+                </div>
                 <div class="input-container">
                     <input id="contact-name" type="Text" placeholder="Name" style="text-transform: capitalize;">
                     <input id="contact-email" type="email" placeholder="Email">
@@ -59,15 +59,25 @@
 
     <div class="desktop" id="desktop">
         <div w3-include-html="desktop-template.html"></div>
-        <div style="display:flex;">
+        <div class="big-container">
             <div class="left-container">
+                <div class="button-container position-top">
+                    <button onclick="showCard()">New contact<img class="img"
+                            src="assets/img/new-contact-button.png"></button>
+                </div>
                 <div class="contact-container" id="contact-container"></div>
             </div>
-            <div class="right-container">
+            <div class="right-container" id="right-container">
                 <div class="html-topic">
+                    <div class="head-contact">
                     <h2>Contacts</h2>
-                    <span class="line-blue"></span>
-                    <p>Better with a Team</p>
+                    <img onclick="backToContactList()" src="assets/img/contact-back-arrow.png">
+                    </div>
+                    
+                    <div class="html-topic-sub">
+                        <span class="line-blue"></span>
+                        <p>Better with a Team</p>
+                    </div>
                 </div>
                 <div class="floating-contact-container" id="floating-contact-container" style="display: none">
                     <div class="name-container" id="name-container">
@@ -86,10 +96,10 @@
                     <div class="contact-details" id="contact-details">
                         <h5>Email</h5>
                         <p id="email">test@web.de</p>
-    
+
                         <h5>Phone</h5>
                         <p id="phone">+4911111111</p>
-    
+
                     </div>
                 </div>
                 <div class="button-container">
@@ -99,7 +109,7 @@
 
 
             </div>
-           
+
         </div>
 
     </div>

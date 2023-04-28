@@ -62,6 +62,9 @@ function circleColor(j) {
 
 
 function showContact(j, bothLetters) {
+    if (window.innerWidth < 800) {
+        document.getElementById('kanban').classList.add("display");
+    }
     let color = userAccounts[activeUser].userContacts[j]['color'];
     contactName = userAccounts[activeUser]['userContacts'][j]['name'];
     email = userAccounts[activeUser]['userContacts'][j]['email'];
@@ -73,7 +76,8 @@ function showContact(j, bothLetters) {
     <a onclick="editContactCard(${j});"><img src="assets/img/edit-contact.png"><p>Edit contact</p></a>`;
     document.getElementById('email').innerHTML = `${email}`;
     document.getElementById('phone').innerHTML = `${phone}`;
-    document.getElementById('floating-contact-container').style.display = "";
+    document.getElementById('floating-contact-container').style.display = "flex";
+    document.getElementById('right-container').classList.add("display");
 }
 
 
@@ -224,6 +228,11 @@ function showAddTaskPopOut() {
 
 function closePopOutAddTask() {
     document.getElementById('popOut-taskCard').classList.add('d-none');
+}
+
+function backToContactList(){
+    document.getElementById('right-container').classList.remove("display");
+    document.getElementById('kanban').classList.remove("display");
 }
 
 

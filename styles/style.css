@@ -178,6 +178,8 @@ h3 {
 @media(max-width:800px) {
     .header {
         left: 0px;
+        height: 79.02px;
+        z-index: 90;
     }
 
     .side-bar {
@@ -186,7 +188,7 @@ h3 {
         top: auto;
         flex-direction: row;
         padding: 0px;
-        z-index: 10;
+        z-index: 90;
     }
 
     .logo-container {
@@ -233,6 +235,7 @@ h3 {
         }
 
 }
+
 
 @media(max-width:410px){
     h3{
