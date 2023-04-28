@@ -237,6 +237,8 @@ a {
 
 .position-top {
     display: none !important;
+    right: 10px;
+    position: fixed;
 }
 
 .button-container button {
@@ -651,6 +653,7 @@ a {
     }
 
     .button-container {
+        position: fixed;
         margin-right: 47px;
     }
 }
@@ -672,7 +675,7 @@ a {
         display: flex;
         justify-content: flex-end;
     }
-    
+
     body {
         overflow-x: hidden !important;
     }
