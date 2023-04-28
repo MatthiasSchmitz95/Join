@@ -73,7 +73,6 @@ a {
     flex-direction: column;
     justify-content: space-between;
     margin-left: 123px;
-    margin-bottom: 153px;
 
 }
 
@@ -347,24 +346,7 @@ a {
 
 }
 
-.absolute {
-    position: absolute;
-    left: 0;
-    top: 0;
-    margin-top: 18.34px;
-    margin-left: 21.3px;
 
-}
-
-.absolute-2 {
-    position: absolute;
-    left: 0;
-    top: 0;
-    margin-top: 18.34px;
-    margin-left: 16.3px;
-    ;
-
-}
 
 .do-nr-container {
     display: flex;
@@ -403,6 +385,38 @@ a {
     line-height: 120%;
     color: #29ABE2;
 }
+
+.responsive-greet{
+    background-color: #F6F7F8;
+    display: flex !important;
+    position: absolute;
+    left: 230px;
+    right: 0px;
+    top:80px;
+    z-index: 80;
+    height: 100%;
+    align-items: center;
+    margin: 0px;
+    animation-name: myAnimation;
+    animation-duration: 3000ms;
+    animation-fill-mode: forwards;
+}
+
+@keyframes myAnimation{
+    0%{
+      opacity: 1;
+    }
+    50%{
+      opacity: 1;
+
+    }
+    100%{
+      display: none;
+      opacity: 0;
+
+    }
+  }
+
 
 @media(max-width:1308px) {
     .greeting-container {
@@ -570,7 +584,6 @@ a {
 
     .task-container{
         margin-left: 33px;
-        margin-bottom: 142px;
     }
 
 
@@ -589,5 +602,11 @@ a {
         margin-left: 5px;
     }
 
+}
+
+@media(max-height:799px){
+    .task-container{
+        margin-bottom: 140px;
+    }
 }
 

@@ -657,9 +657,6 @@ a {
 
 @media(max-width:1210px) {
 
-    .add-contact-card {}
-
-
     .html-topic {
         margin-left: 0px;
     }
@@ -670,6 +667,12 @@ a {
 }
 
 @media(max-width:1153px) {
+
+    .header{
+        display: flex;
+        justify-content: flex-end;
+    }
+    
     body {
         overflow-x: hidden !important;
     }

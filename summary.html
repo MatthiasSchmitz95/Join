@@ -17,11 +17,11 @@
     <title>summary</title>
 </head>
 
-<body onload="initSummary()">
+<body id="body" onload="initSummary()">
 
 
     <div w3-include-html="desktop-template.html"></div>
-    <div class="desktop">
+    <div class="desktop" id="desktop">
         <div class="html-topic">
             <h2>Summary</h2>
             <div class="html-topic-sub">
@@ -105,7 +105,7 @@
                 </div>
             </div>
 
-            <div class="greeting-container">
+            <div class="greeting-container" id="greeting-container">
                 <p id="greeting"></p>
                 <h3 id="name"></h3>
             </div>

@@ -22,6 +22,7 @@ function checkCorrectLogin(email, password){
     if(user.userPassword == password.value){
       saveActiveUserLocal(user);
       window.location.href = './summary.html'
+     // greetingsResponsive();
     }else{
       console.log('the password is incorrect, please try again')
     }
@@ -39,7 +40,7 @@ function saveActiveUserLocal(user) {
 function guestLogin(){
   let activeUser = userAccounts[0].userId;
   localStorage.setItem("activeUser", activeUser);
-  window.location.href = './summary.html'
+  window.location.href = './summary.html';  
 }
 
 function sendMeMail(){

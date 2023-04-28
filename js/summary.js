@@ -6,6 +6,19 @@ let urgents = 0;
 let dateSummary = [];
 
 
+function greetingsResponsive(){
+    if (window.innerWidth < 1316) { 
+        document.getElementById('greeting-container').classList.add('responsive-greet');
+        document.getElementById('body').style.overflowY = 'hidden';
+        setTimeout(() => {  
+            document.getElementById('body').style.overflowY = 'auto';
+        }
+            , 2900);
+
+    }
+
+
+}
 
 function setName() {
 
@@ -62,6 +75,7 @@ async function initSummary() {
     await loadTasksFromBackend();
     await loadUserAccountsFromBackend();
     getTime();
+   // greetingsResponsive();
     setName();
     checkingConditions();
     sortDates();
