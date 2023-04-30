@@ -25,9 +25,10 @@
     <div class="frame0">
         <div w3-include-html="desktop-template.html"></div>
         <form class="taskCard" onsubmit="addTask(); return false" id="popOut-taskCard">
-
-            <div class="headline">Add Task</div>
             <div class="contentContainer">
+                <div class="headline">
+                    <span>Add Task</span>
+                </div>
                 <div class="leftContent">
                     <div class="topBoxLeft">
                         <div class="titleContainer">
@@ -134,6 +135,10 @@
                         <div class="SubtaskAppendixContainer" id="SubtaskAppendixContainer"></div>
                     </div>
                 </div>
+
+                <div class="KanbanResponsive d-none">
+                    <span>Kanban Project Managment Tool</span>
+                </div>
             </div>
 
             <div class="buttonsContainer">
@@ -150,9 +155,11 @@
                 <img src="assets/img/board-icon.png">
             </div>
 
-            <div>
-                <button class="createButtonResponsive d-none" type="submit" id="addTaskBtnResponsive">Create <img
-                        class="createBtnImg" src="assets/img/right-mark.png"></button>
+            <div class="createButtonResponsiveContainer d-none">
+                <div>
+                    <button class="createButtonResponsive " type="submit" id="addTaskBtnResponsive">Create <img
+                            class="createBtnImg" src="assets/img/right-mark.png"></button>
+                </div>
             </div>
 
             <div>
@@ -161,6 +168,8 @@
                         id="clearBtnImg" src="assets/img/cross-mark.svg">
                 </button>
             </div>
+
+
 
         </form>
 

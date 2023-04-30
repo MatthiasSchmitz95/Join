@@ -85,9 +85,10 @@ input:-webkit-autofill:active {
 
 .contentContainer {
     display: flex;
+    flex-direction: column;
     width: 962px;
-    /*height: 506px;*/
-    height: auto;
+    height: 669px;
+    /*height: auto;*/
     margin-left: 74px;
     margin-top: 41px;
     position: relative;
@@ -95,36 +96,61 @@ input:-webkit-autofill:active {
 
 .leftContent {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: flex-start;
     padding: 0px;
-    gap: 14px;
-    width: 422px;
+    /*width: 422px;*/
     /*height: 506px;*/
     height: auto;
     box-sizing: border-box;
-    display: block;
     top: 182px;
     left: 74px;
 }
 
-.midLine {
+.topBoxLeft{
+    display: flex;
+    flex-direction: column;
+}
+
+.topBoxRight{
+    display: flex;
+    flex-direction: column;
+}
+
+/*.midLine {
     margin-left: 59px;
     width: 0px;
     height: 669px;
     border: 2px solid #D1D1D1;
 
+}*/
+
+.midLine {
+    box-sizing: border-box;
+    margin-left: 59px;
+    margin-right: 59px;
+    width: 0px;
+    height: 100%;
+    border: 1px solid #D1D1D1;
 }
 
 .rightContent {
-    margin-left: 59px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: flex-start;
     padding: 0px;
-    gap: 14px;
-    width: 422px;
+    /*width: 422px;*/
     /*height: 356px;*/
+}
+
+.BottomBoxLeft{
+    display: flex;
+    flex-direction: column;
+}
+
+.BottomBoxRight{
+    display: flex;
+    flex-direction: column;
 }
 
 .buttonsContainer {

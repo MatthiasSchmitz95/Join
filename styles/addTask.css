@@ -4,9 +4,12 @@ body {
 }
 
 .frame0 {
-    width: 100vw;
+    margin: 0;
+    width: auto;
+    height: auto;
     overflow-y: auto;
-    /*overflow-x: hidden;*/
+    /*overflow-x: auto;*/
+    overflow-x: hidden;
     background: #f6f7f8;
 }
 
@@ -26,8 +29,10 @@ textarea {
 .taskCard {
     /*height: 1024px;
     width: 1440px;*/
+    box-sizing: border-box;
     height: 1024px;
-    width: 100vw;
+    /*width: 100vw;*/
+    width: auto;
     background: #f6f7f8;
     position: absolute;
     top: 0;
@@ -41,7 +46,7 @@ textarea {
 .headline {
     width: 80vw;
     height: 78px;
-    margin-left: 123px;
+    /*margin-left: 123px;*/
     margin-top: 82px;
     font-family: 'Inter';
     font-style: normal;
@@ -57,9 +62,8 @@ textarea {
     flex-direction: column;
     box-sizing: border-box;
     /*width: 962px;*/
-    /*height: 551px;*/
-    width: 80vw;
-    height: auto;
+    height: 599px;
+    /*width: 80vw;*/
     margin-left: 123px;
     margin-top: 41px;
     position: relative;
@@ -69,7 +73,6 @@ textarea {
     display: flex;
     align-items: flex-start;
     padding: 0px;
-    gap: 14px;
     box-sizing: border-box;
     box-sizing: border-box;
     width: 100%;
@@ -82,14 +85,14 @@ textarea {
 
 .topBoxRight {
     display: flex;
-    flex-direction: column-reverse;
-    margin-left: 59px;
+    flex-direction: column;
     gap: 8px;
 }
 
 .midLine {
     box-sizing: border-box;
     margin-left: 59px;
+    margin-right: 59px;
     width: 0px;
     height: 100%;
     border: 1px solid #D1D1D1;
@@ -101,7 +104,6 @@ textarea {
     /*flex-direction: column;*/
     align-items: flex-start;
     padding: 0px;
-    gap: 14px;
     box-sizing: border-box;
     width: 100%;
     height: 50%;
@@ -116,7 +118,6 @@ textarea {
 .BottomBoxRight {
     display: flex;
     flex-direction: column;
-    margin-left: 59px;
     gap: 8px;
     margin-top: -30px;
 }
@@ -131,6 +132,7 @@ textarea {
     justify-content: flex-start;
     gap: 25px;
     margin-top: 48px;
+    z-index: 2;
 }
 
 .clearButton {
@@ -471,7 +473,7 @@ input:-webkit-autofill:active {
     box-sizing: border-box;
     width: 100%;
     height: 70px;
-    display: none;
+    /*display: none;*/
     justify-content: flex-start;
     align-items: center;
     /*background-color: lightgoldenrodyellow;*/
@@ -695,6 +697,9 @@ input[type=date]:invalid::-webkit-datetime-edit {
     height: 74px;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
     border-radius: 20px;
+    position: absolute;
+    top: 700px;
+    left: 470px;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -885,26 +890,27 @@ checkbox filled design
 
 @media(max-width:1400px) {
     .taskCard {
-        width: 80vw;
+        /*width: 80vw;*/
+        width: auto;
     }
 
     .headline {
         width: 80vw;
-        margin-left: 25px;
     }
 
     .contentContainer {
-        width: 80vw;
-        margin-left: 25px;
+        /*width: 80vw;*/
+        margin-left: 70px;
     }
 
     .buttonsContainer {
-        width: 80vw;
-        padding-left: 559px;
+        /*width: 80vw;*/
+        width: auto;
+        padding-left: 604px;
     }
 
     .midLine {
-        margin-left: 0px;
+        margin-left: 59px;
     }
 
     .topBoxRight {
@@ -914,29 +920,60 @@ checkbox filled design
     .BottomBoxRight {
         margin-left: 0px;
     }
+
+    #kanban {
+        margin-left: -50px;
+    }
 }
 
-@media(max-width: 1130px) {
+@media(max-width: 1250px) {
+    .contentContainer {
+        /*width: 80vw;*/
+        margin-left: 10px;
+    }
+
+    .midLine {
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+
+    .buttonsContainer {
+        width: auto;
+        padding-left: 544px;
+    }
+}
+
+@media(max-width:1100px) {
     .taskCard {
-        width: 80vw;
+        width: 100%;
     }
 
     .contentContainer {
-        width: 80vw;
+        box-sizing: border-box;
+        width: 100%;
         margin-left: 0px !important;
     }
 
     .headline {
-        width: 70vw;
-        margin-left: 8px;
+        width: 100%;
         display: flex;
         justify-content: center;
+        margin-left: 0px;
+    }
+
+    .headline span{
+        width: 422px;
+    }
+
+    .topBoxRight {
+        flex-direction: column-reverse;
     }
 
     .leftContent {
         display: flex;
         flex-direction: column !important;
         align-items: center;
+        /*padding-left: 100px;*/
     }
 
     .midLine {
@@ -947,35 +984,102 @@ checkbox filled design
         display: flex;
         flex-direction: column !important;
         align-items: center;
+        /*padding-left: 100px;*/
     }
 
     .buttonsContainer {
-        padding-left: 70px;
+        display: none;
+    }
+
+    .createButtonResponsiveContainer{
+        position: absolute;
+        top: -72px;
+        z-index: 2;
         display: flex;
         justify-content: center;
+        height: 51px;
+        width: 100%;
+        border: none;
+    }
+
+    .createButtonResponsiveContainer div{
+        width: 422px;
+        height: 51px;
+        display: flex;
+        justify-content: flex-end;
+        border: none;
+    }
+
+    .createButtonResponsive {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 21px;
+        line-height: 120%;
+        color: #FFFFFF;
+        background: #2A3647;
+        border-radius: 10px;
+        width: 124px;
+    }
+
+    .createButtonResponsive:hover {
+        border: none;
+        background-color: #29ABE2;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+
+    .createButtonResponsive:active {
+        background-color: #091931;
     }
 
     .titleContainer {
         box-sizing: border-box;
         width: 100% !important;
     }
+
+    .profile-container {
+        display: none;
+    }
+
+    #kanban {
+        display: none;
+    }
+
+    .header {
+        width: 100%;
+        z-index: 2;
+    }
+
+    .KanbanResponsive {
+        position: absolute;
+        top: 25px;
+        display: flex;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .KanbanResponsive span{
+        width: 422px;
+    }
+
+    .clearButton {
+        display: none;
+    }
 }
 
 @media(max-width:800px) {
     .taskCard {
-        /*height: 766.98px;*/
-        /*width: 1440px;*/
         height: auto;
-        width: 100vw;
+        width: 100%;
         background: #f6f7f8;
         position: absolute;
         top: 0;
         left: 0;
         margin-left: 0px;
-        margin-top: 89px;
+        margin-top: 79.02px;
         display: flex;
         flex-direction: column;
-        padding-left: 21px;
+        padding-left: 25px;
     }
 
     .headline {
@@ -984,14 +1088,14 @@ checkbox filled design
         justify-content: flex-start;
         height: 78px;
         margin-top: 55px;
-        margin-left: 0px;
+        padding-left: 0px;
         font-size: 47px;
     }
 
     .contentContainer {
         display: flex;
         flex-direction: column;
-        width: 80vw;
+        width: 100%;
         height: 766.98px;
         height: auto;
         margin-left: 33px;
@@ -1003,6 +1107,7 @@ checkbox filled design
         flex-direction: column;
         margin-left: 0px !important;
         width: 363px;
+        padding-left: 0px;
     }
 
     .titleContainer {
@@ -1093,6 +1198,7 @@ checkbox filled design
         flex-direction: column;
         margin-left: 0px !important;
         width: 363px;
+        padding-left: 0px;
     }
 
     #date {
@@ -1136,12 +1242,31 @@ checkbox filled design
     }
 
     .buttonsContainer {
-        width: 80vw;
+        width: auto;
         display: none;
     }
 
     .createButton {
         display: none;
+    }
+
+    .createButtonResponsiveContainer{
+        position: absolute;
+        top: -72px;
+        z-index: 2;
+        display: flex;
+        justify-content: flex-start;
+        height: 51px;
+        width: auto;
+        border: none;
+    }
+
+    .createButtonResponsiveContainer div{
+        width: 363px;
+        height: 51px;
+        display: flex;
+        justify-content: flex-end;
+        border: none;
     }
 
     .createButtonResponsive {
@@ -1153,15 +1278,15 @@ checkbox filled design
         color: #FFFFFF;
         background: #2A3647;
         border-radius: 10px;
-        display: flex;
+        /*display: flex;
         align-items: center;
-        justify-content: space-evenly;
+        justify-content: space-evenly;*/
         width: 124px;
-        height: 51px;
+        /*height: 51px;
         position: absolute;
         top: -72px;
         z-index: 2;
-        margin-left: 240px;
+        margin-left: 240px;*/
     }
 
     .createButtonResponsive:hover {
@@ -1172,16 +1297,6 @@ checkbox filled design
 
     .createButtonResponsive:active {
         background-color: #091931;
-    }
-
-    .clearButtonResponsive {
-        border: none;
-        background-color: #F6F7F8;
-        position: absolute;
-        top: 27px;
-        height: 21.65px;
-        padding-left: 335px;
-        display: flex;
     }
 
     .clearButtonImgblue {
@@ -1201,34 +1316,45 @@ checkbox filled design
         padding-bottom: 100px;
     }
 
-    .side-bar {
+    /*.menu-container {
         width: 100vw !important;
-    }
-
-    .menu-container {
-        width: 100vw !important;
-    }
+    }*/
 
     .header {
-        width: 100vw !important;
-    }
-
-    h3 {
-        font-size: 16px;
-        position: absolute;
-        top: 98px;
-        width: 80vw;
-        left: 10px;
-        display: flex;
-        justify-content: center;
-        padding-left: 22px;
+        z-index: 2;
     }
 
     .profile-container {
         display: none;
     }
 
-    .header{
-        z-index: 2;
+    .KanbanResponsive {
+        display: flex;
+        box-sizing: border-box;
+        width: 80vw;
+        justify-content: flex-start;
+        position: absolute;
+        top: 25px;
+        padding-left: 0px;
+    }
+
+    .messageAddedTask {
+        top: 579.98px;
+        left: 51px;
+    }
+
+}
+
+@media(max-width:400px) {
+    .taskCard {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
+
+@media(max-width:380px) {
+    .taskCard {
+        padding-left: 5px;
+        padding-right: 5px;
     }
 }
