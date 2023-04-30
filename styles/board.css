@@ -381,3 +381,6 @@ h2 {
     display: flex;
 }
 
+.no-cards{
+    display: none;
+}

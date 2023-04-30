@@ -2,6 +2,10 @@ let currentDraggedElement;
 let loadOverlay = false;
 let loadCircle = false;
 let choosedContact = [];
+let toDoCount= [];
+let inProgressCount= [];
+let awaitingCount= [];
+let doneCount= [];
 
 
 function onloadBoard() {
@@ -15,6 +19,7 @@ function onloadBoard() {
 async function updateHTML() {
     await loadTasksFromBackend();
     await loadUserAccountsFromBackend();
+    emptyArrays();
     let user = userAccounts[activeUser]['userTasks'];
     document.getElementById('toDoContent').innerHTML = '';
     document.getElementById('inProgressContent').innerHTML = '';
@@ -24,7 +29,7 @@ async function updateHTML() {
         const userTasks = user[i];
         cards = userTasks['progress'];
         renderHTML(cards, userTasks)
-    }
+    } updateHTMLNon();
 }
 
 
@@ -36,9 +41,34 @@ function renderHTML(cards, userTasks) {
 }
 
 
+function emptyArrays(){
+    toDoCount = [];
+    inProgressCount = [];
+    awaitingCount = [];
+    doneCount = [];
+}
+
+
+function updateHTMLNon(){
+    if (toDoCount.length == 0) {
+        document.getElementById('toDoContent').innerHTML = `<div class="no-cards"> No Task in To Do </div>`;
+    }
+    if (inProgressCount.length == 0) {
+        document.getElementById('inProgressContent').innerHTML = `<div class="no-cards"> No Task in Progress </div>`;
+    }
+    if (awaitingCount.length == 0) {
+        document.getElementById('awaitingFeedbackContent').innerHTML = `<div class="no-cards"> No Task in Awaiting Feedback </div>`;
+    }
+    if (doneCount.length == 0) {
+        document.getElementById('doneContent').innerHTML = `<div class="no-cards"> No Task in Done </div>`;
+    }
+}
+
+
 function updateHTMLToDo(cards, userTasks) {
     if (cards == 'To Do') {
         document.getElementById('toDoContent').innerHTML += generateHTML1(userTasks) + generateHTML2(userTasks), loadForUpdateHTML(userTasks);
+        toDoCount ++;
     }
 }
 
@@ -46,6 +76,7 @@ function updateHTMLToDo(cards, userTasks) {
 function updateHTMLInProgress(cards, userTasks) {
     if (cards == 'In progress') {
         document.getElementById('inProgressContent').innerHTML += generateHTML1(userTasks) + generateHTML2(userTasks), loadForUpdateHTML(userTasks);
+        inProgressCount ++;
     }
 }
 
@@ -53,6 +84,7 @@ function updateHTMLInProgress(cards, userTasks) {
 function updateHTMLAwaitingFeedback(cards, userTasks) {
     if (cards == 'Awaiting Feedback') {
         document.getElementById('awaitingFeedbackContent').innerHTML += generateHTML1(userTasks) + generateHTML2(userTasks), loadForUpdateHTML(userTasks);
+        awaitingCount ++;
     }
 }
 
@@ -60,6 +92,7 @@ function updateHTMLAwaitingFeedback(cards, userTasks) {
 function updateHTMLDone(cards, userTasks) {
     if (cards == 'Done') {
         document.getElementById('doneContent').innerHTML += generateHTML1(userTasks) + generateHTML2(userTasks), loadForUpdateHTML(userTasks);
+        doneCount ++;
     }
 }
 

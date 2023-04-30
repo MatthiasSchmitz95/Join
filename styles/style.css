@@ -237,6 +237,21 @@ h3 {
 }
 
 
+@media(max-width:440px){
+    .img-small{
+        width: 20px;
+    }
+
+    .text-small{
+        font-size: 12px !important;
+    }
+
+    .menu-container{
+        gap: unset;
+    }
+}
+
+
 @media(max-width:410px){
     h3{
         left: 5px;   
