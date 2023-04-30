@@ -906,7 +906,7 @@ checkbox filled design
     .buttonsContainer {
         /*width: 80vw;*/
         width: auto;
-        padding-left: 604px;
+        padding-left: 695px;
     }
 
     .midLine {
@@ -961,7 +961,7 @@ checkbox filled design
         margin-left: 0px;
     }
 
-    .headline span{
+    .headline span {
         width: 422px;
     }
 
@@ -991,7 +991,7 @@ checkbox filled design
         display: none;
     }
 
-    .createButtonResponsiveContainer{
+    .createButtonResponsiveContainer {
         position: absolute;
         top: -72px;
         z-index: 2;
@@ -1002,7 +1002,7 @@ checkbox filled design
         border: none;
     }
 
-    .createButtonResponsiveContainer div{
+    .createButtonResponsiveContainer div {
         width: 422px;
         height: 51px;
         display: flex;
@@ -1056,9 +1056,15 @@ checkbox filled design
         display: flex;
         width: 100%;
         justify-content: center;
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 120%;
+        color: #000000;
     }
 
-    .KanbanResponsive span{
+    .KanbanResponsive span {
         width: 422px;
     }
 
@@ -1224,7 +1230,7 @@ checkbox filled design
 
     .subtasksInput {
         margin-left: 20px;
-        font-size: 16px;
+        font-size: 18px;
     }
 
     .date {
@@ -1250,7 +1256,7 @@ checkbox filled design
         display: none;
     }
 
-    .createButtonResponsiveContainer{
+    .createButtonResponsiveContainer {
         position: absolute;
         top: -72px;
         z-index: 2;
@@ -1261,7 +1267,7 @@ checkbox filled design
         border: none;
     }
 
-    .createButtonResponsiveContainer div{
+    .createButtonResponsiveContainer div {
         width: 363px;
         height: 51px;
         display: flex;
@@ -1336,6 +1342,12 @@ checkbox filled design
         position: absolute;
         top: 25px;
         padding-left: 0px;
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 120%;
+        color: #000000;
     }
 
     .messageAddedTask {
@@ -1352,9 +1364,119 @@ checkbox filled design
     }
 }
 
-@media(max-width:380px) {
+@media(max-width:375px) {
+    .createButtonResponsiveContainer div {
+        width: 320px;
+    }
+
     .taskCard {
         padding-left: 5px;
         padding-right: 5px;
     }
+
+    .headline {
+        box-sizing: border-box;
+        width: 100%;
+        font-size: 47px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .headline span{
+        width: 320px;
+    }
+
+    .titleContainer{
+        width: 320px !important;
+    }
+
+    #title{
+        font-size: 18px;
+    }
+
+    .descriptionContainer{
+        width: 320px !important;
+    }
+
+    #description{
+        font-size: 18px;
+    }
+
+    .prioContainer{
+        width: 320px !important;
+    }
+
+    .priorityBoxesContainer{
+        width: 320px !important;
+    }
+
+    #date {
+        width: 320px !important;
+    }
+
+    .inputContainer{
+        width: 320px !important;
+    }
+
+    .contactInputContainer{
+        width: 320px !important;
+    }
+
+    .categoryContainer{
+        width: 320px !important;
+    }
+
+    .assignContainer{
+        width: 320px !important;
+    }
+
+    #assignInput{
+        font-size: 18px;
+    }
+
+    .BottomBoxLeft {
+        width: 320px !important;
+    }
+
+    #input {
+        width: 190px;
+        font-size: 18px;
+    }
+
+    .buttonOpenCloseCategory {
+        padding-left: 53px;
+    }
+
+    .buttonOpenClose {
+        padding-left: 2px;
+    }
+
+    .addSubtaskContainer{
+        width: 320px !important;
+    }
+
+    #subtaskOninput {
+        padding-left: 0px;
+    }
+
+    #newCategoryInput {
+        padding-left: 12px;
+    }
+
+    .newCategoryColorsBox {
+        width: 320px !important;
+    }
+
+    .KanbanResponsive {
+        display: flex;
+        box-sizing: border-box;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .KanbanResponsive span {
+        width: 320px;
+    }
+
 }
+
