@@ -62,7 +62,7 @@ function circleColor(j) {
 
 
 function showContact(j, bothLetters) {
-    if (window.innerWidth < 800) {
+    if (window.innerWidth < 1140) {
         document.getElementById('kanban').classList.add("display");
     }
     let color = userAccounts[activeUser].userContacts[j]['color'];

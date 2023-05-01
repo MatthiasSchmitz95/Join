@@ -47,7 +47,7 @@ a {
     z-index: 13;
 }
 
-.big-container{
+.big-container {
     display: flex;
 }
 
@@ -239,6 +239,8 @@ a {
     display: none !important;
     right: 10px;
     position: fixed;
+    width: 193px !important;
+    height: 61px !important;
 }
 
 .button-container button {
@@ -666,18 +668,15 @@ a {
     }
 }
 
-@media(max-width:1153px) {
+@media(max-width:1164px) {
 
-    .header{
-        display: flex;
-        justify-content: flex-end;
-    }
+
 
     body {
         overflow-x: hidden !important;
     }
 
-    .head-contact{
+    .head-contact {
         width: 100%;
     }
 
@@ -712,7 +711,12 @@ a {
 
     }
 
+    .contact-container{
+        margin-top:86.89px;
+    }
+
     .right-container {
+        justify-content: flex-start;
         padding-left: 34px;
         display: none;
         position: absolute;
@@ -743,6 +747,7 @@ a {
         margin-right: 35px;
     }
 }
+
 
 @media(max-width:800px) {
     body {
