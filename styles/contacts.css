@@ -171,7 +171,7 @@ a {
     margin-top: 89px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
     height: calc(100vh - 89px);
 }
 
@@ -678,6 +678,10 @@ a {
 
     .head-contact {
         width: 100%;
+    }
+
+    .header{
+        justify-content: flex-end;
     }
 
     .html-topic img {

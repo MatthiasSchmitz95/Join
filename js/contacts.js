@@ -78,6 +78,12 @@ function showContact(j, bothLetters) {
     document.getElementById('phone').innerHTML = `${phone}`;
     document.getElementById('floating-contact-container').style.display = "flex";
     document.getElementById('right-container').classList.add("display");
+    displayFloatContact();
+}
+
+function displayFloatContact(){
+    document.getElementById('name-container').style.display ='';
+    document.getElementById('contact-details').style.display ='';
 }
 
 
