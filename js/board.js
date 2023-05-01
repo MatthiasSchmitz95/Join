@@ -159,7 +159,7 @@ function priorityImgCard(cards) {
 
 function startDragging(id) {
     currentDraggedElement = id;
-    document.getElementById('body').style.backgroundColor = 'rgb(0,0,0,0.1)';
+    document.getElementById('bodyBoard').style.backgroundColor = 'rgb(0,0,0,0.1)';
     document.getElementById(`dragMe${id}`).classList.add('dragging');
 }
 
@@ -175,14 +175,14 @@ async function moveTo(category) {
     todo['progress'] = category;
     await saveTasksToBackend();
     await saveUserAccountsToBackend();
-    document.getElementById('body').style.backgroundColor = 'rgb(246,247,248)';
+    document.getElementById('bodyBoard').style.backgroundColor = 'rgb(246,247,248)';
     updateHTML();
 }
 
 
 function showOverlay(cards) {
     calcScrollTo();
-    document.getElementById('body').classList.add('noscroll');
+    document.getElementById('bodyBoard').classList.add('noscroll');
     document.getElementById('kanban').classList.add('display-none');
     let user = userAccounts[activeUser]['userTasks'];
     let todo = user.find((item) => item.id === cards);
@@ -270,7 +270,7 @@ function closeOverlay() {
         let overlay = document.getElementById('overlay');
         overlay.classList.add('d-none');
         document.getElementById('overlay-background').classList.remove('overlay-background');
-        document.getElementById('body').classList.remove('noscroll');
+        document.getElementById('bodyBoard').classList.remove('noscroll');
         document.getElementById('kanban').classList.remove('display-none');
     }
 }
