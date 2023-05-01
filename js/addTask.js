@@ -85,10 +85,12 @@ function closeDropdownCategory() {
     categoryList.style.display = "none"; //hide Container for Category 
     categoryInputContainer.style.border = "1px solid #D1D1D1"; //Category Input Container show all border 
     categoryInputContainer.style.borderRadius = "10px"; //Category Input Container show all Border radius with 10px
+    document.getElementById("input").disabled = true;
 }
 
 /**show the Category Select Menu*/
 function showDropdownCategory() {
+    document.getElementById("input").disabled = true;
     categoryList = document.getElementById('categoryList');
     categoryInputContainer = document.getElementById('inputContainer');
     categoryList.style.display = "block"; //shows Container for Category to rendern
@@ -126,6 +128,7 @@ function newCategoryInput() {
     document.getElementById('newCategoryInput').style.display = "flex"; //shows newCategoryInput container -> shows "cross mark and check mark"
     document.getElementById('buttonDropDown').style.display = "none"; //hide Category DropDown Button
     document.getElementById('newCategoryColorsBox').style.display = "flex"; //shows new category Color Container direct under the Category Input Field
+    document.getElementById("input").disabled = false;
 }
 
 /**function for input new Category Color
@@ -155,8 +158,10 @@ function addNewCategory() {
 function rejectNewCategory() {
     document.getElementById('buttonDropDown').style.display = "flex"; //shows Category DropDown Button
     document.getElementById('newCategoryInput').style.display = "none"; //hide newCategoryInput container -> hide "cross mark and check mark"
+    document.getElementById('input').value = ""; //refresh the inputfield to the beginning
     document.getElementById('input').placeholder = 'Select task Category'; //refresh the placeholder to the beginning
     document.getElementById('newCategoryColorsBox').style.display = "none"; //hide new category Color Container under the Category Input Field
+    document.getElementById("input").disabled = true;
 }
 
 /**
@@ -759,4 +764,23 @@ function getUserColor(userIndex){
     const colorUser = userAccounts[activeUser]['userContacts'][userIndex]['color']; 
     console.log(colorUser); 
     return colorUser;  
+}
+
+function filterContact(){
+    let search = document.getElementById('assignInput').value;
+    search = search.toLowerCase();  //konvertiert zu einem String zu kleinen Bustaben
+
+    let content = document.getElementById('contactInputContainer');
+    content.innerHTML = '';
+
+    for (let i = 0; i < userAccounts[activeUser]['userContacts'].length; i++) {
+        userName = userAccounts[activeUser]['userContacts'][i]['name']; //alle Kontakte durchgehen
+
+        if (userName.toLowerCase().includes(search)){ //Wenn der Titel im SuchEingabe dabei ist, dann wird unten ausgegeben
+            content.innerHTML = `
+                ${userName[i]}
+            `;
+        }
+    }
+
 }
