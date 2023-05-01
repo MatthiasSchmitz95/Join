@@ -59,6 +59,7 @@ function renderCategory() {
 
 /*set Category InputField to default as in beginning*/
 function unsetCategoryInputField() {
+    categoryInputContainer = document.getElementById('inputContainer');
     categoryInputContainer.innerHTML = `
     <input id="input" type="text" placeholder="Select task Category" required>
         <div id="color" class="color"></div>
@@ -558,12 +559,16 @@ function getPriorityInformation() {
 
 /**Set other Inputfields to default values and the prio Buttons to the original text and color*/
 function setAllFieldsToDefault() {
+    title = document.getElementById('title');
     title.value = "";
+    description = document.getElementById('description');
     description.value = "";
+    category = document.getElementById('input');
     category.value = "";
     unsetCategoryInputField();
     document.getElementById('assignInput').value = "";
     inputAssignedContact = "";
+    dueDate = document.getElementById('date');
     dueDate.value = "";
     document.getElementById('prioUrgentBox').classList.remove('bgUrgent');
     document.getElementById('prioMediumBox').classList.remove('bgMedium');
@@ -737,7 +742,8 @@ async function updateCalender() {
 
 /*clear all field of AddTask page*/
 function clearAllAddTaskFields() {
-    window.location.reload();
+    //window.location.reload();
+    setAllFieldsToDefault();
     document.getElementById('clearBtnImg').classList.remove('clearButtonImgblue');
     document.getElementById('clearBtnImg').classList.add('clearButtonImgGray');
 }
@@ -750,7 +756,8 @@ function showAddTaskPopOut() {
     });
     //document.getElementById('bg').style.display = '';
     document.getElementById('popOut-taskCard').classList = "popOut-taskCard";
-    document.getElementById('body').style = "overflow-y: hidden;";
+    //document.getElementById('body').style = "overflow-y: hidden;";
+    document.getElementById('contentContainer').classList.add('scrollY');
 }
 
 /**hide AddTaskPopOut.html*/
@@ -787,5 +794,6 @@ function filterContact() {
             `;
         }
     }
+    //stopImmediatePropagation();
 }
 

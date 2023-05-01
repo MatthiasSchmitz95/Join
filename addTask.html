@@ -103,7 +103,7 @@
                         <div class="assignContainer">
                             <label for="assignedTo" class="assignedTo">Assigned to</label>
                             <div class="contactInputContainer" id="contactInputContainer">
-                                <input id="assignInput" type="text" placeholder="Select contacts to assign"  onchange="filterContact()"/>
+                                <input id="assignInput" type="text" placeholder="Select contacts to assign"  onkeydown="filterContact()">
                                 <div id="assignDropDown" class="buttonOpenClose" onclick="dropDownAssignTo()"><img
                                         src="assets/img/dropdown-arrow.png"></div>
                                 <div id="newAssignToInput">
@@ -146,7 +146,7 @@
                     onclick="clearAllAddTaskFields()">Clear <img class="clearBtnImg" id="clearBtnImg"
                         src="assets/img/cross-mark.svg">
                 </button>
-                <button class="createButton" type="submit" id="addTaskBtn" onchange="changeCreateBtnText()">Create Task
+                <button class="createButton" type="submit" id="addTaskBtn">Create Task
                     <img class="createBtnImg" src="assets/img/right-mark.png"></button>
             </div>
 
