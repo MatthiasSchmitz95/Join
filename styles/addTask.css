@@ -123,7 +123,7 @@ textarea {
 }
 
 .buttonsContainer {
-    padding-left: 779px;
+    margin-left: 779px;
     width: 338px;
     box-sizing: border-box;
     height: 61px;
