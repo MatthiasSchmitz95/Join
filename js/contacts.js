@@ -73,7 +73,10 @@ function showContact(j, bothLetters) {
     document.getElementById('contact-circle').style.backgroundColor = `${color}`;
     document.getElementById('float-contact-name').innerHTML = `${contactName}`;
     document.getElementById('contact-information').innerHTML = `<h4>Contact information</h4>
-    <a onclick="editContactCard(${j});"><img src="assets/img/edit-contact.png"><p>Edit contact</p></a>`;
+    <a class="edit" onclick="editContactCard(${j});"><img src="assets/img/edit-contact.png"><p>Edit contact</p></a>`;
+    document.getElementById('responsive-buttons').innerHTML = `
+    <button class="delete-button-responsive" onclick="deleteContact(${j});"><img src="assets/img/delete-contact.png"> </button>
+    <button class="edit-button-responsive" onclick="editContactCard(${j});"><img src="assets/img/edit-contact2.png"> </button>`;
     document.getElementById('email').innerHTML = `${email}`;
     document.getElementById('phone').innerHTML = `${phone}`;
     document.getElementById('floating-contact-container').style.display = "flex";

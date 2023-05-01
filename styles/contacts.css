@@ -634,6 +634,35 @@ a {
     margin-bottom: 15px;
 }
 
+.responsive-buttons{
+    display: none;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-right: 68px;
+    margin-top: 97px;
+}
+
+.delete-button-responsive{
+    width: 40px;
+    height: 40px;
+    margin-bottom: 16px;
+    border: 1px solid #2A3647;
+    background: linear-gradient(180deg, #F9F9F9 0%, #F0F0F0 100%);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.edit-button-responsive{
+    width: 50px;
+    height: 50px;
+    margin-bottom: 16px;
+    border: 1px solid #2A3647;
+    background: #2A3647;
+    border-radius: 10px;
+    cursor: pointer;
+    border: 1px solid #2A3647;
+}
+
 @media(max-width:1320px) {
     .html-topic p {
         font-size: 21px;
@@ -670,9 +699,6 @@ a {
 }
 
 @media(max-width:1164px) {
-
-
-
     body {
         overflow-x: hidden !important;
     }
@@ -731,8 +757,20 @@ a {
         width: calc(100vw - 230px);
     }
 
+    .floating-contact-container {
+        margin-left: 0px;
+    }
+
     .button-container {
         display: none;
+    }
+
+    .responsive-buttons{
+        display: flex;
+    }
+
+    .edit{
+        display: none !important;
     }
 
     .left-container {
