@@ -1,8 +1,11 @@
 <form class="popOut-taskCard popOut-hidden" onsubmit="addTask(); return false" id="popOut-taskCard"
     onload="renderSubtasks()">
 
-    <div class="headline">Add Task</div>
+    
     <div class="contentContainer">
+        <div class="headline">
+            <span>Add Task</span>
+        </div>
         <div class="leftContent">
             <div class="topBoxLeft">
                 <div class="titleContainer">
@@ -120,5 +123,13 @@
         <span><img class="closeBtn" src="./assets/img/closeBtn.png" id="closeBtn-addTaskPopOut"
             onclick="closePopOutAddTask('popOut-taskCard')"></span>
     </div>
+
+    <div class="createButtonResponsiveContainer">
+        <div>
+            <button class="createButtonResponsive " type="submit" id="addTaskBtnResponsive">Create <img
+                    class="createBtnImg" src="assets/img/right-mark.png"></button>
+        </div>
+    </div>
 </form>
 
+<!--<div class="responsiveHeader" id="responsiveHeader"> </div>-->
