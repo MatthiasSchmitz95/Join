@@ -1,7 +1,7 @@
 <form class="popOut-taskCard popOut-hidden" onsubmit="addTask(); return false" id="popOut-taskCard"
     onload="renderSubtasks()">
 
-    
+
     <div class="contentContainer">
         <div class="headline">
             <span>Add Task</span>
@@ -22,17 +22,21 @@
             <div class="midLine"></div>
 
             <div class="topBoxRight">
-                <label for="date" class="date">Due date</label>
-                <input id="date" placeholder="dd/mm/yyyy" type="date" required>
+                <div class="d-column">
+                    <label for="date" class="date">Due date</label>
+                    <input id="date" placeholder="dd/mm/yyyy" type="date" required>
+                </div>
 
-                <label for="priority" class="priority">Prio</label>
-                <div class="priorityBoxesContainer">
-                    <div class="prioUrgentBox" id="prioUrgentBox" onclick="insertUrgent()">Urgent <img
-                            id="prioUrgentImg" src="assets/img/urgent.png"></div>
-                    <div class="prioMediumBox" id="prioMediumBox" onclick="insertMedium()">Medium <img
-                            id="prioMediumImg" src="assets/img/medium.png"></div>
-                    <div class="prioLowBox" id="prioLowBox" onclick="insertLow()">Low <img id="prioLowImg"
-                            src="assets/img/Low.png"></div>
+                <div class="prioContainer">
+                    <label for="priority" class="priority">Prio</label>
+                    <div class="priorityBoxesContainer">
+                        <div class="prioUrgentBox" id="prioUrgentBox" onclick="insertUrgent()">Urgent <img
+                                id="prioUrgentImg" src="assets/img/urgent.png"></div>
+                        <div class="prioMediumBox" id="prioMediumBox" onclick="insertMedium()">Medium <img
+                                id="prioMediumImg" src="assets/img/medium.png"></div>
+                        <div class="prioLowBox" id="prioLowBox" onclick="insertLow()">Low <img id="prioLowImg"
+                                src="assets/img/Low.png"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -121,7 +125,7 @@
 
     <div class="closeBtnContainer">
         <span><img class="closeBtn" src="./assets/img/closeBtn.png" id="closeBtn-addTaskPopOut"
-            onclick="closePopOutAddTask('popOut-taskCard')"></span>
+                onclick="closePopOutAddTask('popOut-taskCard')"></span>
     </div>
 
     <div class="createButtonResponsiveContainer">
@@ -131,5 +135,3 @@
         </div>
     </div>
 </form>
-
-<!--<div class="responsiveHeader" id="responsiveHeader"> </div>-->
