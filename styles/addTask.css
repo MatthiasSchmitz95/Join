@@ -1,13 +1,14 @@
 body {
     margin: 0;
     background: #f6f7f8;
+    overflow-y: scroll !important;
 }
 
 .frame0 {
     margin: 0;
     width: auto;
     height: auto;
-    overflow-y: auto;
+    overflow-y: scroll;
     /*overflow-x: auto;*/
     overflow-x: hidden;
     background: #f6f7f8;
