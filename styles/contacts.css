@@ -689,6 +689,48 @@ a {
 
 @media(max-width:1210px) {
 
+    .add-contact-card{
+        left: 235px;
+        right: 0;
+        top: 89px;
+        bottom:0px;
+        transform: translate(0% , 0%);
+        width: auto;
+        height: auto;
+        flex-direction: column;
+    }
+
+    .card-container-left {
+        width: auto;
+        border-bottom-left-radius: 0px;
+        border-top-left-radius: 30px;
+        border-top-right-radius: 30px;
+    }
+
+    .card-container-right {
+        align-items: center;
+        border-bottom-right-radius: 30px;
+        border-bottom-left-radius: 30px;
+        border-top-right-radius: 0px;
+    }
+
+    .close-contact-container{
+        display: none;
+    }
+    .contact-flex {
+        flex-direction: column;
+        margin-top:-63px;
+    }
+
+    input{
+        margin-right: 0px !important;
+    }
+
+    .btn-container{
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+
     .html-topic {
         margin-left: 0px;
     }
