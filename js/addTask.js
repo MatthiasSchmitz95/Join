@@ -760,27 +760,32 @@ function closePopOutAddTask() {
     document.getElementById('body').style = "overflow-y: auto;";
 }
 
-function getUserColor(userIndex){
-    const colorUser = userAccounts[activeUser]['userContacts'][userIndex]['color']; 
-    console.log(colorUser); 
-    return colorUser;  
+function getUserColor(userIndex) {
+    const colorUser = userAccounts[activeUser]['userContacts'][userIndex]['color'];
+    console.log(colorUser);
+    return colorUser;
 }
 
-function filterContact(){
+function filterContact() {
     let search = document.getElementById('assignInput').value;
     search = search.toLowerCase();  //konvertiert zu einem String zu kleinen Bustaben
 
-    let content = document.getElementById('contactInputContainer');
+    let content = document.getElementById('assignedList');//get the id of AssignedList container to render contact
     content.innerHTML = '';
+    assignToInputContainer = document.getElementById('contactInputContainer');
+    content.style.display = "block"; //shows the Container for Contacts  
+    assignToInputContainer.style.borderBottom = "none"; //hide the AssignedTo container Border bottom
+    /* top-left top-right bottom-right bottom-left */
+    assignToInputContainer.style.borderRadius = "10px 10px 0 0"; //shows AssignedTo container top-left top-right border radius
 
     for (let i = 0; i < userAccounts[activeUser]['userContacts'].length; i++) {
         userName = userAccounts[activeUser]['userContacts'][i]['name']; //alle Kontakte durchgehen
-
-        if (userName.toLowerCase().includes(search)){ //Wenn der Titel im SuchEingabe dabei ist, dann wird unten ausgegeben
+        userNameLowerLetter = userName.toLowerCase();
+        if (userNameLowerLetter.includes(search)) { //Wenn der Titel im SuchEingabe dabei ist, dann wird unten ausgegeben
             content.innerHTML = `
-                ${userName[i]}
+                ${userName}
             `;
         }
     }
-
 }
+

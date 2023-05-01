@@ -906,7 +906,7 @@ checkbox filled design
     .buttonsContainer {
         /*width: 80vw;*/
         width: auto;
-        padding-left: 695px;
+        margin-left: 695px;
     }
 
     .midLine {
@@ -939,7 +939,7 @@ checkbox filled design
 
     .buttonsContainer {
         width: auto;
-        padding-left: 544px;
+        margin-left: 544px;
     }
 }
 
