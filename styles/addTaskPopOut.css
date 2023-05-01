@@ -1,8 +1,10 @@
-body {
+/*form {
     margin: 0;
-    overflow-y: auto;
-    overflow-x: auto;
-    /*background-color: yellowgreen;*/
+    overflow-y: show;
+    overflow-x: hidden;
+}*/
+.createButtonResponsiveContainer{
+    display: none;
 }
 
 textarea {
@@ -23,10 +25,11 @@ input:-webkit-autofill:active {
 
 .popOut-taskCard {
     position: fixed;
-    top: -11px;
+    top: -10px;
     left: 130px;
     width: 1116px;
     height: 914px;
+    /*background: #F6F7F8;*/
     background: #FFFFFF;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
     border-radius: 30px;
@@ -40,7 +43,7 @@ input:-webkit-autofill:active {
 
 .popOut-hidden {
     position: fixed;
-    top: -11px;
+    top: -10px;
     left: 130px;
     width: 1116px;
     height: 914px;
@@ -59,7 +62,7 @@ input:-webkit-autofill:active {
     box-sizing: border-box;
     /*width: 466px;*/
     height: 78px;
-    margin-left: 74px;
+    /*margin-left: 74px;*/
     margin-right: 74px;
     margin-top: 63px;
     font-family: 'Inter';
@@ -71,7 +74,7 @@ input:-webkit-autofill:active {
     display: flex;
 }
 
-.closeBtnContainer{
+.closeBtnContainer {
     position: absolute;
     top: 26px;
     box-sizing: border-box;
@@ -113,12 +116,12 @@ input:-webkit-autofill:active {
     left: 74px;
 }
 
-.topBoxLeft{
+.topBoxLeft {
     display: flex;
     flex-direction: column;
 }
 
-.topBoxRight{
+.topBoxRight {
     display: flex;
     flex-direction: column;
 }
@@ -147,12 +150,12 @@ input:-webkit-autofill:active {
     padding: 0px;
 }
 
-.BottomBoxLeft{
+.BottomBoxLeft {
     display: flex;
     flex-direction: column;
 }
 
-.BottomBoxRight{
+.BottomBoxRight {
     display: flex;
     flex-direction: column;
 }
@@ -880,6 +883,8 @@ checkbox filled design
     height: 23px;
 }
 
+
+
 /*
 *Animation AddTask To board
 */
@@ -910,12 +915,19 @@ checkbox filled design
 
 
 @media(max-width:1400px) {
-    .popOut-taskCard {
-        /*width: 80vw;*/
-        width: 80%;
+    .bg {
+        display: none;
     }
 
-    .closeBtnContainer{
+    .popOut-taskCard {
+        /*width: 80vw;*/
+        width: 970px;
+        box-shadow: none;
+        border-radius: 0px;
+        box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .closeBtnContainer {
         position: absolute;
         top: 26px;
         box-sizing: border-box;
@@ -930,17 +942,18 @@ checkbox filled design
 
     .contentContainer {
         /*width: 80vw;*/
-        margin-left: 70px;
+        margin-left: 15px;
     }
 
     .buttonsContainer {
         /*width: 80vw;*/
         width: auto;
-        padding-left: 695px;
+        margin-left: 563px;
     }
 
     .midLine {
-        margin-left: 59px;
+        margin-left: 20px;
+        margin-right: 20px;
     }
 
     .topBoxRight {
@@ -955,20 +968,26 @@ checkbox filled design
         margin-left: -50px;
     }
 
-    
+
 }
 
-@media(max-width: 1300px) {
-    .popOut-taskCard {
-        /*width: 80vw;*/
-        width: 80%;
+@media(max-width: 1200px) {
+    .bg {
+        display: none;
     }
 
-    .closeBtnContainer{
+    .popOut-taskCard {
+        width: 900px;
+        box-shadow: none;
+        border-radius: 0px;
+        box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .closeBtnContainer {
         position: absolute;
         top: 26px;
         box-sizing: border-box;
-        width: 95%;
+        width: 98%;
         display: flex;
         justify-content: flex-end;
     }
@@ -980,20 +999,33 @@ checkbox filled design
 
     .buttonsContainer {
         width: auto;
-        padding-left: 544px;
+        margin-left: 553px;
     }
 }
 
-@media(max-width:1000px) {
-    .popOut-taskCard {
-        width: 80%;
+@media(max-width:1100px) {
+    .bg {
+        display: none;
     }
 
-    .closeBtnContainer{
+    .popOut-taskCard {
+        width: 100%;
+        border-radius: 0px;
+        box-shadow: none;
+        box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .closeBtnContainer {
         position: absolute;
-        top: 26px;
-        box-sizing: border-box;
-        width: 95%;
+        top: 110px;
+        width: 85%;
+        display: flex;
+        justify-content: center;
+        margin-left: 0px;
+    }
+
+    .closeBtnContainer span {
+        width: 422px;
         display: flex;
         justify-content: flex-end;
     }
@@ -1048,7 +1080,7 @@ checkbox filled design
         display: flex;
         justify-content: center;
         height: 51px;
-        width: 100%;
+        width: 85%;
         border: none;
     }
 
@@ -1124,9 +1156,31 @@ checkbox filled design
 }
 
 @media(max-width:800px) {
+    /*.responsiveHeader{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 89px;
+        z-index: 5;
+        background-color: unset;
+        background-color: whitesmoke;
+        background: #F6F7F8;
+        border-bottom: 2px solid black;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 1);
+    }*/
+
+    .side-bar {
+        display: none;
+    }
+
+    .bg {
+        display: none;
+    }
+
     .popOut-taskCard {
         height: auto;
-        width: 95%;
+        width: 100%;
         background: #f6f7f8;
         position: absolute;
         top: 0;
@@ -1136,13 +1190,16 @@ checkbox filled design
         display: flex;
         flex-direction: column;
         padding-left: 15px;
+        box-shadow: none !important;
+        border-radius: 0px !important;
+        box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
     }
 
-    .closeBtnContainer{
+    .closeBtnContainer {
         position: absolute;
-        top: 26px;
+        top: 60px;
         box-sizing: border-box;
-        width: 98%;
+        width: 363px;
         display: flex;
         justify-content: flex-end;
     }
@@ -1417,13 +1474,23 @@ checkbox filled design
 }
 
 @media(max-width:400px) {
+    .bg {
+        display: none;
+    }
+
     .popOut-taskCard {
         padding-left: 15px;
         padding-right: 15px;
+        border-radius: 0px;
+        box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
     }
 }
 
 @media(max-width:375px) {
+    .bg {
+        display: none;
+    }
+
     .createButtonResponsiveContainer div {
         width: 320px;
     }
@@ -1431,6 +1498,8 @@ checkbox filled design
     .popOut-taskCard {
         padding-left: 5px;
         padding-right: 5px;
+        border-radius: 0px;
+        box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
     }
 
     .headline {
@@ -1441,31 +1510,31 @@ checkbox filled design
         justify-content: center;
     }
 
-    .headline span{
+    .headline span {
         width: 320px;
     }
 
-    .titleContainer{
+    .titleContainer {
         width: 320px !important;
     }
 
-    #title{
+    #title {
         font-size: 18px;
     }
 
-    .descriptionContainer{
+    .descriptionContainer {
         width: 320px !important;
     }
 
-    #description{
+    #description {
         font-size: 18px;
     }
 
-    .prioContainer{
+    .prioContainer {
         width: 320px !important;
     }
 
-    .priorityBoxesContainer{
+    .priorityBoxesContainer {
         width: 320px !important;
     }
 
@@ -1473,23 +1542,23 @@ checkbox filled design
         width: 320px !important;
     }
 
-    .inputContainer{
+    .inputContainer {
         width: 320px !important;
     }
 
-    .contactInputContainer{
+    .contactInputContainer {
         width: 320px !important;
     }
 
-    .categoryContainer{
+    .categoryContainer {
         width: 320px !important;
     }
 
-    .assignContainer{
+    .assignContainer {
         width: 320px !important;
     }
 
-    #assignInput{
+    #assignInput {
         font-size: 18px;
     }
 
@@ -1510,7 +1579,7 @@ checkbox filled design
         padding-left: 2px;
     }
 
-    .addSubtaskContainer{
+    .addSubtaskContainer {
         width: 320px !important;
     }
 

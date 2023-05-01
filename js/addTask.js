@@ -743,7 +743,7 @@ function showAddTaskPopOut() {
         top: 0,
         behavior: "smooth"
     });
-    document.getElementById('bg').style.display = '';
+    //document.getElementById('bg').style.display = '';
     document.getElementById('popOut-taskCard').classList = "popOut-taskCard";
     document.getElementById('body').style = "overflow-y: hidden;";
 }

@@ -1477,6 +1477,137 @@ checkbox filled design
     .KanbanResponsive span {
         width: 320px;
     }
+}
 
+@media(max-width:280px){
+    .createButtonResponsiveContainer div {
+        width: 260px;
+    }
+
+    .taskCard {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    .headline {
+        box-sizing: border-box;
+        width: 100%;
+        font-size: 47px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .headline span{
+        width: 260px;
+    }
+
+    .titleContainer{
+        width: 260px !important;
+    }
+
+    #title{
+        font-size: 15px;
+    }
+
+    .descriptionContainer{
+        width: 260px !important;
+    }
+
+    #description{
+        font-size: 15px;
+    }
+
+    .prioContainer{
+        width: 260px !important;
+    }
+
+    .priorityBoxesContainer{
+        width: 260px !important;
+    }
+
+    #date {
+        width: 260px !important;
+        font-size: 15px;
+    }
+
+    .inputContainer{
+        width: 260px !important;
+    }
+
+    .contactInputContainer{
+        width: 260px !important;
+    }
+
+    .leftContent{
+        width: 280px;
+    }
+
+    .rightContent{
+        width: 280px;
+    }
+
+    .categoryContainer{
+        width: 260px !important;
+    }
+
+    .assignContainer{
+        width: 320px !important;
+    }
+
+    #assignInput{
+        font-size: 15px;
+    }
+
+    .BottomBoxLeft {
+        width: 260px !important;
+    }
+
+    #input {
+        width: 190px;
+        font-size: 15px;
+    }
+
+    .buttonOpenCloseCategory {
+        padding-left: 15px;
+    }
+
+    .buttonOpenClose {
+        padding-left: 2px;
+    }
+
+    .addSubtaskContainer{
+        width: 260px !important;
+    }
+
+    #subtaskOninput {
+        padding-left: 0px;
+    }
+
+    #newCategoryInput {
+        padding-left: 12px;
+    }
+
+    .newCategoryColorsBox {
+        width: 260px !important;
+    }
+
+    .KanbanResponsive {
+        display: flex;
+        box-sizing: border-box;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .KanbanResponsive span {
+        width: 260px;
+    }
+
+    .subtasksInput {
+        font-size: 15px;
+    }
+
+    .side-bar{
+        width: 280px;
+    }
 }
 
