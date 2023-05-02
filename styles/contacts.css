@@ -406,7 +406,7 @@ a {
     width: 21.65px !important;
     height: 21.65px !important;
     margin-left: 0px !important;
-    margin-top: 16px !important;
+    margin-top: 0px !important;
     margin-bottom:0px;
     cursor: pointer;
 
@@ -772,6 +772,7 @@ a {
         margin-left: 0px;
         margin-right: 0px;
         margin-bottom: 48px;
+        margin-top: 0px;
     }
 
     .html-topic {
@@ -781,6 +782,12 @@ a {
     .floating-contact-container {
         margin-left: 10px;
     }
+
+    .icon-container {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+
 }
 
 @media(max-width:1164px) {
@@ -907,10 +914,27 @@ a {
         width: 100vw;
         margin-bottom: 89px;
     }
+
+    .help-container h3{
+        font-size: 47px;
+        margin: 0px;
+    }
+
+    .help-container p{
+        font-size: 21px;
+    }
 }
 
 @media(max-width:577px) {
     .right-container {
         padding-left: 34px;
     }
+
+    .contact-container {
+        margin-left: 0px;
+}
+
+.btn-contact-white{
+    display: none;
+}
 }
