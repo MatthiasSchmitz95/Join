@@ -15,11 +15,11 @@ async function renderAssignToBoard(cards) {
     let assignedContactList = document.getElementById('assignedList');  //container to render the list
     assignedContactList.innerHTML = ""; //clear container inside html
     let users = userAccounts[activeUser]['userContacts'];
-    renderAssignToBoardContacts(users,assignedContactList, todo)
+    renderAssignToBoardContacts(users, assignedContactList, todo)
 }
 
 
-function renderAssignToBoardContacts(users,assignedContactList, todo){
+function renderAssignToBoardContacts(users, assignedContactList, todo) {
     for (let i = 0; i < users.length; i++) {
         let userName = users[i]['name'];
         const element = todo.contact;
@@ -32,18 +32,19 @@ function renderAssignToBoardContacts(users,assignedContactList, todo){
 
 function chooseContactBoard(name, cards) {
     let user = userAccounts[activeUser]['userTasks'];
-    let todo = user.find((item) => item.id === cards); 
-    let inputAssignedContact = document.getElementById('assignInput'); 
-    inputAssignedContact.value = ''; 
-    inputAssignedContact.value = name; 
-    choosedContact.splice(0); 
-    let allChekbox = document.querySelectorAll('.checkboxForContacts'); 
+    let todo = user.find((item) => item.id === cards);
+    let inputAssignedContact = document.getElementById('assignInput');
+    inputAssignedContact.value = '';
+    inputAssignedContact.value = name;
+    choosedContact.splice(0);
+    let allChekbox = document.querySelectorAll('.checkboxForContacts');
     for (let i = 0; i < allChekbox.length; i++) {
         const checkbox = allChekbox[i];
-        if (checkbox.checked) {  
+        if (checkbox.checked) {
             choosedContact.push(checkbox.value);
-            renderContactsOverlayChange(todo); 
-        }} 
+            renderContactsOverlayChange(todo);
+        }
+    }
 }
 
 
@@ -59,11 +60,11 @@ async function saveInputTask(cards) {
     contactChoosed(todo);
     chooseSubtasksBoard(todo);
     newTitleSave(todo);
-    await saveAndNewRender(cards) 
+    await saveAndNewRender(cards)
 }
 
 
-async function saveAndNewRender(cards){
+async function saveAndNewRender(cards) {
     await saveTasksToBackend()
     await saveUserAccountsToBackend();
     updateHTML()
@@ -71,7 +72,7 @@ async function saveAndNewRender(cards){
 }
 
 
-function newTitleSave(todo){
+function newTitleSave(todo) {
     let newTitle = document.getElementById('inputTittle').value;
     if (newTitle == '') {
         newTitle = todo.title;
@@ -85,11 +86,11 @@ function contactChoosed(todo) {
         for (let i = 0; i < todo['contact'].length; i++) {
             const element = todo['contact'][i];
             choosedContact.push(element);
-        }  
+        }
     }
     if (!todo.contact.includes(todo.contact)) {
         todo.contact = choosedContact
-    } 
+    }
 }
 
 
@@ -100,7 +101,7 @@ function getPriority() {
         priority = document.getElementById('prioUrgentBox').innerText;
         priorityImg = "assets/img/urgent.png";
     } else if (document.getElementById('prioMediumBox').classList.contains('bgMedium')) {
-         priority = document.getElementById('prioMediumBox').innerText;
+        priority = document.getElementById('prioMediumBox').innerText;
         priorityImg = "assets/img/medium.png";
     } else {
         priority = document.getElementById('prioLowBox').innerText;
@@ -122,7 +123,7 @@ function prioritySave(todo) {
 }
 
 
-async function chooseSubtasksBoard(todo) { 
+async function chooseSubtasksBoard(todo) {
     todo.subTaskDone = [];
     let allChekbox = document.querySelectorAll(`.checkedSubTasks`);
     console.log(allChekbox.length);
@@ -148,7 +149,7 @@ function renderSubtasksBoard(cards) {
         const subTaskIsDone = subTaskDone.includes(showSubTask);
         const checkedAttribute = subTaskIsDone ? 'checked' : '';
         content.innerHTML += renderSubtasksBoardHTML(showSubTask, checkedAttribute, j);
-     }
+    }
 }
 
 
@@ -162,12 +163,16 @@ async function changeProgressbar(cards) {
     contant.innerHTML = `${present}/${todo.subTask.length} Done`;
     if (todo.subTask.length == 0) {
         contant.classList.add('d-none');
-    } 
+    }
 }
 
 
 function filterHtml() {
-    let search = document.getElementById('search').value;
+    if (window.innerWidth <= 640) {
+        var search = document.getElementById('searchSmall').value;
+    } else {
+        var search = document.getElementById('search').value;
+    }
     search = search.toLowerCase();
     let text = userAccounts[activeUser]['userTasks'];
     for (let i = 0; i < text.length; i++) {
@@ -175,8 +180,7 @@ function filterHtml() {
         element = element.toLowerCase();
         if (element.includes(search)) {
             renderfilter(search, i)
-        }
-    }
+        } }
 }
 
 
@@ -192,12 +196,12 @@ async function renderfilter(search, j) {
     for (let i = 0; i < user.length; i++) {
         const userTasks = user[i];
         cards = userTasks['progress'];
-        renderFilterHtml(userTasks, search, cards);   
+        renderFilterHtml(userTasks, search, cards);
     }
 }
 
 
-function renderFilterHtml(userTasks, search, cards){
+function renderFilterHtml(userTasks, search, cards) {
     renderFilterHtmlToDo(userTasks, search, cards);
     renderFilterHtmlInProgress(userTasks, search, cards);
     renderFilterHtmlAwaitingFeedback(userTasks, search, cards);
@@ -205,44 +209,44 @@ function renderFilterHtml(userTasks, search, cards){
 }
 
 
-function renderFilterHtmlToDo(userTasks, search, cards){
+function renderFilterHtmlToDo(userTasks, search, cards) {
     if (cards == 'To Do' && userTasks['title'].toLowerCase().includes(search)) {
         document.getElementById('toDoContent').innerHTML += generateHTML1(userTasks) + generateHTML2(userTasks), loadForUpdateHTML(userTasks);
     }
 }
 
 
-function renderFilterHtmlInProgress(userTasks, search, cards){
+function renderFilterHtmlInProgress(userTasks, search, cards) {
     if (cards == 'In progress' && userTasks['title'].toLowerCase().includes(search)) {
         document.getElementById('inProgressContent').innerHTML += generateHTML1(userTasks) + generateHTML2(userTasks), loadForUpdateHTML(userTasks);
-    }
-} 
-
-
-function renderFilterHtmlAwaitingFeedback(userTasks, search, cards){
-    if (cards == 'Awaiting Feedback' && userTasks['title'].toLowerCase().includes(search)) {
-        document.getElementById('awaitingFeedbackContent').innerHTML +=generateHTML1(userTasks) + generateHTML2(userTasks), loadForUpdateHTML(userTasks);
     }
 }
 
 
-function renderFilterHtmlDone(userTasks, search, cards){
+function renderFilterHtmlAwaitingFeedback(userTasks, search, cards) {
+    if (cards == 'Awaiting Feedback' && userTasks['title'].toLowerCase().includes(search)) {
+        document.getElementById('awaitingFeedbackContent').innerHTML += generateHTML1(userTasks) + generateHTML2(userTasks), loadForUpdateHTML(userTasks);
+    }
+}
+
+
+function renderFilterHtmlDone(userTasks, search, cards) {
     if (cards == 'Done' && userTasks['title'].toLowerCase().includes(search)) {
         document.getElementById('doneContent').innerHTML += generateHTML1(userTasks) + generateHTML2(userTasks), loadForUpdateHTML(userTasks);
     }
 }
 
 
-async function deleteTaskActiveUser(number){
+async function deleteTaskActiveUser(number) {
     let user = userAccounts[activeUser]['userTasks'];
     for (let i = 0; i < user.length; i++) {
-        if (user[i].id === number){
-        user.splice(i, 1); 
-        break;
+        if (user[i].id === number) {
+            user.splice(i, 1);
+            break;
+        }
     }
-} 
     await saveTasksToBackend()
-    await saveUserAccountsToBackend();  
+    await saveUserAccountsToBackend();
     closeOverlay();
-    updateHTML(); 
+    updateHTML();
 }

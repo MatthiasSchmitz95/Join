@@ -15,7 +15,7 @@ function onloadBoard() {
 
 }
 
-
+// updates the HTML content by loading tasks and user accounts from a backend, emptying arrays, and rendering task cards according to their progress status.
 async function updateHTML() {
     await loadTasksFromBackend();
     await loadUserAccountsFromBackend();
@@ -32,7 +32,7 @@ async function updateHTML() {
     } updateHTMLNon();
 }
 
-
+// updates the HTML content for each category
 function renderHTML(cards, userTasks) {
     updateHTMLToDo(cards, userTasks);
     updateHTMLInProgress(cards, userTasks);
@@ -40,7 +40,7 @@ function renderHTML(cards, userTasks) {
     updateHTMLDone(cards, userTasks);
 }
 
-
+//emptying arrays
 function emptyArrays(){
     toDoCount = [];
     inProgressCount = [];
@@ -48,7 +48,7 @@ function emptyArrays(){
     doneCount = [];
 }
 
-
+// render the HTML content for each category if non tasks in category
 function updateHTMLNon(){
     if (toDoCount.length == 0) {
         document.getElementById('toDoContent').innerHTML = `<div class="no-cards"> No Task in To Do </div>`;
@@ -64,7 +64,7 @@ function updateHTMLNon(){
     }
 }
 
-
+//  render the HTML content for To Do
 function updateHTMLToDo(cards, userTasks) {
     if (cards == 'To Do') {
         document.getElementById('toDoContent').innerHTML += generateHTML1(userTasks) + generateHTML2(userTasks), loadForUpdateHTML(userTasks);
@@ -72,7 +72,7 @@ function updateHTMLToDo(cards, userTasks) {
     }
 }
 
-
+//  render the HTML content for In progress
 function updateHTMLInProgress(cards, userTasks) {
     if (cards == 'In progress') {
         document.getElementById('inProgressContent').innerHTML += generateHTML1(userTasks) + generateHTML2(userTasks), loadForUpdateHTML(userTasks);
@@ -80,7 +80,7 @@ function updateHTMLInProgress(cards, userTasks) {
     }
 }
 
-
+//  render the HTML content for Awaiting Feedback
 function updateHTMLAwaitingFeedback(cards, userTasks) {
     if (cards == 'Awaiting Feedback') {
         document.getElementById('awaitingFeedbackContent').innerHTML += generateHTML1(userTasks) + generateHTML2(userTasks), loadForUpdateHTML(userTasks);
@@ -88,7 +88,7 @@ function updateHTMLAwaitingFeedback(cards, userTasks) {
     }
 }
 
-
+//  render the HTML content for Done
 function updateHTMLDone(cards, userTasks) {
     if (cards == 'Done') {
         document.getElementById('doneContent').innerHTML += generateHTML1(userTasks) + generateHTML2(userTasks), loadForUpdateHTML(userTasks);
@@ -96,7 +96,7 @@ function updateHTMLDone(cards, userTasks) {
     }
 }
 
-
+// load all informatoins for tasks
 async function loadForUpdateHTML(userTasks) {
     priorityImgCard(userTasks);
     changeBackgroundColor(userTasks);
@@ -104,7 +104,7 @@ async function loadForUpdateHTML(userTasks) {
     changeProgressbar(userTasks['id']);
 }
 
-
+// Select all informatoins for userinitiales
 async function SelectForRenderUserInitiales(cards) {
     const { id, contact } = cards;
     const contactElem = document.getElementById(`userInitiales${id}`);
@@ -113,7 +113,7 @@ async function SelectForRenderUserInitiales(cards) {
     renderUserInitiales(id, contact, contactElem, user)
 }
 
-
+// Render contactsletter on cards (tasks)
 function renderUserInitiales(id, contact, contactElem, user) {
     const userWithContacts = user.filter(({ name }) => contact.includes(name));
     const userContactsLength = userWithContacts.length;
@@ -130,20 +130,20 @@ function renderUserInitiales(id, contact, contactElem, user) {
     }
 }
 
-
+// Change Backgroundcolor from letters
 function changeBackgroundCircle(id, color) {
     const backgroundCircle = document.getElementById(id);
     backgroundCircle.style.backgroundColor = color;
 }
 
-
+// Change Backgroundcolor from headline
 function changeBackgroundColor(cards) {
     let background = document.getElementById(`backgroundColor${cards['id']}`);
     let color = cards['categoryColor'];
     background.style.backgroundColor = `${color}`;
 }
 
-
+// Show the priority for cards
 function priorityImgCard(cards) {
     let prio = document.getElementById(`priorityImage${cards['id']}`);
     let card = cards['priority'];
@@ -156,33 +156,33 @@ function priorityImgCard(cards) {
     }
 }
 
-
+// Start drag and drop
 function startDragging(id) {
     currentDraggedElement = id;
-    document.getElementById('body').style.backgroundColor = 'rgb(0,0,0,0.1)';
+    document.getElementById('bodyBoard').style.backgroundColor = 'rgb(0,0,0,0.1)';
     document.getElementById(`dragMe${id}`).classList.add('dragging');
 }
 
-
+// Allow drag and drop
 function allowDrop(ev) {
     ev.preventDefault();
 }
 
-
+// Save the new catergorry and update HTML
 async function moveTo(category) {
     let user = userAccounts[activeUser]['userTasks'];
     let todo = user.find((item) => item.id === currentDraggedElement);
     todo['progress'] = category;
     await saveTasksToBackend();
     await saveUserAccountsToBackend();
-    document.getElementById('body').style.backgroundColor = 'rgb(246,247,248)';
+    document.getElementById('bodyBoard').style.backgroundColor = 'rgb(246,247,248)';
     updateHTML();
 }
 
-
+// Show overlay for more informations
 function showOverlay(cards) {
     calcScrollTo();
-    document.getElementById('body').classList.add('noscroll');
+    document.getElementById('bodyBoard').classList.add('noscroll');
     document.getElementById('kanban').classList.add('display-none');
     let user = userAccounts[activeUser]['userTasks'];
     let todo = user.find((item) => item.id === cards);
@@ -195,7 +195,7 @@ function showOverlay(cards) {
     changeBackgroundOverlay(todo)
 }
 
-
+// window height is automatically by 0
 function calcScrollTo() {
     window.scrollTo({
         top: 0,
@@ -203,15 +203,14 @@ function calcScrollTo() {
     });
 }
 
-
-
+// Change Background from headline
 function changeBackgroundOverlay(cards) {
     let background = document.getElementById(`overlayDepartment${cards['id']}`);
     let color = cards['categoryColor'];
     background.style.backgroundColor = `${color}`;
 }
 
-
+// selectet informations for generateAssignedToHTML() and  changeBackgroundCircleOverlay()
 function generateAssignedTo(todo) {
     let contacts = document.getElementById('assignedTo');
     let user = userAccounts[activeUser]['userContacts'];
@@ -228,14 +227,14 @@ function generateAssignedTo(todo) {
     }
 }
 
-
+// Change Backgroundcolor from letters
 function changeBackgroundCircleOverlay(users, j) {
     let background = document.getElementById(`changeCircleOverlay${j}`);
     let color = users['color'];
     background.style.background = `${color}`;
 }
 
-
+// Show overlay for change informations
 async function showOverlayChange(cards) {
     let user = userAccounts[activeUser]['userTasks'];
     let todo = user.find((item) => item.id === cards);
@@ -250,7 +249,7 @@ async function showOverlayChange(cards) {
     document.getElementById('kanban').classList.add('display-none');
 }
 
-
+// render showOverlayChangeHTML
 function showOverlayChangeHTML(todo, cards) {
     return showOverlayChangeHTML1(todo)+
     showOverlayChangeHTML2(todo)+
@@ -258,29 +257,29 @@ function showOverlayChangeHTML(todo, cards) {
     showOverlayChangeHTML4(cards);
 }
 
-
+// Style textarea
 function textAreaAdjust(element) {
     element.style.height = "1px";
     element.style.height = (25 + element.scrollHeight) + "px";
 }
 
-
+// Close Overlay
 function closeOverlay() {
     if (loadOverlay) {
         let overlay = document.getElementById('overlay');
         overlay.classList.add('d-none');
         document.getElementById('overlay-background').classList.remove('overlay-background');
-        document.getElementById('body').classList.remove('noscroll');
+        document.getElementById('bodyBoard').classList.remove('noscroll');
         document.getElementById('kanban').classList.remove('display-none');
     }
 }
 
-
+// Overlay should not be closed 
 function doNotClose(event) {
     event.stopPropagation();
 }
 
-
+// Show urgent button
 function insertUrgent() {
     document.getElementById('prioUrgentBox').classList.toggle('bgUrgent');
     document.getElementById('prioMediumBox').classList.remove('bgMedium');
@@ -291,7 +290,7 @@ function insertUrgent() {
     document.getElementById('prioLowImg').classList.remove('whitecolor');
 }
 
-
+// Show medium button
 function insertMedium() {
     document.getElementById('prioMediumBox').classList.toggle('bgMedium');
     document.getElementById('prioLowBox').classList.remove('bgLow');
@@ -302,7 +301,7 @@ function insertMedium() {
     document.getElementById('prioLowImg').classList.remove('whitecolor');
 }
 
-
+// Show low button
 function insertLow() {
     document.getElementById('prioLowBox').classList.toggle('bgLow');
     document.getElementById('prioUrgentBox').classList.remove('bgUrgent');
@@ -313,7 +312,7 @@ function insertLow() {
     document.getElementById('prioMediumImg').classList.remove('whitecolor');
 }
 
-
+// reads the priortiy and show the right button
 function insertPriority(cards) {
     let user = userAccounts[activeUser]['userTasks'];
     let todo = user.find((item) => item.id === cards);
@@ -326,34 +325,34 @@ function insertPriority(cards) {
     }
 }
 
+// Textarea is not possible to move with the mouse
 function chanceTextarea(cards) {
-
     document.addEventListener("DOMContentLoaded", function () {
         var textarea = document.getElementById(`inputDescription${cards}`);
         var placeholder = textarea.getAttribute("placeholder");
         var numLines = (placeholder.match(/\n/g) || []).length + 1;
         textarea.setAttribute("rows", numLines);
     });
-
 }
 
-
+// show the container for contacts to assign 
 function dropDownAssignToBoard(cards) {
-    let assignedList = document.getElementById('assignedList'); //get the id of AssignedList container to render contacts 
-    let assignToInputContainer = document.getElementById('contactInputContainer'); //get the container for AssignTo Input Field
-    if (assignedList.style.display == "block") { //the Container for Contacts is open ?
-        assignedList.style.display = "none"; //hide the Container for Contacts 
-        assignToInputContainer.style.border = "1px solid #D1D1D1"; //shows all border
-        assignToInputContainer.style.borderRadius = "10px"; //set all border radius to 10px
-    } else { //the Container for Contacts is closed ?
-        assignedList.style.display = "block"; //shows the Container for Contacts  
-        assignToInputContainer.style.borderBottom = "none"; //hide the AssignedTo container Border bottom
-        assignToInputContainer.style.borderRadius = "10px 10px 0 0"; //shows AssignedTo container top-left top-right border radius
-        renderAssignToBoard(cards); //show or render the contacts
+    let assignedList = document.getElementById('assignedList');
+    let assignToInputContainer = document.getElementById('contactInputContainer'); 
+    if (assignedList.style.display == "block") { 
+        assignedList.style.display = "none"; 
+        assignToInputContainer.style.border = "1px solid #D1D1D1"; 
+        assignToInputContainer.style.borderRadius = "10px"; 
+    } else { 
+        assignedList.style.display = "block";   
+        assignToInputContainer.style.borderBottom = "none"; 
+        assignToInputContainer.style.borderRadius = "10px 10px 0 0"; 
+        renderAssignToBoard(cards); 
     }
     closeDropdownCategoryBoard();
 }
 
+// Shows the contacts that are assign to the task
 function renderContactsOverlayChange(cards) {
     let contant = document.getElementById('contactOverlayChange');
     contant.innerHTML = '';
@@ -367,7 +366,7 @@ function renderContactsOverlayChange(cards) {
     }
 }
 
-
+// render contacts and checkboxes
 function renderContactsChoosedContacts(id, contact, contant, user) {
     const userWithContacts = user.filter(({ name }) => choosedContact.includes(name));
     userWithContacts.forEach((user, index) => {
@@ -377,7 +376,7 @@ function renderContactsChoosedContacts(id, contact, contant, user) {
     })
 }
 
-
+// render contacts and checkboxes
 function renderContactsWithContacts(id, contact, contant, user) {
     const userWithContacts = user.filter(({ name }) => contact.includes(name));
     userWithContacts.forEach((user, index) => {

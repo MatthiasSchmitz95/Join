@@ -291,6 +291,10 @@
         display: none;
     }
 
+    #date{
+        width: 420px;
+        height: 51px;
+    }
 
 
 }
@@ -415,7 +419,7 @@
         padding-right: 32px;
         top: -11px;
         overflow-y: scroll;
-        margin-left: -1px;
+       
     }
 
     .overlay-department {
@@ -533,6 +537,8 @@
         font-weight: 400 !important;
         font-size: 21px !important;
         color: #000000 !important;
+        padding-left: 21px !important;
+        padding-right: 21px !important;
     }
 
     .input-chances-text {

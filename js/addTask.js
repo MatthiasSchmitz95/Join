@@ -59,6 +59,7 @@ function renderCategory() {
 
 /*set Category InputField to default as in beginning*/
 function unsetCategoryInputField() {
+    categoryInputContainer = document.getElementById('inputContainer');
     categoryInputContainer.innerHTML = `
     <input id="input" type="text" placeholder="Select task Category" required>
         <div id="color" class="color"></div>
@@ -558,12 +559,16 @@ function getPriorityInformation() {
 
 /**Set other Inputfields to default values and the prio Buttons to the original text and color*/
 function setAllFieldsToDefault() {
+    title = document.getElementById('title');
     title.value = "";
+    description = document.getElementById('description');
     description.value = "";
+    category = document.getElementById('input');
     category.value = "";
     unsetCategoryInputField();
     document.getElementById('assignInput').value = "";
     inputAssignedContact = "";
+    dueDate = document.getElementById('date');
     dueDate.value = "";
     document.getElementById('prioUrgentBox').classList.remove('bgUrgent');
     document.getElementById('prioMediumBox').classList.remove('bgMedium');
@@ -737,7 +742,8 @@ async function updateCalender() {
 
 /*clear all field of AddTask page*/
 function clearAllAddTaskFields() {
-    window.location.reload();
+    //window.location.reload();
+    setAllFieldsToDefault();
     document.getElementById('clearBtnImg').classList.remove('clearButtonImgblue');
     document.getElementById('clearBtnImg').classList.add('clearButtonImgGray');
 }
@@ -750,7 +756,8 @@ function showAddTaskPopOut() {
     });
     //document.getElementById('bg').style.display = '';
     document.getElementById('popOut-taskCard').classList = "popOut-taskCard";
-    document.getElementById('body').style = "overflow-y: hidden;";
+    //document.getElementById('body').style = "overflow-y: hidden;";
+    document.getElementById('contentContainer').classList.add('scrollY');
 }
 
 /**hide AddTaskPopOut.html*/
@@ -760,27 +767,33 @@ function closePopOutAddTask() {
     document.getElementById('body').style = "overflow-y: auto;";
 }
 
-function getUserColor(userIndex){
-    const colorUser = userAccounts[activeUser]['userContacts'][userIndex]['color']; 
-    console.log(colorUser); 
-    return colorUser;  
+function getUserColor(userIndex) {
+    const colorUser = userAccounts[activeUser]['userContacts'][userIndex]['color'];
+    console.log(colorUser);
+    return colorUser;
 }
 
-function filterContact(){
+function filterContact() {
     let search = document.getElementById('assignInput').value;
     search = search.toLowerCase();  //konvertiert zu einem String zu kleinen Bustaben
 
-    let content = document.getElementById('contactInputContainer');
+    let content = document.getElementById('assignedList');//get the id of AssignedList container to render contact
     content.innerHTML = '';
+    assignToInputContainer = document.getElementById('contactInputContainer');
+    content.style.display = "block"; //shows the Container for Contacts  
+    assignToInputContainer.style.borderBottom = "none"; //hide the AssignedTo container Border bottom
+    /* top-left top-right bottom-right bottom-left */
+    assignToInputContainer.style.borderRadius = "10px 10px 0 0"; //shows AssignedTo container top-left top-right border radius
 
     for (let i = 0; i < userAccounts[activeUser]['userContacts'].length; i++) {
         userName = userAccounts[activeUser]['userContacts'][i]['name']; //alle Kontakte durchgehen
-
-        if (userName.toLowerCase().includes(search)){ //Wenn der Titel im SuchEingabe dabei ist, dann wird unten ausgegeben
+        userNameLowerLetter = userName.toLowerCase();
+        if (userNameLowerLetter.includes(search)) { //Wenn der Titel im SuchEingabe dabei ist, dann wird unten ausgegeben
             content.innerHTML = `
-                ${userName[i]}
+                ${userName}
             `;
         }
     }
-
+    //stopImmediatePropagation();
 }
+

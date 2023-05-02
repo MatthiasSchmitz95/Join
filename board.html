@@ -9,9 +9,10 @@
 
     <link rel="stylesheet" href="./styles/style.css">
     <link rel="stylesheet" href="./fonts.css">
+    <link rel="stylesheet" href="styles/addTaskPopOut.css">
     <link rel="stylesheet" href="./styles/board.css">
     <link rel="stylesheet" href="styles/board2.css">
-    <link rel="stylesheet" href="styles/addTaskPopOut.css">
+
     <script src="./js/main.js"></script>
     <script src="./js/board.js"></script>
     <script src="js/board2.js"></script>
@@ -22,7 +23,7 @@
 
 </head>
 
-<body id="body" onload="onloadBoard()">
+<body id="bodyBoard" onload="onloadBoard()">
     <div id="overlay-background" onclick="closeOverlay()">
     </div>
     <div id="desktop">
@@ -39,7 +40,7 @@
             </div>
         </div>
         <div class="search-button">
-            <input class="search-input-small" onchange="filterHtml()" id="search" type="text" placeholder=" Find Task">
+            <input class="search-input-small" onchange="filterHtml()" id="searchSmall" type="text" placeholder=" Find Task">
         </div>
         <div>
             <div class="working-class position-board">

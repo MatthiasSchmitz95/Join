@@ -4,7 +4,7 @@ body {
 }
 
 h3 {
-    width: 335px;
+  /*  width: 335px;*/
     height: 25px;
     font-family: 'Inter';
     font-style: normal;
@@ -169,6 +169,13 @@ h3 {
     color: white;
 }
 
+.logo-img-small {
+    position: absolute;
+    left: 25px;
+    top: 20px;
+    display: none;
+}
+
 @media(max-width:900px) {
     .header {
         padding-left: 90px;
@@ -180,6 +187,10 @@ h3 {
         left: 0px;
         height: 79.02px;
         z-index: 90;
+    }
+
+    .logo-img-small{
+        display: unset;
     }
 
     .side-bar {
