@@ -387,6 +387,7 @@ a {
 }
 
 .responsive-greet{
+    height:calc(100vh - 80px);;
     background-color: #F6F7F8;
     display: flex !important;
     position: absolute;
@@ -394,7 +395,6 @@ a {
     right: 0px;
     top:80px;
     z-index: 80;
-    height: 100%;
     align-items: center;
     margin: 0px;
     animation-name: myAnimation;
@@ -413,6 +413,7 @@ a {
     100%{
       display: none;
       opacity: 0;
+      z-index: -80;
 
     }
   }

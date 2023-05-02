@@ -217,12 +217,16 @@ h3 {
     .menu-container a {
         display: flex;
         flex-direction: column;
+        height: 80px;
+    }
+
+    .menu-container p {
+        margin-bottom: 0px;
     }
 
     .nav-menu {
         gap: 0px;
         height: auto;
-        margin-top: 14.5px;
     }
 
     h3 {

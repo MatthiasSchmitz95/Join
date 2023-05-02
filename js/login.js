@@ -1,3 +1,6 @@
+let t=false;
+
+
 function login() {
   let email = document.getElementById("login-email-input");
   let password = document.getElementById("login-password-input");
@@ -16,14 +19,15 @@ function login() {
     });
   }
 
-function checkCorrectLogin(email, password){
+ function checkCorrectLogin(email, password){
   let user = userAccounts.find((u) => u.userEmail == email.value);
   if (user) {
     if(user.userPassword == password.value){
       saveActiveUserLocal(user);
-      window.location.href = './summary.html'
-      //greetingsResponsive();
-    }else{
+      window.location.href = './summary.html';
+      
+    }
+    else{
       console.log('the password is incorrect, please try again')
     }
   } else {

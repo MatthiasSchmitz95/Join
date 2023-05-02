@@ -386,10 +386,30 @@ a {
 
 }
 
+.close-contact-container1 {
+    display: none;
+    justify-content: flex-end;
+    width: 100%;
+    position: absolute;
+    z-index: 99;
+    top: 33.65px;
+}
+
 .close-contact-container {
     display: flex;
     justify-content: flex-end;
     width: 100%;
+}
+
+.close-card1{
+    margin-right: 63.18px !important;
+    width: 21.65px !important;
+    height: 21.65px !important;
+    margin-left: 0px !important;
+    margin-top: 16px !important;
+    margin-bottom:0px;
+    cursor: pointer;
+
 }
 
 .close-card {
@@ -400,8 +420,10 @@ a {
     margin-top: 26px;
     margin-bottom: calc(72.38px - 24.5px);
     cursor: pointer;
-
 }
+
+
+
 
 
 
@@ -690,6 +712,68 @@ a {
 
 @media(max-width:1210px) {
 
+    .add-contact-card{
+        left: 230px;
+        right: 0;
+        top: 89px;
+        bottom:0px;
+        transform: translate(0% , 0%);
+        width: auto;
+        height: auto;
+        flex-direction: column;
+    }
+
+    .card-container-left {
+        width: auto;
+        border-bottom-left-radius: 0px;
+        border-top-left-radius: 30px;
+        border-top-right-radius: 30px;
+        padding-top: 0px;
+        padding: 0px;
+        align-items: center;
+        height: 46%;
+        justify-content: center;
+        
+    }
+
+    .help-container{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .logo-card{
+        display:none;
+    }
+    .card-container-right {
+        height: 54%;
+        align-items: center;
+        border-bottom-right-radius: 30px;
+        border-bottom-left-radius: 30px;
+        border-top-right-radius: 0px;
+    }
+
+    .close-contact-container1{
+        display: flex;
+    }
+
+    .close-contact-container{
+        display: none;
+    }
+    .contact-flex {
+        flex-direction: column;
+        margin-top:-63px;
+    }
+
+    input{
+        margin-right: 0px !important;
+    }
+
+    .btn-container{
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-bottom: 48px;
+    }
+
     .html-topic {
         margin-left: 0px;
     }
@@ -798,10 +882,15 @@ a {
         background-color: white;
     }
 
+    .add-contact-card {
+        left: 0px;
+        bottom: 80px;
+        top: 79.02px;
+    }
+
 
     .desktop {
         margin: 0px;
-
     }
 
     .left-container {
