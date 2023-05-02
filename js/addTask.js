@@ -758,6 +758,8 @@ function showAddTaskPopOut() {
     document.getElementById('popOut-taskCard').classList = "popOut-taskCard";
     //document.getElementById('body').style = "overflow-y: hidden;";
     document.getElementById('contentContainer').classList.add('scrollY');
+    document.getElementById('kanban').classList.add('kanban');
+    document.getElementById('profile-container').classList.add('profile-container-d-none');
 }
 
 /**hide AddTaskPopOut.html*/
@@ -796,4 +798,3 @@ function filterContact() {
     }
     //stopImmediatePropagation();
 }
-
