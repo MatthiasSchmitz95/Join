@@ -977,7 +977,6 @@ checkbox filled design
         margin-left: -50px;
     } */
 
-
 }
 
 @media(max-width: 1200px) {
@@ -1086,7 +1085,7 @@ checkbox filled design
     .createButtonResponsiveContainer {
         position: absolute;
         top: -72px;
-        z-index: 2;
+        z-index: 91;
         display: flex;
         justify-content: center;
         height: 51px;
@@ -1129,13 +1128,18 @@ checkbox filled design
         width: 100% !important;
     }
 
+    .kanban {
+        display: none;
+    }
+    .profile-container-d-none {
+        display: none;
+    }
+
   /*  .profile-container {
         display: none;
     }
 
-    #kanban {
-        display: none;
-    }
+    
 
     .header {
         width: 100%;
@@ -1167,6 +1171,10 @@ checkbox filled design
 }
 
 @media(max-width:800px) {
+    .kanban {
+        display: none;
+    }
+
     .scrollY{
         overflow-y: scroll;
     }
@@ -1398,12 +1406,12 @@ checkbox filled design
     .createButtonResponsiveContainer {
         position: absolute;
         top: -72px;
-        z-index: 2;
         display: flex;
         justify-content: flex-start;
         height: 51px;
         width: auto;
         border: none;
+        z-index: 91;
     }
 
     .createButtonResponsiveContainer div {
@@ -1412,6 +1420,7 @@ checkbox filled design
         display: flex;
         justify-content: flex-end;
         border: none;
+        z-index: 91;
     }
 
     .createButtonResponsive {
@@ -1427,6 +1436,7 @@ checkbox filled design
         align-items: center;
         justify-content: space-evenly;*/
         width: 124px;
+        z-index: 91;
         /*height: 51px;
         position: absolute;
         top: -72px;
