@@ -292,6 +292,8 @@ function showDropDownAssignTo() {
 
 
 function assignToInput() { //click here to invite new Contact via email
+    document.getElementById('assignedList').style.display = "none";
+    document.getElementById('assignInput').onkeydown = ""; //filter Function deactivated for Email input
     closeDropdownCategory(); //dropDown Category Menu closed
     document.getElementById('assignInput').value = "";
     document.getElementById('assignInput').placeholder = 'contact Mail'; //shows New Category Name in Category Input Field
@@ -313,6 +315,11 @@ function rejectAssignTo() {
 function addnewContact() {
     newAssingedContact = document.getElementById('assignInput');
     newContacts.push(newAssingedContact.value); //to load newContacts array
+    document.getElementById('assignedList').style.display = "block";
+    document.getElementById('assignedList').value = "";
+    document.getElementById('assignedList').innerHTML = `
+    Email was sent successfully!
+    `;
     /*renderCircleName();
     changeEmailToContactName();
     document.getElementById('circleContactsContainer').style.display = "flex";
@@ -791,10 +798,17 @@ function filterContact() {
         userName = userAccounts[activeUser]['userContacts'][i]['name']; //alle Kontakte durchgehen
         userNameLowerLetter = userName.toLowerCase();
         if (userNameLowerLetter.includes(search)) { //Wenn der Titel im SuchEingabe dabei ist, dann wird unten ausgegeben
-            content.innerHTML = `
-                ${userName}
+            content.innerHTML += `
+            <div class="assignedContact">
+                <div>
+                    ${userName}
+                </div>
+                <label class="filledCheckboxContainer">
+                    <input type="checkbox" class="checkboxForContacts" value="${userName}" onclick="chooseContact('${userName} ')">
+                    <span class="checkmark"></span>
+                </label>
+            </div> 
             `;
         }
     }
-    //stopImmediatePropagation();
 }

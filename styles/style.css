@@ -4,7 +4,7 @@ body {
 }
 
 h3 {
-  /*  width: 335px;*/
+    /*  width: 335px;*/
     height: 25px;
     font-family: 'Inter';
     font-style: normal;
@@ -39,7 +39,7 @@ h3 {
 
 .header {
     position: absolute;
-    top: 0px;
+    top: -2px;
     right: 0px;
     left: 230px;
     box-sizing: border-box;
@@ -186,10 +186,11 @@ h3 {
     .header {
         left: 0px;
         height: 79.02px;
-        z-index: 90;
+        z-index: -2;
+       box-shadow: 0px 4px 4px gray;
     }
 
-    .logo-img-small{
+    .logo-img-small {
         display: unset;
     }
 
@@ -232,10 +233,10 @@ h3 {
         left: 34px;
     }
 
-    .header {
+    /*.header {
         display: flex;
         justify-content: flex-end;
-    }
+    }*/
 
     .legal-notice-container {
         display: none;

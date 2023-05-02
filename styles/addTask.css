@@ -124,7 +124,7 @@ textarea {
 }
 
 .buttonsContainer {
-    margin-left: 779px;
+    margin-left: 908px;
     width: 338px;
     box-sizing: border-box;
     height: 61px;
@@ -152,6 +152,9 @@ textarea {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    position: absolute;
+    left: 970px;
+    top: 777px;
 
 }
 
@@ -907,7 +910,13 @@ checkbox filled design
     .buttonsContainer {
         /*width: 80vw;*/
         width: auto;
-        margin-left: 695px;
+        margin-left: 862px;
+    }
+
+    .clearButton {
+        position: absolute;
+        left: 920px;
+        top: 777px;
     }
 
     .midLine {
@@ -940,7 +949,13 @@ checkbox filled design
 
     .buttonsContainer {
         width: auto;
-        margin-left: 544px;
+        margin-left: 710px;
+    }
+
+    .clearButton {
+        position: absolute;
+        left: 775px;
+        top: 777px;
     }
 }
 
@@ -1383,31 +1398,31 @@ checkbox filled design
         justify-content: center;
     }
 
-    .headline span{
+    .headline span {
         width: 320px;
     }
 
-    .titleContainer{
+    .titleContainer {
         width: 320px !important;
     }
 
-    #title{
+    #title {
         font-size: 18px;
     }
 
-    .descriptionContainer{
+    .descriptionContainer {
         width: 320px !important;
     }
 
-    #description{
+    #description {
         font-size: 18px;
     }
 
-    .prioContainer{
+    .prioContainer {
         width: 320px !important;
     }
 
-    .priorityBoxesContainer{
+    .priorityBoxesContainer {
         width: 320px !important;
     }
 
@@ -1415,23 +1430,23 @@ checkbox filled design
         width: 320px !important;
     }
 
-    .inputContainer{
+    .inputContainer {
         width: 320px !important;
     }
 
-    .contactInputContainer{
+    .contactInputContainer {
         width: 320px !important;
     }
 
-    .categoryContainer{
+    .categoryContainer {
         width: 320px !important;
     }
 
-    .assignContainer{
+    .assignContainer {
         width: 320px !important;
     }
 
-    #assignInput{
+    #assignInput {
         font-size: 18px;
     }
 
@@ -1452,7 +1467,7 @@ checkbox filled design
         padding-left: 2px;
     }
 
-    .addSubtaskContainer{
+    .addSubtaskContainer {
         width: 320px !important;
     }
 
@@ -1480,7 +1495,7 @@ checkbox filled design
     }
 }
 
-@media(max-width:280px){
+@media(max-width:280px) {
     .createButtonResponsiveContainer div {
         width: 260px;
     }
@@ -1498,31 +1513,31 @@ checkbox filled design
         justify-content: center;
     }
 
-    .headline span{
+    .headline span {
         width: 260px;
     }
 
-    .titleContainer{
+    .titleContainer {
         width: 260px !important;
     }
 
-    #title{
+    #title {
         font-size: 15px;
     }
 
-    .descriptionContainer{
+    .descriptionContainer {
         width: 260px !important;
     }
 
-    #description{
+    #description {
         font-size: 15px;
     }
 
-    .prioContainer{
+    .prioContainer {
         width: 260px !important;
     }
 
-    .priorityBoxesContainer{
+    .priorityBoxesContainer {
         width: 260px !important;
     }
 
@@ -1531,31 +1546,31 @@ checkbox filled design
         font-size: 15px;
     }
 
-    .inputContainer{
+    .inputContainer {
         width: 260px !important;
     }
 
-    .contactInputContainer{
+    .contactInputContainer {
         width: 260px !important;
     }
 
-    .leftContent{
+    .leftContent {
         width: 280px;
     }
 
-    .rightContent{
+    .rightContent {
         width: 280px;
     }
 
-    .categoryContainer{
+    .categoryContainer {
         width: 260px !important;
     }
 
-    .assignContainer{
+    .assignContainer {
         width: 320px !important;
     }
 
-    #assignInput{
+    #assignInput {
         font-size: 15px;
     }
 
@@ -1576,7 +1591,7 @@ checkbox filled design
         padding-left: 2px;
     }
 
-    .addSubtaskContainer{
+    .addSubtaskContainer {
         width: 260px !important;
     }
 
@@ -1607,8 +1622,7 @@ checkbox filled design
         font-size: 15px;
     }
 
-    .side-bar{
+    .side-bar {
         width: 280px;
     }
 }
-
