@@ -387,7 +387,7 @@ a {
 }
 
 .responsive-greet{
-    height: 100vh;
+    height:calc(100vh - 80px);;
     background-color: #F6F7F8;
     display: flex !important;
     position: absolute;
@@ -413,6 +413,7 @@ a {
     100%{
       display: none;
       opacity: 0;
+      z-index: -80;
 
     }
   }
