@@ -22,7 +22,7 @@ function checkCorrectLogin(email, password){
     if(user.userPassword == password.value){
       saveActiveUserLocal(user);
       window.location.href = './summary.html'
-     // greetingsResponsive();
+      //greetingsResponsive();
     }else{
       console.log('the password is incorrect, please try again')
     }
