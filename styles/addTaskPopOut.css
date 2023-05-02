@@ -973,9 +973,9 @@ checkbox filled design
         margin-left: 0px;
     }
 
-    #kanban {
+   /* #kanban {
         margin-left: -50px;
-    }
+    } */
 
 
 }
@@ -1129,7 +1129,7 @@ checkbox filled design
         width: 100% !important;
     }
 
-    .profile-container {
+  /*  .profile-container {
         display: none;
     }
 
@@ -1141,6 +1141,7 @@ checkbox filled design
         width: 100%;
         z-index: 2;
     }
+    */
 
     .KanbanResponsive {
         position: absolute;
@@ -1170,9 +1171,9 @@ checkbox filled design
         overflow-y: scroll;
     }
 
-    .side-bar {
+    /*.side-bar {
         display: none;
-    }
+    }*/
 
     .bg {
         display: none;
@@ -1468,9 +1469,9 @@ checkbox filled design
         z-index: 2;
     }
 
-    .profile-container {
+   /* .profile-container {
         display: none;
-    }
+    } */
 
     .KanbanResponsive {
         display: flex;
