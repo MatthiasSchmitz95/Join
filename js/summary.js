@@ -10,11 +10,6 @@ function greetingsResponsive(){
     if (window.innerWidth < 1316) { 
         document.getElementById('greeting-container').classList.add('responsive-greet');
         document.getElementById('body').style.overflowY = 'hidden';
-        setTimeout(() => {  
-            document.getElementById('body').style.overflowY = 'auto';
-        }
-            , 2900);
-
     }
 
 
