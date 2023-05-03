@@ -230,7 +230,7 @@ h3 {
         height: auto;
     }
 
-    h3 {
+    #kanban {
         font-size: 16px;
         position: absolute;
         top: 98px;
@@ -271,5 +271,16 @@ h3 {
 @media(max-width:410px) {
     h3 {
         left: 5px;
+    }
+
+    .menu-container p {
+        width: unset;
+    }
+}
+
+@media(max-width:350px){
+
+    #kanban{
+        left: 8px;
     }
 }

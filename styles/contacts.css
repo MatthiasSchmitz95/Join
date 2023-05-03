@@ -401,13 +401,13 @@ a {
     width: 100%;
 }
 
-.close-card1{
+.close-card1 {
     margin-right: 63.18px !important;
     width: 21.65px !important;
     height: 21.65px !important;
     margin-left: 0px !important;
-    margin-top: 16px !important;
-    margin-bottom:0px;
+    margin-top: 0px !important;
+    margin-bottom: 0px;
     cursor: pointer;
 
 }
@@ -657,7 +657,7 @@ a {
     margin-bottom: 15px;
 }
 
-.responsive-buttons{
+.responsive-buttons {
     display: none;
     flex-direction: column;
     align-items: flex-end;
@@ -665,7 +665,7 @@ a {
     margin-top: 97px;
 }
 
-.delete-button-responsive{
+.delete-button-responsive {
     width: 40px;
     height: 40px;
     margin-bottom: 16px;
@@ -675,7 +675,7 @@ a {
     cursor: pointer;
 }
 
-.edit-button-responsive{
+.edit-button-responsive {
     width: 50px;
     height: 50px;
     margin-bottom: 16px;
@@ -712,12 +712,12 @@ a {
 
 @media(max-width:1210px) {
 
-    .add-contact-card{
+    .add-contact-card {
         left: 230px;
         right: 0;
         top: 89px;
-        bottom:0px;
-        transform: translate(0% , 0%);
+        bottom: 0px;
+        transform: translate(0%, 0%);
         width: auto;
         height: auto;
         flex-direction: column;
@@ -733,17 +733,18 @@ a {
         align-items: center;
         height: 46%;
         justify-content: center;
-        
+
     }
 
-    .help-container{
+    .help-container {
         display: flex;
         flex-direction: column;
     }
 
-    .logo-card{
-        display:none;
+    .logo-card {
+        display: none;
     }
+
     .card-container-right {
         height: 54%;
         align-items: center;
@@ -752,26 +753,28 @@ a {
         border-top-right-radius: 0px;
     }
 
-    .close-contact-container1{
+    .close-contact-container1 {
         display: flex;
     }
 
-    .close-contact-container{
+    .close-contact-container {
         display: none;
     }
+
     .contact-flex {
         flex-direction: column;
-        margin-top:-63px;
+        margin-top: -63px;
     }
 
-    input{
+    input {
         margin-right: 0px !important;
     }
 
-    .btn-container{
+    .btn-container {
         margin-left: 0px;
         margin-right: 0px;
         margin-bottom: 48px;
+        margin-top: 0px;
     }
 
     .html-topic {
@@ -781,6 +784,12 @@ a {
     .floating-contact-container {
         margin-left: 10px;
     }
+
+    .icon-container {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+
 }
 
 @media(max-width:1164px) {
@@ -792,7 +801,7 @@ a {
         width: 100%;
     }
 
-    .header{
+    .header {
         justify-content: flex-end;
     }
 
@@ -827,8 +836,8 @@ a {
 
     }
 
-    .contact-container{
-        margin-top:86.89px;
+    .contact-container {
+        margin-top: 86.89px;
     }
 
     .right-container {
@@ -850,11 +859,11 @@ a {
         display: none;
     }
 
-    .responsive-buttons{
+    .responsive-buttons {
         display: flex;
     }
 
-    .edit{
+    .edit {
         display: none !important;
     }
 
@@ -907,10 +916,51 @@ a {
         width: 100vw;
         margin-bottom: 89px;
     }
+
+    .help-container h3 {
+        font-size: 47px;
+        margin: 0px;
+    }
+
+    .help-container p {
+        font-size: 21px;
+    }
+
+    .card-container-right input {
+        margin-top: 17.5px;
+        margin-bottom: 17.5px;
+        width: 285px;
+        height: 25px;
+        padding: 8px 21px;
+    }
+
+    #contact-name{
+        background-position-x: 285px;
+    }
+    #contact-email{
+        background-position-x: 285px;
+    }
+    #contact-phone{
+        background-position-x: 285px;
+    }
 }
 
 @media(max-width:577px) {
     .right-container {
         padding-left: 34px;
     }
+
+    .contact-container {
+        margin-left: 0px;
+    }
+
+    .btn-contact-white {
+        display: none;
+    }
+
+    .btn-container {
+        justify-content: center;
+    }
+
+
 }

@@ -19,8 +19,7 @@ function renderLogin() {
             </div>
         </div>
         <div class="remember-check">
-            <div  class="check" onclick="loginCheckbox()"><img id="loginCheckbox" src="./assets/img/unchecked.png"></div>
-            <span>Remember me</span>
+            <div  class="check" onclick="loginCheckbox()"><img id="loginCheckbox" src="./assets/img/unchecked.png">Remember me</div>
             <a onclick="renderForgotPassword()" href="#">Forgot my password</a>
         </div>
         <div class="login-buttons">
