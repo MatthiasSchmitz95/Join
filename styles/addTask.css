@@ -120,7 +120,7 @@ textarea {
     display: flex;
     flex-direction: column;
     gap: 8px;
-    margin-top: -30px;
+    margin-top: 0px;
 }
 
 .buttonsContainer {
@@ -328,6 +328,7 @@ textarea {
     background: #FFFFFF;
     border: 1px solid #D1D1D1;
     border-radius: 10px;
+    cursor: pointer;
 }
 
 
@@ -378,6 +379,7 @@ input:-webkit-autofill:active {
     /* top-left top-right bottom-right bottom-left */
     border-radius: 0 0 10px 10px;
     overflow-y: auto;
+    padding-left: 18px;
 }
 
 .categoryList div:hover,
@@ -409,12 +411,14 @@ input:-webkit-autofill:active {
     cursor: pointer;
     gap: 10px;
     display: none;
+    z-index: 2;
 }
 
 #newCategoryInput img,
 #newAssignToInput img {
     width: 16px;
     height: 16px;
+    z-index: 2;
 }
 
 .newCategoryColorsBox {

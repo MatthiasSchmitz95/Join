@@ -72,10 +72,10 @@
                     <div class="BottomBoxLeft">
                         <div class="categoryContainer">
                             <label for="category" class="category">Category</label>
-                            <div class="inputContainer" id="inputContainer">
+                            <div class="inputContainer" id="inputContainer" onclick="dropDown()">
                                 <input id="input" type="text" placeholder="Select task Category" disabled required>
                                 <div id="color" class="color"></div>
-                                <div id="buttonDropDown" class="buttonOpenCloseCategory" onclick="dropDown()"><img
+                                <div id="buttonDropDown" class="buttonOpenCloseCategory"><img
                                         src="assets/img/dropdown-arrow.png"></div>
                                 <div id="newCategoryInput">
                                     <img src="assets/img/icon_clear.png" onclick="rejectNewCategory()">
@@ -103,8 +103,9 @@
                         <div class="assignContainer">
                             <label for="assignedTo" class="assignedTo">Assigned to</label>
                             <div class="contactInputContainer" id="contactInputContainer">
-                                <input id="assignInput" type="text" placeholder="Select contacts to assign"  onkeydown="filterContact()">
-                                <div id="assignDropDown" class="buttonOpenClose" onclick="dropDownAssignTo()"><img
+                                <input id="assignInput" type="text" placeholder="Select contacts to assign"
+                                    onkeydown="filterContact()">
+                                <div id="assignDropDown" class="buttonOpenClose"  onclick="dropDownAssignTo()"><img
                                         src="assets/img/dropdown-arrow.png"></div>
                                 <div id="newAssignToInput">
                                     <img src="assets/img/icon_clear.png" onclick="rejectAssignTo()">
@@ -142,7 +143,7 @@
             </div>
 
             <div class="buttonsContainer">
-                
+
                 <button class="createButton" type="submit" id="addTaskBtn">Create Task
                     <img class="createBtnImg" src="assets/img/right-mark.png"></button>
             </div>
@@ -170,13 +171,14 @@
 
         </form>
         <button class="clearButton" onmouseover="clearBtnhover()" onmouseout="clearBtnCancelhover()"
-                    onclick="clearAllAddTaskFields()">Clear <img class="clearBtnImg" id="clearBtnImg"
-                        src="assets/img/cross-mark.svg">
-                </button>
+            onclick="clearAllAddTaskFields()">Clear <img class="clearBtnImg" id="clearBtnImg"
+                src="assets/img/cross-mark.svg">
+        </button>
 
 
         <script src="./js/addTask.js"></script>
     </div>
 </body>
+
 
 </html>

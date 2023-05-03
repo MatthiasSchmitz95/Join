@@ -272,6 +272,7 @@ function closeDropDownAssignTo() {
     assignedList.style.display = "none"; //hide the Container for Contacts 
     assignToInputContainer.style.border = "1px solid #D1D1D1"; //shows all border
     assignToInputContainer.style.borderRadius = "10px"; //set all border radius to 10px
+    document.getElementById('circleContactsContainer').style.display = "flex";
 }
 
 
@@ -291,7 +292,8 @@ function showDropDownAssignTo() {
 }
 
 
-function assignToInput() { //click here to invite new Contact via email
+function assignToInput() { //click here to invite new Contact via email 
+    //document.getElementById('contactInputContainer').onclick = ""; //dropDownMenu deactivated for Email input at first
     document.getElementById('assignedList').style.display = "none";
     document.getElementById('assignInput').onkeydown = ""; //filter Function deactivated for Email input
     closeDropdownCategory(); //dropDown Category Menu closed
@@ -308,12 +310,15 @@ function rejectAssignTo() {
     closeDropDownAssignTo();
     document.getElementById('newAssignToInput').style.display = "none"; //hide AssignToInput container -> shows "cross mark and check mark"
     document.getElementById('assignDropDown').style.display = "flex"; //shows AssignTo DropDown Button
-    document.getElementById('circleContactsContainer').style.display = "none";
+    document.getElementById('circleContactsContainer').style.display = "flex";
+    //document.getElementById('contactInputContainer').addEventListener = dropDownAssignTo(); //dropDownMenu activated for Email input at first
 }
 
 
 function addnewContact() {
     newAssingedContact = document.getElementById('assignInput');
+    assignToInputContainer.style.borderBottom = "none"; //hide the AssignedTo container Border bottom
+    assignToInputContainer.style.borderRadius = "10px 10px 0 0"; //shows AssignedTo container top-left top-right border radius
     newContacts.push(newAssingedContact.value); //to load newContacts array
     document.getElementById('assignedList').style.display = "block";
     document.getElementById('assignedList').value = "";
