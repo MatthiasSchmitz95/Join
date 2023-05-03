@@ -172,6 +172,7 @@ h1 {
 .remember-check {
     display: flex;
     width: 330px;
+    gap: 35px;
 }
 
 .remember-check input {
@@ -267,5 +268,88 @@ h1 {
         top: 50px;
         width: 101px;
         height: 122px;
+    }
+}
+
+@media(max-width:600px) {
+    
+    .login-container {
+        width: 80%;
+    }
+
+    .not-a-join{
+        justify-content: center;
+        width: 100%;
+        right: unset;
+        top: 775px;
+        padding-bottom: 20px;
+    }
+}
+
+@media(max-width:450px) {
+
+    .remember-check{
+        flex-direction: column-reverse;
+        gap: 30px;
+        margin-top: -30px;
+        width: 80%;
+    }
+
+    .login-container{
+        position: absolute;
+        top: 150px;
+    }
+
+    .check{
+        display: flex;
+        gap: 20px;
+    }
+
+    .login-btn{
+        width: 180px;
+        font-size: 16px;
+    }
+
+    .login-buttons{
+        flex-direction: column;
+        height: auto;
+        gap: 35px;
+        width: unset;
+    }
+
+    .btn-bright{
+        padding: unset;
+        width: 180px;
+        font-size: 16px;
+    }
+
+    .moving-logo{
+        width: 64px !important;
+        height: 78px !important;
+        left: 37px !important;
+        top: 38px !important; 
+    }
+
+    .input-field{
+        width: 80%;
+    }
+
+    .input-container{
+        width: unset;
+    }
+
+    h1{
+        font-size: 47px;
+    }
+
+    .not-a-join span{
+        font-size: 16px;
+    }
+}
+
+@media(max-width:330px){
+
+    .not-a-join{
+        gap: 5px;
     }
 }
