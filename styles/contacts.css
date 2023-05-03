@@ -1,6 +1,6 @@
 body {
     background-color: #F5F5F5;
-    overflow-y: hidden;
+    overflow-y: scroll;
 }
 
 
@@ -810,7 +810,7 @@ a {
     }
 
     #kanban {
-        display: none;
+        display: none !important;
     }
 
     .html-topic {

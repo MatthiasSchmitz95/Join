@@ -1138,7 +1138,7 @@ checkbox filled design
     }
 
     .kanban {
-        display: none;
+        display: none !important;
     }
 
     .profile-container-d-none {
