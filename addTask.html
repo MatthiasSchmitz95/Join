@@ -48,7 +48,7 @@
                     <div class="topBoxRight">
                         <div class="d-column">
                             <label for="date" class="date">Due date</label>
-                            <input id="date" placeholder="dd/mm/yyyy" type="date" required>
+                            <input class="dateInputField" id="date" placeholder="dd/mm/yyyy" type="date" required>
                         </div>
 
                         <div class="prioContainer">
@@ -70,10 +70,10 @@
                     <div class="BottomBoxLeft">
                         <div class="categoryContainer">
                             <label for="category" class="category">Category</label>
-                            <div class="inputContainer" id="inputContainer">
+                            <div class="inputContainer" id="inputContainer" onclick="dropDown()">
                                 <input id="input" type="text" placeholder="Select task Category" disabled required>
                                 <div id="color" class="color"></div>
-                                <div id="buttonDropDown" class="buttonOpenCloseCategory" onclick="dropDown()"><img
+                                <div id="buttonDropDown" class="buttonOpenCloseCategory" ><img
                                         src="assets/img/dropdown-arrow.png"></div>
                                 <div id="newCategoryInput">
                                     <img src="assets/img/icon_clear.png" onclick="rejectNewCategory()">

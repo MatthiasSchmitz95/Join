@@ -245,6 +245,10 @@
 }
 
 @media(max-width:800px) {
+    .assignedList {
+        padding-right: 13px !important;
+    }
+
     .kanban {
         display: none;
     }
