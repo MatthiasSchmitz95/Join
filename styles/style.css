@@ -34,6 +34,7 @@ h3 {
     height: 53px;
     color: #CDCDCD;
     cursor: pointer;
+    z-index: 2;
 }
 
 
