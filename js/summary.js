@@ -4,14 +4,16 @@ let awaitingFeedbackSummary = 0;
 let doneSummary = 0;
 let urgents = 0;
 let dateSummary = [];
+loginT=true;
+localStorage.setItem('login', t);
 
 
-function greetingsResponsive(){
-    if (window.innerWidth < 1316) { 
-            document.getElementById('greeting-container').classList.add('responsive-greet');
-               
-        }
+function greetingsResponsive() {
+    if (window.innerWidth < 1316)  {
+        document.getElementById('greeting-container').classList.add('responsive-greet');
+
     }
+}
 
 
 

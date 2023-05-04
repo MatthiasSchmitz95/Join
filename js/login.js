@@ -1,5 +1,3 @@
-let t=false;
-
 
 function login() {
   let email = document.getElementById("login-email-input");
@@ -24,7 +22,11 @@ function login() {
   if (user) {
     if(user.userPassword == password.value){
       saveActiveUserLocal(user);
-      window.location.href = './summary.html';
+     window.location.href = './summary.html';
+     greetingsResponsive();
+     
+     
+     
       
     }
     else{

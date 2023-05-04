@@ -422,6 +422,7 @@ a {
 @media(max-width:1308px) {
     .greeting-container {
         display: none;
+
     }
 }
 
@@ -585,6 +586,10 @@ a {
 
     .task-container{
         margin-left: 33px;
+    }
+
+    .responsive-greet{
+        left: 0px;
     }
 
 
