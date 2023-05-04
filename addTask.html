@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="./fonts.css">
     <link rel="stylesheet" href="./styles/addTask.css">
     <link rel="stylesheet" href="./styles/contacts.css">
+    <link rel="stylesheet" href="./styles/addTaskResponsive.css">
 
     <script src="./js/board.js"></script>
     <script src="./js/main.js"></script>
@@ -62,9 +63,6 @@
                             </div>
                         </div>
                     </div>
-
-
-
                 </div>
 
 
@@ -72,10 +70,10 @@
                     <div class="BottomBoxLeft">
                         <div class="categoryContainer">
                             <label for="category" class="category">Category</label>
-                            <div class="inputContainer" id="inputContainer" onclick="dropDown()">
+                            <div class="inputContainer" id="inputContainer">
                                 <input id="input" type="text" placeholder="Select task Category" disabled required>
                                 <div id="color" class="color"></div>
-                                <div id="buttonDropDown" class="buttonOpenCloseCategory"><img
+                                <div id="buttonDropDown" class="buttonOpenCloseCategory" onclick="dropDown()"><img
                                         src="assets/img/dropdown-arrow.png"></div>
                                 <div id="newCategoryInput">
                                     <img src="assets/img/icon_clear.png" onclick="rejectNewCategory()">

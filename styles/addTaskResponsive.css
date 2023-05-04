@@ -1,0 +1,716 @@
+@media(max-width:1400px) {
+    .taskCard {
+        width: auto;
+    }
+
+    .headline {
+        width: 80vw;
+    }
+
+    .contentContainer {
+        margin-left: 70px;
+    }
+
+    .buttonsContainer {
+        width: auto;
+        margin-left: 852px;
+    }
+
+    .clearButton {
+        position: absolute;
+        left: 920px;
+        top: 889px;
+    }
+
+    .midLine {
+        margin-left: 59px;
+    }
+
+    .topBoxRight {
+        margin-left: 0px;
+    }
+
+    .BottomBoxRight {
+        margin-left: 0px;
+    }
+
+    #kanban {
+        margin-left: -50px;
+    }
+}
+
+@media(max-width: 1250px) {
+    .contentContainer {
+        margin-left: 10px;
+    }
+
+    .midLine {
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+
+    .buttonsContainer {
+        width: auto;
+        margin-left: 710px;
+    }
+
+    .clearButton {
+        position: absolute;
+        left: 775px;
+        top: 889px;
+    }
+}
+
+@media(max-width:1100px) {
+    .taskCard {
+        width: 100%;
+    }
+
+    .contentContainer {
+        box-sizing: border-box;
+        width: 100%;
+        margin-left: 0px !important;
+    }
+
+    .headline {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-left: 0px;
+    }
+
+    .headline span {
+        width: 422px;
+    }
+
+    .topBoxRight {
+        flex-direction: column-reverse;
+    }
+
+    .leftContent {
+        display: flex;
+        flex-direction: column !important;
+        align-items: center;
+    }
+
+    .midLine {
+        display: none;
+    }
+
+    .rightContent {
+        display: flex;
+        flex-direction: column !important;
+        align-items: center;
+    }
+
+    .buttonsContainer {
+        display: none;
+    }
+
+    .createButtonResponsiveContainer {
+        position: absolute;
+        top: -72px;
+        z-index: 2;
+        display: flex;
+        justify-content: center;
+        height: 51px;
+        width: 100%;
+        border: none;
+    }
+
+    .createButtonResponsiveContainer div {
+        width: 422px;
+        height: 51px;
+        display: flex;
+        justify-content: flex-end;
+        border: none;
+    }
+
+    .createButtonResponsive {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 21px;
+        line-height: 120%;
+        color: #FFFFFF;
+        background: #2A3647;
+        border-radius: 10px;
+        width: 124px;
+    }
+
+    .createButtonResponsive:hover {
+        border: none;
+        background-color: #29ABE2;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+
+    .createButtonResponsive:active {
+        background-color: #091931;
+    }
+
+    .titleContainer {
+        box-sizing: border-box;
+        width: 100% !important;
+    }
+
+    .profile-container {
+        display: none;
+    }
+
+    #kanban {
+        display: none;
+    }
+
+    .header {
+        width: 100%;
+        z-index: 2;
+    }
+
+    .KanbanResponsive {
+        position: absolute;
+        top: 25px;
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 120%;
+        color: #000000;
+    }
+
+    .KanbanResponsive span {
+        width: 422px;
+    }
+
+    .clearButton {
+        display: none;
+    }
+}
+
+@media(max-width:800px) {
+    .taskCard {
+        height: auto;
+        width: 100%;
+        background: #f6f7f8;
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin-left: 0px;
+        margin-top: 79.02px;
+        display: flex;
+        flex-direction: column;
+        padding-left: 25px;
+    }
+
+    .headline {
+        width: 363px;
+        display: flex;
+        justify-content: flex-start;
+        height: 78px;
+        margin-top: 55px;
+        padding-left: 0px;
+        font-size: 47px;
+    }
+
+    .contentContainer {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 766.98px;
+        height: auto;
+        margin-left: 33px;
+        margin-top: 0px;
+        position: relative;
+    }
+
+    .leftContent {
+        flex-direction: column;
+        margin-left: 0px !important;
+        width: 363px;
+        padding-left: 0px;
+    }
+
+    .titleContainer {
+        width: 363px !important;
+        height: 68px !important;
+    }
+
+    .descriptionContainer {
+        width: 363px !important;
+        height: 120px;
+        padding-top: 9px;
+    }
+
+    #description {
+        height: 93px;
+    }
+
+    .topBoxRight {
+        display: flex;
+        flex-direction: column-reverse;
+        margin-left: 0;
+    }
+
+    .BottomBoxRight {
+        display: flex;
+        flex-direction: column;
+        margin-left: 0;
+        gap: 8px;
+    }
+
+    .categoryContainer {
+        width: 363px !important;
+        padding-top: 9px;
+    }
+
+    #input {
+        width: 220px;
+    }
+
+    #newCategoryInput {
+        padding-left: 21px;
+    }
+
+    .newCategoryColorsBox {
+        width: 363px !important;
+    }
+
+    .assignContainer {
+        width: 363px !important;
+        padding-top: 9px;
+    }
+
+    .buttonOpenCloseCategory {
+        padding-left: 60px;
+    }
+
+    .buttonOpenClose {
+        padding-left: 38px;
+    }
+
+    .contactInputContainer {
+        width: 363px !important;
+        height: 41px;
+    }
+
+    .newContactImg {
+        padding-left: 0px;
+    }
+
+    #assignInput {
+        width: 257px;
+    }
+
+    .midLine {
+        display: none;
+    }
+
+    .inputContainer {
+        width: 363px;
+        height: 41px;
+    }
+
+    #newAssignToInput {
+        padding-left: 0px;
+    }
+
+    .rightContent {
+        flex-direction: column;
+        margin-left: 0px !important;
+        width: 363px;
+        padding-left: 0px;
+    }
+
+    #date {
+        width: 363px;
+        height: 41px;
+    }
+
+    .priorityBoxesContainer {
+        width: 363px;
+        height: 51px;
+        padding-top: 13px !important;
+    }
+
+    .priority {
+        margin-top: 9px;
+    }
+
+    .addSubtaskContainer {
+        margin-top: 9px;
+        width: 363px;
+        height: 41px;
+    }
+
+    .subtasksInput {
+        margin-left: 20px;
+        font-size: 18px;
+    }
+
+    .date {
+        padding-bottom: 8px;
+    }
+
+    .BottomBoxLeft {
+        margin-top: 9px;
+        padding-top: 9px;
+    }
+
+    .prioContainer {
+        padding-top: 9px !important;
+        width: 363px;
+    }
+
+    .buttonsContainer {
+        width: auto;
+        display: none;
+    }
+
+    .createButton {
+        display: none;
+    }
+
+    .createButtonResponsiveContainer {
+        position: absolute;
+        top: -72px;
+        z-index: 2;
+        display: flex;
+        justify-content: flex-start;
+        height: 51px;
+        width: auto;
+        border: none;
+    }
+
+    .createButtonResponsiveContainer div {
+        width: 363px;
+        height: 51px;
+        display: flex;
+        justify-content: flex-end;
+        border: none;
+    }
+
+    .createButtonResponsive {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 21px;
+        line-height: 120%;
+        color: #FFFFFF;
+        background: #2A3647;
+        border-radius: 10px;
+        width: 124px;
+    }
+
+    .createButtonResponsive:hover {
+        border: none;
+        background-color: #29ABE2;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+
+    .createButtonResponsive:active {
+        background-color: #091931;
+    }
+
+    .clearButtonImgblue {
+        filter: invert(76%) sepia(51%) saturate(1615%) hue-rotate(168deg) brightness(92%) contrast(92%);
+    }
+
+    .clearButtonImgGray {
+        filter: invert(41%) sepia(6%) saturate(1189%) hue-rotate(179deg) brightness(92%) contrast(84%);
+    }
+
+    .clearButton {
+        display: none;
+    }
+
+    .BottomBoxRight {
+        margin-top: -8px !important;
+        padding-bottom: 100px;
+    }
+
+    .header {
+        z-index: 2;
+    }
+
+    .profile-container {
+        display: none;
+    }
+
+    .KanbanResponsive {
+        display: flex;
+        box-sizing: border-box;
+        width: 80vw;
+        justify-content: flex-start;
+        position: absolute;
+        top: 25px;
+        padding-left: 0px;
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 120%;
+        color: #000000;
+    }
+
+    .messageAddedTask {
+        top: 579.98px;
+        left: 51px;
+    }
+
+}
+
+@media(max-width:400px) {
+    .taskCard {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
+
+@media(max-width:375px) {
+    .createButtonResponsiveContainer div {
+        width: 320px;
+    }
+
+    .taskCard {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    .headline {
+        box-sizing: border-box;
+        width: 100%;
+        font-size: 47px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .headline span {
+        width: 320px;
+    }
+
+    .titleContainer {
+        width: 320px !important;
+    }
+
+    #title {
+        font-size: 18px;
+    }
+
+    .descriptionContainer {
+        width: 320px !important;
+    }
+
+    #description {
+        font-size: 18px;
+    }
+
+    .prioContainer {
+        width: 320px !important;
+    }
+
+    .priorityBoxesContainer {
+        width: 320px !important;
+    }
+
+    #date {
+        width: 320px !important;
+    }
+
+    .inputContainer {
+        width: 320px !important;
+    }
+
+    .contactInputContainer {
+        width: 320px !important;
+    }
+
+    .categoryContainer {
+        width: 320px !important;
+    }
+
+    .assignContainer {
+        width: 320px !important;
+    }
+
+    #assignInput {
+        font-size: 18px;
+    }
+
+    .BottomBoxLeft {
+        width: 320px !important;
+    }
+
+    #input {
+        width: 190px;
+        font-size: 18px;
+    }
+
+    .buttonOpenCloseCategory {
+        padding-left: 53px;
+    }
+
+    .buttonOpenClose {
+        padding-left: 2px;
+    }
+
+    .addSubtaskContainer {
+        width: 320px !important;
+    }
+
+    #subtaskOninput {
+        padding-left: 0px;
+    }
+
+    #newCategoryInput {
+        padding-left: 12px;
+    }
+
+    .newCategoryColorsBox {
+        width: 320px !important;
+    }
+
+    .KanbanResponsive {
+        display: flex;
+        box-sizing: border-box;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .KanbanResponsive span {
+        width: 320px;
+    }
+}
+
+@media(max-width:280px) {
+    .createButtonResponsiveContainer div {
+        width: 260px;
+    }
+
+    .taskCard {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    .headline {
+        box-sizing: border-box;
+        width: 100%;
+        font-size: 47px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .headline span {
+        width: 260px;
+    }
+
+    .titleContainer {
+        width: 260px !important;
+    }
+
+    #title {
+        font-size: 15px;
+    }
+
+    .descriptionContainer {
+        width: 260px !important;
+    }
+
+    #description {
+        font-size: 15px;
+    }
+
+    .prioContainer {
+        width: 260px !important;
+    }
+
+    .priorityBoxesContainer {
+        width: 260px !important;
+    }
+
+    #date {
+        width: 260px !important;
+        font-size: 15px;
+    }
+
+    .inputContainer {
+        width: 260px !important;
+    }
+
+    .contactInputContainer {
+        width: 260px !important;
+    }
+
+    .leftContent {
+        width: 280px;
+    }
+
+    .rightContent {
+        width: 280px;
+    }
+
+    .categoryContainer {
+        width: 260px !important;
+    }
+
+    .assignContainer {
+        width: 320px !important;
+    }
+
+    #assignInput {
+        font-size: 15px;
+    }
+
+    .BottomBoxLeft {
+        width: 260px !important;
+    }
+
+    #input {
+        width: 190px;
+        font-size: 15px;
+    }
+
+    .buttonOpenCloseCategory {
+        padding-left: 15px;
+    }
+
+    .buttonOpenClose {
+        padding-left: 2px;
+    }
+
+    .addSubtaskContainer {
+        width: 260px !important;
+    }
+
+    #subtaskOninput {
+        padding-left: 0px;
+    }
+
+    #newCategoryInput {
+        padding-left: 12px;
+    }
+
+    .newCategoryColorsBox {
+        width: 260px !important;
+    }
+
+    .KanbanResponsive {
+        display: flex;
+        box-sizing: border-box;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .KanbanResponsive span {
+        width: 260px;
+    }
+
+    .subtasksInput {
+        font-size: 15px;
+    }
+
+    .side-bar {
+        width: 280px;
+    }
+}
