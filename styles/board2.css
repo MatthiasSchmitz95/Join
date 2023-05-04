@@ -307,10 +307,10 @@
         padding-right: 21px !important;
     }
 
-    .overlay-background{
+    /*.overlay-background{
         position: absolute;
         top: 77px;
-    }
+    }*/
 
 }
 
@@ -432,7 +432,7 @@
         gap: 20px;
         padding-left: 32px;
         padding-right: 32px;
-        top: -13px;
+        top: -15px;
         overflow-y: scroll;
        
     }
