@@ -496,7 +496,7 @@ input:-webkit-autofill:active {
     color: #000000;
 }
 
-#date {
+.dateInputField {
     box-sizing: border-box;
     width: 420px;
     height: 51px;

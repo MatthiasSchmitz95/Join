@@ -418,7 +418,7 @@
         padding-left: 0px;
     }
 
-    #date {
+    .dateInputField {
         width: 363px;
         height: 41px;
     }
@@ -623,7 +623,7 @@
         flex-direction: column;
     }
 
-    #date {
+    .dateInputField {
         width: 320px !important;
         padding-left: 0px;
         padding-right: 0px;
@@ -741,7 +741,7 @@
         width: 260px !important;
     }
 
-    #date {
+    .dateInputField {
         width: 260px !important;
         font-size: 15px;
     }
