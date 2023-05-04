@@ -1,24 +1,24 @@
 
-
+// Close the dropdown container from category
 function closeDropdownCategoryBoard() {
-    let categoryInputContainer = document.getElementById('inputContainer'); //addTask.html line 40 - Input Container for Category
+    let categoryInputContainer = document.getElementById('inputContainer'); 
     let categoryList = document.getElementById('categoryList');
     categoryList.style.display = "none";
     categoryInputContainer.style.border = "1px solid #D1D1D1";
     categoryInputContainer.style.borderRadius = "10px";
 }
 
-
+// Selected variable for renderAssignToBoardContacts()
 async function renderAssignToBoard(cards) {
     let user = userAccounts[activeUser]['userTasks'];
     let todo = user.find((item) => item.id === cards);
-    let assignedContactList = document.getElementById('assignedList');  //container to render the list
-    assignedContactList.innerHTML = ""; //clear container inside html
+    let assignedContactList = document.getElementById('assignedList'); 
+    assignedContactList.innerHTML = ""; 
     let users = userAccounts[activeUser]['userContacts'];
     renderAssignToBoardContacts(users, assignedContactList, todo)
 }
 
-
+// Show all Contacts includes with checkboxes
 function renderAssignToBoardContacts(users, assignedContactList, todo) {
     for (let i = 0; i < users.length; i++) {
         let userName = users[i]['name'];
@@ -29,7 +29,7 @@ function renderAssignToBoardContacts(users, assignedContactList, todo) {
     }
 }
 
-
+// Select all chosed Contacts and push them into checkbox
 function chooseContactBoard(name, cards) {
     let user = userAccounts[activeUser]['userTasks'];
     let todo = user.find((item) => item.id === cards);
@@ -47,7 +47,7 @@ function chooseContactBoard(name, cards) {
     }
 }
 
-
+// Save all changes to backend
 async function saveInputTask(cards) {
     let user = userAccounts[activeUser]['userTasks'];
     let todo = user.find((item) => item.id === cards);
@@ -63,7 +63,7 @@ async function saveInputTask(cards) {
     await saveAndNewRender(cards)
 }
 
-
+// show Overlay and update HTML
 async function saveAndNewRender(cards) {
     await saveTasksToBackend()
     await saveUserAccountsToBackend();
@@ -71,7 +71,7 @@ async function saveAndNewRender(cards) {
     showOverlay(cards)
 }
 
-
+// checkes if title new
 function newTitleSave(todo) {
     let newTitle = document.getElementById('inputTittle').value;
     if (newTitle == '') {
@@ -80,7 +80,7 @@ function newTitleSave(todo) {
     todo.title = newTitle;
 }
 
-
+// save choosedConatact for render and save contacts to task
 function contactChoosed(todo) {
     if (choosedContact.length === 0) {
         for (let i = 0; i < todo['contact'].length; i++) {
@@ -93,7 +93,7 @@ function contactChoosed(todo) {
     }
 }
 
-
+// Show the priority 
 function getPriority() {
     let priority;
     let priorityImg;
@@ -110,23 +110,22 @@ function getPriority() {
     return { priority, priorityImg };
 }
 
-
+// change the priority 
 function setPriority(todo, priority, priorityImg) {
     todo.priority = priority;
     todo.priorityImg = priorityImg;
 }
 
-
+// Save the priority 
 function prioritySave(todo) {
     const { priority, priorityImg } = getPriority();
     setPriority(todo, priority, priorityImg);
 }
 
-
+// Selected if Subtask is done
 async function chooseSubtasksBoard(todo) {
     todo.subTaskDone = [];
     let allChekbox = document.querySelectorAll(`.checkedSubTasks`);
-    console.log(allChekbox.length);
     for (let i = 0; i < allChekbox.length; i++) {
         const checkbox = allChekbox[i];
         if (checkbox.checked) {
@@ -137,7 +136,7 @@ async function chooseSubtasksBoard(todo) {
     await saveUserAccountsToBackend();
 }
 
-
+// render Subtasks
 function renderSubtasksBoard(cards) {
     let user = userAccounts[activeUser]['userTasks'];
     let todo = user.find((item) => item.id === cards);
@@ -152,7 +151,7 @@ function renderSubtasksBoard(cards) {
     }
 }
 
-
+// Render the progressbar (cards)
 async function changeProgressbar(cards) {
     const progress = document.getElementById(`progressBar${cards}`);
     const contant = document.getElementById(`countDone${cards}`);
@@ -166,7 +165,7 @@ async function changeProgressbar(cards) {
     }
 }
 
-
+// Select witch searchinput and checked if its includes
 function filterHtml() {
     if (window.innerWidth <= 640) {
         var search = document.getElementById('searchSmall').value;
@@ -183,12 +182,11 @@ function filterHtml() {
         } }
 }
 
-
+// Render all cards where Search includes title
 async function renderfilter(search, j) {
     await loadTasksFromBackend();
     await loadUserAccountsFromBackend();
     let user = userAccounts[activeUser]['userTasks'];
-    let text = userAccounts[activeUser]['userTasks'][j]['title'];
     document.getElementById('toDoContent').innerHTML = '';
     document.getElementById('inProgressContent').innerHTML = '';
     document.getElementById('awaitingFeedbackContent').innerHTML = '';
@@ -200,7 +198,7 @@ async function renderfilter(search, j) {
     }
 }
 
-
+// Render search HTML
 function renderFilterHtml(userTasks, search, cards) {
     renderFilterHtmlToDo(userTasks, search, cards);
     renderFilterHtmlInProgress(userTasks, search, cards);
@@ -208,35 +206,35 @@ function renderFilterHtml(userTasks, search, cards) {
     renderFilterHtmlDone(userTasks, search, cards);
 }
 
-
+// Render search HTML To Do
 function renderFilterHtmlToDo(userTasks, search, cards) {
     if (cards == 'To Do' && userTasks['title'].toLowerCase().includes(search)) {
         document.getElementById('toDoContent').innerHTML += generateHTML1(userTasks) + generateHTML2(userTasks), loadForUpdateHTML(userTasks);
     }
 }
 
-
+// Render search HTML in progress
 function renderFilterHtmlInProgress(userTasks, search, cards) {
     if (cards == 'In progress' && userTasks['title'].toLowerCase().includes(search)) {
         document.getElementById('inProgressContent').innerHTML += generateHTML1(userTasks) + generateHTML2(userTasks), loadForUpdateHTML(userTasks);
     }
 }
 
-
+// Render search HTML Awaiting Feedback
 function renderFilterHtmlAwaitingFeedback(userTasks, search, cards) {
     if (cards == 'Awaiting Feedback' && userTasks['title'].toLowerCase().includes(search)) {
         document.getElementById('awaitingFeedbackContent').innerHTML += generateHTML1(userTasks) + generateHTML2(userTasks), loadForUpdateHTML(userTasks);
     }
 }
 
-
+// Render search HTML Done
 function renderFilterHtmlDone(userTasks, search, cards) {
     if (cards == 'Done' && userTasks['title'].toLowerCase().includes(search)) {
         document.getElementById('doneContent').innerHTML += generateHTML1(userTasks) + generateHTML2(userTasks), loadForUpdateHTML(userTasks);
     }
 }
 
-
+// delete a task from backend and update HTML
 async function deleteTaskActiveUser(number) {
     let user = userAccounts[activeUser]['userTasks'];
     for (let i = 0; i < user.length; i++) {
