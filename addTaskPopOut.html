@@ -48,10 +48,10 @@
             <div class="BottomBoxLeft">
                 <div class="categoryContainer">
                     <label for="category" class="category">Category</label>
-                    <div class="inputContainer" id="inputContainer">
+                    <div class="inputContainer" id="inputContainer" onclick="dropDown()">
                         <input id="input" type="text" placeholder="Select task Category" required>
                         <div id="color" class="color"></div>
-                        <div id="buttonDropDown" class="buttonOpenClose" onclick="dropDown()"><img
+                        <div id="buttonDropDown" class="buttonOpenClose" ><img
                                 src="assets/img/dropdown-arrow.png"></div>
                         <div id="newCategoryInput">
                             <img src="assets/img/icon_clear.png" id="clearSubtaskInput" onclick="rejectNewCategory()">
@@ -106,15 +106,19 @@
                 <div class="SubtaskAppendixContainer" id="SubtaskAppendixContainer">
                 </div>
             </div>
+
+            <div class="buttonsContainer">
+
+                <button class="createButton" type="submit" id="addTaskBtn">Create Task <img class="createBtnImg"
+                        src="assets/img/right-mark.png"></button>
+            </div>
         </div>
 
+        
+
     </div>
 
-    <div class="buttonsContainer">
-
-        <button class="createButton" type="submit" id="addTaskBtn">Create Task <img class="createBtnImg"
-                src="assets/img/right-mark.png"></button>
-    </div>
+    
 
     <div id="messageAddedTask" class="messageAddedTask">
         <p>Task added to board</p>

@@ -132,7 +132,7 @@ textarea {
     display: flex;
     justify-content: flex-start;
     gap: 25px;
-    margin-top: 48px;
+    margin-top: 160px;
     z-index: 2;
 }
 
@@ -154,7 +154,7 @@ textarea {
     justify-content: space-evenly;
     position: absolute;
     left: 970px;
-    top: 777px;
+    top: 889px;
 
 }
 
@@ -914,13 +914,13 @@ checkbox filled design
     .buttonsContainer {
         /*width: 80vw;*/
         width: auto;
-        margin-left: 862px;
+        margin-left: 852px;
     }
 
     .clearButton {
         position: absolute;
         left: 920px;
-        top: 777px;
+        top: 889px;
     }
 
     .midLine {
@@ -959,7 +959,7 @@ checkbox filled design
     .clearButton {
         position: absolute;
         left: 775px;
-        top: 777px;
+        top: 889px;
     }
 }
 

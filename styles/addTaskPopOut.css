@@ -165,8 +165,8 @@ input:-webkit-autofill:active {
 
 .buttonsContainer {
     box-sizing: border-box;
-    margin-left: 859px;
-    margin-top: -60px;
+    margin-left: -182px;
+    margin-top: 328px;
     width: 338px;
     height: 61px;
     z-index: 2;
@@ -190,7 +190,7 @@ input:-webkit-autofill:active {
     z-index: 2;
     position: absolute;
     left: 699px;
-    top: 650px;
+    top: 781px;
     z-index: 2;
 }
 
@@ -364,6 +364,7 @@ input:-webkit-autofill:active {
     background: #FFFFFF;
     border: 1px solid #D1D1D1;
     border-radius: 10px;
+    cursor: pointer;
 }
 
 #input {
@@ -959,13 +960,13 @@ checkbox filled design
     .buttonsContainer {
         /*width: 80vw;*/
         width: auto;
-        margin-left: 722px;
+        margin-left: -182px;
     }
 
     .clearButton {
         position: absolute;
         left: 557px;
-        top: 650px;
+        top: 781px;
     }
 
     .midLine {
@@ -1015,7 +1016,7 @@ checkbox filled design
 
     .buttonsContainer {
         width: auto;
-        margin-left: 713px;
+        margin-left: -182px;
         z-index: 2;
     }
 
@@ -1181,10 +1182,6 @@ checkbox filled design
         overflow-y: scroll;
     }
 
-    /*.side-bar {
-        display: none;
-    }*/
-
     .bg {
         display: none;
     }
@@ -1225,7 +1222,7 @@ checkbox filled design
 
     .closeBtnContainer {
         position: absolute;
-        top: 60px;
+        top: 27px;
         box-sizing: border-box;
         width: 363px;
         display: flex;
@@ -1237,7 +1234,7 @@ checkbox filled design
         display: flex;
         justify-content: flex-start;
         height: 78px;
-        margin-top: 55px;
+        margin-top: 27px;
         padding-left: 0px;
         font-size: 47px;
     }
@@ -1290,7 +1287,6 @@ checkbox filled design
 
     .categoryContainer {
         width: 363px !important;
-        padding-top: 9px;
     }
 
     #input {
@@ -1320,7 +1316,7 @@ checkbox filled design
 
     .contactInputContainer {
         width: 363px !important;
-        height: 41px;
+        height: 41px !important;
     }
 
     .newContactImg {
@@ -1337,7 +1333,7 @@ checkbox filled design
 
     .inputContainer {
         width: 363px;
-        height: 41px;
+        height: 41px !important;
     }
 
     #newAssignToInput {
@@ -1359,6 +1355,7 @@ checkbox filled design
     .d-column {
         display: flex;
         flex-direction: column;
+        margin-top: 14px;
     }
 
     .priorityBoxesContainer {
@@ -1384,11 +1381,6 @@ checkbox filled design
 
     .date {
         padding-bottom: 8px;
-    }
-
-    .BottomBoxLeft {
-        margin-top: 9px;
-        padding-top: 9px;
     }
 
     .prioContainer {
@@ -1471,7 +1463,7 @@ checkbox filled design
     }
 
     .BottomBoxRight {
-        margin-top: -8px !important;
+        margin-top: -30px !important;
         padding-bottom: 100px;
     }
 

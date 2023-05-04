@@ -291,9 +291,20 @@
         display: none;
     }
 
-    #date{
-        width: 420px;
-        height: 51px;
+    #date {
+        /*box-sizing: unset !important;*/
+        width: 100% !important;
+        height: 41px !important;
+        background: #FFFFFF !important;
+        border: 1px solid #D1D1D1 !important;
+        border-radius: 10px !important;
+        font-family: 'Inter' !important;
+        font-style: normal !important;
+        font-weight: 400 !important;
+        font-size: 21px !important;
+        color: #000000 !important;
+        padding-left: 21px !important;
+        padding-right: 21px !important;
     }
 
     .overlay-background{
@@ -530,9 +541,9 @@
     }
 
     #date {
-        box-sizing: unset !important;
-        width: 90% !important;
-        height: 51px !important;
+        /*box-sizing: unset !important;*/
+        width: 100% !important;
+        height: 41px !important;
         background: #FFFFFF !important;
         border: 1px solid #D1D1D1 !important;
         border-radius: 10px !important;
