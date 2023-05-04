@@ -325,37 +325,12 @@ function addnewContact() {
     document.getElementById('assignedList').innerHTML = `
     Email was sent successfully!
     `;
-    /*renderCircleName();
-    changeEmailToContactName();
-    document.getElementById('circleContactsContainer').style.display = "flex";
-    document.getElementById('newAssignToInput').style.display = "none"; //hide newCategoryInput container -> shows "cross mark and check mark"
-    document.getElementById('assignDropDown').style.display = "flex"; //shows Category DropDown Button
-    newContacts.splice(0);//delete all by call this function*/
 }
 
 function displayChosenContactsForTask() {
     document.getElementById('circleContactsContainer').style.display = "flex";
     renderCircleName();
 }
-
-/*
-function changeEmailToContactName() {
-    let stringEmail = newAssingedContact.value;
-    const splitStringEmail = stringEmail.split("@");
-    let nameString = splitStringEmail[0];
-    const splitStringName = nameString.split(".");
-    const firstString = splitStringName[0];
-    const secondString = splitStringName[1];
-    if (secondString == undefined) {
-        const newStringName = firstString.charAt(0).toUpperCase() + firstString.slice(1);
-        choseContacts.push(newStringName);
-    } else {
-        const newStringName = firstString.charAt(0).toUpperCase() + firstString.slice(1) + ' ' + secondString.charAt(0).toUpperCase() + secondString.slice(1);
-        choseContacts.push(newStringName);
-    }
-    console.log('added new contact for Task: ', choseContacts.slice(-1)); //show choseContact last index
-    console.log('chosen contact Array update: ', choseContacts); //show choseContact Array
-}*/
 
 var arrayContactColor = [];
 
@@ -381,47 +356,18 @@ function showContactsByTwoLetters() { //good
     //console.log(selectedContactLetters);
 }
 
-/*
-function showNewAddedContactsByTwoLetters() { //to check
-    for (let i = 0; i < newContacts.length; i++) {
-        let addedNewContact = newContacts[i];
-        const firstLetter = addedNewContact.charAt(0).toUpperCase();
-        const splitStringEmail = addedNewContact.split("@");
-        let nameString = splitStringEmail[0];
-        contactColor = randomUserColor();
-        arrayContactColor.push(contactColor);
-        const splitStringName = nameString.split(".");
-        if (splitStringName[1] == undefined) {
-            newLetters2 = firstLetter;
-            newAddedContactLetters.push(newLetters2);
-
-        } else {
-            let secondString = splitStringName[1];
-            let secondLetter = secondString.charAt(0).toUpperCase();
-            newLetters2 = firstLetter + secondLetter;
-            newAddedContactLetters.push(newLetters2);
-        }
-
-    }
-    console.log(newAddedContactLetters);
-}*/
-
 function renderCircleName() {
     showContactsByTwoLetters();
-    //showNewAddedContactsByTwoLetters();
     document.getElementById('circleContactsContainer').innerHTML = "";
     for (let i = 0; i < selectedContactLetters.length; i++) {
         const letters = selectedContactLetters[i];
         const bgContactColor = arrayContactColor[i];
         renderNamesInTwoLetters(bgContactColor, letters);
     }
-    //bgContactColor = arrayContactColor.slice(-1); //last Index of colorArray Array
-    //showAddedContactInTwoLetters(bgContactColor, newAddedContactLetters);
     selectedContactLetters.splice(0); //delete all by call this function
     newAddedContactLetters.splice(0); //delete all by call this function
     newContacts.splice(0);//delete all by call this function
     arrayContactColor.splice(0);
-    //console.log(arrayContactColor);
 }
 
 function renderNamesInTwoLetters(bgContactColor, letters) {
@@ -430,14 +376,6 @@ function renderNamesInTwoLetters(bgContactColor, letters) {
     </div>
     `;
 }
-
-/*function showAddedContactInTwoLetters(bgContactColor, newAddedContactLetters) {
-    return document.getElementById('circleContactsContainer').innerHTML += `
-    <div class="circleContact" id="circleContact" style="background-color: ${bgContactColor} !important">  ${newAddedContactLetters}
-    </div>
-    `;
-}*/
-
 
 /**
  * Subtask
@@ -488,7 +426,6 @@ function chooseSubtasks(id) { //index, contact
             selectedSubtasks.push(checkbox.value); //push in SelectedSubtasks[Array] value
         }
     }
-    //console.log('selectedSubtasks', selectedSubtasks);
 }
 
 /**render SubTask at the bottom of the subTask Input filed */
@@ -549,7 +486,6 @@ async function addTask() {
     setAllFieldsToDefault(); //change to default
     closeDropdownCategory();/**dorpdowns were closed by creating or adding Task */
     closeDropDownAssignTo();/**dorpdowns were closed by creating or adding Task */
-    //console.log(choseContacts);
     choseContacts = [];
 }
 
