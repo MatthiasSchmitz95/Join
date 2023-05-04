@@ -110,7 +110,7 @@
 
 .input-chances-title {
     width: 90%;
-    height: 28px;
+    height: 41px;
     border: 1px solid #D1D1D1;
     border-radius: 10px;
     padding-left: 21px;
@@ -251,7 +251,7 @@
 }
 
 @media(max-width: 800px) {
-    .body{
+    .body {
         background-color: #F5F5F5;
     }
 
@@ -291,21 +291,6 @@
         display: none;
     }
 
-    #date {
-        /*box-sizing: unset !important;*/
-        width: 100% !important;
-        height: 41px !important;
-        background: #FFFFFF !important;
-        border: 1px solid #D1D1D1 !important;
-        border-radius: 10px !important;
-        font-family: 'Inter' !important;
-        font-style: normal !important;
-        font-weight: 400 !important;
-        font-size: 21px !important;
-        color: #000000 !important;
-        padding-left: 21px !important;
-        padding-right: 21px !important;
-    }
 
     /*.overlay-background{
         position: absolute;
@@ -405,11 +390,11 @@
         width: unset;
     }
 
-    .margin-top{
+    .margin-top {
         margin-top: 20px;
     }
 
-    .no-cards{
+    .no-cards {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -434,16 +419,16 @@
         padding-right: 32px;
         top: -15px;
         overflow-y: scroll;
-       
+
     }
 
     .overlay-department {
         font-size: 21px;
     }
 
-    .noscroll { 
+    .noscroll {
         overflow: hidden;
-      }
+    }
 
     .overlay-header {
         display: flex;
@@ -540,35 +525,20 @@
         font-size: 16px !important;
     }
 
-    #date {
-        /*box-sizing: unset !important;*/
-        width: 100% !important;
-        height: 41px !important;
-        background: #FFFFFF !important;
-        border: 1px solid #D1D1D1 !important;
-        border-radius: 10px !important;
-        font-family: 'Inter' !important;
-        font-style: normal !important;
-        font-weight: 400 !important;
-        font-size: 21px !important;
-        color: #000000 !important;
-        padding-left: 21px !important;
-        padding-right: 21px !important;
-    }
 
     .input-chances-text {
         font-size: 16px;
     }
 
-    .display-none{
+    .display-none {
         display: none;
     }
 
-    .assign-input{
+    .assign-input {
         font-size: 16px !important;
     }
 
-    .assignedList{
+    .assignedList {
         padding-left: 21px;
         padding-right: 21px;
         width: 90% !important;
@@ -607,24 +577,15 @@
         gap: 10px;
     }
 
-    .assign-input{
+    .assign-input {
         font-size: 16px !important;
-        width: 190px !important;
-    }
-    .contactInputContainerBoard{
-        padding-left: 0;
-        padding-right: 5px;
-    }
-
-    .assignedList{
-        padding-left: 0;
-        padding-right: 5px;
+        width: 120px !important;
     }
 }
 
-@media(max-width: 280px){
+@media(max-width: 280px) {
 
-    .overlay{
+    .overlay {
         padding-left: 2%;
         padding-right: 9%;
     }
