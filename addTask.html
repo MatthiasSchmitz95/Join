@@ -100,10 +100,10 @@
 
                         <div class="assignContainer">
                             <label for="assignedTo" class="assignedTo">Assigned to</label>
-                            <div class="contactInputContainer" id="contactInputContainer">
+                            <div class="contactInputContainer" id="contactInputContainer" onclick="dropDownAssignTo()">
                                 <input id="assignInput" type="text" placeholder="Select contacts to assign"
-                                    onkeydown="filterContact()">
-                                <div id="assignDropDown" class="buttonOpenClose"  onclick="dropDownAssignTo()"><img
+                                    onchange="filterContact()">
+                                <div id="assignDropDown" class="buttonOpenClose"><img
                                         src="assets/img/dropdown-arrow.png"></div>
                                 <div id="newAssignToInput">
                                     <img src="assets/img/icon_clear.png" onclick="rejectAssignTo()">

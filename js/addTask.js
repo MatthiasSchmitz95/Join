@@ -11,6 +11,8 @@ var categoryList;
 var choseContacts = []; //an Array to save the checked Contacts with checkbox
 var l = false;
 var j = false;
+var assignToTemporayVar1 = false;
+var assignToTemporayVar2 = false;
 
 var priority;
 var priorityImg;
@@ -89,26 +91,26 @@ function closeDropdownCategory() {
     categoryInputContainer.style.border = "1px solid #D1D1D1"; //Category Input Container show all border 
     categoryInputContainer.style.borderRadius = "10px"; //Category Input Container show all Border radius with 10px
     if (l == true) {
-        document.getElementById("input").disabled = true; 
-    }else {
+        document.getElementById("input").disabled = true;
+    } else {
         document.getElementById("input").disabled = false;
-    
-    }}
+    }
+}
 /**show the Category Select Menu*/
 function showDropdownCategory() {
-   // document.getElementById("input").disabled = true;
-   if (j == false) {
-    categoryList = document.getElementById('categoryList');
-    categoryInputContainer = document.getElementById('inputContainer');
-    categoryList.style.display = "block"; //shows Container for Category to rendern
-    categoryInputContainer.style.borderBottom = "none"; //Category Input Container has no border Bottom
-    /* top-left top-right bottom-right bottom-left */
-    categoryInputContainer.style.borderRadius = "10px 10px 0 0"; //Category Input Container show only top-left top-right Border radius
-    renderCategory(); //render Category in the Container
-   }    
-   }
-    
-    
+    // document.getElementById("input").disabled = true;
+    if (j == false) {
+        categoryList = document.getElementById('categoryList');
+        categoryInputContainer = document.getElementById('inputContainer');
+        categoryList.style.display = "block"; //shows Container for Category to rendern
+        categoryInputContainer.style.borderBottom = "none"; //Category Input Container has no border Bottom
+        /* top-left top-right bottom-right bottom-left */
+        categoryInputContainer.style.borderRadius = "10px 10px 0 0"; //Category Input Container show only top-left top-right Border radius
+        renderCategory(); //render Category in the Container
+    }
+}
+
+
 
 
 /**choose one Category from the Category Select Menu via dropDown
@@ -130,9 +132,7 @@ function chooseCategory(index, category, color) {
     }
 }
 
-/**
- * function for selected category Input is New Category 
- */
+/** function for selected category Input is New Category */
 function newCategoryInput() {
     closeDropdownCategory(); //dropDown Category Menu closed
     document.getElementById('input').placeholder = 'New Category Name'; //shows New Category Name in Category Input Field
@@ -270,8 +270,12 @@ function dropDownAssignTo() {
     var assignedList = document.getElementById('assignedList'); //get the id of AssignedList container to render contacts
     assignToInputContainer = document.getElementById('contactInputContainer');
     document.getElementById('circleContactsContainer').style.display = "flex";
-    if (assignedList.style.display == "block") { //the Container for Contacts is open ?
-        closeDropDownAssignTo();
+    if (assignedList.style.display == "block") { //the Container for Contacts is open ? 
+        if(assignToTemporayVar2 == true){
+            showEmailSentStatus();
+        }else{
+            closeDropDownAssignTo();
+        }
     } else { //the Container for Contacts is closed ?
         showDropDownAssignTo();
     }
@@ -288,21 +292,26 @@ function closeDropDownAssignTo() {
     assignToInputContainer.style.border = "1px solid #D1D1D1"; //shows all border
     assignToInputContainer.style.borderRadius = "10px"; //set all border radius to 10px
     document.getElementById('circleContactsContainer').style.display = "flex";
+    assignToTemporayVar2 = false;
 }
 
 
 function showDropDownAssignTo() {
-    var assignedList = document.getElementById('assignedList'); //get the id of AssignedList container to render contact
-    assignToInputContainer = document.getElementById('contactInputContainer');
-    assignedList.style.display = "block"; //shows the Container for Contacts  
-    assignToInputContainer.style.borderBottom = "none"; //hide the AssignedTo container Border bottom
-    /* top-left top-right bottom-right bottom-left */
-    assignToInputContainer.style.borderRadius = "10px 10px 0 0"; //shows AssignedTo container top-left top-right border radius
-    if (choseContacts == '') {
-        renderAssignTo(); //show or render the contacts
-    } else {
-        renderAssignToCheckMarked();
-        displayChosenContactsForTask();
+    if (assignToTemporayVar1 == true) {
+        closeDropDownAssignTo();
+    }else{
+        var assignedList = document.getElementById('assignedList'); //get the id of AssignedList container to render contact
+        assignToInputContainer = document.getElementById('contactInputContainer');
+        assignedList.style.display = "block"; //shows the Container for Contacts  
+        assignToInputContainer.style.borderBottom = "none"; //hide the AssignedTo container Border bottom
+        /* top-left top-right bottom-right bottom-left */
+        assignToInputContainer.style.borderRadius = "10px 10px 0 0"; //shows AssignedTo container top-left top-right border radius
+        if (choseContacts == '') {
+            renderAssignTo(); //show or render the contacts
+        } else {
+            renderAssignToCheckMarked();
+            displayChosenContactsForTask();
+        }
     }
 }
 
@@ -317,6 +326,8 @@ function assignToInput() { //click here to invite new Contact via email
     document.getElementById('newAssignToInput').style.display = "flex"; //shows newCategoryInput container -> shows "cross mark and check mark"
     document.getElementById('assignDropDown').style.display = "none"; //hide Category DropDown Button
     closeDropDownAssignTo();
+    assignToTemporayVar1 = true;
+    assignToTemporayVar2 = true;
 }
 
 function rejectAssignTo() {
@@ -326,11 +337,17 @@ function rejectAssignTo() {
     document.getElementById('newAssignToInput').style.display = "none"; //hide AssignToInput container -> shows "cross mark and check mark"
     document.getElementById('assignDropDown').style.display = "flex"; //shows AssignTo DropDown Button
     document.getElementById('circleContactsContainer').style.display = "flex";
+    assignToTemporayVar1 = false;
     //document.getElementById('contactInputContainer').addEventListener = dropDownAssignTo(); //dropDownMenu activated for Email input at first
 }
 
 
 function addnewContact() {
+    showEmailSentStatus();
+    assignToTemporayVar2 = true;
+}
+
+function showEmailSentStatus(){
     newAssingedContact = document.getElementById('assignInput');
     assignToInputContainer.style.borderBottom = "none"; //hide the AssignedTo container Border bottom
     assignToInputContainer.style.borderRadius = "10px 10px 0 0"; //shows AssignedTo container top-left top-right border radius
