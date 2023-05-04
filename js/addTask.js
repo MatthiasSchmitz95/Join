@@ -9,6 +9,8 @@ var subtaskInput; //global variable for subtasks input container
 var appendixSubtask; //global variable for subtask container below the Subtask Input
 var categoryList;
 var choseContacts = []; //an Array to save the checked Contacts with checkbox
+var l = false;
+var j = false;
 
 var priority;
 var priorityImg;
@@ -86,12 +88,16 @@ function closeDropdownCategory() {
     categoryList.style.display = "none"; //hide Container for Category 
     categoryInputContainer.style.border = "1px solid #D1D1D1"; //Category Input Container show all border 
     categoryInputContainer.style.borderRadius = "10px"; //Category Input Container show all Border radius with 10px
-    document.getElementById("input").disabled = true;
-}
-
+    if (l == true) {
+        document.getElementById("input").disabled = true; 
+    }else {
+        document.getElementById("input").disabled = false;
+    
+    }}
 /**show the Category Select Menu*/
 function showDropdownCategory() {
-    document.getElementById("input").disabled = true;
+   // document.getElementById("input").disabled = true;
+   if (j == false) {
     categoryList = document.getElementById('categoryList');
     categoryInputContainer = document.getElementById('inputContainer');
     categoryList.style.display = "block"; //shows Container for Category to rendern
@@ -99,7 +105,11 @@ function showDropdownCategory() {
     /* top-left top-right bottom-right bottom-left */
     categoryInputContainer.style.borderRadius = "10px 10px 0 0"; //Category Input Container show only top-left top-right Border radius
     renderCategory(); //render Category in the Container
-}
+   }    
+   }
+    
+    
+
 
 /**choose one Category from the Category Select Menu via dropDown
  * parmeter: index = categoriesArray[index]
@@ -130,6 +140,8 @@ function newCategoryInput() {
     document.getElementById('buttonDropDown').style.display = "none"; //hide Category DropDown Button
     document.getElementById('newCategoryColorsBox').style.display = "flex"; //shows new category Color Container direct under the Category Input Field
     document.getElementById("input").disabled = false;
+    l = true;
+    j = true;
 }
 
 /**function for input new Category Color
@@ -151,6 +163,7 @@ function addNewCategory() {
     document.getElementById('buttonDropDown').style.display = "flex"; //shows Category DropDown Button
     document.getElementById('color').style.background = newCategoryColor; //new Category Color showing in the Category Container
     colorsArray.push(newCategoryColor); //new Color value pushed in the Color Array
+    j = false;
 }
 
 /**
@@ -163,6 +176,8 @@ function rejectNewCategory() {
     document.getElementById('input').placeholder = 'Select task Category'; //refresh the placeholder to the beginning
     document.getElementById('newCategoryColorsBox').style.display = "none"; //hide new category Color Container under the Category Input Field
     document.getElementById("input").disabled = true;
+    document.getElementById('color').style = 'background: rgb(255,255,255)';
+    j = false;
 }
 
 /**
