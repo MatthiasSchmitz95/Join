@@ -26,6 +26,10 @@ function showLogOut(){
   document.getElementById('log-out').style.display = '';
 }
 
+function resetT(){
+  localStorage.setItem('t', false);
+}
+
 
 let loginCheckedBox;
 function loginCheckbox() {

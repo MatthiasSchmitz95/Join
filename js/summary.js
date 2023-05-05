@@ -4,12 +4,19 @@ let awaitingFeedbackSummary = 0;
 let doneSummary = 0;
 let urgents = 0;
 let dateSummary = [];
+t=false;
 
 
 
 function greetingsResponsive() {
-    if (window.innerWidth < 1316)  {
+    let tFromStorage = localStorage.getItem('t');
+    if (tFromStorage !== null) {
+        t = JSON.parse(tFromStorage);
+      }
+    if (window.innerWidth < 1316 && t==false)  {
         document.getElementById('greeting-container').classList.add('responsive-greet');
+        t=true;
+        localStorage.setItem('t', true);
 
     }
 }
