@@ -6,7 +6,7 @@ let phone;
 let letters = [];
 let contactColor = randomUserColor();
 
-function onloadContact(){
+function onloadContact() {
     init('contacts');
     sortNames();
     sortLetters();
@@ -62,6 +62,7 @@ function circleColor(j) {
 
 
 function showContact(j, bothLetters) {
+    document.getElementById('right-container').style.justifyContent = 'flex-start';
     if (window.innerWidth < 1140) {
         document.getElementById('kanban').classList.add("display");
     }
@@ -84,23 +85,24 @@ function showContact(j, bothLetters) {
     displayFloatContact();
 }
 
-function displayFloatContact(){
-    document.getElementById('name-container').style.display ='';
-    document.getElementById('contact-details').style.display ='';
+function displayFloatContact() {
+    document.getElementById('name-container').style.display = '';
+    document.getElementById('contact-details').style.display = '';
 }
 
 
-function editContactCard(j) {  
-    changeButtonTemplate(j);
+function editContactCard(j) {
+
+    changeTemplate(j);
     setInputfields(j);
     changeProfileInitials(j);
     showCard();
 }
 
-function changeProfileInitials(j){
+function changeProfileInitials(j) {
     let initials = userAccounts[activeUser]['userContacts'][j]['letters'];
     let color = userAccounts[activeUser]['userContacts'][j]['color'];
-   // document.getElementById('icon-container').innerHTML = `<div class="icon-container">`;
+    // document.getElementById('icon-container').innerHTML = `<div class="icon-container">`;
     document.getElementById('icon-container').innerHTML = `${initials}`;
     document.getElementById('icon-container').style.backgroundColor = `${color}`;
 }
@@ -132,8 +134,8 @@ async function editContact(j) {
 }
 
 
-function changeTextTo(text){
-    document.getElementById('success').innerHTML =`Contact succesfully ${text}`;
+function changeTextTo(text) {
+    document.getElementById('success').innerHTML = `Contact succesfully ${text}`;
 
 }
 
@@ -157,7 +159,7 @@ function showCard() {
 function closeContactCard() {
     document.getElementById('contact-card').classList = 'hidden';
     document.getElementById('bg').style.display = 'none';
-    changeButtonTemplateBack();
+    changeTemplateBack();
     resetInputfields();
 
 }
@@ -218,14 +220,14 @@ function setInputfields(j) {
 function successfulAnimation() {
 
     setTimeout(() => {
-        document.getElementById('success').classList.add("add-success");   
+        document.getElementById('success').classList.add("add-success");
     }
         , 200);
-        
-    setTimeout(() => {  
-           document.getElementById('success').classList.remove("add-success");
-       }
-           , 1000);
+
+    setTimeout(() => {
+        document.getElementById('success').classList.remove("add-success");
+    }
+        , 1000);
 
 }
 
@@ -239,28 +241,35 @@ function closePopOutAddTask() {
     document.getElementById('popOut-taskCard').classList.add('d-none');
 }
 
-function backToContactList(){
+function backToContactList() {
     document.getElementById('right-container').classList.remove("display");
     document.getElementById('kanban').classList.remove("display");
+   // document.getElementById('left-container').style.display = '';
 }
 
 
-function changeButtonTemplate(j) {
+function changeTemplate(j) {
+    document.getElementById('card-header').innerHTML = '<h3>Edit contact</h3>';
     document.getElementById('btn-container').innerHTML = `                
     <button id="left-btn" onclick="deleteContact(${j})" class="btn-contact-white">Delete<img class="cancel-img"
     src="assets/img/contact-cancel-button.png"></button>
-    <button id="right-btn" onclick="editContact(${j})" class="btn-contact-blue">Edit contact<img class="create-contact-img"
+    <button id="right-btn" onclick="editContact(${j})" class="btn-contact-blue">Save<img class="create-contact-img"
     src="assets/img/contact-create-contact-button.png"></button>`;
+    document.getElementById('right-btn').classList.add("width-btn");
 
 }
 
 
-function changeButtonTemplateBack() {
+function changeTemplateBack() {
+    document.getElementById('icon-container').innerHTML = '<img src="assets/img/add-contact-profile.png">';
+    document.getElementById('card-header').innerHTML = `<h3>Add contact</h3>
+    <p>Tasks are better with a team!</p>`;
     document.getElementById('btn-container').innerHTML = `                
     <button id="left-btn" onclick="closeContactCard()" class="btn-contact-white">Cancel<img class="cancel-img"
     src="assets/img/contact-cancel-button.png"></button>
     <button id="right-btn" onclick="CreateNewContact()" class="btn-contact-blue">Create contact<img class="create-contact-img"
     src="assets/img/contact-create-contact-button.png"></button>`;
+    document.getElementById('right-btn').classList.remove("width-btn");
 
 }
 

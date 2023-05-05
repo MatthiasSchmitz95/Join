@@ -11,8 +11,8 @@
     <link rel="stylesheet" href="./styles/contacts.css">
     <link rel="stylesheet" href="./styles/addTaskPopOut.css">
     <link rel="stylesheet" href="./styles/addTaskPopOutResponsive.css">
-   
-    
+
+
 
 
     <script src="./js/main.js"></script>
@@ -36,11 +36,13 @@
                 <img onclick="closeContactCard()" class="close-card1" src="assets/img/close-contact1.png">
             </div>
             <div class="help-container">
-            <img class="logo-card" src="assets/img/join-logo-contact-card.png">
-            <h3>Add contact</h3>
-            <p>Tasks are better with a Team!</p>
-            <span class="vertical-blue-line"></span>
-        </div>
+                <img class="logo-card" src="assets/img/join-logo-contact-card.png">
+                <div id="card-header">
+                    <h3>Add contact</h3>
+                    <p>Tasks are better with a team!</p>
+                </div>
+                <span class="vertical-blue-line"></span>
+            </div>
         </div>
         <div class="card-container-right">
             <div class="close-contact-container">
@@ -70,7 +72,7 @@
     <div class="desktop" id="desktop">
         <div w3-include-html="desktop-template.html"></div>
         <div class="big-container">
-            <div class="left-container">
+            <div class="left-container" id="left-container">
                 <div class="button-container position-top">
                     <button onclick="showCard()">New contact<img class="img"
                             src="assets/img/new-contact-button.png"></button>
@@ -80,21 +82,21 @@
             <div class="right-container" id="right-container">
                 <div class="html-topic">
                     <div class="head-contact">
-                    <h2>Contacts</h2>
-                    <img onclick="backToContactList()" src="assets/img/contact-back-arrow.png">
+                        <h2>Contacts</h2>
+                        <img onclick="backToContactList()" src="assets/img/contact-back-arrow.png">
                     </div>
-                    
+
                     <div class="html-topic-sub">
                         <span class="line-blue"></span>
-                        <p>Better with a Team</p>
+                        <p>Better with a team</p>
                     </div>
                 </div>
-                <div class="floating-contact-container" style="min-height:364px;" id="floating-contact-container" style="display: none">
+                <div class="floating-contact-container" id="floating-contact-container" style="display: none">
                     <div class="name-container" id="name-container" style="display: none;">
                         <div class="contact-circle" id="contact-circle">
                             <p id="contact-circle-letters"></p>
                         </div>
-                        <div style="margin-left: 54px;">
+                        <div class="margin-left">
                             <h4 id="float-contact-name">Anton Meyer</h4>
                             <a onclick="showAddTaskPopOut()"><img src="assets/img/add-task-contact.png">
                                 <p>Add task</p>

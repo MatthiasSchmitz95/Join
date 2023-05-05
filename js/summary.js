@@ -35,10 +35,14 @@ function setTasks() {
 
 function setUrgencies() {
     document.getElementById('urgent-nr').innerHTML = urgents;
+    const date = dateSummary[0];
+    const year = date.getFullYear();
+    const month = date.toLocaleString('default', { month: 'long' });
+    const day = date.getDate();
     if (dateSummary.length == 0) {
         document.getElementById('deadline-date').innerHTML = 'no deadlines';
     } else {
-        document.getElementById('deadline-date').innerHTML = dateSummary[0];
+        document.getElementById('deadline-date').innerHTML = `${month} ${day}, ${year}`;
     }
 }
 
@@ -89,7 +93,7 @@ function checkingConditions() {
     for (let i = 0; i < user.length; i++) {
         const userTasks = user[i];
         let urgent = userTasks['priority'];
-        let date = userTasks['dueDate'];
+        let date = new Date(userTasks['dueDate']);
         cards = userTasks['progress'];
         if (cards == 'To Do') {
             toDoSummary++;
