@@ -803,6 +803,13 @@ a {
         overflow-x: hidden !important;
     }
 
+    #kanban {
+        font-size: 16px;
+        position: absolute;
+        top: 98px;
+        left: 34px;
+    }
+
     .add-contact-card {
         width: 480px;
         bottom: 0px;
@@ -877,8 +884,8 @@ a {
         left: 230px;
         background-color: #F6F7F8;
         width: auto;
-        height: auto;
-        width: 74vw;
+        height: calc(100vh - 89px);
+        width: calc(100vw - 230px);
     }
 
     .floating-contact-container {
@@ -988,11 +995,10 @@ a {
 
     .right-container {
         justify-content: flex-start;
-        height: auto;
         margin-top: 79.02px;
         top: 0px;
         left: 0px;
-        width: 96vw;
+        width: 100vw;
         margin-bottom: 89px;
     }
 
