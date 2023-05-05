@@ -188,7 +188,7 @@ a {
 }
 
 .display {
-    display: flex !important;
+    display: block !important;
 }
 
 .head-contact {
@@ -803,6 +803,23 @@ a {
         overflow-x: hidden !important;
     }
 
+    .add-contact-card {
+        width: 480px;
+        bottom: 0px;
+        top: 11.02px;
+        left: 50%;
+        right: 50%;
+        transform: translate(-50%, 0%);
+    }
+
+    .card-container-right input {
+        margin-top: 17.5px;
+        margin-bottom: 17.5px;
+        width: 285px;
+        height: 25px;
+        padding: 8px 21px;
+    }
+
     .head-contact {
         width: 100%;
     }
@@ -817,7 +834,11 @@ a {
     }
 
     #kanban {
-        display: none !important;
+        display: none ;
+    }
+
+    .display{
+        display: block !important;
     }
 
     .html-topic {
@@ -991,14 +1012,6 @@ a {
     .contact-container {
         margin-bottom: 80px;
         overflow-x: hidden;
-    }
-
-    .card-container-right input {
-        margin-top: 17.5px;
-        margin-bottom: 17.5px;
-        width: 285px;
-        height: 25px;
-        padding: 8px 21px;
     }
 
     #contact-name {

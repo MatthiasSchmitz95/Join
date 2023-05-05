@@ -4,8 +4,7 @@ let awaitingFeedbackSummary = 0;
 let doneSummary = 0;
 let urgents = 0;
 let dateSummary = [];
-loginT=true;
-localStorage.setItem('login', t);
+
 
 
 function greetingsResponsive() {
@@ -35,13 +34,14 @@ function setTasks() {
 
 function setUrgencies() {
     document.getElementById('urgent-nr').innerHTML = urgents;
-    const date = dateSummary[0];
-    const year = date.getFullYear();
-    const month = date.toLocaleString('default', { month: 'long' });
-    const day = date.getDate();
+
     if (dateSummary.length == 0) {
         document.getElementById('deadline-date').innerHTML = 'no deadlines';
     } else {
+        const date = dateSummary[0];
+        const year = date.getFullYear();
+        const month = date.toLocaleString('default', { month: 'long' });
+        const day = date.getDate();
         document.getElementById('deadline-date').innerHTML = `${month} ${day}, ${year}`;
     }
 }

@@ -22,12 +22,7 @@ function login() {
   if (user) {
     if(user.userPassword == password.value){
       saveActiveUserLocal(user);
-     window.location.href = './summary.html';
-     greetingsResponsive();
-     
-     
-     
-      
+     window.location.href = './summary.html'; 
     }
     else{
       console.log('the password is incorrect, please try again')
