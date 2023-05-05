@@ -7,26 +7,26 @@
         /*width: 80vw;*/
         width: 970px;
         box-shadow: none;
-        border-radius: 0px;
+        border-radius: 30px;
         box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
     }
 
     .closeBtnContainer {
-        position: absolute;
-        top: 26px;
         box-sizing: border-box;
         width: 95%;
         display: flex;
         justify-content: flex-end;
+        margin-top: -25px;
     }
 
     .headline {
-        width: 80vw;
+        width: 98%;
     }
 
     .contentContainer {
         /*width: 80vw;*/
-        margin-left: 15px;
+        padding-left: 25px;
+        padding-right: 25px;
     }
 
     .buttonsContainer {
@@ -37,13 +37,13 @@
 
     .clearButton {
         position: absolute;
-        left: 557px;
-        top: 781px;
+        left: 580px;
+        top: 720px;
     }
 
     .midLine {
-        margin-left: 20px;
-        margin-right: 20px;
+        margin-left: 25px;
+        margin-right: 25px;
     }
 
     .topBoxRight {
@@ -53,14 +53,57 @@
     .BottomBoxRight {
         margin-left: 0px;
     }
-
-    /* #kanban {
-        margin-left: -50px;
-    } */
-
 }
 
-@media(max-width: 1200px) {
+@media(max-width: 1280px) {
+    .headline {
+        width: 94%;
+    }
+
+    .topBoxLeft {
+        width: 380px;
+    }
+
+    .titleContainer {
+        width: auto;
+    }
+
+    .descriptionContainer {
+        width: auto;
+    }
+
+    .topBoxRight {
+        width: 380px;
+    }
+
+    .d-column {
+        width: auto;
+    }
+
+    .prioContainer {
+        width: auto;
+    }
+
+    .BottomBoxLeft {
+        width: 380px;
+    }
+
+    .categoryContainer {
+        width: auto;
+    }
+
+    .assignContainer {
+        width: auto;
+    }
+
+    .BottomBoxRight {
+        width: 380px;
+    }
+
+    .addSubtaskContainer {
+        width: auto;
+    }
+
     .bg {
         display: none;
     }
@@ -76,7 +119,7 @@
         position: absolute;
         top: 26px;
         box-sizing: border-box;
-        width: 98%;
+        width: 90%;
         display: flex;
         justify-content: flex-end;
     }
@@ -90,11 +133,30 @@
         width: auto;
         margin-left: -182px;
         z-index: 2;
+        margin-top: 296px;
     }
 
+    .clearButton {
+        position: absolute;
+        left: 474px;
+        top: 725px;
+    }
+
+    .buttonOpenClose {
+        padding-left: 65px;
+    }
+
+    .assignInput {
+        width: 255px;
+    }
 }
 
 @media(max-width:1100px) {
+    .headlineContainer {
+        display: flex;
+        justify-content: center;
+    }
+
     .bg {
         display: none;
     }
@@ -135,12 +197,8 @@
 
     .headline {
         display: flex;
-        justify-content: center;
-        margin-left: 0px;
-    }
-
-    .headline span {
-        width: 422px;
+        justify-content: space-between;
+        width: 380px;
     }
 
     .topBoxRight {
@@ -179,7 +237,7 @@
     }
 
     .createButtonResponsiveContainer div {
-        width: 422px;
+        width: 380px;
         height: 51px;
         display: flex;
         justify-content: flex-end;
@@ -246,7 +304,7 @@
 
 @media(max-width:800px) {
     .assignedList {
-        padding-right: 13px !important;
+        padding-right: 10px !important;
     }
 
     .kanban {
@@ -304,14 +362,19 @@
         justify-content: flex-end;
     }
 
-    .headline {
-        width: 363px;
+    .headlineContainer {
         display: flex;
-        justify-content: flex-start;
+        justify-content: center;
+    }
+
+    .headline {
+        display: flex;
+        justify-content: space-between;
         height: 78px;
         margin-top: 27px;
         padding-left: 0px;
         font-size: 47px;
+        width: 363px !important;
     }
 
     .contentContainer {
@@ -325,20 +388,15 @@
         position: relative;
     }
 
-    .leftContent {
-        flex-direction: column;
-        margin-left: 0px !important;
-        width: 363px;
-        padding-left: 0px;
+    .topBoxLeft {
+        width: 330px;
     }
 
     .titleContainer {
-        width: 363px !important;
         height: 68px !important;
     }
 
     .descriptionContainer {
-        width: 363px !important;
         height: 120px;
         padding-top: 9px;
     }
@@ -348,9 +406,36 @@
     }
 
     .topBoxRight {
+        width: 330px;
+    }
+
+    .d-column {
+        display: flex;
+        flex-direction: column;
+        margin-top: 14px;
+    }
+
+    .prioContainer {
+        padding-top: 9px !important;
+    }
+
+    .priorityBoxesContainer {
+        height: auto;
+        padding-top: 13px !important;
         display: flex;
         flex-direction: column-reverse;
-        margin-left: 0;
+        justify-content: center;
+        align-items: center;
+        padding: 0px;
+        gap: 10px;
+    }
+
+    .dateInputField {
+        height: 41px;
+    }
+
+    .priority {
+        margin-top: 9px;
     }
 
     .BottomBoxRight {
@@ -360,8 +445,8 @@
         gap: 8px;
     }
 
-    .categoryContainer {
-        width: 363px !important;
+    .BottomBoxLeft {
+        width: 330px;
     }
 
     #input {
@@ -377,7 +462,6 @@
     }
 
     .assignContainer {
-        width: 363px !important;
         padding-top: 9px;
     }
 
@@ -390,7 +474,6 @@
     }
 
     .contactInputContainer {
-        width: 363px !important;
         height: 41px !important;
     }
 
@@ -398,12 +481,18 @@
         padding-left: 0px;
     }
 
-    #assignInput {
-        width: 257px;
+    .assignInput {
+        width: 229px;
     }
 
     .midLine {
         display: none;
+    }
+
+    .BottomBoxRight {
+        width: 330px;
+        margin-top: -30px !important;
+        padding-bottom: 140px;
     }
 
     .inputContainer {
@@ -415,37 +504,9 @@
         padding-left: 0px;
     }
 
-    .rightContent {
-        flex-direction: column;
-        margin-left: 0px !important;
-        width: 363px;
-        padding-left: 0px;
-    }
-
-    .dateInputField {
-        width: 363px;
-        height: 41px;
-    }
-
-    .d-column {
-        display: flex;
-        flex-direction: column;
-        margin-top: 14px;
-    }
-
-    .priorityBoxesContainer {
-        width: 363px;
-        height: 51px;
-        padding-top: 13px !important;
-    }
-
-    .priority {
-        margin-top: 9px;
-    }
 
     .addSubtaskContainer {
         margin-top: 9px;
-        width: 363px;
         height: 41px;
     }
 
@@ -458,11 +519,6 @@
         padding-bottom: 8px;
     }
 
-    .prioContainer {
-        padding-top: 9px !important;
-        width: 363px;
-    }
-
     .buttonsContainer {
         width: auto;
         display: none;
@@ -473,18 +529,16 @@
     }
 
     .createButtonResponsiveContainer {
-        position: absolute;
-        top: -72px;
         display: flex;
-        justify-content: flex-start;
+        justify-content: center;
         height: 51px;
-        width: auto;
+        width: 100%;
         border: none;
         z-index: 91 !important;
     }
 
     .createButtonResponsiveContainer div {
-        width: 363px;
+        width: 330px;
         height: 51px;
         display: flex;
         justify-content: flex-end;
@@ -529,11 +583,6 @@
         display: none;
     }
 
-    .BottomBoxRight {
-        margin-top: -30px !important;
-        padding-bottom: 100px;
-    }
-
     .KanbanResponsive {
         display: flex;
         box-sizing: border-box;
@@ -558,275 +607,171 @@
 }
 
 @media(max-width:400px) {
-    .bg {
-        display: none;
-    }
-
-    .popOut-taskCard {
-        padding-left: 15px;
-        padding-right: 15px;
-        border-radius: 0px;
-        box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
-    }
-}
-
-@media(max-width:375px) {
-    .bg {
-        display: none;
-    }
-
-    .createButtonResponsiveContainer div {
-        width: 320px;
-    }
-
-    .popOut-taskCard {
-        padding-left: 5px;
-        padding-right: 5px;
-        border-radius: 0px;
-        box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
-    }
-
-    .headline {
-        box-sizing: border-box;
-        width: 100%;
-        font-size: 47px;
-        display: flex;
-        justify-content: center;
-    }
-
-    .headline span {
-        width: 320px;
-    }
-
-    .titleContainer {
-        width: 320px !important;
-    }
-
-    #title {
-        font-size: 18px;
-    }
-
-    .descriptionContainer {
-        width: 320px !important;
-    }
-
-    #description {
-        font-size: 18px;
-    }
-
-    .prioContainer {
-        width: 320px !important;
-    }
-
-    .priorityBoxesContainer {
-        width: 320px !important;
-    }
-
-    .d-column {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .dateInputField {
-        width: 320px !important;
+    .contentContainer {
         padding-left: 0px;
         padding-right: 0px;
     }
 
-    .inputContainer {
-        width: 320px !important;
+    .headline {
+        width: 290px !important;
     }
 
-    .contactInputContainer {
-        width: 320px !important;
+    .topBoxLeft {
+        width: 290px;
     }
 
-    .categoryContainer {
-        width: 320px !important;
-    }
-
-    .assignContainer {
-        width: 320px !important;
-    }
-
-    #assignInput {
-        font-size: 18px;
+    .topBoxRight {
+        width: 290px;
     }
 
     .BottomBoxLeft {
-        width: 320px !important;
+        width: 290px;
+    }
+
+    .BottomBoxRight {
+        width: 290px;
+    }
+
+    .assignedList {
+        padding-right: 6px !important;
+    }
+
+    .inputContainer,
+    .contactInputContainer,
+    .dateInputField,
+    #title,
+    #description,
+    .addSubtaskContainer {
+        padding-left: 10px;
+        padding-right: 10px;
     }
 
     #input {
-        width: 190px;
         font-size: 18px;
-    }
-
-    .buttonOpenCloseCategory {
-        padding-left: 53px;
+        width: 177px;
     }
 
     .buttonOpenClose {
         padding-left: 2px;
     }
 
-    .addSubtaskContainer {
-        width: 320px !important;
+    .assignInput {
+        margin-left: 0px !important;
+        font-size: 18px;
+        width: 235px;
+    }
+
+    .subtasksInput {
+        width: 238px;
+        margin-left: 0px;
     }
 
     #subtaskOninput {
-        padding-left: 0px;
+        width: 21px !important;
+        gap: 8px !important;
+        padding-left: 0px !important;
     }
 
     #newCategoryInput {
-        padding-left: 12px;
+        width: 43px;
+        padding-left: 0px;
+        gap: 8px;
     }
 
     .newCategoryColorsBox {
-        width: 320px !important;
+        width: 290px !important;
     }
 
-    .KanbanResponsive {
-        display: flex;
-        box-sizing: border-box;
-        width: 100%;
-        justify-content: center;
-    }
-
-    .KanbanResponsive span {
-        width: 320px;
+    .color {
+        width: 13px;
+        height: 13px;
+        margin-left: 2px;
+        margin-right: 2px;
     }
 
 }
 
-@media(max-width:280px) {
-    .createButtonResponsiveContainer div {
-        width: 260px;
+@media(max-width:300px) {
+    .createButtonResponsiveContainer{
+        width: 88%;
     }
-
-    .taskCard {
-        padding-left: 5px;
-        padding-right: 5px;
+    .createButtonResponsiveContainer div{
+        width: 240px;
     }
-
     .headline {
-        box-sizing: border-box;
-        width: 100%;
-        font-size: 47px;
-        display: flex;
-        justify-content: center;
+        font-size: 30px;
+        width: 240px !important;
     }
 
-    .headline span {
-        width: 260px;
+    .topBoxLeft {
+        width: 240px;
     }
 
-    .titleContainer {
-        width: 260px !important;
-    }
-
-    #title {
-        font-size: 15px;
-    }
-
-    .descriptionContainer {
-        width: 260px !important;
-    }
-
-    #description {
-        font-size: 15px;
-    }
-
-    .prioContainer {
-        width: 260px !important;
-    }
-
-    .priorityBoxesContainer {
-        width: 260px !important;
-    }
-
-    .dateInputField {
-        width: 260px !important;
-        font-size: 15px;
-    }
-
-    .inputContainer {
-        width: 260px !important;
-    }
-
-    .contactInputContainer {
-        width: 260px !important;
-    }
-
-    .leftContent {
-        width: 280px;
-    }
-
-    .rightContent {
-        width: 280px;
-    }
-
-    .categoryContainer {
-        width: 260px !important;
-    }
-
-    .assignContainer {
-        width: 320px !important;
-    }
-
-    #assignInput {
-        font-size: 15px;
+    .topBoxRight {
+        width: 240px;
     }
 
     .BottomBoxLeft {
-        width: 260px !important;
+        width: 240px;
+    }
+
+    .BottomBoxRight {
+        width: 240px;
     }
 
     #input {
-        width: 190px;
         font-size: 15px;
+        width: 150px;
     }
 
-    .buttonOpenCloseCategory {
-        padding-left: 15px;
-    }
-
-    .buttonOpenClose {
-        padding-left: 2px;
-    }
-
-    .addSubtaskContainer {
-        width: 260px !important;
-    }
-
-    #subtaskOninput {
-        padding-left: 0px;
-    }
-
-    #newCategoryInput {
-        padding-left: 12px;
-    }
-
-    .newCategoryColorsBox {
-        width: 260px !important;
-    }
-
-    .KanbanResponsive {
-        display: flex;
-        box-sizing: border-box;
-        width: 100%;
-        justify-content: center;
-    }
-
-    .KanbanResponsive span {
-        width: 260px;
+    .assignInput {
+        font-size: 15px;
+        width: 190px;
     }
 
     .subtasksInput {
         font-size: 15px;
+        width: 193px;
     }
 
-    .closeBtnContainer {
-        width: 280px;
+    .subtasksInput::placeholder, #title::placeholder, #description::placeholder {
+        font-size: 16px;
     }
+
+    .assignedList {
+        padding-right: 1px !important;
+    }
+
+    .dateInputField {
+        font-size: 18px;
+    }
+
+    .newCategoryColorsBox {
+        width: 240px !important;
+    }
+
+    .inputContainer,
+    .contactInputContainer,
+    .dateInputField,
+    #title,
+    #description,
+    .addSubtaskContainer {
+        padding-left: 0px;
+    }
+
+    .color {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+
+    #newCategoryInput {
+        width: 45px;
+        padding-left: 11px;
+        gap: 3px;
+    }
+
+    #title, #description {
+        font-size: 16px;
+    }
+
 }
