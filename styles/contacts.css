@@ -533,7 +533,6 @@ a {
     justify-content: center;
     display: flex;
     align-items: center;
-    width: 208px;
     height: 61px;
     background: #2A3647;
     border-radius: 10px;
@@ -908,7 +907,7 @@ a {
     }
 
     .btn-contact-blue {
-        width: 71px;
+        width: auto;
         height: 51px;
     }
 
