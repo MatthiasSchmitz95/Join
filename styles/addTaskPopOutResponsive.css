@@ -149,6 +149,17 @@
     .assignInput {
         width: 255px;
     }
+    .newAssignToInput, .newCategoryInput{
+        padding-left: 10px;
+    }
+
+    .input{
+        width: 238px;
+    }
+
+    .subtaskOninput{
+        padding-left: 0px;
+    }
 }
 
 @media(max-width:1100px) {
@@ -300,6 +311,17 @@
     .clearButton {
         display: none;
     }
+
+    .newAssignToInput, .newCategoryInput{
+        padding-left: 10px;
+    }
+
+    .input{
+        width: 238px;
+    }
+    .subtaskOninput{
+        padding-left: 0px;
+    }
 }
 
 @media(max-width:800px) {
@@ -449,12 +471,12 @@
         width: 330px;
     }
 
-    #input {
-        width: 220px;
+    .input {
+        width: 207px;
     }
 
-    #newCategoryInput {
-        padding-left: 21px;
+    .newCategoryInput {
+        padding-left: 2px;
     }
 
     .newCategoryColorsBox {
@@ -500,7 +522,7 @@
         height: 41px !important;
     }
 
-    #newAssignToInput {
+    .newAssignToInput {
         padding-left: 0px;
     }
 
@@ -604,6 +626,11 @@
         left: 51px;
     }
 
+    .subtaskOninput{
+        width: 15px !important;
+        padding-right: 6px;
+    }
+
 }
 
 @media(max-width:400px) {
@@ -646,7 +673,7 @@
         padding-right: 10px;
     }
 
-    #input {
+    .input {
         font-size: 18px;
         width: 177px;
     }
@@ -658,7 +685,7 @@
     .assignInput {
         margin-left: 0px !important;
         font-size: 18px;
-        width: 235px;
+        width: 204px;
     }
 
     .subtasksInput {
@@ -666,14 +693,14 @@
         margin-left: 0px;
     }
 
-    #subtaskOninput {
-        width: 21px !important;
-        gap: 8px !important;
+    .subtaskOninput {
+        width: 23px !important;
+        gap: 3px !important;
         padding-left: 0px !important;
     }
 
-    #newCategoryInput {
-        width: 43px;
+    .newCategoryInput {
+        width: 57px;
         padding-left: 0px;
         gap: 8px;
     }
@@ -685,8 +712,10 @@
     .color {
         width: 13px;
         height: 13px;
-        margin-left: 2px;
-        margin-right: 2px;
+    }
+
+    .newAssignToInput {
+        width: 59px !important;
     }
 
 }
@@ -719,14 +748,14 @@
         width: 240px;
     }
 
-    #input {
+    .input {
         font-size: 15px;
         width: 150px;
     }
 
     .assignInput {
         font-size: 15px;
-        width: 190px;
+        width: 160px;
     }
 
     .subtasksInput {
@@ -764,7 +793,7 @@
         margin-right: 0px;
     }
 
-    #newCategoryInput {
+    .newCategoryInput {
         width: 45px;
         padding-left: 11px;
         gap: 3px;
@@ -772,6 +801,11 @@
 
     #title, #description {
         font-size: 16px;
+    }
+
+    .newAssignToInput{
+        width: 45px !important;
+        gap: 3px !important;
     }
 
 }

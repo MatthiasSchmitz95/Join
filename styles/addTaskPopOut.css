@@ -341,7 +341,7 @@ input:-webkit-autofill:active {
     cursor: pointer;
 }
 
-#input {
+.input {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
@@ -418,7 +418,7 @@ input:-webkit-autofill:active {
     border-radius: 100%;
 }
 
-#newCategoryInput {
+.newCategoryInput {
     width: 50px;
     height: 51px;
     padding-left: 35px;
@@ -429,7 +429,7 @@ input:-webkit-autofill:active {
     display: none;
 }
 
-#newAssignToInput {
+.newAssignToInput {
     width: 50px;
     height: 51px;
     padding-left: 35px;
@@ -440,8 +440,8 @@ input:-webkit-autofill:active {
     display: none;
 }
 
-#newCategoryInput img,
-#newAssignToInput img {
+.newCategoryInput img,
+.newAssignToInput img {
     width: 16px;
     height: 16px;
 }
@@ -599,7 +599,7 @@ input[type=date]:invalid::-webkit-datetime-edit {
     border-radius: 10px;
 }
 
-#subtaskOninput {
+.subtaskOninput {
     width: 50px;
     height: 51px;
     padding-right: 20px;
@@ -612,7 +612,7 @@ input[type=date]:invalid::-webkit-datetime-edit {
     display: none;
 }
 
-#subtaskOninput img {
+.subtaskOninput img {
     width: 16px;
     height: 16px;
 }

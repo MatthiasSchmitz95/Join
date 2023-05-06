@@ -56,10 +56,10 @@
             <div class="categoryContainer">
                 <label for="category" class="category">Category</label>
                 <div class="inputContainer" id="inputContainer" onclick="dropDown()">
-                    <input id="input" type="text" placeholder="Select task Category" required>
+                    <input class="input" id="input" type="text" placeholder="Select task Category" required>
                     <div id="color" class="color"></div>
                     <div id="buttonDropDown" class="buttonOpenClose"><img src="assets/img/dropdown-arrow.png"></div>
-                    <div id="newCategoryInput">
+                    <div class="newCategoryInput" id="newCategoryInput">
                         <img src="assets/img/icon_clear.png" id="clearSubtaskInput" onclick="rejectNewCategory()">
                         <div class="line"></div>
                         <img src="assets/img/checkmark.png" id="selectedSubtask" onclick="addNewCategory()">
@@ -83,7 +83,7 @@
                         onchange="filterContact()" />
                     <div id="assignDropDown" class="buttonOpenClose" ><img
                             src="assets/img/dropdown-arrow.png"></div>
-                    <div id="newAssignToInput">
+                    <div class="newAssignToInput" id="newAssignToInput">
                         <img src="assets/img/icon_clear.png" onclick="rejectAssignTo()">
                         <div class="line"></div>
                         <img src="assets/img/checkmark.png" onclick="addnewContact()">
@@ -102,7 +102,7 @@
                 <input class="subtasksInput" id="subtasksInput" placeholder="Add new Subtask" />
                 <div class="addSubtaskBtn" id="addSubtaskBtn" onclick="createNewSubtask()"><img
                         src="assets/img/plus.png"></div>
-                <div id="subtaskOninput">
+                <div class="subtaskOninput" id="subtaskOninput">
                     <img src="assets/img/icon_clear.png" id="clearSubtaskInput" onclick="deleteSubTask()">
                     <div class="line"></div>
                     <img src="assets/img/checkmark.png" id="selectedSubtask" onclick="addSubTask()">
