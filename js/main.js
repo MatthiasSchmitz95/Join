@@ -18,12 +18,17 @@ function changeProfileImg() {
   let userInitials = userAccounts[activeUser]['userInitials'];
   let userColor = userAccounts[activeUser]['userColor'];
   userColor = String(userColor);
-  document.getElementById('profile-img').innerHTML = `<div class="log-out" onclick="showLogOut()">${userInitials}</div>`;
+  document.getElementById('profile-img').innerHTML = `<div class="log-out">${userInitials}</div>`;
   document.getElementById('profile-img').style.backgroundColor = userColor;
 }
 
 function showLogOut(){
   document.getElementById('log-out').style.display = '';
+
+  setTimeout(() => {
+    document.getElementById('log-out').style.display = 'none';;
+}
+    , 3000);
 }
 
 function resetT(){
