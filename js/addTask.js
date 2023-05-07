@@ -334,6 +334,7 @@ function showEmailSentStatus() {
     document.getElementById('assignedList').style.display = "block";
     document.getElementById('assignedList').value = "";
     document.getElementById('assignedList').innerHTML = `
+    <form action="sebd-email.php" method="post">
     Email was sent successfully!
     `;
 }
