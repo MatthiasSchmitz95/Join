@@ -688,7 +688,8 @@ function showAddTaskPopOut() {
 function closePopOutAddTask() {
     document.getElementById('popOut-taskCard').classList = "popOut-hidden";
     document.getElementById('bg').style.display = 'none';
-    document.getElementById('body').style = "overflow-y: auto;";
+    //document.getElementById('body').style = "overflow-y: auto;";
+    document.getElementById('bodyBoard').classList.remove('noScrollSite');
 }
 
 function getUserColor(userIndex) {

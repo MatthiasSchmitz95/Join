@@ -58,6 +58,10 @@
         width: 94%;
     }
 
+    .popOut-taskCard {
+        margin-top: unset;
+    }
+
     .topBoxLeft {
         width: 380px;
     }
@@ -165,6 +169,14 @@
     .headlineContainer {
         display: flex;
         justify-content: center;
+    }
+
+    .SubtaskAppendixContainer {
+        padding-bottom: 110px;
+    }
+
+    .popOut-taskCard {
+        margin-top: 100px;
     }
 
     .bg {
@@ -341,7 +353,6 @@
     }
 
     .popOut-taskCard {
-        height: auto;
         width: 100%;
         background: #f6f7f8;
         position: absolute;
