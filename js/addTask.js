@@ -298,7 +298,7 @@ function showDropDownAssignTo() {
 
 
 function assignToInput() { //click here to invite new Contact via email 
-    document.getElementById('assignedList').innerHTML = `<form action="send-email.php" method="post">
+    document.getElementById('assignedList').innerHTML = `<form action="/Join/send-email.php" method="post">
     <label for="email">Email:</label>
     <input type="email" id="email" name="email placeholder="email"">
     <button type="submit">Submit</button>
