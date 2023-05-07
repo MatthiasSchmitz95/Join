@@ -328,7 +328,7 @@ input:-webkit-autofill:active {
 }
 
 
-#input {
+.input {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
@@ -342,7 +342,7 @@ input:-webkit-autofill:active {
 }
 
 
-#assignInput {
+.assignInput {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
@@ -373,7 +373,7 @@ input:-webkit-autofill:active {
     background-color: lightgray;
 }
 
-#newCategoryInput {
+.newCategoryInput {
     width: 50px;
     height: 51px;
     padding-left: 35px;
@@ -384,7 +384,7 @@ input:-webkit-autofill:active {
     display: none;
 }
 
-#newAssignToInput {
+.newAssignToInput {
     width: 50px;
     height: 51px;
     padding-left: 35px;
@@ -396,8 +396,8 @@ input:-webkit-autofill:active {
     z-index: 2;
 }
 
-#newCategoryInput img,
-#newAssignToInput img {
+.newCategoryInput img,
+.newAssignToInput img {
     width: 16px;
     height: 16px;
     z-index: 2;

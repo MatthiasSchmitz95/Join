@@ -71,11 +71,11 @@
                         <div class="categoryContainer">
                             <label for="category" class="category">Category</label>
                             <div class="inputContainer" id="inputContainer" onclick="dropDown()">
-                                <input id="input" type="text" placeholder="Select task Category" disabled required>
+                                <input class="input" id="input" type="text" placeholder="Select task Category" disabled required>
                                 <div id="color" class="color"></div>
                                 <div id="buttonDropDown" class="buttonOpenCloseCategory" ><img
                                         src="assets/img/dropdown-arrow.png"></div>
-                                <div id="newCategoryInput">
+                                <div class="newCategoryInput" id="newCategoryInput">
                                     <img src="assets/img/icon_clear.png" onclick="rejectNewCategory()">
                                     <div class="line"></div>
                                     <img src="assets/img/checkmark.png" onclick="addNewCategory()">
@@ -101,11 +101,11 @@
                         <div class="assignContainer">
                             <label for="assignedTo" class="assignedTo">Assigned to</label>
                             <div class="contactInputContainer" id="contactInputContainer" onclick="dropDownAssignTo()">
-                                <input id="assignInput" type="text" placeholder="Select contacts to assign"
+                                <input class="assignInput" id="assignInput" type="text" placeholder="Select contacts to assign"
                                     onchange="filterContact()">
                                 <div id="assignDropDown" class="buttonOpenClose"><img
                                         src="assets/img/dropdown-arrow.png"></div>
-                                <div id="newAssignToInput">
+                                <div class="newAssignToInput" id="newAssignToInput">
                                     <img src="assets/img/icon_clear.png" onclick="rejectAssignTo()">
                                     <div class="line"></div>
                                     <img src="assets/img/checkmark.png" onclick="addnewContact()">

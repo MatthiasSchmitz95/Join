@@ -265,11 +265,11 @@
         padding-top: 9px;
     }
 
-    #input {
+    .input {
         width: 220px;
     }
 
-    #newCategoryInput {
+    .newCategoryInput {
         padding-left: 21px;
     }
 
@@ -299,7 +299,7 @@
         padding-left: 0px;
     }
 
-    #assignInput {
+    .assignInput {
         width: 257px;
     }
 
@@ -312,7 +312,7 @@
         height: 41px;
     }
 
-    #newAssignToInput {
+    .newAssignToInput {
         padding-left: 0px;
     }
 
@@ -346,6 +346,7 @@
 
     .subtasksInput {
         margin-left: 20px;
+        width: 223px;
         font-size: 18px;
     }
 
@@ -458,7 +459,9 @@
         top: 579.98px;
         left: 51px;
     }
-
+    .addSubtaskBtn {
+        margin-right: 25px;
+    }
 }
 
 @media(max-width:400px) {
@@ -466,9 +469,7 @@
         padding-left: 15px;
         padding-right: 15px;
     }
-}
 
-@media(max-width:375px) {
     .createButtonResponsiveContainer div {
         width: 320px;
     }
@@ -534,15 +535,16 @@
         width: 320px !important;
     }
 
-    #assignInput {
+    .assignInput {
         font-size: 18px;
+        width: 217px;
     }
 
     .BottomBoxLeft {
         width: 320px !important;
     }
 
-    #input {
+    .input {
         width: 190px;
         font-size: 18px;
     }
@@ -552,7 +554,7 @@
     }
 
     .buttonOpenClose {
-        padding-left: 2px;
+        padding-left: 41px;
     }
 
     .addSubtaskContainer {
@@ -563,7 +565,7 @@
         padding-left: 0px;
     }
 
-    #newCategoryInput {
+    .newCategoryInput {
         padding-left: 12px;
     }
 
@@ -581,22 +583,37 @@
     .KanbanResponsive span {
         width: 320px;
     }
+
+    .subtasksInput{
+        width: 223px;
+        font-size: 18px;
+    }
+    .subtasksInput::placeholder, #title::placeholder, #description::placeholder{
+        font-size: 18px;
+    }
+    .priorityBoxesContainer{
+        flex-direction: column;
+        height: auto;
+    }
+    .addSubtaskBtn{
+        margin-right: 24px;
+    } 
 }
 
-@media(max-width:280px) {
+@media(max-width:350px) {
     .createButtonResponsiveContainer div {
         width: 260px;
     }
 
     .taskCard {
-        padding-left: 5px;
-        padding-right: 5px;
+        padding-left: 2px;
+        padding-right: 0px;
     }
 
     .headline {
         box-sizing: border-box;
         width: 100%;
-        font-size: 47px;
+        font-size: 40px;
         display: flex;
         justify-content: center;
     }
@@ -642,12 +659,9 @@
         width: 260px !important;
     }
 
-    .leftContent {
+    .leftContent, .rightContent {
         width: 280px;
-    }
-
-    .rightContent {
-        width: 280px;
+        align-items: flex-start;
     }
 
     .categoryContainer {
@@ -655,39 +669,41 @@
     }
 
     .assignContainer {
-        width: 320px !important;
+        width: 260px !important;
     }
 
-    #assignInput {
+    .assignInput {
         font-size: 15px;
+        width: 179px;
     }
 
     .BottomBoxLeft {
         width: 260px !important;
     }
 
-    #input {
-        width: 190px;
+    .input {
+        width: 152px;
         font-size: 15px;
     }
 
     .buttonOpenCloseCategory {
-        padding-left: 15px;
+        padding-left: 27px;
     }
 
     .buttonOpenClose {
-        padding-left: 2px;
+        padding-left: 15px;
     }
 
     .addSubtaskContainer {
-        width: 260px !important;
+        width: 258px !important;
     }
 
     #subtaskOninput {
-        padding-left: 0px;
+        gap: 3px;
+        width: 48px;
     }
 
-    #newCategoryInput {
+    .newCategoryInput {
         padding-left: 12px;
     }
 
@@ -700,6 +716,7 @@
         box-sizing: border-box;
         width: 100%;
         justify-content: center;
+        font-size: 15px;
     }
 
     .KanbanResponsive span {
@@ -708,9 +725,21 @@
 
     .subtasksInput {
         font-size: 15px;
+        width: 172px;
     }
 
     .side-bar {
+        width: 280px;
+    }
+    .newCategoryInput, .newAssignToInput{
+        width: 30px;
+        gap: 3px;
+    }
+
+    .assignedList, .circleContainer{
+        width: 260px;
+    }
+    .contentContainer{
         width: 280px;
     }
 }
