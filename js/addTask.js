@@ -10,8 +10,7 @@ var categoryList;
 var choseContacts = []; //an Array to save the checked Contacts with checkbox
 var l = false;
 var j = false;
-var assignToTemporayVar1 = false;
-var assignToTemporayVar2 = false;
+
 var priority;
 var priorityImg;
 var addsubtask; //global variable for addsubTask button
@@ -255,11 +254,7 @@ function dropDownAssignTo() {
     assignToInputContainer = document.getElementById('contactInputContainer');
     document.getElementById('circleContactsContainer').style.display = "flex";
     if (assignedList.style.display == "block") { //the Container for Contacts is open ? 
-        if (assignToTemporayVar2 == true) {
-            showEmailSentStatus();
-        } else {
-            closeDropDownAssignTo();
-        }
+        closeDropDownAssignTo();
     } else { //the Container for Contacts is closed ?
         showDropDownAssignTo();
     }
@@ -274,40 +269,33 @@ function closeDropDownAssignTo() {
     assignToInputContainer.style.border = "1px solid #D1D1D1"; //shows all border
     assignToInputContainer.style.borderRadius = "10px"; //set all border radius to 10px
     document.getElementById('circleContactsContainer').style.display = "flex";
-    assignToTemporayVar2 = false;
 }
 
 
 function showDropDownAssignTo() {
-    if (assignToTemporayVar1 == true) {
-        closeDropDownAssignTo();
+    var assignedList = document.getElementById('assignedList'); //get the id of AssignedList container to render contact
+    assignToInputContainer = document.getElementById('contactInputContainer');
+    assignedList.style.display = "block"; //shows the Container for Contacts  
+    assignToInputContainer.style.borderBottom = "none"; //hide the AssignedTo container Border bottom
+    /* top-left top-right bottom-right bottom-left */
+    assignToInputContainer.style.borderRadius = "10px 10px 0 0"; //shows AssignedTo container top-left top-right border radius
+    if (choseContacts == '') {
+        renderAssignTo(); //show or render the contacts
     } else {
-        var assignedList = document.getElementById('assignedList'); //get the id of AssignedList container to render contact
-        assignToInputContainer = document.getElementById('contactInputContainer');
-        assignedList.style.display = "block"; //shows the Container for Contacts  
-        assignToInputContainer.style.borderBottom = "none"; //hide the AssignedTo container Border bottom
-        /* top-left top-right bottom-right bottom-left */
-        assignToInputContainer.style.borderRadius = "10px 10px 0 0"; //shows AssignedTo container top-left top-right border radius
-        if (choseContacts == '') {
-            renderAssignTo(); //show or render the contacts
-        } else {
-            renderAssignToCheckMarked();
-            displayChosenContactsForTask();
-        }
+        renderAssignToCheckMarked();
+        displayChosenContactsForTask();
     }
 }
 
 
 function assignToInput() { //click here to invite new Contact via email 
     helpVarSumit = true;
-    document.getElementById('assignedList').innerHTML = `<form action="/Join/send-email.php" method="post" onmouseup="showEmailSentStatus()">
+    document.getElementById('assignedList').innerHTML = `<form action="/Join/send-email.php" method="post">
     <label for="email">Email:</label>
     <input type="email" id="email" name="email placeholder="email"">
-    <button type="submit">Submit</button>
+    <button type="submit" onclick="showEmailSentStatus()">Submit</button>
     </form>`;
     document.getElementById('assignedList').style.display = "block !important";
-    assignToTemporayVar1 = true;
-    assignToTemporayVar2 = true;
 }
 
 function rejectAssignTo() {
@@ -317,23 +305,21 @@ function rejectAssignTo() {
     document.getElementById('newAssignToInput').style.display = "none"; //hide AssignToInput container -> shows "cross mark and check mark"
     document.getElementById('assignDropDown').style.display = "flex"; //shows AssignTo DropDown Button
     document.getElementById('circleContactsContainer').style.display = "flex";
-    assignToTemporayVar1 = false;
 }
 
 
 function addnewContact() {
     showEmailSentStatus();
-    assignToTemporayVar2 = true;
 }
 
 function showEmailSentStatus() {
-        newAssingedContact = document.getElementById('assignInput');
-        assignToInputContainer.style.borderBottom = "none"; //hide the AssignedTo container Border bottom
-        assignToInputContainer.style.borderRadius = "10px 10px 0 0"; //shows AssignedTo container top-left top-right border radius
-        newContacts.push(newAssingedContact.value); //to load newContacts array
-        document.getElementById('assignedList').style.display = "block";
-        document.getElementById('assignedList').value = "";
-        document.getElementById('assignedList').innerHTML = `
+    newAssingedContact = document.getElementById('assignInput');
+    assignToInputContainer.style.borderBottom = "none"; //hide the AssignedTo container Border bottom
+    assignToInputContainer.style.borderRadius = "10px 10px 0 0"; //shows AssignedTo container top-left top-right border radius
+    newContacts.push(newAssingedContact.value); //to load newContacts array
+    document.getElementById('assignedList').style.display = "block";
+    document.getElementById('assignedList').value = "";
+    document.getElementById('assignedList').innerHTML = `
     Email was sent successfully!
     `;
 }
@@ -450,43 +436,43 @@ function renderSubtasks() {
 
 /*** AddTask JSON Array* read every Input Fields and Buttons to get values*/
 async function addTask() {
-        await loadUserAccountsFromBackend();
-        tasks = userAccounts[activeUser].userTasks;
-        title = document.getElementById('title');
-        description = document.getElementById('description');
-        contact = choseContacts; //assigns the contact with the values of choseContact Array
-        subTaskDone = [];
-        category = document.getElementById('input');
-        categoryColor = document.getElementById('color').style.background;
-        dueDate = document.getElementById('date');
-        getPriorityInformation();
-        subTask = selectedSubtasks; //assigns the subTask with the value of selectedSubtasks Array
-        idTask = generateTaskId(tasks);
-        progress = "To Do";
-        var newTask = { /**put every value to the newTask as a JSON Array */
-            "title": title.value,
-            "description": description.value,
-            "category": category.value,
-            "categoryColor": categoryColor,
-            "contact": contact,
-            "dueDate": dueDate.value,
-            "subTask": subTask,
-            "subTaskDone": subTaskDone,
-            "priority": priority,
-            "priorityImg": priorityImg,
-            "id": idTask,
-            "progress": progress
-        };
-        tasks.push(newTask); //new Task was pushed into tasks Array
-        console.log(newTask);
-        /**save Tasks and User acc. to backend as JSON Array*/
-        await saveTasksToBackend();
-        await saveUserAccountsToBackend();
-        annimationTaskAddedToBoard(); //shows small window of Info Task added to Bard and navigated to board.html
-        setAllFieldsToDefault(); //change to default
-        closeDropdownCategory();/**dorpdowns were closed by creating or adding Task */
-        closeDropDownAssignTo();/**dorpdowns were closed by creating or adding Task */
-        choseContacts = [];
+    await loadUserAccountsFromBackend();
+    tasks = userAccounts[activeUser].userTasks;
+    title = document.getElementById('title');
+    description = document.getElementById('description');
+    contact = choseContacts; //assigns the contact with the values of choseContact Array
+    subTaskDone = [];
+    category = document.getElementById('input');
+    categoryColor = document.getElementById('color').style.background;
+    dueDate = document.getElementById('date');
+    getPriorityInformation();
+    subTask = selectedSubtasks; //assigns the subTask with the value of selectedSubtasks Array
+    idTask = generateTaskId(tasks);
+    progress = "To Do";
+    var newTask = { /**put every value to the newTask as a JSON Array */
+        "title": title.value,
+        "description": description.value,
+        "category": category.value,
+        "categoryColor": categoryColor,
+        "contact": contact,
+        "dueDate": dueDate.value,
+        "subTask": subTask,
+        "subTaskDone": subTaskDone,
+        "priority": priority,
+        "priorityImg": priorityImg,
+        "id": idTask,
+        "progress": progress
+    };
+    tasks.push(newTask); //new Task was pushed into tasks Array
+    console.log(newTask);
+    /**save Tasks and User acc. to backend as JSON Array*/
+    await saveTasksToBackend();
+    await saveUserAccountsToBackend();
+    annimationTaskAddedToBoard(); //shows small window of Info Task added to Bard and navigated to board.html
+    setAllFieldsToDefault(); //change to default
+    closeDropdownCategory();/**dorpdowns were closed by creating or adding Task */
+    closeDropDownAssignTo();/**dorpdowns were closed by creating or adding Task */
+    choseContacts = [];
 }
 
 function getPriorityInformation() {
