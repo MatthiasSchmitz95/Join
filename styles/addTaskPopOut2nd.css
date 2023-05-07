@@ -226,11 +226,7 @@ input[type=date]:invalid::-webkit-datetime-edit {color: #D1D1D1;}
     margin-right: 21px;
 }
 
-.SubtaskAppendixContainer {
-    box-sizing: border-box;
-    width: 100%;
-    height: auto;
-}
+
 
 .bgUrgent { background-color: #FF3D00;}
 
