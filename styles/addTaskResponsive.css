@@ -74,9 +74,12 @@
 
     .headline {
         width: 100%;
+        height: auto !important;
         display: flex;
         justify-content: center;
         margin-left: 0px;
+        margin-bottom: 23px;
+        margin-top:55px;
     }
 
     .headline span {
