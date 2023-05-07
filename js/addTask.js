@@ -298,13 +298,11 @@ function showDropDownAssignTo() {
 
 
 function assignToInput() { //click here to invite new Contact via email 
-    document.getElementById('assignedList').style.display = "none";
-    document.getElementById('assignInput').onkeydown = ""; //filter Function deactivated for Email input
-    closeDropdownCategory(); //dropDown Category Menu closed
-    document.getElementById('assignInput').value = "";
-    document.getElementById('assignInput').placeholder = 'contact Mail'; //shows New Category Name in Category Input Field
-    document.getElementById('newAssignToInput').style.display = "flex"; //shows newCategoryInput container -> shows "cross mark and check mark"
-    document.getElementById('assignDropDown').style.display = "none"; //hide Category DropDown Button
+    document.getElementById('assignedList').innerHTML = `<form action="send-email.php" method="post">
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email placeholder="email"">
+    <button type="submit">Submit</button>
+  </form>`;
     closeDropDownAssignTo();
     assignToTemporayVar1 = true;
     assignToTemporayVar2 = true;
