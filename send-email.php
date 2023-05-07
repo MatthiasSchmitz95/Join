@@ -4,7 +4,7 @@ if (isset($_POST['email'])) {
   $to = $_POST['email'];
   $subject = 'Test email';
   $message = 'This is a test email';
-  $headers = 'From: your-email@example.com' . "\r\n" .
+  $headers = 'From: blizz2mail@web.de' . "\r\n" .
              'Reply-To: your-email@example.com' . "\r\n" .
              'X-Mailer: PHP/' . phpversion();
 
