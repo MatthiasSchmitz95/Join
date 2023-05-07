@@ -13,6 +13,7 @@ var l = false;
 var j = false;
 var assignToTemporayVar1 = false;
 var assignToTemporayVar2 = false;
+var clearBtnOnActive = false;
 
 var priority;
 var priorityImg;
@@ -65,7 +66,7 @@ function renderCategory() {
 function unsetCategoryInputField() {
     categoryInputContainer = document.getElementById('inputContainer');
     categoryInputContainer.innerHTML = `
-    <input id="input" type="text" placeholder="Select task Category" required>
+    <input class="input" id="input" type="text" placeholder="Select task Category" required>
         <div id="color" class="color"></div>
         <div id="buttonDropDown" class="buttonOpenCloseCategory" onclick="dropDown()">
         <img src="assets/img/dropdown-arrow.png">
@@ -271,9 +272,9 @@ function dropDownAssignTo() {
     assignToInputContainer = document.getElementById('contactInputContainer');
     document.getElementById('circleContactsContainer').style.display = "flex";
     if (assignedList.style.display == "block") { //the Container for Contacts is open ? 
-        if(assignToTemporayVar2 == true){
+        if (assignToTemporayVar2 == true) {
             showEmailSentStatus();
-        }else{
+        } else {
             closeDropDownAssignTo();
         }
     } else { //the Container for Contacts is closed ?
@@ -299,7 +300,7 @@ function closeDropDownAssignTo() {
 function showDropDownAssignTo() {
     if (assignToTemporayVar1 == true) {
         closeDropDownAssignTo();
-    }else{
+    } else {
         var assignedList = document.getElementById('assignedList'); //get the id of AssignedList container to render contact
         assignToInputContainer = document.getElementById('contactInputContainer');
         assignedList.style.display = "block"; //shows the Container for Contacts  
@@ -347,7 +348,7 @@ function addnewContact() {
     assignToTemporayVar2 = true;
 }
 
-function showEmailSentStatus(){
+function showEmailSentStatus() {
     newAssingedContact = document.getElementById('assignInput');
     assignToInputContainer.style.borderBottom = "none"; //hide the AssignedTo container Border bottom
     assignToInputContainer.style.borderRadius = "10px 10px 0 0"; //shows AssignedTo container top-left top-right border radius
@@ -547,6 +548,7 @@ function setAllFieldsToDefault() {
     category.value = "";
     unsetCategoryInputField();
     document.getElementById('assignInput').value = "";
+    let inputAssignedContact = document.getElementById('assignInput');
     inputAssignedContact = "";
     dueDate = document.getElementById('date');
     dueDate.value = "";
@@ -701,12 +703,20 @@ function toggleInsertLow() {
 
 /**change clear button Image to blue by hover */
 function clearBtnhover() {
+    document.getElementById('clearBtnImg').classList.remove('clearButtonImgGray');
     document.getElementById('clearBtnImg').classList.add('clearButtonImgblue');
 }
 
 /**change clear button Image to the original color*/
 function clearBtnCancelhover() {
+    //clearBtnOnActive = false;
     document.getElementById('clearBtnImg').classList.remove('clearButtonImgblue');
+    document.getElementById('clearBtnImg').classList.remove('clearButtonImgGray');
+}
+
+function setClearBtnOnActive() {
+    document.getElementById('clearBtnImg').classList.remove('clearButtonImgblue');
+    document.getElementById('clearBtnImg').classList.add('clearButtonImgGray');
 }
 
 // modify calendar to only select current date or date in the future
@@ -722,10 +732,7 @@ async function updateCalender() {
 
 /*clear all field of AddTask page*/
 function clearAllAddTaskFields() {
-    //window.location.reload();
     setAllFieldsToDefault();
-    document.getElementById('clearBtnImg').classList.remove('clearButtonImgblue');
-    document.getElementById('clearBtnImg').classList.add('clearButtonImgGray');
 }
 
 /**show AddTaskPopOut.html*/

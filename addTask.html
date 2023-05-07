@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="./styles/addTask.css">
     <link rel="stylesheet" href="./styles/contacts.css">
     <link rel="stylesheet" href="./styles/addTaskResponsive.css">
+    <link rel="stylesheet" href="./styles/addTask2nd.css">
 
     <script src="./js/board.js"></script>
     <script src="./js/main.js"></script>
@@ -157,21 +158,11 @@
                             class="createBtnImg" src="assets/img/right-mark.png"></button>
                 </div>
             </div>
-
-            <div>
-                <button class="clearButtonResponsive d-none" onmouseover="clearBtnhover()"
-                    onmouseout="clearBtnCancelhover()" onclick="clearAllAddTaskFields()"><img class="clearBtnImg"
-                        id="clearBtnImg" src="assets/img/cross-mark.svg">
-                </button>
-            </div>
-
-
-
         </form>
         
 
-        <button class="clearButton" onmouseover="clearBtnhover()" onmouseout="clearBtnCancelhover()"
-            onclick="clearAllAddTaskFields()">Clear <img class="clearBtnImg" id="clearBtnImg"
+        <button class="clearButton" id="clearButton" onmouseover="clearBtnhover()" onmouseout="clearBtnCancelhover()"
+            onclick="clearAllAddTaskFields()" onmousedown="setClearBtnOnActive()" onmouseup="clearBtnhover()">Clear <img class="clearBtnImg" id="clearBtnImg"
                 src="assets/img/cross-mark.svg">
         </button>
 

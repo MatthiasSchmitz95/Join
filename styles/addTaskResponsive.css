@@ -615,7 +615,7 @@
         width: 100%;
         font-size: 40px;
         display: flex;
-        justify-content: center;
+        justify-content: flex-start;
     }
 
     .headline span {
@@ -715,7 +715,7 @@
         display: flex;
         box-sizing: border-box;
         width: 100%;
-        justify-content: center;
+        justify-content: flex-start;
         font-size: 15px;
     }
 

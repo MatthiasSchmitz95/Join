@@ -1,22 +1,13 @@
-.createButtonResponsiveContainer {
-    display: none;
-}
+.createButtonResponsiveContainer { display: none;}
 
-textarea {
-    resize: none;
-}
+textarea {resize: none;}
 
-.d-none {
-    display: none !important;
-}
+.d-none {display: none !important;}
 
-/* Change auto chrome bg color to white*/
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
-input:-webkit-autofill:active {
-    -webkit-box-shadow: 0 0 0 30px white inset !important;
-}
+input:-webkit-autofill:active {-webkit-box-shadow: 0 0 0 30px white inset !important;}
 
 .popOut-taskCard {
     position: fixed;
@@ -72,15 +63,8 @@ input:-webkit-autofill:active {
     justify-content: flex-end;
     margin-top: -15px;
 }
-
-.closeBtn {
-    cursor: pointer;
-}
-
-.closeBtn:hover {
-    background-color: whitesmoke;
-}
-
+.closeBtn {cursor: pointer;}
+.closeBtn:hover {background-color: whitesmoke;}
 
 .contentContainer {
     display: flex;
@@ -180,15 +164,8 @@ input:-webkit-autofill:active {
     border: 1px solid #5E6776;
     color: #5E6776;
 }
-
-.clearButtonImgblue {
-    filter: invert(76%) sepia(51%) saturate(1615%) hue-rotate(168deg) brightness(92%) contrast(92%);
-}
-
-.clearButtonImgGray {
-    filter: invert(41%) sepia(6%) saturate(1189%) hue-rotate(179deg) brightness(92%) contrast(84%);
-}
-
+.clearButtonImgblue {filter: invert(76%) sepia(51%) saturate(1615%) hue-rotate(168deg) brightness(92%) contrast(92%);}
+.clearButtonImgGray {filter: invert(41%) sepia(6%) saturate(1189%) hue-rotate(179deg) brightness(92%) contrast(84%);}
 
 .createButton {
     font-family: 'Inter';
@@ -454,7 +431,6 @@ input:-webkit-autofill:active {
     justify-content: space-evenly;
     display: none;
 }
-
 /*badge colors */
 .assignContainer {
     display: flex;
@@ -510,11 +486,7 @@ input:-webkit-autofill:active {
     padding-left: 21px;
     padding-right: 21px;
 }
-
-/*date InputField placeholder color*/
-input[type=date]:invalid::-webkit-datetime-edit {
-    color: #D1D1D1;
-}
+input[type=date]:invalid::-webkit-datetime-edit {color: #D1D1D1;}
 
 .d-column {
     display: flex;
@@ -569,7 +541,6 @@ input[type=date]:invalid::-webkit-datetime-edit {
 .prioLowBox:hover {
     transform: scale(1.1);
 }
-
 
 .subtasks {
     width: 92px;
@@ -658,26 +629,15 @@ input[type=date]:invalid::-webkit-datetime-edit {
     height: auto;
 }
 
-.bgUrgent {
-    background-color: #FF3D00;
-}
+.bgUrgent { background-color: #FF3D00;}
 
-.bgMedium {
-    background-color: #FFA800;
-}
+.bgMedium { background-color: #FFA800;}
 
-.bgLow {
-    background-color: #7AE229;
-}
+.bgLow {background-color: #7AE229;}
 
-.bgTextWhite {
-    color: white;
-}
+.bgTextWhite {color: white;}
 
-.Img-white {
-    filter: brightness(0) invert(1);
-}
-
+.Img-white {filter: brightness(0) invert(1);}
 
 .messageAddedTask {
     position: absolute;
@@ -717,7 +677,6 @@ input[type=date]:invalid::-webkit-datetime-edit {
 .whitecolor {
     filter: invert(0%) sepia(100%) saturate(0%) hue-rotate(21deg) brightness(97%) contrast(103%);
 }
-
 /*Check Mark design*/
 .container {
     position: relative;
@@ -733,8 +692,6 @@ input[type=date]:invalid::-webkit-datetime-edit {
     flex-direction: row;
     align-items: top;
 }
-
-/* Hide the browser's default checkbox */
 .container input {
     position: absolute;
     opacity: 0;
@@ -742,8 +699,6 @@ input[type=date]:invalid::-webkit-datetime-edit {
     height: 0;
     width: 0;
 }
-
-/* Create a custom checkbox */
 .checkmark {
     position: absolute;
     top: 2;
@@ -754,25 +709,17 @@ input[type=date]:invalid::-webkit-datetime-edit {
     border: 1px solid black;
     border-radius: 3px;
 }
-
-/* When the checkbox is checked, add a blue background */
 .container input:checked~.checkmark {
     background-color: #f4f4f4F4;
 }
-
-/* Create the checkmark/indicator (hidden when not checked) */
 .checkmark:after {
     content: "";
     position: absolute;
     display: none;
 }
-
-/* Show the checkmark when checked */
 .container input:checked~.checkmark:after {
     display: block;
 }
-
-/* Style the checkmark/indicator */
 .container .checkmark:after {
     left: 6px;
     top: 2px;
@@ -783,8 +730,6 @@ input[type=date]:invalid::-webkit-datetime-edit {
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
 }
-
-/*checkbox filled design*/
 .filledCheckboxContainer {
     position: relative;
     padding-left: 20px;
@@ -799,8 +744,6 @@ input[type=date]:invalid::-webkit-datetime-edit {
     flex-direction: row;
     align-items: top;
 }
-
-/* Hide the browser's default checkbox */
 .filledCheckboxContainer input {
     position: absolute;
     opacity: 0;
@@ -808,8 +751,6 @@ input[type=date]:invalid::-webkit-datetime-edit {
     height: 0;
     width: 0;
 }
-
-/* Create a custom checkbox */
 .checkmark {
     position: absolute;
     top: 2;
@@ -820,25 +761,13 @@ input[type=date]:invalid::-webkit-datetime-edit {
     border: 1px solid black;
     border-radius: 3px;
 }
-
-/* When the checkbox is checked, add a background */
-.filledCheckboxContainer input:checked~.checkmark {
-    background-color: #f4f4f4F4;
-}
-
-/* Create the checkmark/indicator (hidden when not checked) */
+.filledCheckboxContainer input:checked~.checkmark {background-color: #f4f4f4F4;}
 .checkmark:after {
     content: "";
     position: absolute;
     display: none;
 }
-
-/* Show the checkmark when checked */
-.filledCheckboxContainer input:checked~.checkmark:after {
-    display: block;
-}
-
-/* Style the checkmark/indicator */
+.filledCheckboxContainer input:checked~.checkmark:after {display: block;}
 .filledCheckboxContainer .checkmark:after {
     left: 3px;
     top: 3px;
@@ -856,16 +785,10 @@ input[type=date]:invalid::-webkit-datetime-edit {
     width: 23px;
     height: 23px;
 }
-
-/**Animation AddTask To board*/
 @keyframes fadeOut {
     from {opacity: 1;}
     to {opacity: 0;}
 }
-
 .animate {animation: 4s fadeOut ease-in-out;}
-
-/*disable button*/
 .buttonDisabled {pointer-events: none;}
-
 .buttonEnabled {pointer-events: auto;}
