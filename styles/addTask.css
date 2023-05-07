@@ -40,6 +40,7 @@ textarea {resize: none;}
     width: 80vw;
     height: 78px;
     margin-top: 82px;
+    margin-bottom: 41px;
     font-family: 'Inter';
     font-style: normal;
     font-weight: 700;
@@ -55,7 +56,6 @@ textarea {resize: none;}
     box-sizing: border-box;
     height: 599px;
     margin-left: 123px;
-    margin-top: 41px;
     position: relative;
 }
 
@@ -119,7 +119,7 @@ textarea {resize: none;}
     display: flex;
     justify-content: flex-start;
     gap: 25px;
-    margin-top: 160px;
+    margin-top: 201px;
     z-index: 2;
 }
 
