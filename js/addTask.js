@@ -1,4 +1,3 @@
-
 var categoriesArray = ['New Category', 'Sales', 'Marketing'];
 var colorsArray = ['', 'red', 'blue'];
 var newCategoryColors = ['#8AA4FF', '#FF0000', '#2AD300', '#FF8A00', '#E200BE', '#0038FF'];
@@ -13,8 +12,6 @@ var l = false;
 var j = false;
 var assignToTemporayVar1 = false;
 var assignToTemporayVar2 = false;
-var clearBtnOnActive = false;
-
 var priority;
 var priorityImg;
 var addsubtask; //global variable for addsubTask button
@@ -26,7 +23,6 @@ var newLetters2;
 var selectedContactLetters = [];
 var newContacts = [];
 var newAddedContactLetters = [];
-
 /**Variable for addTask() function */
 var title;
 var description;
@@ -38,7 +34,6 @@ var dueDate;
 var subTask;
 var idTask;
 var progress;
-/** *********************/
 
 function onloadAddTask() {
     init('addTask');
@@ -99,7 +94,6 @@ function closeDropdownCategory() {
 }
 /**show the Category Select Menu*/
 function showDropdownCategory() {
-    // document.getElementById("input").disabled = true;
     if (j == false) {
         categoryList = document.getElementById('categoryList');
         categoryInputContainer = document.getElementById('inputContainer');
@@ -110,9 +104,6 @@ function showDropdownCategory() {
         renderCategory(); //render Category in the Container
     }
 }
-
-
-
 
 /**choose one Category from the Category Select Menu via dropDown
  * parmeter: index = categoriesArray[index]
@@ -146,16 +137,14 @@ function newCategoryInput() {
 }
 
 /**function for input new Category Color
- * parameter: color = string of colorhex value*/
+* parameter: color = string of colorhex value*/
 var newCategoryColor;
 function newColor(color) {
     document.getElementById('color').style.background = color; //change the background after parameter color
     newCategoryColor = color; //save the color as a globale value
 }
 
-/**
- * by clicking check mark on Category Input the function addNewCategory() was called 
- */
+/*** by clicking check mark on Category Input the function addNewCategory() was called */
 function addNewCategory() {
     var newCategory = document.getElementById('input');
     categoriesArray.push(newCategory.value); //new Input value pushed in the Category Array
@@ -167,9 +156,7 @@ function addNewCategory() {
     j = false;
 }
 
-/**
- * by clicking cross mark on Category Input the function addNewCategory() was called
- */
+/*** by clicking cross mark on Category Input the function addNewCategory() was called*/
 function rejectNewCategory() {
     document.getElementById('buttonDropDown').style.display = "flex"; //shows Category DropDown Button
     document.getElementById('newCategoryInput').style.display = "none"; //hide newCategoryInput container -> hide "cross mark and check mark"
@@ -181,9 +168,7 @@ function rejectNewCategory() {
     j = false;
 }
 
-/**
- * AssignTo 
- */
+/*** AssignTo */
 async function renderAssignTo() { //function to render AssignTo
     await loadUserAccountsFromBackend(); //get Data of Users from Backend
     loadActiveUserLocal(); //get Data of Users from Backend
@@ -209,7 +194,6 @@ async function renderAssignTo() { //function to render AssignTo
             </div>
         `;
 }
-
 
 function chooseContact(name) { //index, contact
     let inputAssignedContact = document.getElementById('assignInput'); //get assign To Inputfield
@@ -264,9 +248,7 @@ function renderAssignToCheckMarkedHTMLNewContact() {
     `;
 }
 
-/**
- * Show AssignTo Select Menu - toggle at clicking on the dropdown Button
- */
+/*** Show AssignTo Select Menu - toggle at clicking on the dropdown Button*/
 function dropDownAssignTo() {
     var assignedList = document.getElementById('assignedList'); //get the id of AssignedList container to render contacts
     assignToInputContainer = document.getElementById('contactInputContainer');
@@ -283,9 +265,7 @@ function dropDownAssignTo() {
     closeDropdownCategory();
 }
 
-/**
- * close the dropdown Select Menu
- */
+/*** close the dropdown Select Menu*/
 function closeDropDownAssignTo() {
     var assignedList = document.getElementById('assignedList'); //get the id of AssignedList container to render contact
     assignToInputContainer = document.getElementById('contactInputContainer');
@@ -318,7 +298,6 @@ function showDropDownAssignTo() {
 
 
 function assignToInput() { //click here to invite new Contact via email 
-    //document.getElementById('contactInputContainer').onclick = ""; //dropDownMenu deactivated for Email input at first
     document.getElementById('assignedList').style.display = "none";
     document.getElementById('assignInput').onkeydown = ""; //filter Function deactivated for Email input
     closeDropdownCategory(); //dropDown Category Menu closed
@@ -339,7 +318,6 @@ function rejectAssignTo() {
     document.getElementById('assignDropDown').style.display = "flex"; //shows AssignTo DropDown Button
     document.getElementById('circleContactsContainer').style.display = "flex";
     assignToTemporayVar1 = false;
-    //document.getElementById('contactInputContainer').addEventListener = dropDownAssignTo(); //dropDownMenu activated for Email input at first
 }
 
 
@@ -374,19 +352,16 @@ function showContactsByTwoLetters() { //good
         const remainingLetters = chosenContact.slice(1);
         contactName = firstLetter + remainingLetters;
         contactColor = getUserColor(i);
-        /*contactColor = randomUserColor();*/
         arrayContactColor.push(contactColor);
         if (chosenContact.indexOf(' ') >= 0) { //Wenn ein TrennZeichen "leer" gibt
             let helpLetter = contactName.split(" ");
             newLetters2 = helpLetter[0].charAt(0).toUpperCase() + helpLetter[1].charAt(0).toUpperCase();
             selectedContactLetters.push(newLetters2);
-        }
-        else {
+        }else {
             newLetters2 = firstLetter;
             selectedContactLetters.push(newLetters2);
         }
     }
-    //console.log(selectedContactLetters);
 }
 
 function renderCircleName() {
@@ -410,9 +385,7 @@ function renderNamesInTwoLetters(bgContactColor, letters) {
     `;
 }
 
-/**
- * Subtask
- */
+/*Subtask*/
 /**By clicking the + Symbol changed to New subTask Input*/
 function createNewSubtask() {
     addsubtask = document.getElementById('addSubtaskBtn');
@@ -420,7 +393,6 @@ function createNewSubtask() {
     addsubtask.style.display = "none"; //hide addsubTask button (+)
     onInputSubTask.style.display = "flex"; //shows subtasks input container -> shows "cross mark and check mark images"
 }
-
 /**onclick cross mark all Subtasks are deleted except of the subTasks[0] -> it only left the default value in subTasks Array */
 function deleteSubTask() {
     addsubtask = document.getElementById('addSubtaskBtn');
@@ -433,7 +405,6 @@ function deleteSubTask() {
     subTasks.pop(); //to delete all from index 1
     renderSubtasks();
 }
-
 
 function addSubTask() {
     subtaskInput = document.getElementById('subtasksInput');
@@ -477,11 +448,7 @@ function renderSubtasks() {
     }
 }
 
-
-/**
- * AddTask JSON Array
- * read every Input Fields and Buttons to get values
- */
+/*** AddTask JSON Array* read every Input Fields and Buttons to get values*/
 async function addTask() {
     await loadUserAccountsFromBackend();
     tasks = userAccounts[activeUser].userTasks;
@@ -586,25 +553,19 @@ function generateTaskId(tasks) {
     var id = tasks.length;
     var idExists = true;
     while (idExists) {
-        // Überprüfe, ob die generierte ID bereits vorhanden ist
-        for (var i = 0; i < tasks.length; i++) {
+        for (var i = 0; i < tasks.length; i++) {// Überprüfe, ob die generierte ID bereits vorhanden ist
             if (tasks[i].id === id) {
                 idExists = true;
                 break;
-            }
-            else {
+            }else {
                 idExists = false;
             }
-        }
-        // Wenn die ID bereits existiert, generiere eine neue ID
-        if (idExists) {
+        }if (idExists) {// Wenn die ID bereits existiert, generiere eine neue ID
             id++;
         }
     }
     return id;
 }
-
-
 
 /**By clicking the Priority Urgent button the Text and Image color change to white --> Prio Medium and Prio Low change to their original color */
 function insertUrgent() {
@@ -625,12 +586,9 @@ function toggleInsertUrgent() {
     document.getElementById("prioUrgentBox").addEventListener("click", function handleClick(event) {
         const hasClass = event.target.classList.contains('bgUrgent');
         if (hasClass) {
-            //console.log('applied bg White');
             document.getElementById('prioUrgentBox').classList.add('bgTextWhite');
             document.getElementById('prioUrgentImg').classList.add("Img-white");
-        }
-        else {
-            //console.log('removed bg White');
+        }else {
             document.getElementById('prioUrgentBox').classList.remove('bgTextWhite');
             document.getElementById('prioUrgentImg').classList.remove("Img-white");
         }
@@ -657,18 +615,14 @@ function toggleInsertMedium() {
     document.getElementById("prioMediumBox").addEventListener("click", function handleClick(event) {
         const hasClass = event.target.classList.contains('bgMedium');
         if (hasClass) {
-            //console.log('applied bg White');
             document.getElementById('prioMediumBox').classList.add('bgTextWhite');
             document.getElementById('prioMediumImg').classList.add("Img-white");
-        }
-        else {
-            //console.log('removed bg White');
+        }else {
             document.getElementById('prioMediumBox').classList.remove('bgTextWhite');
             document.getElementById('prioMediumImg').classList.remove("Img-white");
         }
     });
 }
-
 
 /**By clicking the Priority low button the Text and Image color change to white --> Prio Urgent and Prio Medium change to their original color */
 function insertLow() {
@@ -689,12 +643,9 @@ function toggleInsertLow() {
     document.getElementById("prioLowBox").addEventListener("click", function handleClick(event) {
         const hasClass = event.target.classList.contains('bgLow');
         if (hasClass) {
-            //console.log('applied bg White');
             document.getElementById('prioLowBox').classList.add('bgTextWhite');
             document.getElementById('prioLowImg').classList.add("Img-white");
-        }
-        else {
-            //console.log('removed bg White');
+        }else {
             document.getElementById('prioLowBox').classList.remove('bgTextWhite');
             document.getElementById('prioLowImg').classList.remove("Img-white");
         }
@@ -709,7 +660,6 @@ function clearBtnhover() {
 
 /**change clear button Image to the original color*/
 function clearBtnCancelhover() {
-    //clearBtnOnActive = false;
     document.getElementById('clearBtnImg').classList.remove('clearButtonImgblue');
     document.getElementById('clearBtnImg').classList.remove('clearButtonImgGray');
 }
@@ -741,9 +691,7 @@ function showAddTaskPopOut() {
         top: 0,
         behavior: "smooth"
     });
-    //document.getElementById('bg').style.display = '';
     document.getElementById('popOut-taskCard').classList = "popOut-taskCard";
-    //document.getElementById('body').style = "overflow-y: hidden;";
     document.getElementById('contentContainer').classList.add('scrollY');
     document.getElementById('kanban').classList.add('kanban');
     document.getElementById('profile-container').classList.add('profile-container-d-none');
@@ -765,15 +713,12 @@ function getUserColor(userIndex) {
 function filterContact() {
     let search = document.getElementById('assignInput').value;
     search = search.toLowerCase();  //konvertiert zu einem String zu kleinen Bustaben
-
     let content = document.getElementById('assignedList');//get the id of AssignedList container to render contact
     content.innerHTML = '';
     assignToInputContainer = document.getElementById('contactInputContainer');
     content.style.display = "block"; //shows the Container for Contacts  
     assignToInputContainer.style.borderBottom = "none"; //hide the AssignedTo container Border bottom
-    /* top-left top-right bottom-right bottom-left */
     assignToInputContainer.style.borderRadius = "10px 10px 0 0"; //shows AssignedTo container top-left top-right border radius
-
     for (let i = 0; i < userAccounts[activeUser]['userContacts'].length; i++) {
         userName = userAccounts[activeUser]['userContacts'][i]['name']; //alle Kontakte durchgehen
         userNameLowerLetter = userName.toLowerCase();

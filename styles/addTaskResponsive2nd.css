@@ -158,7 +158,7 @@
     }
 
     .buttonOpenCloseCategory {
-        padding-left: 53px;
+        padding-left: 53px !important;
     }
 
     .buttonOpenClose {
