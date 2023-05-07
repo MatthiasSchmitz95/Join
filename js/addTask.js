@@ -23,6 +23,7 @@ var newLetters2;
 var selectedContactLetters = [];
 var newContacts = [];
 var newAddedContactLetters = [];
+var helpVarSumit = false;
 /**Variable for addTask() function */
 var title;
 var description;
@@ -298,12 +299,13 @@ function showDropDownAssignTo() {
 
 
 function assignToInput() { //click here to invite new Contact via email 
-    document.getElementById('assignedList').innerHTML = `<form action="/Join/send-email.php" method="post">
+    helpVarSumit = true;
+    document.getElementById('assignedList').innerHTML = `<form action="/Join/send-email.php" method="post" onmouseup="showEmailSentStatus()">
     <label for="email">Email:</label>
     <input type="email" id="email" name="email placeholder="email"">
     <button type="submit">Submit</button>
-  </form>`;
-    closeDropDownAssignTo();
+    </form>`;
+    document.getElementById('assignedList').style.display = "block !important";
     assignToTemporayVar1 = true;
     assignToTemporayVar2 = true;
 }
@@ -325,14 +327,13 @@ function addnewContact() {
 }
 
 function showEmailSentStatus() {
-    newAssingedContact = document.getElementById('assignInput');
-    assignToInputContainer.style.borderBottom = "none"; //hide the AssignedTo container Border bottom
-    assignToInputContainer.style.borderRadius = "10px 10px 0 0"; //shows AssignedTo container top-left top-right border radius
-    newContacts.push(newAssingedContact.value); //to load newContacts array
-    document.getElementById('assignedList').style.display = "block";
-    document.getElementById('assignedList').value = "";
-    document.getElementById('assignedList').innerHTML = `
-    <form action="sebd-email.php" method="post">
+        newAssingedContact = document.getElementById('assignInput');
+        assignToInputContainer.style.borderBottom = "none"; //hide the AssignedTo container Border bottom
+        assignToInputContainer.style.borderRadius = "10px 10px 0 0"; //shows AssignedTo container top-left top-right border radius
+        newContacts.push(newAssingedContact.value); //to load newContacts array
+        document.getElementById('assignedList').style.display = "block";
+        document.getElementById('assignedList').value = "";
+        document.getElementById('assignedList').innerHTML = `
     Email was sent successfully!
     `;
 }
@@ -356,7 +357,7 @@ function showContactsByTwoLetters() { //good
             let helpLetter = contactName.split(" ");
             newLetters2 = helpLetter[0].charAt(0).toUpperCase() + helpLetter[1].charAt(0).toUpperCase();
             selectedContactLetters.push(newLetters2);
-        }else {
+        } else {
             newLetters2 = firstLetter;
             selectedContactLetters.push(newLetters2);
         }
@@ -449,43 +450,43 @@ function renderSubtasks() {
 
 /*** AddTask JSON Array* read every Input Fields and Buttons to get values*/
 async function addTask() {
-    await loadUserAccountsFromBackend();
-    tasks = userAccounts[activeUser].userTasks;
-    title = document.getElementById('title');
-    description = document.getElementById('description');
-    contact = choseContacts; //assigns the contact with the values of choseContact Array
-    subTaskDone = [];
-    category = document.getElementById('input');
-    categoryColor = document.getElementById('color').style.background;
-    dueDate = document.getElementById('date');
-    getPriorityInformation();
-    subTask = selectedSubtasks; //assigns the subTask with the value of selectedSubtasks Array
-    idTask = generateTaskId(tasks);
-    progress = "To Do";
-    var newTask = { /**put every value to the newTask as a JSON Array */
-        "title": title.value,
-        "description": description.value,
-        "category": category.value,
-        "categoryColor": categoryColor,
-        "contact": contact,
-        "dueDate": dueDate.value,
-        "subTask": subTask,
-        "subTaskDone": subTaskDone,
-        "priority": priority,
-        "priorityImg": priorityImg,
-        "id": idTask,
-        "progress": progress
-    };
-    tasks.push(newTask); //new Task was pushed into tasks Array
-    console.log(newTask);
-    /**save Tasks and User acc. to backend as JSON Array*/
-    await saveTasksToBackend();
-    await saveUserAccountsToBackend();
-    annimationTaskAddedToBoard(); //shows small window of Info Task added to Bard and navigated to board.html
-    setAllFieldsToDefault(); //change to default
-    closeDropdownCategory();/**dorpdowns were closed by creating or adding Task */
-    closeDropDownAssignTo();/**dorpdowns were closed by creating or adding Task */
-    choseContacts = [];
+        await loadUserAccountsFromBackend();
+        tasks = userAccounts[activeUser].userTasks;
+        title = document.getElementById('title');
+        description = document.getElementById('description');
+        contact = choseContacts; //assigns the contact with the values of choseContact Array
+        subTaskDone = [];
+        category = document.getElementById('input');
+        categoryColor = document.getElementById('color').style.background;
+        dueDate = document.getElementById('date');
+        getPriorityInformation();
+        subTask = selectedSubtasks; //assigns the subTask with the value of selectedSubtasks Array
+        idTask = generateTaskId(tasks);
+        progress = "To Do";
+        var newTask = { /**put every value to the newTask as a JSON Array */
+            "title": title.value,
+            "description": description.value,
+            "category": category.value,
+            "categoryColor": categoryColor,
+            "contact": contact,
+            "dueDate": dueDate.value,
+            "subTask": subTask,
+            "subTaskDone": subTaskDone,
+            "priority": priority,
+            "priorityImg": priorityImg,
+            "id": idTask,
+            "progress": progress
+        };
+        tasks.push(newTask); //new Task was pushed into tasks Array
+        console.log(newTask);
+        /**save Tasks and User acc. to backend as JSON Array*/
+        await saveTasksToBackend();
+        await saveUserAccountsToBackend();
+        annimationTaskAddedToBoard(); //shows small window of Info Task added to Bard and navigated to board.html
+        setAllFieldsToDefault(); //change to default
+        closeDropdownCategory();/**dorpdowns were closed by creating or adding Task */
+        closeDropDownAssignTo();/**dorpdowns were closed by creating or adding Task */
+        choseContacts = [];
 }
 
 function getPriorityInformation() {
@@ -556,10 +557,10 @@ function generateTaskId(tasks) {
             if (tasks[i].id === id) {
                 idExists = true;
                 break;
-            }else {
+            } else {
                 idExists = false;
             }
-        }if (idExists) {// Wenn die ID bereits existiert, generiere eine neue ID
+        } if (idExists) {// Wenn die ID bereits existiert, generiere eine neue ID
             id++;
         }
     }
@@ -587,7 +588,7 @@ function toggleInsertUrgent() {
         if (hasClass) {
             document.getElementById('prioUrgentBox').classList.add('bgTextWhite');
             document.getElementById('prioUrgentImg').classList.add("Img-white");
-        }else {
+        } else {
             document.getElementById('prioUrgentBox').classList.remove('bgTextWhite');
             document.getElementById('prioUrgentImg').classList.remove("Img-white");
         }
@@ -616,7 +617,7 @@ function toggleInsertMedium() {
         if (hasClass) {
             document.getElementById('prioMediumBox').classList.add('bgTextWhite');
             document.getElementById('prioMediumImg').classList.add("Img-white");
-        }else {
+        } else {
             document.getElementById('prioMediumBox').classList.remove('bgTextWhite');
             document.getElementById('prioMediumImg').classList.remove("Img-white");
         }
@@ -644,7 +645,7 @@ function toggleInsertLow() {
         if (hasClass) {
             document.getElementById('prioLowBox').classList.add('bgTextWhite');
             document.getElementById('prioLowImg').classList.add("Img-white");
-        }else {
+        } else {
             document.getElementById('prioLowBox').classList.remove('bgTextWhite');
             document.getElementById('prioLowImg').classList.remove("Img-white");
         }
