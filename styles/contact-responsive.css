@@ -28,7 +28,7 @@
 
 @media(max-width:1210px) {
 
-    .contact-information{
+    .contact-information {
         width: auto;
     }
 
@@ -155,10 +155,10 @@
     }
 
     #kanban {
-        display: none ;
+        display: none;
     }
 
-    .display{
+    .display {
         display: block !important;
     }
 
@@ -237,6 +237,14 @@
         margin-left: 36px;
         margin-right: 35px;
     }
+
+    #kanban-contact {
+        display: block;
+        font-size: 16px;
+        position: absolute;
+        top: 34.89px;
+        left: 34px;
+    }
 }
 
 
@@ -246,15 +254,8 @@
         overflow-x: hidden;
     }
 
-    #kanban-contact{
-        display: block;
-        font-size: 16px;
-        position: absolute;
-        top: 34.89px;
-        left: 34px;
-    }
 
-    #kanban{
+    #kanban {
         display: none;
     }
 
@@ -273,11 +274,11 @@
         margin-right: 30px;
     }
 
-    .btn-contact-blue img{
+    .btn-contact-blue img {
         display: none;
     }
 
-    .btn-contact-white img{
+    .btn-contact-white img {
         display: none;
     }
 
@@ -301,15 +302,15 @@
     }
 
     .add-contact-card {
-            width: 381px;
-            left: 0px;
-            bottom: 80px;
-            top: 11.02px;
-            left: 50%;
-            right: 50%;
-            transform: translate(-50%, 0%);
-        }
-    
+        width: 381px;
+        left: 0px;
+        bottom: 80px;
+        top: 11.02px;
+        left: 50%;
+        right: 50%;
+        transform: translate(-50%, 0%);
+    }
+
 
 
     .desktop {
@@ -397,46 +398,47 @@
 
 
 @media(max-width:300px) {
-.name-card{
-    justify-content: flex-start;
-}
+    .name-card {
+        justify-content: flex-start;
+    }
 
-    .circle{
-    margin: 0px;
-    margin-left: 5px;
-}
+    .circle {
+        margin: 0px;
+        margin-left: 5px;
+    }
 
-.info{
-    margin: 0px;
-    margin-left: 5px;
-}
+    .info {
+        margin: 0px;
+        margin-left: 5px;
+    }
 
-#kanban-contact{
-    left:10px;
-}
+    #kanban-contact {
+        left: 10px;
+    }
 
-.html-topic{
-    padding-left: 10px;
-}
+    .html-topic {
+        padding-left: 10px;
+    }
 
-.floating-contact-container{
-    padding-left: 10px;
-}
+    .floating-contact-container {
+        padding-left: 10px;
+    }
 
-.responsive-buttons {
-    margin-top: -182px;
-}
+    .responsive-buttons {
+        margin-top: -182px;
+    }
 
-#float-contact-name {
-    font-size: 19px;
-}
+    #float-contact-name {
+        font-size: 19px;
+    }
 
-.contact-details p {
-    margin: 0px;
-    margin-bottom: 80px;
-}
-.right-container {
-    padding-bottom: 80px;
-}
+    .contact-details p {
+        margin: 0px;
+        margin-bottom: 80px;
+    }
+
+    .right-container {
+        padding-bottom: 80px;
+    }
 
 }

@@ -149,6 +149,7 @@ async function deleteContact(j) {
     closeContactCard();
     changeTextTo('deleted');
     successfulAnimation();
+    
 }
 
 
@@ -172,6 +173,7 @@ async function editContact(j) {
  */
 function changeTextTo(text) {
     document.getElementById('success').innerHTML = `Contact succesfully ${text}`;
+    document.getElementById('right-container').style.justifyContent = 'space-between';
 
 }
 
