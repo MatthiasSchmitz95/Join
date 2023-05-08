@@ -1,5 +1,6 @@
 body {
     background-color: #F5F5F5;
+    position: relative;
 }
 
 a {
@@ -16,17 +17,18 @@ a {
     border-radius: 20px;
     width: 326px;
     height: 74px;
-    z-index: 10;
+    z-index: 9999999;
     color: white;
     left: 50%;
-    bottom: -50%;
-    transition: bottom 0.5s;
+    transform: translate(-50%, -50%);
+    bottom: 20%;
+}
+@keyframes fadeOut {
+    from {opacity: 1;}
+    to {opacity: 0;}
 }
 
-.add-success {
-    display: flex;
-    bottom: 20% !important;
-}
+.animate-contact {animation: 4s fadeOut ease-in-out;}
 
 .desktop {
     margin-left: 230px;
@@ -686,5 +688,9 @@ a {
     border-radius: 10px;
     cursor: pointer;
     border: 1px solid #2A3647;
+}
+
+#kanban-contact{
+    display: none;
 }
 

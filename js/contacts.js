@@ -80,7 +80,7 @@ function circleColor(j) {
 function showContact(j, bothLetters) {
     document.getElementById('right-container').style.justifyContent = 'flex-start';
     if (window.innerWidth < 1140) {
-        document.getElementById('kanban').classList.add("display");
+        document.getElementById('kanban-contact').style.display = 'block';
     }
     let color = userAccounts[activeUser].userContacts[j]['color'];
     contactName = userAccounts[activeUser]['userContacts'][j]['name'];
@@ -276,16 +276,15 @@ function setInputfields(j) {
 
 
 function successfulAnimation() {
+    document.getElementById('success').style.display = '';
+    document.getElementById('success').classList.add("animate-contact");
 
     setTimeout(() => {
-        document.getElementById('success').classList.add("add-success");
-    }
-        , 200);
+        document.getElementById('success').style.display = 'none';
 
-    setTimeout(() => {
-        document.getElementById('success').classList.remove("add-success");
     }
-        , 1000);
+        , 2000);
+
 
 }
 
@@ -311,8 +310,8 @@ function closePopOutAddTask() {
  */
 function backToContactList() {
     document.getElementById('right-container').classList.remove("display");
-    document.getElementById('kanban').classList.remove("display");
-   // document.getElementById('left-container').style.display = '';
+    document.getElementById('kanban-contact').style.display ="none";
+
 }
 
 /**

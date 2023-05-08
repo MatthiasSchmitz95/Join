@@ -246,6 +246,18 @@
         overflow-x: hidden;
     }
 
+    #kanban-contact{
+        display: block;
+        font-size: 16px;
+        position: absolute;
+        top: 34.89px;
+        left: 34px;
+    }
+
+    #kanban{
+        display: none;
+    }
+
     .btn-container {
         justify-content: center;
     }
