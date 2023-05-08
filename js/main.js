@@ -23,6 +23,15 @@ function changeProfileImg() {
 }
 
 function showLogOut(){
+
+  if (window.innerWidth <801) {
+    document.getElementById('help').style.display = '';
+    setTimeout(() => {
+      document.getElementById('help').style.display = 'none';;
+  }
+      , 3000);
+    
+  }
   document.getElementById('log-out').style.display = '';
 
   setTimeout(() => {
