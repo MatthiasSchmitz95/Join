@@ -246,6 +246,10 @@
         overflow-x: hidden;
     }
 
+    .profile-container{
+        justify-content: flex-end;
+    }
+
     .btn-container {
         justify-content: center;
     }
