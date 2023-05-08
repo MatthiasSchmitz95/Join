@@ -35,19 +35,24 @@ var subTask;
 var idTask;
 var progress;
 
+/**
+ * this function is used to load AddTask-HTML page (init function)
+ */
 function onloadAddTask() {
     init('addTask');
     renderSubtasks();
     updateCalender();
 }
 
+/**
+ * This function is use to render Category with a Color Dots
+ */
 function renderCategory() {
     let categoryList = document.getElementById('categoryList'); //addTask.html line 51 - container for category Input box
     categoryList.innerHTML = "";
     for (let i = 0; i < categoriesArray.length; i++) { //increment category Array form 0 to Array length
         const category = categoriesArray[i]; //render category Array Index values for dropDown Menu
         const color = colorsArray[i]; //render color Array Index values for color circles
-        //render Category and Color Dots
         categoryList.innerHTML += `
         <div class="categoryAndColor" onclick="chooseCategory(${i}, '${category}', '${color}')" >
             <div>${category}</div>
@@ -57,18 +62,18 @@ function renderCategory() {
     }
 }
 
-/*set Category InputField to default as in beginning*/
+/**This function set Category InputField to default as in beginning with a placholder and a drop down Button*/
 function unsetCategoryInputField() {
     categoryInputContainer = document.getElementById('inputContainer');
     categoryInputContainer.innerHTML = `
     <input class="input" id="input" type="text" placeholder="Select task Category" required>
-        <div id="color" class="color"></div>
-        <div id="buttonDropDown" class="buttonOpenCloseCategory" onclick="dropDown()">
+    <div id="color" class="color"></div>
+    <div id="buttonDropDown" class="buttonOpenCloseCategory" onclick="dropDown()">
         <img src="assets/img/dropdown-arrow.png">
-        </div>`;
+    </div>`;
 }
 
-/* Show Category Select Menu - toggle at clicking on the dropdown Button */
+/**This function shows Category Select Menu - toggle at clicking on the dropdown Button */ 
 function dropDown() {
     categoryList = document.getElementById('categoryList');
     if (categoryList.style.display == "block") { //the Container for Category is open ?
@@ -79,7 +84,7 @@ function dropDown() {
     closeDropDownAssignTo(); //close the "Assigned to"-Container -> if "Category Select" is active
 }
 
-/**close the Category Select Menu*/
+/**This function closes the Category Select Menu*/
 function closeDropdownCategory() {
     var categoryList = document.getElementById('categoryList');
     categoryInputContainer = document.getElementById('inputContainer');
@@ -92,24 +97,24 @@ function closeDropdownCategory() {
         document.getElementById("input").disabled = false;
     }
 }
-/**show the Category Select Menu*/
+/**This function shows the Category Select Menu*/
 function showDropdownCategory() {
     if (j == false) {
         categoryList = document.getElementById('categoryList');
         categoryInputContainer = document.getElementById('inputContainer');
-        categoryList.style.display = "block"; //shows Container for Category to rendern
+        categoryList.style.display = "block"; //shows the list of the category
         categoryInputContainer.style.borderBottom = "none"; //Category Input Container has no border Bottom
-        /* top-left top-right bottom-right bottom-left */
-        categoryInputContainer.style.borderRadius = "10px 10px 0 0"; //Category Input Container show only top-left top-right Border radius
-        renderCategory(); //render Category in the Container
+        categoryInputContainer.style.borderRadius = "10px 10px 0 0"; //Category Input Container show only top-left top-right Borders
+        renderCategory(); //show Category list 
     }
 }
 
-/**choose one Category from the Category Select Menu via dropDown
- * parmeter: index = categoriesArray[index]
- * parmeter: category = categoriesArray Value via index
- * parmeter: color = background color of the colorsArray index
- * */
+/**
+ * This function choose one Category with it's color dot from the Category DropDown Menu
+ * @param {number} index - position of the Category in the Array
+ * @param {string} category - the name of the category
+ * @param {color-hex-string} color - background color hex. code
+ */
 function chooseCategory(index, category, color) {
     let input = document.getElementById('input');
     input.value = '';
@@ -124,7 +129,7 @@ function chooseCategory(index, category, color) {
     }
 }
 
-/** function for selected category Input is New Category */
+/** This function allows to insert in the category input field for new category input */
 function newCategoryInput() {
     closeDropdownCategory(); //dropDown Category Menu closed
     document.getElementById('input').placeholder = 'New Category Name'; //shows New Category Name in Category Input Field
@@ -136,15 +141,18 @@ function newCategoryInput() {
     j = true;
 }
 
-/**function for input new Category Color
-* parameter: color = string of colorhex value*/
+/**
+ *  This function gets the background color for the new category color dot
+*/
 var newCategoryColor;
 function newColor(color) {
     document.getElementById('color').style.background = color; //change the background after parameter color
     newCategoryColor = color; //save the color as a globale value
 }
 
-/*** by clicking check mark on Category Input the function addNewCategory() was called */
+/**
+ * The function allows to input new category name in the Category Array and input the color for the color Array
+ */
 function addNewCategory() {
     var newCategory = document.getElementById('input');
     categoriesArray.push(newCategory.value); //new Input value pushed in the Category Array
@@ -156,7 +164,7 @@ function addNewCategory() {
     j = false;
 }
 
-/*** by clicking cross mark on Category Input the function addNewCategory() was called*/
+/*** The function returns the Category Container to the default */
 function rejectNewCategory() {
     document.getElementById('buttonDropDown').style.display = "flex"; //shows Category DropDown Button
     document.getElementById('newCategoryInput').style.display = "none"; //hide newCategoryInput container -> hide "cross mark and check mark"
@@ -168,13 +176,15 @@ function rejectNewCategory() {
     j = false;
 }
 
-/*** AssignTo */
+/**
+ *  The function render the assigned user contacts
+ *  and allows to invite the new contact via email
+ * */
 async function renderAssignTo() { //function to render AssignTo
     await loadUserAccountsFromBackend(); //get Data of Users from Backend
     loadActiveUserLocal(); //get Data of Users from Backend
     let assignedContactList = document.getElementById('assignedList');  //container to render the list
     assignedContactList.innerHTML = ""; //clear container inside html
-    /**render the user contacts */
     for (let i = 0; i < userAccounts[activeUser]['userContacts'].length; i++) {
         userName = userAccounts[activeUser]['userContacts'][i]['name'];
         assignedContactList.innerHTML += /*html*/`
@@ -195,12 +205,14 @@ async function renderAssignTo() { //function to render AssignTo
         `;
 }
 
+/**
+ * This function allows user to choose the contact with the checkbox - the check marked contact is showing below in a cirle
+ * @param {string} name - the name of the contact which was selected from the userAccounts in the renderAssignTo() function 
+ */
 function chooseContact(name) { //index, contact
     let inputAssignedContact = document.getElementById('assignInput'); //get assign To Inputfield
-    //inputAssignedContact.value = ""; //clear assign to Input Field
     inputAssignedContact.value = name; //Assigned To field fill with the Contact names
     choseContacts.splice(0); //delete all chose Contacts from last time
-
     let allChekbox = document.querySelectorAll('.checkboxForContacts'); //check all checkboxes with the class '.checkboxForContacts'
     for (let i = 0; i < allChekbox.length; i++) {
         const checkbox = allChekbox[i];
@@ -212,6 +224,9 @@ function chooseContact(name) { //index, contact
     console.log('chosenContact', choseContacts);
 }
 
+/**
+ * This function render the check marked contacts
+ */
 async function renderAssignToCheckMarked() {
     await loadUserAccountsFromBackend(); //get Data of Users from Backend
     loadActiveUserLocal(); //get Data of Users from Backend
@@ -261,7 +276,7 @@ function dropDownAssignTo() {
     closeDropdownCategory();
 }
 
-/*** close the dropdown Select Menu*/
+/*** close the dropdown AssignTo Menu*/
 function closeDropDownAssignTo() {
     var assignedList = document.getElementById('assignedList'); //get the id of AssignedList container to render contact
     assignToInputContainer = document.getElementById('contactInputContainer');
@@ -271,7 +286,7 @@ function closeDropDownAssignTo() {
     document.getElementById('circleContactsContainer').style.display = "flex";
 }
 
-
+/*** open the dropdown AssignTo Menu*/
 function showDropDownAssignTo() {
     var assignedList = document.getElementById('assignedList'); //get the id of AssignedList container to render contact
     assignToInputContainer = document.getElementById('contactInputContainer');
@@ -392,6 +407,9 @@ function deleteSubTask() {
     renderSubtasks();
 }
 
+/**
+ * This function wait for the subTask input and render the SubTask one after one when the user insert subtask
+ */
 function addSubTask() {
     subtaskInput = document.getElementById('subtasksInput');
     addsubtask.style.display = "flex"; //show addsubTask button (+)
@@ -405,9 +423,9 @@ function addSubTask() {
 }
 
 
-
-function chooseSubtasks(id) { //index, contact
-    selectedSubtasks.splice(0); //delete all chose Contacts from last time
+/** This function insert the checked SubTask to the Array*/
+function chooseSubtasks() { //index, contact
+    selectedSubtasks.splice(0); //delete all subtask from last time
     let allChekbox = document.querySelectorAll(`.checkedSubTasks`); //check all checkboxes with the class `.checkedSubTasks`
     console.log(allChekbox.length);
     for (let i = 0; i < allChekbox.length; i++) {
@@ -419,7 +437,7 @@ function chooseSubtasks(id) { //index, contact
 }
 
 /**
- * This function shows all subTasks, which 
+ * This function tender all subTasks with their check boxes
  */
 function renderSubtasks() { //render SubTask at the bottom of the subTask Input filed
     appendixSubtask = document.getElementById('SubtaskAppendixContainer');
