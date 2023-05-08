@@ -126,7 +126,7 @@
         align-items: center;
         padding: 13px 21px;
         border-radius: 10px;
-        background: url(/assets/img/search-input.svg) no-repeat right top;
+        background: url(search.png) no-repeat right top;
         background-position: right center;
         background-position-x: 220px;
         width: 251px;
