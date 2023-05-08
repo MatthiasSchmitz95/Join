@@ -4,6 +4,10 @@ textarea {resize: none;}
 
 .d-none {display: none !important;}
 
+.noScrollSite{
+    overflow: hidden !important;
+}
+
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
