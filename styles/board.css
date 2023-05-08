@@ -27,7 +27,7 @@ h2 {
 .search-button {
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
+    align-items: center;
     padding: 0px;
     gap: 35px;
     width: 423px;

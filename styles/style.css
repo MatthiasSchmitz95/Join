@@ -221,6 +221,10 @@ h3 {
         
     }
 
+    .profile-container{
+        justify-content: flex-end;
+    }
+
     .profile-container img{
         display: none;
     }

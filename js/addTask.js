@@ -699,6 +699,7 @@ function closePopOutAddTask() {
     document.getElementById('popOut-taskCard').classList = "popOut-hidden";
     document.getElementById('bg').style.display = 'none';
     document.getElementById('bodyBoard').classList.remove('noScrollSite');
+    document.getElementById('kanban').classList.remove('kanban');
     document.getElementById('profile-container').classList.remove('profile-container-d-none');
 }
 
