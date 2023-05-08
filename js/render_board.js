@@ -9,7 +9,7 @@ function generateHTML1(cards) {
         ${cards['description']}
         </div>
         <div class="position-progress">
-         <div class="progress">
+         <div class="progress" id="progress${cards['id']}">
             <div id="progressBar${cards['id']}" class="progressBar">
             </div>`
 }

@@ -235,6 +235,9 @@ async function changeProgressbar(cards) {
     if (todo.subTask.length == 0) {
         contant.classList.add('d-none');
     }
+    if ( todo.subTask.length > 0) {
+        document.getElementById(`progress${cards}`).style.backgroundColor = "#F4F4F4";
+    }
 }
 
 
