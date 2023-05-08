@@ -418,8 +418,10 @@ function chooseSubtasks(id) { //index, contact
     }
 }
 
-/**render SubTask at the bottom of the subTask Input filed */
-function renderSubtasks() {
+/**
+ * This function shows all subTasks, which 
+ */
+function renderSubtasks() { //render SubTask at the bottom of the subTask Input filed
     appendixSubtask = document.getElementById('SubtaskAppendixContainer');
     appendixSubtask.innerHTML = "";
     for (let i = 0; i < subTasks.length; i++) {
@@ -434,8 +436,10 @@ function renderSubtasks() {
     }
 }
 
-/*** AddTask JSON Array* read every Input Fields and Buttons to get values*/
-async function addTask() {
+/**
+ * This function is used to create a (Project Management Task Object) which include the information of the title, description, due date, priority, the department, contact etc.
+ */
+async function addTask() { // AddTask JSON Array* read every Input Fields and Buttons to get values
     await loadUserAccountsFromBackend();
     tasks = userAccounts[activeUser].userTasks;
     title = document.getElementById('title');
@@ -517,9 +521,11 @@ function setAllFieldsToDefault() {
     deleteSubTask();
 }
 
-/**animation if the Task is created or added*/
+/**
+ * show the animation when the Task is created and direct to the board page
+ * while a task is being added to the board the addTask Button is disabled
+ * */
 function annimationTaskAddedToBoard() {
-    /**shows Task added to board Window with annimation*/
     document.getElementById('messageAddedTask').style.display = "flex";
     document.getElementById('messageAddedTask').classList.add('animate');
     setTimeout(function () {
@@ -527,26 +533,30 @@ function annimationTaskAddedToBoard() {
     }, 3900)
     document.getElementById('addTaskBtn').classList.add('buttonDisabled');
     setTimeout(function () {
-        document.getElementById('addTaskBtn').classList.add('buttonEnabled'); //during one Task added blocked the addTaskBtn
+        document.getElementById('addTaskBtn').classList.add('buttonEnabled'); 
     }, 4000)
     setTimeout(function () {
         window.location = "./board.html";
     }, 3600)
 }
 
-/**function to generate new Id if one Id contains in the Task*/
-function generateTaskId(tasks) {
+/**
+ * Function to generate new Id if one Id contains in the Task
+ * @param {JSON Array} tasks - it is an Id of (Project Management Task Object) which include the information of the title, description, due date, priority, the department etc.
+ * @returns {number} id
+ */
+function generateTaskId(tasks) { 
     var id = tasks.length;
     var idExists = true;
     while (idExists) {
-        for (var i = 0; i < tasks.length; i++) {// Überprüfe, ob die generierte ID bereits vorhanden ist
+        for (var i = 0; i < tasks.length; i++) {
             if (tasks[i].id === id) {
                 idExists = true;
                 break;
             } else {
                 idExists = false;
             }
-        } if (idExists) {// Wenn die ID bereits existiert, generiere eine neue ID
+        } if (idExists) {
             id++;
         }
     }
@@ -688,8 +698,9 @@ function showAddTaskPopOut() {
 function closePopOutAddTask() {
     document.getElementById('popOut-taskCard').classList = "popOut-hidden";
     document.getElementById('bg').style.display = 'none';
-    //document.getElementById('body').style = "overflow-y: auto;";
     document.getElementById('bodyBoard').classList.remove('noScrollSite');
+    document.getElementById('kanban').classList.remove('kanban');
+    document.getElementById('profile-container').classList.remove('profile-container-d-none');
 }
 
 function getUserColor(userIndex) {
