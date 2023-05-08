@@ -14,7 +14,6 @@ button{
     margin: 0;
     width: auto;
     height: auto;
-    overflow-y: scroll;
     overflow-x: hidden;
     background: #f6f7f8;
 }
@@ -29,7 +28,6 @@ textarea {resize: none;}
 
 .taskCard {
     box-sizing: border-box;
-    height: 1024px;
     width: auto;
     background: #f6f7f8;
     position: absolute;
@@ -43,7 +41,6 @@ textarea {resize: none;}
 }
 
 .headline {
-    width: 80vw;
     height: 78px;
     margin-top: 82px;
     margin-bottom: 41px;
@@ -121,7 +118,6 @@ textarea {resize: none;}
     width: 338px;
     box-sizing: border-box;
     height: 61px;
-    width: 80vw;
     display: flex;
     justify-content: flex-start;
     gap: 25px;
@@ -314,13 +310,6 @@ textarea {resize: none;}
     border: 1px solid #D1D1D1;
     border-radius: 10px;
     cursor: pointer;
-}
-/* Change auto chrome bg color to white*/
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-input:-webkit-autofill:active {
-    -webkit-box-shadow: 0 0 0 30px white inset !important;
 }
 
 .input {

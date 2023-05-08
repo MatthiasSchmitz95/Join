@@ -15,7 +15,7 @@ function onloadContact() {
     init('contacts');
     sortNames();
     sortLetters();
-    updateCalender('date');
+    //updateCalender('date');
 }
 
 /**
