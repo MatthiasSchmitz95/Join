@@ -6,6 +6,11 @@ let phone;
 let letters = [];
 let contactColor = randomUserColor();
 
+
+/**
+ * This function executes all necessary functions onload
+ * 
+ */
 function onloadContact() {
     init('contacts');
     sortNames();
@@ -13,6 +18,10 @@ function onloadContact() {
     updateCalender('date');
 }
 
+/**
+ * This function gets the initials from contacts,pushes them into an array
+ * 
+ */
 function getFrontLettersUser() {
     let userName = userAccounts[activeUser].userContacts;
     for (let i = 0; i < userName.length; i++) {
@@ -28,7 +37,10 @@ function getFrontLettersUser() {
 
 }
 
-
+/**
+ * This function renders and sorts the contacts alphabeticly
+ * 
+ */
 async function sortNames() {
     await loadUserAccountsFromBackend();
     loadActiveUserLocal();
@@ -54,7 +66,11 @@ async function sortNames() {
     }
 }
 
-
+/**
+ * This function gives a contact cirlce image a saved background color
+ * 
+ * @param {number} j - is the number that leads to the specific contact in the array
+ */
 function circleColor(j) {
     let color = userAccounts[activeUser].userContacts[j]['color'];
     document.getElementById('circle' + j).style.backgroundColor = color;
@@ -85,20 +101,32 @@ function showContact(j, bothLetters) {
     displayFloatContact();
 }
 
+/**
+ * This fucntion makes the contact details visable
+ * 
+ */
 function displayFloatContact() {
     document.getElementById('name-container').style.display = '';
     document.getElementById('contact-details').style.display = '';
 }
 
-
+/**
+ * This function lets you edit the contact
+ * 
+ * @param {number} j is the number that leads you to the right place in the array of contacts
+ */
 function editContactCard(j) {
-
     changeTemplate(j);
     setInputfields(j);
     changeProfileInitials(j);
     showCard();
 }
 
+/**
+ * This function changes the profile picture to the initials and the backgroundcolor
+ * 
+ * @param {number} j is the number that leads you to the right place in the array of contacts
+ */
 function changeProfileInitials(j) {
     let initials = userAccounts[activeUser]['userContacts'][j]['letters'];
     let color = userAccounts[activeUser]['userContacts'][j]['color'];
@@ -107,7 +135,11 @@ function changeProfileInitials(j) {
     document.getElementById('icon-container').style.backgroundColor = `${color}`;
 }
 
-
+/**
+ * This function lets you delete a contact
+ * 
+ * @param {number} j is the number that leads you to the right place in the array of contacts
+ */
 async function deleteContact(j) {
     letters = [];
     document.getElementById('floating-contact-container').style.display = 'none';
@@ -133,13 +165,20 @@ async function editContact(j) {
     successfulAnimation();
 }
 
-
+/**
+ * This function changes the alert text.
+ * 
+ * @param {*\string} text is changed text depending on what function was used
+ */
 function changeTextTo(text) {
     document.getElementById('success').innerHTML = `Contact succesfully ${text}`;
 
 }
 
-
+/**
+ * This function sorting letters and renders the initials
+ * 
+ */
 function sortLetters() {
     letters.sort();
     for (let i = 0; i < letters.length; i++) {
@@ -149,13 +188,19 @@ function sortLetters() {
     }
 }
 
-
+/**
+ * This function displays the add-contact-card
+ * 
+ */
 function showCard() {
     document.getElementById('bg').style.display = '';
     document.getElementById('contact-card').classList = 'add-contact-card';
 }
 
-
+/**
+ * This function hides the add-contact-card
+ * 
+ */
 function closeContactCard() {
     document.getElementById('contact-card').classList = 'hidden';
     document.getElementById('bg').style.display = 'none';
@@ -164,7 +209,10 @@ function closeContactCard() {
 
 }
 
-
+/**
+ * This function gets the input values
+ * 
+ */
 function getInputValues() {
     let contact_email = document.getElementById('contact-email');
     let contact_phone = document.getElementById('contact-phone');
@@ -185,7 +233,10 @@ function getInputValues() {
     }
 }
 
-
+/**
+ * This function creates a new contact by getting the values and pushing them into the Object
+ * 
+ */
 async function CreateNewContact() {
     await loadUserAccountsFromBackend();
     let userName = userAccounts[activeUser].userContacts;
@@ -201,14 +252,21 @@ async function CreateNewContact() {
     showContact(userName.length - 1, bothLetters);
 }
 
-
+/**
+ * This function resets the inputfields
+ * 
+ */
 function resetInputfields() {
     document.getElementById('contact-email').value = '';
     document.getElementById('contact-phone').value = '';
     document.getElementById('contact-name').value = '';
 }
 
-
+/**
+ * This function sets the inputfields to the fitting contact details
+ * 
+ * @param {number} j leads to the right contact in the array
+ */
 function setInputfields(j) {
     document.getElementById('contact-email').value = userAccounts[activeUser]['userContacts'][j]['email'];
     document.getElementById('contact-phone').value = userAccounts[activeUser]['userContacts'][j]['phone'];
@@ -231,23 +289,37 @@ function successfulAnimation() {
 
 }
 
-
+/**
+ * This function displays the addTask html template
+ * 
+ */
 function showAddTaskPopOut() {
     document.getElementById('popOut-taskCard').classList.remove('d-none');
 }
 
-
+/**
+ * This function hides the addTask html template
+ * 
+ */
 function closePopOutAddTask() {
     document.getElementById('popOut-taskCard').classList.add('d-none');
 }
 
+/**
+ * This function hides the right container
+ * 
+ */
 function backToContactList() {
     document.getElementById('right-container').classList.remove("display");
     document.getElementById('kanban').classList.remove("display");
    // document.getElementById('left-container').style.display = '';
 }
 
-
+/**
+ * This function changes the add-contact card to the edit contact card
+ * 
+ * @param {number} j is the number that leads to the specific position of the array
+ */
 function changeTemplate(j) {
     document.getElementById('card-header').innerHTML = '<h3>Edit contact</h3>';
     document.getElementById('btn-container').innerHTML = `                
@@ -259,7 +331,10 @@ function changeTemplate(j) {
 
 }
 
-
+/**
+ * This function changes the edit-contact card to back the add contact card
+ * 
+ */
 function changeTemplateBack() {
     document.getElementById('icon-container').innerHTML = '<img src="assets/img/add-contact-profile.png">';
     document.getElementById('card-header').innerHTML = `<h3>Add contact</h3>
@@ -273,7 +348,15 @@ function changeTemplateBack() {
 
 }
 
-
+/**
+ * This function renders the namecards in the contactlist
+ * 
+ * @param {number} i is the id number of the contact-card
+ * @param {string} name is the name of the contact
+ * @param {email} email is the email of the contact
+ * @param {number} j is the number that leads to the specific position of the array
+ * @param {string} bothLetters are the initial of the contact
+ */
 function templateNameCard(i, name, email, j, bothLetters) {
     document.getElementById('contact-cards' + i).innerHTML += `
     <div class="name-card" id=name-card${j} onclick="showContact(${j},'${bothLetters}')">
@@ -285,7 +368,12 @@ function templateNameCard(i, name, email, j, bothLetters) {
     </div>`;
 }
 
-
+/**
+ * This function renders the contactlist-cards-box
+ * 
+ * @param {string} letter is the alphabetic character
+ * @param {number} i is the id number of the contact-card
+ */
 function templateLetter(letter, i) {
     document.getElementById('contact-container').innerHTML +=
         `<div class="contact-list">
