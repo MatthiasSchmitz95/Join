@@ -237,7 +237,6 @@ function chooseContact(name) {
         }
         displayChosenContactsForTask();
     }
-    console.log('chosenContact', choseContacts);
 }
 
 /**
@@ -459,7 +458,6 @@ function addSubTask() {
 function chooseSubtasks() {
     selectedSubtasks.splice(0);
     let allChekbox = document.querySelectorAll(`.checkedSubTasks`);
-    console.log(allChekbox.length);
     for (let i = 0; i < allChekbox.length; i++) {
         const checkbox = allChekbox[i];
         if (checkbox.checked) {
@@ -518,7 +516,6 @@ async function addTask() {
         "progress": progress
     };
     tasks.push(newTask);
-    console.log(newTask);
     await saveTasksToBackend();
     await saveUserAccountsToBackend();
     annimationTaskAddedToBoard();
@@ -767,7 +764,6 @@ function closePopOutAddTask() {
  */
 function getUserColor(userIndex) {
     const colorUser = userAccounts[activeUser]['userContacts'][userIndex]['color'];
-    console.log(colorUser);
     return colorUser;
 }
 
