@@ -378,7 +378,7 @@
 
 }
 
-@media(max-height:800px) {
+@media(max-height:880px) {
     .responsive-buttons {
         margin-top: -110px;
     }
@@ -386,4 +386,57 @@
     .right-container {
         margin-bottom: 0px;
     }
+}
+
+@media(max-height:700px) {
+    .responsive-buttons {
+        margin-top: -161px;
+    }
+
+}
+
+
+@media(max-width:300px) {
+.name-card{
+    justify-content: flex-start;
+}
+
+    .circle{
+    margin: 0px;
+    margin-left: 5px;
+}
+
+.info{
+    margin: 0px;
+    margin-left: 5px;
+}
+
+#kanban-contact{
+    left:10px;
+}
+
+.html-topic{
+    padding-left: 10px;
+}
+
+.floating-contact-container{
+    padding-left: 10px;
+}
+
+.responsive-buttons {
+    margin-top: -182px;
+}
+
+#float-contact-name {
+    font-size: 19px;
+}
+
+.contact-details p {
+    margin: 0px;
+    margin-bottom: 80px;
+}
+.right-container {
+    padding-bottom: 80px;
+}
+
 }
