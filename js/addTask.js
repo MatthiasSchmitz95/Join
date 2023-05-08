@@ -690,6 +690,7 @@ function closePopOutAddTask() {
     document.getElementById('bg').style.display = 'none';
     //document.getElementById('body').style = "overflow-y: auto;";
     document.getElementById('bodyBoard').classList.remove('noScrollSite');
+    document.getElementById('kanban').classList.remove('kanban');
 }
 
 function getUserColor(userIndex) {
