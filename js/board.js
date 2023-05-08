@@ -14,8 +14,10 @@ function onloadBoard() {
     loadActiveUserLocal();
 
 }
-
-// updates the HTML content by loading tasks and user accounts from a backend, emptying arrays, and rendering task cards according to their progress status.
+/**
+ * updates the HTML content by loading tasks and user accounts from a backend, emptying arrays, and rendering task cards according to their progress status.
+ * 
+ */
 async function updateHTML() {
     await loadTasksFromBackend();
     await loadUserAccountsFromBackend();
@@ -32,7 +34,13 @@ async function updateHTML() {
     } updateHTMLNon();
 }
 
-// updates the HTML content for each category
+
+/**
+ * updates the HTML content for each category
+ * 
+ * @param {object} cards 
+ * @param {object} userTasks 
+ */
 function renderHTML(cards, userTasks) {
     updateHTMLToDo(cards, userTasks);
     updateHTMLInProgress(cards, userTasks);
@@ -40,7 +48,11 @@ function renderHTML(cards, userTasks) {
     updateHTMLDone(cards, userTasks);
 }
 
-//emptying arrays
+
+/**
+ * emptying arrays
+ * 
+ */
 function emptyArrays(){
     toDoCount = [];
     inProgressCount = [];
@@ -48,7 +60,11 @@ function emptyArrays(){
     doneCount = [];
 }
 
-// render the HTML content for each category if non tasks in category
+
+/**
+ * render the HTML content for each category if non tasks in category
+ * 
+ */
 function updateHTMLNon(){
     if (toDoCount.length == 0) {
         document.getElementById('toDoContent').innerHTML = `<div class="no-cards"> No Task in To Do </div>`;
@@ -64,7 +80,13 @@ function updateHTMLNon(){
     }
 }
 
-//  render the HTML content for To Do
+// 
+/**
+ *  Render the HTML content for To Do
+ * 
+ * @param {object} cards 
+ * @param {object} userTasks 
+ */
 function updateHTMLToDo(cards, userTasks) {
     if (cards == 'To Do') {
         document.getElementById('toDoContent').innerHTML += generateHTML1(userTasks) + generateHTML2(userTasks), loadForUpdateHTML(userTasks);
@@ -72,7 +94,13 @@ function updateHTMLToDo(cards, userTasks) {
     }
 }
 
-//  render the HTML content for In progress
+
+/**
+ *  Render the HTML content for In progress
+ * 
+ * @param {object} cards 
+ * @param {object} userTasks 
+ */
 function updateHTMLInProgress(cards, userTasks) {
     if (cards == 'In progress') {
         document.getElementById('inProgressContent').innerHTML += generateHTML1(userTasks) + generateHTML2(userTasks), loadForUpdateHTML(userTasks);
@@ -80,7 +108,13 @@ function updateHTMLInProgress(cards, userTasks) {
     }
 }
 
-//  render the HTML content for Awaiting Feedback
+  
+/**
+ *  Render the HTML content for Awaiting Feedback
+ * 
+ * @param {object} cards 
+ * @param {object} userTasks 
+ */
 function updateHTMLAwaitingFeedback(cards, userTasks) {
     if (cards == 'Awaiting Feedback') {
         document.getElementById('awaitingFeedbackContent').innerHTML += generateHTML1(userTasks) + generateHTML2(userTasks), loadForUpdateHTML(userTasks);
@@ -88,7 +122,13 @@ function updateHTMLAwaitingFeedback(cards, userTasks) {
     }
 }
 
-//  render the HTML content for Done
+
+/**
+ *  Render the HTML content for Done
+ * 
+ * @param {object} cards 
+ * @param {object} userTasks 
+ */
 function updateHTMLDone(cards, userTasks) {
     if (cards == 'Done') {
         document.getElementById('doneContent').innerHTML += generateHTML1(userTasks) + generateHTML2(userTasks), loadForUpdateHTML(userTasks);
@@ -96,7 +136,13 @@ function updateHTMLDone(cards, userTasks) {
     }
 }
 
-// load all informatoins for tasks
+
+// 
+/**
+ * Load all informatoins for tasks
+ * 
+ * @param {object} userTasks 
+ */
 async function loadForUpdateHTML(userTasks) {
     priorityImgCard(userTasks);
     changeBackgroundColor(userTasks);
@@ -104,7 +150,12 @@ async function loadForUpdateHTML(userTasks) {
     changeProgressbar(userTasks['id']);
 }
 
-// Select all informatoins for userinitiales
+
+/**
+ * Select all informatoins for userinitiales
+ * 
+ * @param {object} cards 
+ */
 async function SelectForRenderUserInitiales(cards) {
     const { id, contact } = cards;
     const contactElem = document.getElementById(`userInitiales${id}`);
@@ -113,7 +164,15 @@ async function SelectForRenderUserInitiales(cards) {
     renderUserInitiales(id, contact, contactElem, user)
 }
 
-// Render contactsletter on cards (tasks)
+
+/**
+ * Render contactsletter on cards (tasks)
+ * 
+ * @param {number} id 
+ * @param {object} contact 
+ * @param {string} contactElem 
+ * @param {object} user 
+ */
 function renderUserInitiales(id, contact, contactElem, user) {
     const userWithContacts = user.filter(({ name }) => contact.includes(name));
     const userContactsLength = userWithContacts.length;
@@ -130,20 +189,36 @@ function renderUserInitiales(id, contact, contactElem, user) {
     }
 }
 
-// Change Backgroundcolor from letters
+
+/**
+ * Change Backgroundcolor from letters
+ * 
+ * @param {string} id 
+ * @param {string} color 
+ */
 function changeBackgroundCircle(id, color) {
     const backgroundCircle = document.getElementById(id);
     backgroundCircle.style.backgroundColor = color;
 }
 
-// Change Backgroundcolor from headline
+
+/**
+ * Change Backgroundcolor from headline
+ * 
+ * @param {object} cards 
+ */
 function changeBackgroundColor(cards) {
     let background = document.getElementById(`backgroundColor${cards['id']}`);
     let color = cards['categoryColor'];
     background.style.backgroundColor = `${color}`;
 }
 
-// Show the priority for cards
+
+/**
+ * Show the priority for cards
+ * 
+ * @param {object} cards 
+ */
 function priorityImgCard(cards) {
     let prio = document.getElementById(`priorityImage${cards['id']}`);
     let card = cards['priority'];
@@ -156,19 +231,34 @@ function priorityImgCard(cards) {
     }
 }
 
-// Start drag and drop
+
+/**
+ * Start drag and drop
+ * 
+ * @param {number} id 
+ */
 function startDragging(id) {
     currentDraggedElement = id;
     document.getElementById('bodyBoard').style.backgroundColor = 'rgb(0,0,0,0.1)';
     document.getElementById(`dragMe${id}`).classList.add('dragging');
 }
 
-// Allow drag and drop
+
+/**
+ * Allow drag and drop
+ * 
+ * @param {function} ev 
+ */
 function allowDrop(ev) {
     ev.preventDefault();
 }
 
-// Save the new catergorry and update HTML
+
+/**
+ * Save the new catergorry and update HTML
+ * 
+ * @param {string} category 
+ */
 async function moveTo(category) {
     let user = userAccounts[activeUser]['userTasks'];
     let todo = user.find((item) => item.id === currentDraggedElement);
@@ -179,7 +269,12 @@ async function moveTo(category) {
     updateHTML();
 }
 
-// Show overlay for more informations
+
+/**
+ * Show overlay for more informations
+ * 
+ * @param {number} cards 
+ */
 function showOverlay(cards) {
     calcScrollTo();
     document.getElementById('bodyBoard').classList.add('noscroll');
@@ -195,7 +290,11 @@ function showOverlay(cards) {
     changeBackgroundOverlay(todo)
 }
 
-// window height is automatically by 0
+
+/**
+ * window height is automatically by 0
+ * 
+ */
 function calcScrollTo() {
     window.scrollTo({
         top: 0,
@@ -203,14 +302,24 @@ function calcScrollTo() {
     });
 }
 
-// Change Background from headline
+
+/**
+ * Change Background from headline
+ * 
+ * @param {object} cards 
+ */
 function changeBackgroundOverlay(cards) {
     let background = document.getElementById(`overlayDepartment${cards['id']}`);
     let color = cards['categoryColor'];
     background.style.backgroundColor = `${color}`;
 }
 
-// selectet informations for generateAssignedToHTML() and  changeBackgroundCircleOverlay()
+
+/**
+ * selectet informations for generateAssignedToHTML() and  changeBackgroundCircleOverlay()
+ * 
+ * @param {object} todo 
+ */
 function generateAssignedTo(todo) {
     let contacts = document.getElementById('assignedTo');
     let user = userAccounts[activeUser]['userContacts'];
@@ -227,14 +336,25 @@ function generateAssignedTo(todo) {
     }
 }
 
-// Change Backgroundcolor from letters
+
+/**
+ * Change Backgroundcolor from letters
+ * 
+ * @param {object} users 
+ * @param {number} j 
+ */
 function changeBackgroundCircleOverlay(users, j) {
     let background = document.getElementById(`changeCircleOverlay${j}`);
     let color = users['color'];
     background.style.background = `${color}`;
 }
 
-// Show overlay for change informations
+
+/**
+ * Show overlay for change informations
+ * 
+ * @param {number} cards 
+ */
 async function showOverlayChange(cards) {
     let user = userAccounts[activeUser]['userTasks'];
     let todo = user.find((item) => item.id === cards);
@@ -249,7 +369,14 @@ async function showOverlayChange(cards) {
     document.getElementById('kanban').classList.add('display-none');
 }
 
-// render showOverlayChangeHTML
+
+/**
+ *  Render showOverlayChangeHTML
+ * 
+ * @param {object} todo 
+ * @param {number} cards 
+ * @returns 
+ */
 function showOverlayChangeHTML(todo, cards) {
     return showOverlayChangeHTML1(todo)+
     showOverlayChangeHTML2(todo)+
@@ -257,131 +384,15 @@ function showOverlayChangeHTML(todo, cards) {
     showOverlayChangeHTML4(cards);
 }
 
-// Style textarea
+
+/**
+ * Style textarea
+ * 
+ * @param {string} element 
+ */
 function textAreaAdjust(element) {
     element.style.height = "1px";
     element.style.height = (25 + element.scrollHeight) + "px";
 }
 
-// Close Overlay
-function closeOverlay() {
-    if (loadOverlay) {
-        let overlay = document.getElementById('overlay');
-        overlay.classList.add('d-none');
-        document.getElementById('overlay-background').classList.remove('overlay-background');
-        document.getElementById('bodyBoard').classList.remove('noscroll');
-        document.getElementById('kanban').classList.remove('display-none');
-    }
-}
 
-// Overlay should not be closed 
-function doNotClose(event) {
-    event.stopPropagation();
-}
-
-// Show urgent button
-function insertUrgent() {
-    document.getElementById('prioUrgentBox').classList.toggle('bgUrgent');
-    document.getElementById('prioMediumBox').classList.remove('bgMedium');
-    document.getElementById('prioLowBox').classList.remove('bgLow');
-    /*img-color*/
-    document.getElementById('prioUrgentImg').classList.add('whitecolor');
-    document.getElementById('prioMediumImg').classList.remove('whitecolor');
-    document.getElementById('prioLowImg').classList.remove('whitecolor');
-}
-
-// Show medium button
-function insertMedium() {
-    document.getElementById('prioMediumBox').classList.toggle('bgMedium');
-    document.getElementById('prioLowBox').classList.remove('bgLow');
-    document.getElementById('prioUrgentBox').classList.remove('bgUrgent');
-    /*img-color*/
-    document.getElementById('prioMediumImg').classList.add('whitecolor');
-    document.getElementById('prioUrgentImg').classList.remove('whitecolor');
-    document.getElementById('prioLowImg').classList.remove('whitecolor');
-}
-
-// Show low button
-function insertLow() {
-    document.getElementById('prioLowBox').classList.toggle('bgLow');
-    document.getElementById('prioUrgentBox').classList.remove('bgUrgent');
-    document.getElementById('prioMediumBox').classList.remove('bgMedium');
-    /*img-color*/
-    document.getElementById('prioLowImg').classList.add('whitecolor');
-    document.getElementById('prioUrgentImg').classList.remove('whitecolor');
-    document.getElementById('prioMediumImg').classList.remove('whitecolor');
-}
-
-// reads the priortiy and show the right button
-function insertPriority(cards) {
-    let user = userAccounts[activeUser]['userTasks'];
-    let todo = user.find((item) => item.id === cards);
-    if (todo.priority == 'Urgent') {
-        insertUrgent()
-    } else if (todo.priority == 'Medium') {
-        insertMedium()
-    } else {
-        insertLow()
-    }
-}
-
-// Textarea is not possible to move with the mouse
-function chanceTextarea(cards) {
-    document.addEventListener("DOMContentLoaded", function () {
-        var textarea = document.getElementById(`inputDescription${cards}`);
-        var placeholder = textarea.getAttribute("placeholder");
-        var numLines = (placeholder.match(/\n/g) || []).length + 1;
-        textarea.setAttribute("rows", numLines);
-    });
-}
-
-// show the container for contacts to assign 
-function dropDownAssignToBoard(cards) {
-    let assignedList = document.getElementById('assignedList');
-    let assignToInputContainer = document.getElementById('contactInputContainer'); 
-    if (assignedList.style.display == "block") { 
-        assignedList.style.display = "none"; 
-        assignToInputContainer.style.border = "1px solid #D1D1D1"; 
-        assignToInputContainer.style.borderRadius = "10px"; 
-    } else { 
-        assignedList.style.display = "block";   
-        assignToInputContainer.style.borderBottom = "none"; 
-        assignToInputContainer.style.borderRadius = "10px 10px 0 0"; 
-        renderAssignToBoard(cards); 
-    }
-    closeDropdownCategoryBoard();
-}
-
-// Shows the contacts that are assign to the task
-function renderContactsOverlayChange(cards) {
-    let contant = document.getElementById('contactOverlayChange');
-    contant.innerHTML = '';
-    const { id, contact } = cards;
-    const user = userAccounts[activeUser].userContacts;
-    if (choosedContact.length == 0) {
-        renderContactsWithContacts(id, contact, contant, user);
-    }
-    if (choosedContact.length >= 1) {
-        renderContactsChoosedContacts(id, contact, contant, user);
-    }
-}
-
-// render contacts and checkboxes
-function renderContactsChoosedContacts(id, contact, contant, user) {
-    const userWithContacts = user.filter(({ name }) => choosedContact.includes(name));
-    userWithContacts.forEach((user, index) => {
-        const idStr = id.toString() + index.toString();
-        contant.innerHTML += renderContactsOverlayChangeHTML(idStr, user);
-        changeBackgroundCircle(`round${idStr}`, user.color);
-    })
-}
-
-// render contacts and checkboxes
-function renderContactsWithContacts(id, contact, contant, user) {
-    const userWithContacts = user.filter(({ name }) => contact.includes(name));
-    userWithContacts.forEach((user, index) => {
-        const idStr = id.toString() + index.toString();
-        contant.innerHTML += renderContactsOverlayChangeHTML(idStr, user);
-        changeBackgroundCircle(`round${idStr}`, user.color);
-    })
-}

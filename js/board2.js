@@ -1,5 +1,7 @@
-
-// Close the dropdown container from category
+ /**
+ * Close the dropdown container from category
+ * 
+ */
 function closeDropdownCategoryBoard() {
     let categoryInputContainer = document.getElementById('inputContainer'); 
     let categoryList = document.getElementById('categoryList');
@@ -8,7 +10,12 @@ function closeDropdownCategoryBoard() {
     categoryInputContainer.style.borderRadius = "10px";
 }
 
-// Selected variable for renderAssignToBoardContacts()
+
+/**
+ * Selected variable for renderAssignToBoardContacts()
+ * 
+ * @param {number} cards 
+ */
 async function renderAssignToBoard(cards) {
     let user = userAccounts[activeUser]['userTasks'];
     let todo = user.find((item) => item.id === cards);
@@ -18,7 +25,14 @@ async function renderAssignToBoard(cards) {
     renderAssignToBoardContacts(users, assignedContactList, todo)
 }
 
-// Show all Contacts includes with checkboxes
+
+/**
+ * Show all Contacts includes with checkboxes
+ * 
+ * @param {string} users 
+ * @param {string} assignedContactList 
+ * @param {object} todo 
+ */
 function renderAssignToBoardContacts(users, assignedContactList, todo) {
     for (let i = 0; i < users.length; i++) {
         let userName = users[i]['name'];
@@ -29,7 +43,13 @@ function renderAssignToBoardContacts(users, assignedContactList, todo) {
     }
 }
 
-// Select all chosed Contacts and push them into checkbox
+
+/**
+ * Select all chosed Contacts and push them into checkbox
+ * 
+ * @param {string} name 
+ * @param {number} cards 
+ */
 function chooseContactBoard(name, cards) {
     let user = userAccounts[activeUser]['userTasks'];
     let todo = user.find((item) => item.id === cards);
@@ -47,7 +67,12 @@ function chooseContactBoard(name, cards) {
     }
 }
 
-// Save all changes to backend
+
+/**
+ * Save all changes to backend
+ * 
+ * @param {number} cards 
+ */
 async function saveInputTask(cards) {
     let user = userAccounts[activeUser]['userTasks'];
     let todo = user.find((item) => item.id === cards);
@@ -63,7 +88,12 @@ async function saveInputTask(cards) {
     await saveAndNewRender(cards)
 }
 
-// show Overlay and update HTML
+ 
+/**
+ * Show Overlay and update HTML
+ * 
+ * @param {number} cards 
+ */
 async function saveAndNewRender(cards) {
     await saveTasksToBackend()
     await saveUserAccountsToBackend();
@@ -71,7 +101,12 @@ async function saveAndNewRender(cards) {
     showOverlay(cards)
 }
 
-// checkes if title new
+
+/**
+ * checkes if title new
+ * 
+ * @param {object} todo 
+ */
 function newTitleSave(todo) {
     let newTitle = document.getElementById('inputTittle').value;
     if (newTitle == '') {
@@ -80,7 +115,12 @@ function newTitleSave(todo) {
     todo.title = newTitle;
 }
 
-// save choosedConatact for render and save contacts to task
+// 
+/**
+ * Save choosedConatact for render and save contacts to task
+ * 
+ * @param {object} todo 
+ */
 function contactChoosed(todo) {
     if (choosedContact.length === 0) {
         for (let i = 0; i < todo['contact'].length; i++) {
@@ -93,7 +133,12 @@ function contactChoosed(todo) {
     }
 }
 
-// Show the priority 
+
+/**
+ * Show the priority 
+ * 
+ * @returns 
+ */
 function getPriority() {
     let priority;
     let priorityImg;
@@ -110,19 +155,36 @@ function getPriority() {
     return { priority, priorityImg };
 }
 
-// change the priority 
+
+/**
+ *  Change the priority 
+ * 
+ * @param {object} todo 
+ * @param {string} priority 
+ * @param {string} priorityImg 
+ */
 function setPriority(todo, priority, priorityImg) {
     todo.priority = priority;
     todo.priorityImg = priorityImg;
 }
 
-// Save the priority 
+
+/**
+ * Save the priority
+ * 
+ * @param {object} todo 
+ */ 
 function prioritySave(todo) {
     const { priority, priorityImg } = getPriority();
     setPriority(todo, priority, priorityImg);
 }
 
-// Selected if Subtask is done
+
+/**
+ * Selected if Subtask is done
+ * 
+ * @param {object} todo 
+ */
 async function chooseSubtasksBoard(todo) {
     todo.subTaskDone = [];
     let allChekbox = document.querySelectorAll(`.checkedSubTasks`);
@@ -136,7 +198,12 @@ async function chooseSubtasksBoard(todo) {
     await saveUserAccountsToBackend();
 }
 
-// render Subtasks
+// 
+/**
+ * Render subtasks
+ * 
+ * @param {number} cards 
+ */
 function renderSubtasksBoard(cards) {
     let user = userAccounts[activeUser]['userTasks'];
     let todo = user.find((item) => item.id === cards);
@@ -151,7 +218,12 @@ function renderSubtasksBoard(cards) {
     }
 }
 
-// Render the progressbar (cards)
+
+/**
+ * Render the progressbar (cards)
+ * 
+ * @param {number} cards 
+ */
 async function changeProgressbar(cards) {
     const progress = document.getElementById(`progressBar${cards}`);
     const contant = document.getElementById(`countDone${cards}`);
@@ -165,7 +237,11 @@ async function changeProgressbar(cards) {
     }
 }
 
-// Select witch searchinput and checked if its includes
+
+/**
+ * Select witch searchinput and checked if its includes
+ * 
+ */
 function filterHtml() {
     if (window.innerWidth <= 640) {
         var search = document.getElementById('searchSmall').value;
@@ -182,7 +258,13 @@ function filterHtml() {
         } }
 }
 
-// Render all cards where Search includes title
+
+/**
+ * Render all cards where Search includes title
+ * 
+ * @param {string} search 
+ * @param {number} j 
+ */
 async function renderfilter(search, j) {
     await loadTasksFromBackend();
     await loadUserAccountsFromBackend();
@@ -198,7 +280,14 @@ async function renderfilter(search, j) {
     }
 }
 
-// Render search HTML
+
+/**
+ * Render search HTML
+ * 
+ * @param {object} userTasks 
+ * @param {string} search 
+ * @param {string} cards 
+ */
 function renderFilterHtml(userTasks, search, cards) {
     renderFilterHtmlToDo(userTasks, search, cards);
     renderFilterHtmlInProgress(userTasks, search, cards);
@@ -206,35 +295,68 @@ function renderFilterHtml(userTasks, search, cards) {
     renderFilterHtmlDone(userTasks, search, cards);
 }
 
-// Render search HTML To Do
+
+/**
+ * Render search HTML To Do
+ * 
+ * @param {object} userTasks 
+ * @param {string} search 
+ * @param {string} cards 
+ */
 function renderFilterHtmlToDo(userTasks, search, cards) {
     if (cards == 'To Do' && userTasks['title'].toLowerCase().includes(search)) {
         document.getElementById('toDoContent').innerHTML += generateHTML1(userTasks) + generateHTML2(userTasks), loadForUpdateHTML(userTasks);
     }
 }
 
-// Render search HTML in progress
+
+/**
+ * Render search HTML in progress
+ * 
+ * @param {object} userTasks 
+ * @param {string} search 
+ * @param {string} cards 
+ */
 function renderFilterHtmlInProgress(userTasks, search, cards) {
     if (cards == 'In progress' && userTasks['title'].toLowerCase().includes(search)) {
         document.getElementById('inProgressContent').innerHTML += generateHTML1(userTasks) + generateHTML2(userTasks), loadForUpdateHTML(userTasks);
     }
 }
 
-// Render search HTML Awaiting Feedback
+
+/**
+ * Render search HTML Awaiting Feedback
+ * 
+ * @param {object} userTasks 
+ * @param {string} search 
+ * @param {string} cards 
+ */
 function renderFilterHtmlAwaitingFeedback(userTasks, search, cards) {
     if (cards == 'Awaiting Feedback' && userTasks['title'].toLowerCase().includes(search)) {
         document.getElementById('awaitingFeedbackContent').innerHTML += generateHTML1(userTasks) + generateHTML2(userTasks), loadForUpdateHTML(userTasks);
     }
 }
 
-// Render search HTML Done
+
+/**
+ * Render search HTML Done
+ * 
+ * @param {object} userTasks 
+ * @param {string} search 
+ * @param {string} cards 
+ */
 function renderFilterHtmlDone(userTasks, search, cards) {
     if (cards == 'Done' && userTasks['title'].toLowerCase().includes(search)) {
         document.getElementById('doneContent').innerHTML += generateHTML1(userTasks) + generateHTML2(userTasks), loadForUpdateHTML(userTasks);
     }
 }
 
-// delete a task from backend and update HTML
+
+/**
+ * Delete a task from backend and update HTML
+ * 
+ * @param {number} number 
+ */
 async function deleteTaskActiveUser(number) {
     let user = userAccounts[activeUser]['userTasks'];
     for (let i = 0; i < user.length; i++) {
