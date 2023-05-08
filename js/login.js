@@ -25,17 +25,17 @@ function login() {
      window.location.href = './summary.html'; 
     }
     else{
-      console.log('the password is incorrect, please try again')
+      //console.log('the password is incorrect, please try again')
     }
   } else {
-    console.log('the email is wrong, please try again')
+    //console.log('the email is wrong, please try again')
   }
 }
 
 function saveActiveUserLocal(user) {
   let activeUser = user.userId;
   localStorage.setItem("activeUser", activeUser);
-  console.log(activeUser);
+  //console.log(activeUser);
 }
 
 function guestLogin(){
@@ -51,7 +51,7 @@ function sendMeMail(){
   if(user){
     renderResetYourPassword(user.userId);
   } else{
-    console.log('This Email is not signed up yet')
+    //console.log('This Email is not signed up yet')
   }
   
 }
@@ -60,12 +60,12 @@ async function changePassword(user){
   let newPassword = document.getElementById('new-password-input').value;
   let confirmPassword = document.getElementById('confirm-password-input').value;
   if(newPassword == confirmPassword){
-    console.log('Password changed')
+    //console.log('Password changed')
     userAccounts[user].userPassword = newPassword;
     await saveUserAccountsToBackend();
 
     setTimeout(backToLogin, 2000);
   } else {
-    console.log('Make sure the second password you typed matches the first')
+    //console.log('Make sure the second password you typed matches the first')
   }
 }

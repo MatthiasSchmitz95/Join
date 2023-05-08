@@ -88,7 +88,7 @@ function sortDates() {
 function getTime() {
     const date = new Date();
     let t = date.getHours();
-    console.log(t);
+    //console.log(t);
     if (t > 4.59 && t < 12) {
         document.getElementById('greeting').innerHTML = 'Good morning,';
     }

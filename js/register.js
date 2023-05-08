@@ -7,7 +7,7 @@ async function signUpUser() {
   let userColor = randomUserColor();
   let splitName = name.split(" ");
   if (splitName.length !== 2) {
-    console.log("Please enter your first and last name");
+    //console.log("Please enter your first and last name");
   } else {
     for (let i = 0; i < splitName.length; i++) {
       let namePart = splitName[i];
