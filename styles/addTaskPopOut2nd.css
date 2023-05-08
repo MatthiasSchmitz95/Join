@@ -240,8 +240,9 @@ input[type=date]:invalid::-webkit-datetime-edit {color: #D1D1D1;}
 
 .messageAddedTask {
     position: absolute;
-    left: 450px;
-    bottom: 74px;
+    left: 50%;
+    bottom: 20%;
+    transform: translate(-50%, -50%);
     background-color: #2A3647;
     width: 326px;
     height: 74px;
@@ -391,3 +392,13 @@ input[type=date]:invalid::-webkit-datetime-edit {color: #D1D1D1;}
 .animate {animation: 4s fadeOut ease-in-out;}
 .buttonDisabled {pointer-events: none;}
 .buttonEnabled {pointer-events: auto;}
+
+#bg {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.5);
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    left: 0px;
+    z-index: 13;
+}

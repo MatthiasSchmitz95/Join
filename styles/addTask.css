@@ -3,6 +3,11 @@ body {
     background: #f6f7f8;
     overflow-y: scroll !important;
     overflow-x: hidden;
+    position: relative;
+}
+
+button{
+    cursor: pointer;
 }
 
 .frame0 {
@@ -34,6 +39,7 @@ textarea {resize: none;}
     margin-top: 89px;
     display: flex;
     flex-direction: column;
+    /*position: relative;*/
 }
 
 .headline {

@@ -233,16 +233,15 @@ input[type=date]:invalid::-webkit-datetime-edit {
 
 .messageAddedTask {
     position: absolute;
-    left: 50%;
-    bottom: 74px;
     background-color: #2A3647;
     width: 326px;
     height: 74px;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
     border-radius: 20px;
     position: absolute;
-    top: 700px;
-    left: 470px;
+    left: 50%;
+    bottom: 20%;
+    transform: translate(-50%, -50%);
     display: flex;
     flex-direction: row;
     justify-content: center;

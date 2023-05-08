@@ -747,6 +747,7 @@ function showAddTaskPopOut() {
     document.getElementById('kanban').classList.add('kanban');
     document.getElementById('profile-container').classList.add('profile-container-d-none');
     document.getElementById('bodyBoard').classList.add('noScrollSite');
+    document.getElementById('bg').style.display = '';
 }
 
 /**hide AddTaskPopOut.html*/
