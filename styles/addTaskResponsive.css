@@ -64,6 +64,7 @@
 @media(max-width:1100px) {
     .taskCard {
         width: 100%;
+        position: absolute;
     }
 
     .contentContainer {

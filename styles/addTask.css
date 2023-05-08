@@ -39,7 +39,7 @@ textarea {resize: none;}
     margin-top: 89px;
     display: flex;
     flex-direction: column;
-    /*position: relative;*/
+    position: relative;
 }
 
 .headline {
