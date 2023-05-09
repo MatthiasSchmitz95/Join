@@ -26,8 +26,10 @@ function showLogOut(){
 
   if (window.innerWidth <801) {
     document.getElementById('help').style.display = '';
+    document.getElementById('legal-notice-').style.display = '';
     setTimeout(() => {
-      document.getElementById('help').style.display = 'none';;
+      document.getElementById('help').style.display = 'none';
+      document.getElementById('legal-notice-').style.display = 'none';
   }
       , 3000);
     
