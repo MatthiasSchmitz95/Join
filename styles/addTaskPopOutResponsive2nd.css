@@ -421,4 +421,14 @@
 .popOut-taskCard {
     padding-left: 0px !important;
 }
+
+.messageAddedTask {
+    width: 264px;
+    height: 65px;
+}
+
+.messageAddedTask p {
+    width: 220px;
+    font-size: 21px;
+}
 }

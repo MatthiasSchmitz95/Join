@@ -12,14 +12,13 @@
     }
 
     .buttonsContainer {
-        width: auto;
         margin-left: 852px;
     }
 
     .clearButton {
         position: absolute;
         left: 920px;
-        top: 889px;
+        top: 848px;
     }
 
     .midLine {
@@ -50,14 +49,13 @@
     }
 
     .buttonsContainer {
-        width: auto;
         margin-left: 710px;
     }
 
     .clearButton {
         position: absolute;
         left: 775px;
-        top: 889px;
+        top: 848px;
     }
 }
 
@@ -371,7 +369,6 @@
 
 
     .buttonsContainer {
-        width: auto;
         display: none;
     }
 

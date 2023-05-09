@@ -199,7 +199,7 @@ async function renderAssignTo() {
  * @param {string} userName - the name of the assigned contact at certain index
  * @returns - the contact names
  */
-function templateRenderAssignToContacts(userName){
+function templateRenderAssignToContacts(userName) {
     return /*html*/`
     <div class="assignedContact" >
         <div>${userName}</div>
@@ -212,7 +212,7 @@ function templateRenderAssignToContacts(userName){
 }
 
 /** This function is a HTML-template to render the invite new contact Text and it's image*/
-function templateRenderAssignToNewContact(){
+function templateRenderAssignToNewContact() {
     return /*html*/`
     <div class="assignedContact" onclick="assignToInput()">
         <div>invite new contacts</div>
@@ -518,7 +518,28 @@ async function addTask() {
     tasks.push(newTask);
     await saveTasksToBackend();
     await saveUserAccountsToBackend();
+}
+
+/**
+ * This function is used to create a (Project Management Task Object) which include the information of the title, description, due date, priority, the department, contact etc.
+ * This function was called on AddTask Main Page
+ */
+async function addTaskToBoard(){
+    await addTask();
     annimationTaskAddedToBoard();
+    setAllFieldsToDefault();
+    closeDropdownCategory();
+    closeDropDownAssignTo();
+    choseContacts = [];
+}
+
+/**
+ * This function is used to create a (Project Management Task Object) which include the information of the title, description, due date, priority, the department, contact etc.
+ * This function was called on Board Page and Contact Page
+ */
+async function addTaskOnSubPages(){
+    await addTask();
+    annimationTaskAddedToBoardForPopOut();
     setAllFieldsToDefault();
     closeDropdownCategory();
     closeDropDownAssignTo();
@@ -561,7 +582,7 @@ function setAllFieldsToDefault() {
 }
 
 /**This function return the priority boxes to default style*/
-function setPrioBoxesTodefault(){
+function setPrioBoxesTodefault() {
     document.getElementById('prioUrgentBox').classList.remove('bgUrgent');
     document.getElementById('prioMediumBox').classList.remove('bgMedium');
     document.getElementById('prioLowBox').classList.remove('bgLow');
@@ -589,6 +610,25 @@ function annimationTaskAddedToBoard() {
     }, 4000)
     setTimeout(function () {
         window.location = "./board.html";
+    }, 3600)
+}
+
+/**
+ * show the animation when the Task is created and direct to the board page
+ * while a task is being added to the board the addTask Button is disabled
+ * */
+function annimationTaskAddedToBoardForPopOut() {
+    document.getElementById('messageAddedTask').style.display = "flex";
+    document.getElementById('messageAddedTask').classList.add('animate');
+    setTimeout(function () {
+        document.getElementById('messageAddedTask').style.display = "none";
+    }, 3900)
+    document.getElementById('addTaskBtn').classList.add('buttonDisabled');
+    setTimeout(function () {
+        document.getElementById('addTaskBtn').classList.add('buttonEnabled');
+    }, 4000)
+    setTimeout(function () {
+        closePopOutAddTask();
     }, 3600)
 }
 
@@ -733,8 +773,7 @@ function clearAllAddTaskFields() {
 }
 
 /**show AddTaskPopOut.html*/
-function showAddTaskPopOut()
- {
+function showAddTaskPopOut() {
     updateCalender();
     window.scrollTo({
         top: 0,
@@ -783,7 +822,7 @@ function filterContact() {
         userName = userAccounts[activeUser]['userContacts'][i]['name'];
         userNameLowerLetter = userName.toLowerCase();
         if (userNameLowerLetter.includes(search)) {
-            content.innerHTML += templateRenderAssignToContacts(userName); 
+            content.innerHTML += templateRenderAssignToContacts(userName);
         }
     }
 }
