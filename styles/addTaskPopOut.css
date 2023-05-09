@@ -31,7 +31,7 @@ input:-webkit-autofill:active {-webkit-box-shadow: 0 0 0 30px white inset !impor
     margin: 100px;
     z-index: 26;
     transform: translate(0px, 0px);
-    transition: 200ms;
+    transition: 500ms;
 }
 
 .popOut-hidden {
@@ -48,7 +48,7 @@ input:-webkit-autofill:active {-webkit-box-shadow: 0 0 0 30px white inset !impor
     margin: 100px;
     z-index: 6;
     transform: translate(1870px, 0px);
-    transition: 200ms;
+    transition: 500ms;
 }
 
 .headline {
