@@ -66,13 +66,15 @@ function renderCategory() {
 
 /**This function set Category InputField to default as in beginning with a placholder and a drop down Button*/
 function unsetCategoryInputField() {
-    categoryInputContainer = document.getElementById('inputContainer');
+    /*categoryInputContainer = document.getElementById('inputContainer');
     categoryInputContainer.innerHTML = `
     <input class="input" id="input" type="text" placeholder="Select task Category" required>
     <div id="color" class="color"></div>
     <div id="buttonDropDown" class="buttonOpenCloseCategory" onclick="dropDown()">
         <img src="assets/img/dropdown-arrow.png">
-    </div>`;
+    </div>
+    `;*/
+    rejectNewCategory();
 }
 
 /**This function shows Category Select Menu - toggle at clicking on the dropdown Button */
@@ -515,7 +517,7 @@ async function addTask() {
         "id": idTask,
         "progress": progress
     };
-    tasks.push(newTask);
+    tasks.push(newTask); 
     await saveTasksToBackend();
     await saveUserAccountsToBackend();
 }
@@ -539,6 +541,8 @@ async function addTaskToBoard(){
  */
 async function addTaskOnSubPages(){
     await addTask();
+    onloadBoard();
+    document.getElementById('bg').style.display = 'none';
     annimationTaskAddedToBoardForPopOut();
     setAllFieldsToDefault();
     closeDropdownCategory();
@@ -579,6 +583,8 @@ function setAllFieldsToDefault() {
     dueDate.value = "";
     setPrioBoxesTodefault();
     deleteSubTask();
+    categoriesArray = ['New Category', 'Sales', 'Marketing'];
+    colorsArray = ['', 'red', 'blue'];
 }
 
 /**This function return the priority boxes to default style*/
@@ -785,6 +791,8 @@ function showAddTaskPopOut() {
     document.getElementById('profile-container').classList.add('profile-container-d-none');
     document.getElementById('bodyBoard').classList.add('noScrollSite');
     document.getElementById('bg').style.display = '';
+    renderCategory();
+    displayChosenContactsForTask();
 }
 
 /**hide AddTaskPopOut.html*/
@@ -794,6 +802,10 @@ function closePopOutAddTask() {
     document.getElementById('bodyBoard').classList.remove('noScrollSite');
     document.getElementById('kanban').classList.remove('kanban');
     document.getElementById('profile-container').classList.remove('profile-container-d-none');
+    setAllFieldsToDefault();
+    closeDropdownCategory();
+    closeDropDownAssignTo();
+    choseContacts = [];
 }
 
 /**

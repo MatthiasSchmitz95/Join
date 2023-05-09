@@ -365,4 +365,14 @@
     .contentContainer {
         width: 280px;
     }
+    
+    .messageAddedTask {
+        width: 264px;
+        height: 65px;
+    }
+
+    .messageAddedTask p {
+        width: 220px;
+        font-size: 21px;
+    }
 }

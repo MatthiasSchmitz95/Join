@@ -1,8 +1,6 @@
 body {
     margin: 0;
     background: #f6f7f8;
-    overflow-y: scroll !important;
-    overflow-x: hidden;
     position: relative;
 }
 
@@ -14,8 +12,9 @@ button{
     margin: 0;
     height: 100vh;
     overflow-x: hidden;
-    overflow-y: hidden;
+    overflow-y: scroll !important;
     background: #f6f7f8;
+    position: relative;
 }
 
 textarea {resize: none;}
