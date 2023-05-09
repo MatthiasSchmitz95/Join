@@ -38,9 +38,12 @@ h3 {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
+    min-height: 46px;
 }
 
 .log-out-container a{
+    padding-bottom: 7px;
+    padding-top: 7px;
     display: flex;
     justify-content: flex-end;
     text-decoration: none;
