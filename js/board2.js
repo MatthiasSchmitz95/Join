@@ -252,11 +252,14 @@ function filterHtml() {
         var search = document.getElementById('search').value;
     }
     search = search.toLowerCase();
+    let title = userAccounts[activeUser]['userTasks'];
     let text = userAccounts[activeUser]['userTasks'];
-    for (let i = 0; i < text.length; i++) {
-        let element = text[i]['title'];
+    for (let i = 0; i < title.length; i++) {
+        let element = title[i]['title'];
+        let description = text[i]['description'];
         element = element.toLowerCase();
-        if (element.includes(search)) {
+        description = description.toLowerCase();
+        if (element.includes(search) || description.includes(search)) {
             renderfilter(search, i)
         } }
 }
@@ -307,7 +310,9 @@ function renderFilterHtml(userTasks, search, cards) {
  * @param {string} cards 
  */
 function renderFilterHtmlToDo(userTasks, search, cards) {
-    if (cards == 'To Do' && userTasks['title'].toLowerCase().includes(search)) {
+    let title = cards == 'To Do' && userTasks['title'].toLowerCase().includes(search);
+    let text = cards == 'To Do' && userTasks['description'].toLowerCase().includes(search);
+    if (title || text) {
         document.getElementById('toDoContent').innerHTML += generateHTML1(userTasks) + generateHTML2(userTasks), loadForUpdateHTML(userTasks);
     }
 }
@@ -321,7 +326,9 @@ function renderFilterHtmlToDo(userTasks, search, cards) {
  * @param {string} cards 
  */
 function renderFilterHtmlInProgress(userTasks, search, cards) {
-    if (cards == 'In progress' && userTasks['title'].toLowerCase().includes(search)) {
+    let title = cards == 'In progress' && userTasks['title'].toLowerCase().includes(search);
+    let text = cards == 'In progress' && userTasks['description'].toLowerCase().includes(search);
+    if (title || text) {
         document.getElementById('inProgressContent').innerHTML += generateHTML1(userTasks) + generateHTML2(userTasks), loadForUpdateHTML(userTasks);
     }
 }
@@ -335,7 +342,9 @@ function renderFilterHtmlInProgress(userTasks, search, cards) {
  * @param {string} cards 
  */
 function renderFilterHtmlAwaitingFeedback(userTasks, search, cards) {
-    if (cards == 'Awaiting Feedback' && userTasks['title'].toLowerCase().includes(search)) {
+    let title = cards == 'Awaiting Feedback' && userTasks['title'].toLowerCase().includes(search);
+    let text = cards == 'Awaiting Feedback' && userTasks['description'].toLowerCase().includes(search);
+    if (title || text) {
         document.getElementById('awaitingFeedbackContent').innerHTML += generateHTML1(userTasks) + generateHTML2(userTasks), loadForUpdateHTML(userTasks);
     }
 }
@@ -349,7 +358,9 @@ function renderFilterHtmlAwaitingFeedback(userTasks, search, cards) {
  * @param {string} cards 
  */
 function renderFilterHtmlDone(userTasks, search, cards) {
-    if (cards == 'Done' && userTasks['title'].toLowerCase().includes(search)) {
+    let title = cards == 'Done' && userTasks['title'].toLowerCase().includes(search);
+    let text = cards == 'Done' && userTasks['description'].toLowerCase().includes(search);
+    if (title || text) {
         document.getElementById('doneContent').innerHTML += generateHTML1(userTasks) + generateHTML2(userTasks), loadForUpdateHTML(userTasks);
     }
 }
