@@ -396,6 +396,17 @@
 
 }
 
+@media(max-height:680px) {
+    .floating-contact-container {
+        margin-top: 4px;
+    }
+
+    .btn-container {
+        margin-top: -13px;
+    }
+}
+
+
 
 @media(max-width:300px) {
     .name-card {
