@@ -583,8 +583,6 @@ function setAllFieldsToDefault() {
     dueDate.value = "";
     setPrioBoxesTodefault();
     deleteSubTask();
-    categoriesArray = ['New Category', 'Sales', 'Marketing'];
-    colorsArray = ['', 'red', 'blue'];
 }
 
 /**This function return the priority boxes to default style*/

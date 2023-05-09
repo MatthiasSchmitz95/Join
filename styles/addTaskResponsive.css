@@ -109,13 +109,13 @@
     }
 
     .createButtonResponsiveContainer {
-        position: absolute;
-        top: -72px;
+        position: fixed;
+        top: 11px;
         z-index: 2;
         display: flex !important;
         justify-content: center;
         height: 51px;
-        width: 100%;
+        width: calc(100% - 230px);
         border: none;
     }
 
@@ -376,8 +376,8 @@
     }
 
     .createButtonResponsiveContainer {
-        position: absolute;
-        top: -72px;
+        position: fixed;
+        top: 11px;
         z-index: 2;
         display: flex !important;
         justify-content: flex-start;
