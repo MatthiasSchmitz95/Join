@@ -246,11 +246,7 @@ async function changeProgressbar(cards) {
  * 
  */
 function filterHtml() {
-    if (window.innerWidth <= 640) {
-        var search = document.getElementById('searchSmall').value;
-    } else {
-        var search = document.getElementById('search').value;
-    }
+    let { search } = chooseSearchInput();
     search = search.toLowerCase();
     let title = userAccounts[activeUser]['userTasks'];
     let text = userAccounts[activeUser]['userTasks'];
@@ -263,6 +259,20 @@ function filterHtml() {
             renderfilter(search, i)
         } }
 }
+
+/**
+ * Choose the right searchfield
+ * 
+ * @returns 
+ */
+function chooseSearchInput(){
+    if (window.innerWidth <= 640) {
+        var search = document.getElementById('searchSmall').value;
+    } else {
+        var search = document.getElementById('search').value;
+    }
+    return {search}
+} 
 
 
 /**
