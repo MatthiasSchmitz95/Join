@@ -3,6 +3,12 @@
         gap: 27%;
         margin-left: 240px;
     }
+    
+    .change-category{
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+    }
 
     .working-class {
         display: flex;

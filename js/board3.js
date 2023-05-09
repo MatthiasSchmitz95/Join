@@ -176,3 +176,49 @@ function renderContactsWithContacts(id, contact, contant, user) {
         changeBackgroundCircle(`round${idStr}`, user.color);
     })
 }
+
+
+/**
+ * Change progress in responsive mode
+ * 
+ * @param {number} cards 
+ */
+async function changeCategoryUp(cards){
+    let user = userAccounts[activeUser]['userTasks'];
+    let todo = user.find((item) => item.id === cards);
+    if (todo.progress == 'To Do') {
+        todo.progress = 'Done'
+    } else  if (todo.progress == 'In progress') {
+        todo.progress = 'To Do'
+    }else if (todo.progress == 'Awaiting Feedback') {
+        todo.progress = 'In progress'
+    }else if (todo.progress == 'Done') {
+        todo.progress = 'Awaiting Feedback'
+    }
+    await saveTasksToBackend()
+    await saveUserAccountsToBackend();
+    updateHTML()
+}
+
+
+/**
+ * Change progress in responsive mode
+ * 
+ * @param {number} cards 
+ */
+async function changeCategoryDown(cards){
+    let user = userAccounts[activeUser]['userTasks'];
+    let todo = user.find((item) => item.id === cards);
+    if (todo.progress == 'To Do') {
+        todo.progress = 'In progress'
+    } else  if (todo.progress == 'In progress') {
+        todo.progress = 'Awaiting Feedback'
+    }else if (todo.progress == 'Awaiting Feedback') {
+        todo.progress = 'Done'
+    }else if (todo.progress == 'Done') {
+        todo.progress = 'To Do'
+    }
+    await saveTasksToBackend()
+    await saveUserAccountsToBackend();
+    updateHTML()
+}

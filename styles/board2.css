@@ -182,3 +182,12 @@
     display: none;
 }
 
+.change-category{
+    display: none;
+}
+
+.position-change-category{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}

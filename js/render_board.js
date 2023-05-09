@@ -1,8 +1,14 @@
 function generateHTML1(cards) {
     return /*html*/`
     <div draggable="true" id="dragMe${cards['id']}" ondragstart="startDragging(${cards['id']})" onclick="showOverlay(${cards['id']})" class="card">
+        <div class="position-change-category">
         <div id="backgroundColor${cards['id']}" class="background">
-            ${cards['category']}
+            ${cards['category']}   
+        </div>
+        <div class="change-category">
+            <img onclick="changeCategoryUp(${cards['id']}), doNotClose(event)" src="assets/img/arrow-up.ico" alt="">
+            <img onclick="changeCategoryDown(${cards['id']}), doNotClose(event)" src="assets/img/arrow-down.ico" alt="">
+        </div>
         </div>
         <div><b>${cards['title']}</b></div>
         <div class="text-color" >

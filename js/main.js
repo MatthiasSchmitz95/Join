@@ -86,7 +86,7 @@ async function includeHTML() {
 async function loadUserAccountsFromBackend() {
   await downloadFromServer();
   userAccounts = JSON.parse(backend.getItem('userAccounts')) || [];
-  //console.log('Useraccounts loadet', userAccounts);
+  console.log('Useraccounts loadet', userAccounts);
 }
 
 
