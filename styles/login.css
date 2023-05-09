@@ -192,6 +192,7 @@ h1 {
 }
 
 .check {
+    display: flex;
     cursor: pointer;
 }
 

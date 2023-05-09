@@ -8,6 +8,8 @@ async function signUpUser() {
   let splitName = name.split(" ");
   if (splitName.length !== 2) {
     //console.log("Please enter your first and last name");
+    document.getElementById('sign-up-name-input').value = "";
+    document.getElementById('sign-up-name-input').placeholder = "enter your first and last name";
   } else {
     for (let i = 0; i < splitName.length; i++) {
       let namePart = splitName[i];
@@ -23,8 +25,8 @@ async function signUpUser() {
   }
 }
 
-function pushNewUser(name, email, password, userId, userInitials, userColor){    
-    let newUser = {
+function pushNewUser(name, email, password, userId, userInitials, userColor) {
+  let newUser = {
     userName: name,
     userEmail: email,
     userPassword: password,
