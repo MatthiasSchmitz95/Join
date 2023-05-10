@@ -546,7 +546,6 @@ async function addTaskToBoard() {
         closeDropDownAssignTo();
         choseContacts = [];
     }
-
 }
 
 /**
@@ -555,13 +554,15 @@ async function addTaskToBoard() {
  */
 async function addTaskOnSubPages() {
     await addTask();
+    if (p == true) {
+        document.getElementById('bg').style.display = 'none';
+        annimationTaskAddedToBoardForPopOut();
+        setAllFieldsToDefault();
+        closeDropdownCategory();
+        closeDropDownAssignTo();
+        choseContacts = [];
+    }
     onloadBoard();
-    document.getElementById('bg').style.display = 'none';
-    annimationTaskAddedToBoardForPopOut();
-    setAllFieldsToDefault();
-    closeDropdownCategory();
-    closeDropDownAssignTo();
-    choseContacts = [];
 }
 
 /** This function decides with the priority background color which Priority has been activated and get all the inputs of the one priority box*/
