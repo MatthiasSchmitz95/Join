@@ -562,7 +562,9 @@ async function addTaskOnSubPages() {
         closeDropDownAssignTo();
         choseContacts = [];
         onloadBoard();
+        p = false;
     }
+  
 }
 
 /** This function decides with the priority background color which Priority has been activated and get all the inputs of the one priority box*/
