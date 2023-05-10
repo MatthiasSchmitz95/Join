@@ -55,8 +55,8 @@ function renderCategory() {
     let categoryList = document.getElementById('categoryList');
     categoryList.innerHTML = `<div class="categoryAndColor" onclick=" newCategoryInput()" >
     <div>New category</div>
-</div>`;
-    for (let i = 0; i < categories.length; i++) {
+    </div>`;
+    for (let i = 1; i < categories.length; i++) {
         const category = categories[i]['category'];
         const color = categories[i]['color'];
         categoryList.innerHTML += `
@@ -503,7 +503,8 @@ async function addTask() {
     dueDate = document.getElementById('date');
     getPriorityInformation();
     subTask = selectedSubtasks;
-    idTask = generateTaskId(tasks);
+    //idTask = generateTaskId(tasks);
+    idTask = tasks.length;
     if (typeof progress == 'undefined') {
         progress = "To Do";
     }
@@ -657,6 +658,7 @@ function annimationTaskAddedToBoardForPopOut() {
  * @param {number} tasks - it shows the Id-Number of (Project Management Task Object) 
  * @returns {number} id - return a new Id-Number (the next larger number)
  */
+/*
 function generateTaskId(tasks) {
     var id = tasks.length;
     var idExists = true;
@@ -673,6 +675,8 @@ function generateTaskId(tasks) {
         }
     } return id;
 }
+*/
+
 
 /**This function changes the Text and Image color to white of the Priority Urgent button, the other buttons (Prio Medium and Prio Low) change to their original color */
 function insertUrgent() {
