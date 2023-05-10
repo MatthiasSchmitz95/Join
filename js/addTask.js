@@ -503,8 +503,8 @@ async function addTask() {
     dueDate = document.getElementById('date');
     getPriorityInformation();
     subTask = selectedSubtasks;
-    //idTask = generateTaskId(tasks);
-    idTask = tasks.length;
+    idTask = generateTaskId(tasks);
+    //idTask = tasks.length;
     if (typeof progress == 'undefined') {
         progress = "To Do";
     }
@@ -658,7 +658,7 @@ function annimationTaskAddedToBoardForPopOut() {
  * @param {number} tasks - it shows the Id-Number of (Project Management Task Object) 
  * @returns {number} id - return a new Id-Number (the next larger number)
  */
-/*
+
 function generateTaskId(tasks) {
     var id = tasks.length;
     var idExists = true;
@@ -675,7 +675,6 @@ function generateTaskId(tasks) {
         }
     } return id;
 }
-*/
 
 
 /**This function changes the Text and Image color to white of the Priority Urgent button, the other buttons (Prio Medium and Prio Low) change to their original color */
