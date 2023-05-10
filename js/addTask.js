@@ -562,6 +562,7 @@ async function addTaskOnSubPages() {
         closeDropDownAssignTo();
         choseContacts = [];
         onloadBoard();
+        selectedSubtasks= [];
         p = false;
     }
   
@@ -867,4 +868,18 @@ function filterContact() {
             content.innerHTML += templateRenderAssignToContacts(userName);
         }
     }
+}
+
+async function deleteCategory(number){
+let user = userAccounts[activeUser]['userCategory'];
+for (let i = 0; i < user.length; i++) {
+    if (i === number) {
+        user.splice(i, 1);
+        break;
+    }
+}
+await saveTasksToBackend()
+await saveUserAccountsToBackend();
+closeOverlay();
+updateHTML();
 }
