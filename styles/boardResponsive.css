@@ -112,6 +112,10 @@
     .close-icon-small {
         display: none;
     }
+
+    .display-unset{
+        display: none;
+    }
 }
 
 @media(max-width: 640px) {

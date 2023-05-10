@@ -502,7 +502,10 @@ async function addTask() {
     getPriorityInformation();
     subTask = selectedSubtasks;
     idTask = generateTaskId(tasks);
-    progress = "To Do";
+    if (typeof progress == 'undefined') {
+        progress = "To Do";
+    }
+    
     var newTask = {
         "title": title.value,
         "description": description.value,
@@ -777,7 +780,7 @@ function clearAllAddTaskFields() {
 }
 
 /**show AddTaskPopOut.html*/
-function showAddTaskPopOut() {
+function showAddTaskPopOut(progresscategory) {
     updateCalender();
     window.scrollTo({
         top: 0,
@@ -789,6 +792,7 @@ function showAddTaskPopOut() {
     document.getElementById('profile-container').classList.add('profile-container-d-none');
     document.getElementById('bodyBoard').classList.add('noScrollSite');
     document.getElementById('bg').style.display = '';
+    progress = progresscategory;
     renderCategory();
     displayChosenContactsForTask();
 }
