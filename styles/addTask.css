@@ -12,7 +12,6 @@ button{
     margin: 0;
     height: 100vh;
     overflow-x: hidden;
-    overflow-y: scroll !important;
     background: #f6f7f8;
     position: relative;
 }
