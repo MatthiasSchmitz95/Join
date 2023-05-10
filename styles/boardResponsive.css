@@ -77,6 +77,14 @@
         background-color: #F5F5F5;
     }
 
+    .header{
+        position: fixed;
+    }
+
+    #kanban{
+        position: fixed;
+    }
+
     .board-header {
         display: flex;
         flex-direction: row;
