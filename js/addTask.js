@@ -10,6 +10,7 @@ var categoryList;
 var choseContacts = [];
 var l = false;
 var j = false;
+var p = false
 
 var priority;
 var priorityImg;
@@ -497,44 +498,52 @@ async function addTask() {
     if (typeof progress == 'undefined') {
         progress = "To Do";
     }
+    if (p == true) {
+        var newTask = {
+            "title": title.value,
+            "description": description.value,
+            "category": category.value,
+            "categoryColor": categoryColor,
+            "contact": contact,
+            "dueDate": dueDate.value,
+            "subTask": subTask,
+            "subTaskDone": subTaskDone,
+            "priority": priority,
+            "priorityImg": priorityImg,
+            "id": idTask,
+            "progress": progress
+        };
+        tasks.push(newTask);
+        await saveTasksToBackend();
+        await saveUserAccountsToBackend();
+    } else{
+        document.getElementById('checkprio').classList.remove('d-none');
+        document.getElementById('checkprio').innerHTML = 'Bitte eine Prio auswählen';
+    }
     
-    var newTask = {
-        "title": title.value,
-        "description": description.value,
-        "category": category.value,
-        "categoryColor": categoryColor,
-        "contact": contact,
-        "dueDate": dueDate.value,
-        "subTask": subTask,
-        "subTaskDone": subTaskDone,
-        "priority": priority,
-        "priorityImg": priorityImg,
-        "id": idTask,
-        "progress": progress
-    };
-    tasks.push(newTask); 
-    await saveTasksToBackend();
-    await saveUserAccountsToBackend();
 }
 
 /**
  * This function is used to create a (Project Management Task Object) which include the information of the title, description, due date, priority, the department, contact etc.
  * This function was called on AddTask Main Page
  */
-async function addTaskToBoard(){
-    await addTask();
-    annimationTaskAddedToBoard();
-    setAllFieldsToDefault();
-    closeDropdownCategory();
-    closeDropDownAssignTo();
-    choseContacts = [];
+async function addTaskToBoard() {
+        await addTask();
+        if (p ==true) {
+            annimationTaskAddedToBoard();
+            setAllFieldsToDefault();
+            closeDropdownCategory();
+            closeDropDownAssignTo();
+            choseContacts = [];
+        }
+
 }
 
 /**
  * This function is used to create a (Project Management Task Object) which include the information of the title, description, due date, priority, the department, contact etc.
  * This function was called on Board Page and Contact Page
  */
-async function addTaskOnSubPages(){
+async function addTaskOnSubPages() {
     await addTask();
     onloadBoard();
     document.getElementById('bg').style.display = 'none';
@@ -548,14 +557,17 @@ async function addTaskOnSubPages(){
 /** This function decides with the priority background color which Priority has been activated and get all the inputs of the one priority box*/
 function getPriorityInformation() {
     if (document.getElementById('prioUrgentBox').classList.contains('bgUrgent')) {
+        p = true;
         priority = document.getElementById('prioUrgentBox').innerText;
         priorityImg = document.createElement("prioUrgentImg");
         priorityImg = "assets/img/urgent.png";
     } else if (document.getElementById('prioMediumBox').classList.contains('bgMedium')) {
+        p = true;
         priority = document.getElementById('prioMediumBox').innerText;
         priorityImg = document.createElement("prioMediumImg");
         priorityImg = "assets/img/medium.png";
-    } else {
+    } else if (document.getElementById('prioLowBox').classList.contains('bgLow')){
+        p = true;
         priority = document.getElementById('prioLowBox').innerText;
         priorityImg = document.createElement("prioLowImg");
         priorityImg = "assets/img/low.png";
@@ -655,6 +667,7 @@ function generateTaskId(tasks) {
 
 /**This function changes the Text and Image color to white of the Priority Urgent button, the other buttons (Prio Medium and Prio Low) change to their original color */
 function insertUrgent() {
+   
     document.getElementById('prioUrgentBox').classList.add('bgTextWhite');
     document.getElementById('prioMediumBox').classList.remove('bgTextWhite');
     document.getElementById('prioLowBox').classList.remove('bgTextWhite');
@@ -683,6 +696,7 @@ function toggleInsertUrgent() {
 
 /**This function changes the Text- and Image-color to white of the Priority Medium button, other buttons (Prio Urgent and Prio Low) change to their original color */
 function insertMedium() {
+    
     document.getElementById('prioMediumBox').classList.add('bgTextWhite');
     document.getElementById('prioUrgentBox').classList.remove('bgTextWhite');
     document.getElementById('prioLowBox').classList.remove('bgTextWhite');
@@ -712,6 +726,7 @@ function toggleInsertMedium() {
 
 /**This function changes the Text- and Image-color to white of the Priority low button, other buttons (Prio Urgent and Prio Medium) change to their original color */
 function insertLow() {
+    
     document.getElementById('prioLowBox').classList.add('bgTextWhite');
     document.getElementById('prioUrgentBox').classList.remove('bgTextWhite');
     document.getElementById('prioMediumBox').classList.remove('bgTextWhite');
