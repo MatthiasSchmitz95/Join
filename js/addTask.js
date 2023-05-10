@@ -661,20 +661,25 @@ function annimationTaskAddedToBoardForPopOut() {
  */
 
 function generateTaskId(tasks) {
-    var id = tasks.length;
-    var idExists = true;
-    while (idExists) {
-        for (var i = 0; i < tasks.length; i++) {
-            if (tasks[i].id === id) {
-                idExists = true;
-                break;
-            } else {
-                idExists = false;
+    if (tasks.length == 0) {
+        id = 0;
+    } else{
+        var id = tasks.length;
+        var idExists = true;
+        while (idExists) {
+            for (var i = 0; i < tasks.length; i++) {
+                if (tasks[i].id === id) {
+                    idExists = true;
+                    break;
+                } else {
+                    idExists = false;
+                }
+            } if (idExists) {
+                id++;
             }
-        } if (idExists) {
-            id++;
         }
-    } return id;
+    }
+    return id;
 }
 
 
