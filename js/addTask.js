@@ -51,11 +51,14 @@ function onloadAddTask() {
  * This function is use to render Category with a Color Dots
  */
 function renderCategory() {
+    let categories = userAccounts[activeUser].userCategory;
     let categoryList = document.getElementById('categoryList');
-    categoryList.innerHTML = "";
-    for (let i = 0; i < categoriesArray.length; i++) {
-        const category = categoriesArray[i];
-        const color = colorsArray[i];
+    categoryList.innerHTML = `<div class="categoryAndColor" onclick=" newCategoryInput()" >
+    <div>New category</div>
+</div>`;
+    for (let i = 0; i < categories.length; i++) {
+        const category = categories[i]['category'];
+        const color = categories[i]['color'];
         categoryList.innerHTML += `
         <div class="categoryAndColor" onclick="chooseCategory(${i}, '${category}', '${color}')" >
             <div>${category}</div>
@@ -117,14 +120,10 @@ function chooseCategory(index, category, color) {
     input.value = '';
     input.value = category;
     document.getElementById('color').style.background = color;
-    if (index == 0) {
-        input.value = '';
-        newCategoryInput();
-    } else {
-        document.getElementById('newCategoryInput').style.display = "none";
-        document.getElementById('buttonDropDown').style.display = "flex";
-    }
+    document.getElementById('newCategoryInput').style.display = "none";
+    document.getElementById('buttonDropDown').style.display = "flex";
 }
+
 
 /** This function allows to insert in the category input field for new category input */
 function newCategoryInput() {
@@ -158,6 +157,16 @@ async function addNewCategory() {
     document.getElementById('buttonDropDown').style.display = "flex";
     document.getElementById('color').style.background = newCategoryColor;
     colorsArray.push(newCategoryColor);
+    if (newCategory !== '') {
+        let newCategories = {
+            'category': newCategory.value,
+            'color': newCategoryColor
+        }
+        let category = userAccounts[activeUser].userCategory;
+        category.push(newCategories);
+        saveUserAccountsToBackend();
+    }
+
     j = false;
 }
 
@@ -516,11 +525,11 @@ async function addTask() {
         tasks.push(newTask);
         await saveTasksToBackend();
         await saveUserAccountsToBackend();
-    } else{
+    } else {
         document.getElementById('checkprio').classList.remove('d-none');
         document.getElementById('checkprio').innerHTML = 'Bitte eine Prio auswählen';
     }
-    
+
 }
 
 /**
@@ -528,14 +537,14 @@ async function addTask() {
  * This function was called on AddTask Main Page
  */
 async function addTaskToBoard() {
-        await addTask();
-        if (p ==true) {
-            annimationTaskAddedToBoard();
-            setAllFieldsToDefault();
-            closeDropdownCategory();
-            closeDropDownAssignTo();
-            choseContacts = [];
-        }
+    await addTask();
+    if (p == true) {
+        annimationTaskAddedToBoard();
+        setAllFieldsToDefault();
+        closeDropdownCategory();
+        closeDropDownAssignTo();
+        choseContacts = [];
+    }
 
 }
 
@@ -566,7 +575,7 @@ function getPriorityInformation() {
         priority = document.getElementById('prioMediumBox').innerText;
         priorityImg = document.createElement("prioMediumImg");
         priorityImg = "assets/img/medium.png";
-    } else if (document.getElementById('prioLowBox').classList.contains('bgLow')){
+    } else if (document.getElementById('prioLowBox').classList.contains('bgLow')) {
         p = true;
         priority = document.getElementById('prioLowBox').innerText;
         priorityImg = document.createElement("prioLowImg");
@@ -667,7 +676,7 @@ function generateTaskId(tasks) {
 
 /**This function changes the Text and Image color to white of the Priority Urgent button, the other buttons (Prio Medium and Prio Low) change to their original color */
 function insertUrgent() {
-   
+
     document.getElementById('prioUrgentBox').classList.add('bgTextWhite');
     document.getElementById('prioMediumBox').classList.remove('bgTextWhite');
     document.getElementById('prioLowBox').classList.remove('bgTextWhite');
@@ -696,7 +705,7 @@ function toggleInsertUrgent() {
 
 /**This function changes the Text- and Image-color to white of the Priority Medium button, other buttons (Prio Urgent and Prio Low) change to their original color */
 function insertMedium() {
-    
+
     document.getElementById('prioMediumBox').classList.add('bgTextWhite');
     document.getElementById('prioUrgentBox').classList.remove('bgTextWhite');
     document.getElementById('prioLowBox').classList.remove('bgTextWhite');
@@ -726,7 +735,7 @@ function toggleInsertMedium() {
 
 /**This function changes the Text- and Image-color to white of the Priority low button, other buttons (Prio Urgent and Prio Medium) change to their original color */
 function insertLow() {
-    
+
     document.getElementById('prioLowBox').classList.add('bgTextWhite');
     document.getElementById('prioUrgentBox').classList.remove('bgTextWhite');
     document.getElementById('prioMediumBox').classList.remove('bgTextWhite');
@@ -800,7 +809,7 @@ async function showAddTaskPopOut(progresscategory) {
     document.getElementById('bodyBoard').classList.add('noScrollSite');
     document.getElementById('bg').style.display = '';
     progress = progresscategory;
-    
+
     renderCategory();
     displayChosenContactsForTask();
 }
