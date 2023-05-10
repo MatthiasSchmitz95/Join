@@ -67,14 +67,6 @@ function renderCategory() {
 
 /**This function set Category InputField to default as in beginning with a placholder and a drop down Button*/
 function unsetCategoryInputField() {
-    /*categoryInputContainer = document.getElementById('inputContainer');
-    categoryInputContainer.innerHTML = `
-    <input class="input" id="input" type="text" placeholder="Select task Category" required>
-    <div id="color" class="color"></div>
-    <div id="buttonDropDown" class="buttonOpenCloseCategory" onclick="dropDown()">
-        <img src="assets/img/dropdown-arrow.png">
-    </div>
-    `;*/
     rejectNewCategory();
 }
 
@@ -158,7 +150,7 @@ function newColor(color) {
 /**
  * The function allows to input new category name in the Category Array and input the color for the color Array
  */
-function addNewCategory() {
+async function addNewCategory() {
     var newCategory = document.getElementById('input');
     categoriesArray.push(newCategory.value);
     document.getElementById('newCategoryColorsBox').style.display = "none";
@@ -795,7 +787,7 @@ function clearAllAddTaskFields() {
 }
 
 /**show AddTaskPopOut.html*/
-function showAddTaskPopOut(progresscategory) {
+async function showAddTaskPopOut(progresscategory) {
     updateCalender();
     window.scrollTo({
         top: 0,
@@ -808,6 +800,7 @@ function showAddTaskPopOut(progresscategory) {
     document.getElementById('bodyBoard').classList.add('noScrollSite');
     document.getElementById('bg').style.display = '';
     progress = progresscategory;
+    
     renderCategory();
     displayChosenContactsForTask();
 }
