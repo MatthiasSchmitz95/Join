@@ -86,7 +86,7 @@ input:-webkit-autofill:active {-webkit-box-shadow: 0 0 0 30px white inset !impor
     padding-right: 80px;
 }
 
-.leftContent {
+.topContent {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
@@ -116,18 +116,18 @@ input:-webkit-autofill:active {-webkit-box-shadow: 0 0 0 30px white inset !impor
     border: 1px solid #D1D1D1;
 }
 
-.rightContent {
+.bottomContent {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
 }
 
-.BottomBoxLeft {
+.bottomBoxLeft {
     display: flex;
     flex-direction: column;
 }
 
-.BottomBoxRight {
+.bottomBoxRight {
     display: flex;
     flex-direction: column;
 }

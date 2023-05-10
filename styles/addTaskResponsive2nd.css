@@ -34,7 +34,7 @@
         display: none;
     }
 
-    .BottomBoxRight {
+    .bottomBoxRight {
         margin-top: -8px !important;
         padding-bottom: 100px;
     }
@@ -149,7 +149,7 @@
         width: 217px !important;
     }
 
-    .BottomBoxLeft {
+    .bottomBoxLeft {
         width: 320px !important;
     }
 
@@ -277,8 +277,8 @@
         width: 260px !important;
     }
 
-    .leftContent,
-    .rightContent {
+    .topContent,
+    .bottomContent {
         width: 280px;
         align-items: flex-start;
     }
@@ -296,7 +296,7 @@
         width: 179px !important;
     }
 
-    .BottomBoxLeft {
+    .bottomBoxLeft {
         width: 260px !important;
     }
 

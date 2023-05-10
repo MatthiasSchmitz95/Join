@@ -60,7 +60,7 @@ textarea {resize: none;}
     position: relative;
 }
 
-.leftContent {
+.topContent {
     display: flex;
     align-items: flex-start;
     padding: 0px;
@@ -89,7 +89,7 @@ textarea {resize: none;}
     border: 1px solid #D1D1D1;
 }
 
-.rightContent {
+.bottomContent {
     display: flex;
     align-items: flex-start;
     padding: 0px;
@@ -98,13 +98,13 @@ textarea {resize: none;}
     height: 50%;
 }
 
-.BottomBoxLeft {
+.bottomBoxLeft {
     display: flex;
     flex-direction: column;
     margin-top: 34px;
 }
 
-.BottomBoxRight {
+.bottomBoxRight {
     display: flex;
     flex-direction: column;
     gap: 8px;

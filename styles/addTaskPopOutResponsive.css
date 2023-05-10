@@ -48,7 +48,7 @@
         margin-left: 0px;
     }
 
-    .BottomBoxRight {
+    .bottomBoxRight {
         margin-left: 0px;
     }
 }
@@ -91,7 +91,7 @@
         width: auto !important;
     }
 
-    .BottomBoxLeft {
+    .bottomBoxLeft {
         width: 380px;
     }
 
@@ -103,7 +103,7 @@
         width: auto !important;
     }
 
-    .BottomBoxRight {
+    .bottomBoxRight {
         width: 380px;
     }
 
@@ -237,7 +237,7 @@
         flex-direction: column-reverse;
     }
 
-    .leftContent {
+    .topContent {
         display: flex;
         flex-direction: column !important;
         align-items: center;
@@ -247,7 +247,7 @@
         display: none;
     }
 
-    .rightContent {
+    .bottomContent {
         display: flex;
         flex-direction: column !important;
         align-items: center;

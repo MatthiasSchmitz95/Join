@@ -528,7 +528,7 @@ async function addTask() {
         await saveUserAccountsToBackend();
     } else {
         document.getElementById('checkprio').classList.remove('d-none');
-        document.getElementById('checkprio').innerHTML = 'Bitte eine Prio auswählen';
+        document.getElementById('checkprio').innerHTML = 'Please select a priority!';
     }
 
 }

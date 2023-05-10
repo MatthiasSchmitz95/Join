@@ -69,14 +69,14 @@
         margin-top: 9px;
     }
 
-    .BottomBoxRight {
+    .bottomBoxRight {
         display: flex;
         flex-direction: column;
         margin-left: 0;
         gap: 8px;
     }
 
-    .BottomBoxLeft {
+    .bottomBoxLeft {
         width: 330px;
     }
 
@@ -120,7 +120,7 @@
         display: none;
     }
 
-    .BottomBoxRight {
+    .bottomBoxRight {
         width: 330px;
         margin-top: -30px !important;
         padding-bottom: 140px;
@@ -255,11 +255,11 @@
         width: 290px;
     }
 
-    .BottomBoxLeft {
+    .bottomBoxLeft {
         width: 290px;
     }
 
-    .BottomBoxRight {
+    .bottomBoxRight {
         width: 290px;
     }
 
@@ -347,11 +347,11 @@
         width: 240px;
     }
 
-    .BottomBoxLeft {
+    .bottomBoxLeft {
         width: 240px;
     }
 
-    .BottomBoxRight {
+    .bottomBoxRight {
         width: 240px;
     }
 
