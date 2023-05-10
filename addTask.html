@@ -57,7 +57,7 @@
 
                         <div class="prioContainer">
                             <label for="priority" class="priority">Prio</label>
-                            <div class="priorityBoxesContainer">
+                            <div class="priorityBoxesContainer" required>
                                 <div class="prioUrgentBox" id="prioUrgentBox" onclick="insertUrgent()">Urgent <img
                                         id="prioUrgentImg" src="assets/img/urgent.png"></div>
                                 <div class="prioMediumBox" id="prioMediumBox" onclick="insertMedium()">Medium <img
@@ -75,9 +75,10 @@
                         <div class="categoryContainer">
                             <label for="category" class="category">Category</label>
                             <div class="inputContainer" id="inputContainer" onclick="dropDown()">
-                                <input class="input" id="input" type="text" placeholder="Select task Category" disabled required>
+                                <input class="input" id="input" type="text" placeholder="Select task Category" disabled
+                                    required>
                                 <div id="color" class="color"></div>
-                                <div id="buttonDropDown" class="buttonOpenCloseCategory" ><img
+                                <div id="buttonDropDown" class="buttonOpenCloseCategory"><img
                                         src="assets/img/dropdown-arrow.png"></div>
                                 <div class="newCategoryInput" id="newCategoryInput">
                                     <img src="assets/img/icon_clear.png" onclick="rejectNewCategory()">
@@ -105,14 +106,14 @@
                         <div class="assignContainer">
                             <label for="assignedTo" class="assignedTo">Assigned to</label>
                             <div class="contactInputContainer" id="contactInputContainer" onclick="dropDownAssignTo()">
-                                <input class="assignInput" id="assignInput" type="text" placeholder="Select contacts to assign"
-                                    onchange="filterContact()">
+                                <input class="assignInput" id="assignInput" type="text"
+                                    placeholder="Select contacts to assign" onchange="filterContact()">
                                 <div id="assignDropDown" class="buttonOpenClose"><img
                                         src="assets/img/dropdown-arrow.png"></div>
                                 <div class="newAssignToInput" id="newAssignToInput">
                                     <img src="assets/img/icon_clear.png" onclick="rejectAssignTo()">
                                     <div class="line"></div>
-                                    <img src="assets/img/checkmark.png" type="submit"  onclick="addnewContact()">
+                                    <img src="assets/img/checkmark.png" type="submit" onclick="addnewContact()">
                                 </div>
                             </div>
                             <div id="assignedList" class="assignedList"></div>
@@ -162,17 +163,17 @@
                 </div>
             </div>
         </form>
-        
+
 
         <button class="clearButton" id="clearButton" onmouseover="clearBtnhover()" onmouseout="clearBtnCancelhover()"
-            onclick="clearAllAddTaskFields()" onmousedown="setClearBtnOnActive()" onmouseup="clearBtnhover()">Clear <img class="clearBtnImg" id="clearBtnImg"
-                src="assets/img/cross-mark.svg">
+            onclick="clearAllAddTaskFields()" onmousedown="setClearBtnOnActive()" onmouseup="clearBtnhover()">Clear <img
+                class="clearBtnImg" id="clearBtnImg" src="assets/img/cross-mark.svg">
         </button>
 
 
         <script src="./js/addTask.js"></script>
 
-        
+
     </div>
 </body>
 
