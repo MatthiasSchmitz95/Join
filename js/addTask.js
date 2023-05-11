@@ -870,6 +870,10 @@ function filterContact() {
     }
 }
 
+/**
+ * this function delete the category from the user after the input number of the category
+ * @param {number} number - this is the activUser category-array number 
+ */
 async function deleteCategory(number){
 let user = userAccounts[activeUser]['userCategory'];
 for (let i = 0; i < user.length; i++) {
