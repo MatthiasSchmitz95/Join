@@ -57,4 +57,8 @@ body{
     .padding{
         padding-bottom: 80px;
     }
+
+    .display-unset{
+        display: none;
+    }
 }
