@@ -64,7 +64,7 @@
 
     .popOut-taskCard {
         margin-top: unset;
-        /*width: 1051px !important;*/
+        top: -50px;
     }
 
     .topBoxLeft {
