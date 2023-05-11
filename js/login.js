@@ -20,22 +20,24 @@ function login() {
  function checkCorrectLogin(email, password){
   let user = userAccounts.find((u) => u.userEmail == email.value);
   if (user) {
+    document.getElementById('wrongEmail').innerHTML ='';
     if(user.userPassword == password.value){
       saveActiveUserLocal(user);
-     window.location.href = './summary.html'; 
+     window.location.href = './summary.html';
+     document.getElementById('wrongPassword').innerHTML =''; 
     }
     else{
-      //console.log('the password is incorrect, please try again')
+      document.getElementById('wrongPassword').innerHTML = 'The password is incorrect, please try again';
     }
   } else {
-    //console.log('the email is wrong, please try again')
+    document.getElementById('wrongEmail').innerHTML = 'The email is incorrect, please try again';
   }
 }
 
 function saveActiveUserLocal(user) {
   let activeUser = user.userId;
   localStorage.setItem("activeUser", activeUser);
-  //console.log(activeUser);
+ 
 }
 
 function guestLogin(){
@@ -51,7 +53,7 @@ function sendMeMail(){
   if(user){
     renderResetYourPassword(user.userId);
   } else{
-    //console.log('This Email is not signed up yet')
+    document.getElementById('newPassword').innerHTML = 'This Email is not signed up yet';
   }
   
 }
@@ -60,12 +62,10 @@ async function changePassword(user){
   let newPassword = document.getElementById('new-password-input').value;
   let confirmPassword = document.getElementById('confirm-password-input').value;
   if(newPassword == confirmPassword){
-    //console.log('Password changed')
     userAccounts[user].userPassword = newPassword;
     await saveUserAccountsToBackend();
-
-    setTimeout(backToLogin, 2000);
+    setTimeout(backToLogin, 1000);
   } else {
-    //console.log('Make sure the second password you typed matches the first')
+    document.getElementById('confirmPassword').innerHTML = 'Make sure the second password you typed matches the first';
   }
 }

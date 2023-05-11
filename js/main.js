@@ -88,14 +88,12 @@ async function includeHTML() {
 async function loadUserAccountsFromBackend() {
   await downloadFromServer();
   userAccounts = JSON.parse(backend.getItem('userAccounts')) || [];
-  console.log('Useraccounts loadet', userAccounts);
 }
 
 
 async function loadTasksFromBackend() {
   await downloadFromServer();
   tasks = JSON.parse(backend.getItem('tasks')) || [];
-  //console.log('Tasks loadet', tasks);
 }
 
 async function saveUserAccountsToBackend() {
@@ -108,7 +106,6 @@ async function saveTasksToBackend() {
 
 function loadActiveUserLocal() {
   activeUser = localStorage.getItem('activeUser');
-  //console.log('activeUserID = ', activeUser);
 }
 
 

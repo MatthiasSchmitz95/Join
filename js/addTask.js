@@ -561,7 +561,7 @@ async function addTaskOnSubPages() {
         closeDropdownCategory();
         closeDropDownAssignTo();
         choseContacts = [];
-        onloadBoard();
+        updateHTML();
         selectedSubtasks= [];
         p = false;
     }

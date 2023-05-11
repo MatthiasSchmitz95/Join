@@ -13,9 +13,13 @@ function renderLogin() {
                 <input required class="input" type="email" name="email" id="login-email-input" placeholder="Email">
                 <img src="./assets/img/email-icon.png">
             </div>
+            <div id="wrongEmail">
+            </div>
             <div class="input-field">
                 <input required class="input togglePassword" type="password" name="password" id="login-password-input" placeholder="Password">
                 <img class="toogleImage" onclick="togglePassword()" src="./assets/img/password-icon.png">
+            </div>
+            <div id="wrongPassword">
             </div>
         </div>
         <div class="remember-check">
@@ -82,6 +86,8 @@ function renderForgotPassword() {
                 <input required class="input" type="email" name="email" id="forgot-email-input" placeholder="Email">
                 <img src="./assets/img/email-icon.png">
             </div>
+            <div id="newPassword">
+            </div>
             <button class="btn-dark">Send me the email</button>
         </div>
     </form>
@@ -103,6 +109,8 @@ function renderResetYourPassword(user) {
             <div class="input-field">
                 <input required class="input togglePassword" type="password" name="password" id="confirm-password-input" placeholder="Confirm password">
                 <img class="toogleImage" onclick="togglePassword()" src="./assets/img/password-icon.png">
+            </div>
+            <div id="confirmPassword">
             </div>
         </div>
         <button class="btn-dark login-btn">Continue</button>

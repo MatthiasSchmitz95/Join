@@ -7,7 +7,6 @@ async function signUpUser() {
   let userColor = randomUserColor();
   let splitName = name.split(" ");
   if (splitName.length !== 2) {
-    //console.log("Please enter your first and last name");
     document.getElementById('sign-up-name-input').value = "";
     document.getElementById('sign-up-name-input').placeholder = "enter your first and last name";
   } else {
