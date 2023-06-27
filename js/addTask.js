@@ -1,42 +1,42 @@
-var categoriesArray = ['New Category', 'Sales', 'Marketing'];
-var colorsArray = ['', 'red', 'blue'];
-var newCategoryColors = ['#8AA4FF', '#FF0000', '#2AD300', '#FF8A00', '#E200BE', '#0038FF'];
-var categoryInputContainer;
-var assignToInputContainer;
-var onInputSubTask;
-var subtaskInput;
-var appendixSubtask;
-var categoryList;
-var choseContacts = [];
-var l = false;
-var j = false;
-var p = false
+let categoriesArray = ['New Category', 'Sales', 'Marketing'];
+let colorsArray = ['', 'red', 'blue'];
+let newCategoryColors = ['#8AA4FF', '#FF0000', '#2AD300', '#FF8A00', '#E200BE', '#0038FF'];
+let categoryInputContainer;
+let assignToInputContainer;
+let onInputSubTask;
+let subtaskInput;
+let appendixSubtask;
+let categoryList;
+let choseContacts = [];
+let l = false;
+let j = false;
+let p = false
 
-var priority;
-var priorityImg;
-var addsubtask;
-var subTasks = [];
-var selectedSubtasks = [];
-var userName;
-var newAssingedContact;
-var newLetters2;
-var selectedContactLetters = [];
-var newContacts = [];
-var newAddedContactLetters = [];
-var arrayContactColor = [];
-var helpVarSumit = false;
+let priority;
+let priorityImg;
+let addsubtask;
+let subTasks = [];
+let selectedSubtasks = [];
+let userName;
+let newAssingedContact;
+let newLetters2;
+let selectedContactLetters = [];
+let newContacts = [];
+let newAddedContactLetters = [];
+let arrayContactColor = [];
+let helpVarSumit = false;
 
 /**global variable for addTask() function */
-var title;
-var description;
-var contact;
-var subTaskDone;
-var category;
-var categoryColor;
-var dueDate;
-var subTask;
-var idTask;
-var progress;
+let title;
+let description;
+let contact;
+let subTaskDone;
+let category;
+let categoryColor;
+let dueDate;
+let subTask;
+let idTask;
+let progress;
 
 /**
  * this function is used to load AddTask-HTML page (init function)
